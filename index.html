@@ -29,10 +29,10 @@
     <div style="max-width:1440px; margin:0 auto; display:flex; align-items:center; justify-content:flex-end; padding:18px 40px;">
       <div style="display:flex; gap:30px; align-items:center;">
         <a href="#hero" onClick="{{ goHome }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navHomeColor }}; font-weight:600; text-decoration:none;">Home</a>
-        <a href="#about" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navAboutColor }}; font-weight:600; text-decoration:none;">About</a>
-        <a href="#work" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navWorkColor }}; font-weight:600; text-decoration:none;">Portfolio</a>
-        <a href="#skills" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navSkillsColor }}; font-weight:600; text-decoration:none;">Experience</a>
-        <a href="#contact" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:11px 22px; border-radius:100px; background:{{ t.accent }}; color:{{ t.accentText }}; text-decoration:none; transition:transform 200ms ease, box-shadow 200ms ease;" style-hover="transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.3);">Get in Touch</a>
+        <a href="#about" onClick="{{ goAbout }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navAboutColor }}; font-weight:600; text-decoration:none;">About</a>
+        <a href="#work" onClick="{{ goWork }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navWorkColor }}; font-weight:600; text-decoration:none;">Portfolio</a>
+        <a href="#skills" onClick="{{ goSkills }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navSkillsColor }}; font-weight:600; text-decoration:none;">Experience</a>
+        <a href="#contact" onClick="{{ goContact }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:11px 22px; border-radius:100px; background:{{ t.accent }}; color:{{ t.accentText }}; text-decoration:none; transition:transform 200ms ease, box-shadow 200ms ease;" style-hover="transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.3);">Get in Touch</a>
       </div>
     </div>
   </nav>
@@ -69,7 +69,7 @@
         
       </div>
 
-      <a href="#contact" style="width: 100%; padding: 14px; border-radius: 100px; background: {{ t.accent }}; color: {{ t.accentText }}; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration-line: none; transition: all 250ms ease; box-sizing: border-box; padding-top: 14px; padding-right: 14px; padding-bottom: 14px; padding-left: 14px" style-hover="transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.25);">Contact</a>
+      <a href="#contact" onClick="{{ goContact }}" style="width: 100%; padding: 14px; border-radius: 100px; background: {{ t.accent }}; color: {{ t.accentText }}; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration-line: none; transition: all 250ms ease; box-sizing: border-box; padding-top: 14px; padding-right: 14px; padding-bottom: 14px; padding-left: 14px" style-hover="transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.25);">Contact</a>
 
       <a href="assets/Jonathan_Renner_Resume.pdf" download="" style="width: 100%; margin-top: 15px; padding: 13px 18px 13px 8px; border-radius: 100px; border: 1.5px solid {{ t.accent }}; color: {{ t.accent }}; font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; text-decoration-line: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 250ms ease; box-sizing: border-box" style-hover="transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.25); background:#5fd6e3 !important; border-color:#5fd6e3 !important; color:#06222a !important; font-weight:600 !important;" target="_blank" rel="noopener noreferrer">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>
@@ -97,7 +97,7 @@
             <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Hiring a Product Leader?</div>
             <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore my experience, leadership background, and resume.</div>
             <div style="font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: {{ t.text }}; margin-top: 6px;">View Resume →</div>
-          </a><a href="#work" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
+          </a><a href="#work" onClick="{{ goWork }}" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
             <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Need a Digital Partner?</div>
             <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore my consulting services and client work.</div>
             <div style="font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: {{ t.text }}; margin-top: 6px;">View Consulting →</div>
@@ -559,6 +559,19 @@ class Component extends DCLogic {
     window.scrollTo(0, 0);
   };
 
+  goSection = (id) => (e) => {
+    if (e) e.preventDefault();
+    const scroll = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+    if (this.state.activeCase !== null) {
+      this.setState({ activeCase: null, activeNav: id }, () => requestAnimationFrame(scroll));
+    } else {
+      scroll();
+    }
+  };
+
 
 
   componentDidMount() {
@@ -713,6 +726,7 @@ class Component extends DCLogic {
     const navSkillsColor = activeNav === 'skills' ? t.accent : '#ffffff';
     return { t, toggleTheme: this.toggleTheme, navLogoStyle: navLogoStyle + ' cursor:pointer;', cases, isHome, activeCaseData, closeCase: this.closeCase, goHome: this.goHome, asideMarginTop,
       navHomeColor, navAboutColor, navWorkColor, navSkillsColor,
+      goAbout: this.goSection('about'), goWork: this.goSection('work'), goSkills: this.goSection('skills'), goContact: this.goSection('contact'),
       lightboxId: this.state.lightboxId, lightboxSrc: this.state.lightboxSrc, openLightbox: this.openLightbox, closeLightbox: this.closeLightbox, stopProp: this.stopProp,
       lightboxHasMultiple: (this.state.lightboxList || []).length > 1, lightboxPrev: this.lightboxNav(-1), lightboxNext: this.lightboxNav(1),
       removeGalleryImage: this.removeGalleryImage };
