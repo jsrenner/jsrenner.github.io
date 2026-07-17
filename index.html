@@ -5,12 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jonathan Renner | Digital Product & Experience Leader</title>
 <style>
+.mobile-cta { display: none; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger span { width: 22px; height: 2px; border-radius: 2px; display: block; }
 @media (max-width: 900px) {
   nav > img { display: none !important; }
-  .nav-inner { padding: 12px 10px !important; justify-content: center !important; }
-  .nav-links { gap: 13px !important; flex-wrap: wrap; justify-content: center; }
-  .nav-links a { font-size: 11px !important; letter-spacing: 0.06em !important; }
-  .nav-links a[href="#contact"] { padding: 9px 16px !important; }
+  .nav-inner { padding: 15px 16px !important; justify-content: space-between !important; }
+  .mobile-cta { display: inline-block !important; }
+  .hamburger { display: flex !important; }
+  .nav-links { display: none !important; }
+  .nav-links.open { display: flex !important; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column !important; align-items: center; gap: 20px !important; padding: 24px 20px; background: #0c1a2b; border-bottom: 1px solid rgba(244,241,234,0.15); }
+  .nav-links a { font-size: 13px !important; letter-spacing: 0.08em !important; }
+  .nav-links a[href="#contact"] { display: none !important; }
+  .case-mode aside { display: none !important; }
+  .case-back { padding: 16px 20px 0 !important; }
+  .case-title-pad { padding: 0 16px 4px !important; }
+  .case-foot { padding: 0 20px 60px !important; justify-content: center !important; text-align: center; }
+  .ext-arrow { display: none !important; }
   .site-grid { display: block !important; padding-left: 0 !important; }
   aside { position: static !important; width: auto !important; height: auto !important; margin: 16px 16px 4px !important; overflow: visible !important; border-radius: 18px; }
   section[id] { padding: 52px 20px !important; }
@@ -55,7 +66,9 @@
   <nav style="position:sticky; top:0; z-index:60; background:{{ t.sidebarBg }}; border-bottom:1px solid {{ t.border }};">
     <img src="./jr-consulting-monogram-logo-white-mriaefzg.png" alt="JR monogram" onClick="{{ goHome }}" style="{{ navLogoStyle }}">
     <div class="nav-inner" style="max-width:1440px; margin:0 auto; display:flex; align-items:center; justify-content:flex-end; padding:18px 40px;">
-      <div class="nav-links" style="display:flex; gap:30px; align-items:center;">
+      <a class="mobile-cta" href="#contact" onClick="{{ goContact }}" style="background:{{ t.accent }}; color:{{ t.accentText }}; padding:10px 18px; border-radius:100px; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; text-decoration:none;">Get in Touch</a>
+      <div class="hamburger" onClick="{{ toggleMenu }}"><span style="background:{{ t.text }};"></span><span style="background:{{ t.text }};"></span><span style="background:{{ t.text }};"></span></div>
+      <div class="nav-links {{ menuOpenClass }}" style="display:flex; gap:30px; align-items:center;">
         <a href="#hero" onClick="{{ goHome }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navHomeColor }}; font-weight:600; text-decoration:none;">Home</a>
         <a href="#about" onClick="{{ goAbout }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navAboutColor }}; font-weight:600; text-decoration:none;">About</a>
         <a href="#work" onClick="{{ goWork }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navWorkColor }}; font-weight:600; text-decoration:none;">Portfolio</a>
@@ -66,7 +79,7 @@
   </nav>
 
   <!-- BODY: sidebar + scrolling content -->
-  <div class="site-grid" style="display:grid; grid-template-columns:380px 1fr; align-items:start; max-width:1440px; margin:0 auto; padding-left:30px;">
+  <div class="site-grid {{ caseModeClass }}" style="display:grid; grid-template-columns:380px 1fr; align-items:start; max-width:1440px; margin:0 auto; padding-left:30px;">
 
     <!-- SIDEBAR (sticky, static) -->
     
@@ -325,7 +338,7 @@
       </sc-if>
       <sc-if value="{{ activeCaseData }}" hint-placeholder-val="{{ false }}">
       <div>
-        <div style="padding:20px 56px 0 73px;">
+        <div class="case-back" style="padding:20px 56px 0 73px;">
           <span onClick="{{ closeCase }}" style="cursor:pointer; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }};">← Back to Portfolio</span>
         </div>
 
@@ -336,7 +349,7 @@
               <img src="{{ activeCaseData.heroSrc }}" alt="{{ activeCaseData.title }}" style="width:100%; height:100%; object-fit:cover; object-position:{{ activeCaseData.cropPos }}; display:block;">
             </div>
             <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, #FAF9F500, #0C1C308E, #0C1C30)"></div>
-            <div style="position: relative; z-index: 2; padding: 0 40px 2px 47px;">
+            <div class="case-title-pad" style="position: relative; z-index: 2; padding: 0 40px 2px 47px;">
               <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4.5vw,52px); font-weight:500; color:#f7f5ef; margin:0;">{{ activeCaseData.title }}</h1>
             </div>
           </div>
@@ -402,9 +415,9 @@
           </div>
         </section>
 
-        <div style="padding:0 56px 70px 73px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+        <div class="case-foot" style="padding:0 56px 70px 73px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
           <span onClick="{{ closeCase }}" style="cursor:pointer; display:inline-block; padding:14px 30px; border-radius:100px; background:{{ t.accent }}; color:{{ t.accentText }}; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;">← Back to Portfolio</span>
-          <a href="https://www.behance.net/jrenner" target="_blank" rel="noopener" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }};">View Full Portfolio on Behance ↗</a>
+          <a href="https://www.behance.net/jrenner" target="_blank" rel="noopener" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }};">View Full Portfolio on Behance<span class="ext-arrow"> ↗</span></a>
         </div>
       </div>
       </sc-if>
@@ -436,7 +449,7 @@ class Component extends DCLogic {
     'case-32-leap': ['case-32-leap-g2'],
     'case-bachman': ['case-bachman-g2','case-bachman-g3']
   };
-  state = { theme: 'dark', showBrandedLogo: false, activeNav: 'hero', activeCase: null, lightboxId: null, lightboxSrc: '', lightboxList: [], lightboxIndex: 0, galleryIds: {}, cardOrder: null, pdfHrefs: { 'case-sound-mind-g1': 'assets/ira-401k-social-security-retirement-report-2.26.pdf', 'case-32-leap-g2': 'assets/heiyer-estate-proposal-NEWEST.pdf' }, imageCrops: {} };
+  state = { theme: 'dark', showBrandedLogo: false, menuOpen: false, activeNav: 'hero', activeCase: null, lightboxId: null, lightboxSrc: '', lightboxList: [], lightboxIndex: 0, galleryIds: {}, cardOrder: null, pdfHrefs: { 'case-sound-mind-g1': 'assets/ira-401k-social-security-retirement-report-2.26.pdf', 'case-32-leap-g2': 'assets/heiyer-estate-proposal-NEWEST.pdf' }, imageCrops: {} };
 
   _lsKey = 'jr-portfolio-layout-v1';
 
@@ -583,7 +596,7 @@ class Component extends DCLogic {
 
   goHome = (e) => {
     if (e) e.preventDefault();
-    this.setState({ activeCase: null, activeNav: 'hero' });
+    this.setState({ activeCase: null, activeNav: 'hero', menuOpen: false });
     window.scrollTo(0, 0);
   };
 
@@ -594,11 +607,14 @@ class Component extends DCLogic {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
     if (this.state.activeCase !== null) {
-      this.setState({ activeCase: null, activeNav: id }, () => requestAnimationFrame(scroll));
+      this.setState({ activeCase: null, activeNav: id, menuOpen: false }, () => requestAnimationFrame(scroll));
     } else {
+      this.setState({ menuOpen: false });
       scroll();
     }
   };
+
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
 
 
 
@@ -754,7 +770,7 @@ class Component extends DCLogic {
     const navSkillsColor = activeNav === 'skills' ? t.accent : '#ffffff';
     return { t, toggleTheme: this.toggleTheme, navLogoStyle: navLogoStyle + ' cursor:pointer;', cases, isHome, activeCaseData, closeCase: this.closeCase, goHome: this.goHome, asideMarginTop,
       navHomeColor, navAboutColor, navWorkColor, navSkillsColor,
-      goAbout: this.goSection('about'), goWork: this.goSection('work'), goSkills: this.goSection('skills'), goContact: this.goSection('contact'),
+      goAbout: this.goSection('about'), goWork: this.goSection('work'), goSkills: this.goSection('skills'), goContact: this.goSection('contact'), toggleMenu: this.toggleMenu, menuOpenClass: (this.state.menuOpen ? 'open' : ''), caseModeClass: (isHome ? '' : 'case-mode'),
       lightboxId: this.state.lightboxId, lightboxSrc: this.state.lightboxSrc, openLightbox: this.openLightbox, closeLightbox: this.closeLightbox, stopProp: this.stopProp,
       lightboxHasMultiple: (this.state.lightboxList || []).length > 1, lightboxPrev: this.lightboxNav(-1), lightboxNext: this.lightboxNav(1),
       removeGalleryImage: this.removeGalleryImage };
