@@ -4,6 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jonathan Renner | Digital Product & Experience Leader</title>
+<style>
+@media (max-width: 900px) {
+  nav > img { display: none !important; }
+  .nav-inner { padding: 12px 10px !important; justify-content: center !important; }
+  .nav-links { gap: 13px !important; flex-wrap: wrap; justify-content: center; }
+  .nav-links a { font-size: 11px !important; letter-spacing: 0.06em !important; }
+  .nav-links a[href="#contact"] { padding: 9px 16px !important; }
+  .site-grid { display: block !important; padding-left: 0 !important; }
+  aside { position: static !important; width: auto !important; height: auto !important; margin: 16px 16px 4px !important; overflow: visible !important; border-radius: 18px; }
+  section[id] { padding: 52px 20px !important; }
+  #hero { padding: 0 !important; }
+  #work, #experience, #contact { margin-left: 0 !important; width: 100% !important; }
+  section:not([id]) { padding-left: 20px !important; padding-right: 20px !important; }
+  .bg-fixed { background-attachment: scroll !important; }
+  .hero-banner { margin-left: 0 !important; width: 100% !important; min-height: 0 !important; padding: 34px 22px 90px !important; border-radius: 0 0 18px 18px !important; }
+  .hero-copy { padding: 0 !important; }
+  #hero-logo { height: 84px !important; }
+  .hero-ctas { grid-template-columns: 1fr !important; margin: 0 20px !important; padding: 0 !important; max-width: none !important; transform: translateY(-56px) !important; }
+  .cols-2, .work-grid, .contact-grid, .gallery-grid { grid-template-columns: 1fr !important; }
+  .cols-2 { gap: 22px !important; }
+  .contact-grid { gap: 36px !important; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .exp-row { grid-template-columns: 1fr !important; gap: 4px !important; }
+  .case-hero-wrap { width: 100% !important; }
+  .case-meta { grid-template-columns: 1fr !important; gap: 16px !important; }
+  footer > div, footer { flex-direction: column !important; gap: 8px !important; align-items: center !important; text-align: center !important; }
+}
+</style>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -26,8 +54,8 @@
   <!-- NAV -->
   <nav style="position:sticky; top:0; z-index:60; background:{{ t.sidebarBg }}; border-bottom:1px solid {{ t.border }};">
     <img src="./jr-consulting-monogram-logo-white-mriaefzg.png" alt="JR monogram" onClick="{{ goHome }}" style="{{ navLogoStyle }}">
-    <div style="max-width:1440px; margin:0 auto; display:flex; align-items:center; justify-content:flex-end; padding:18px 40px;">
-      <div style="display:flex; gap:30px; align-items:center;">
+    <div class="nav-inner" style="max-width:1440px; margin:0 auto; display:flex; align-items:center; justify-content:flex-end; padding:18px 40px;">
+      <div class="nav-links" style="display:flex; gap:30px; align-items:center;">
         <a href="#hero" onClick="{{ goHome }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navHomeColor }}; font-weight:600; text-decoration:none;">Home</a>
         <a href="#about" onClick="{{ goAbout }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navAboutColor }}; font-weight:600; text-decoration:none;">About</a>
         <a href="#work" onClick="{{ goWork }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navWorkColor }}; font-weight:600; text-decoration:none;">Portfolio</a>
@@ -38,7 +66,7 @@
   </nav>
 
   <!-- BODY: sidebar + scrolling content -->
-  <div style="display:grid; grid-template-columns:380px 1fr; align-items:start; max-width:1440px; margin:0 auto; padding-left:30px;">
+  <div class="site-grid" style="display:grid; grid-template-columns:380px 1fr; align-items:start; max-width:1440px; margin:0 auto; padding-left:30px;">
 
     <!-- SIDEBAR (sticky, static) -->
     
@@ -80,11 +108,11 @@
 
       <!-- HERO -->
       <section id="hero" data-screen-label="Hero" style="padding:0;">
-        <div style="position:relative; margin-left:calc(-350px - max(0px, 50vw - 720px)); width:calc(100vw - 120px); min-height:78vh; border-radius:0 0 22px 22px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:0 48px 0 calc(423px + max(0px, 50vw - 720px)); border-left:1px solid rgba(244,241,234,0.18); border-right:1px solid rgba(244,241,234,0.18); box-sizing:border-box;">
-          <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:calc(50% - 30px) center; background-attachment:fixed; z-index:0;"></div>
+        <div class="hero-banner" style="position:relative; margin-left:calc(-350px - max(0px, 50vw - 720px)); width:calc(100vw - 120px); min-height:78vh; border-radius:0 0 22px 22px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:0 48px 0 calc(423px + max(0px, 50vw - 720px)); border-left:1px solid rgba(244,241,234,0.18); border-right:1px solid rgba(244,241,234,0.18); box-sizing:border-box;">
+          <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:calc(50% - 30px) center; background-attachment:fixed; z-index:0;"></div>
           <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.35) 40%, rgba(6,14,26,0.8) 100%); z-index: 1; opacity: 0.5; border-radius: 12px"></div>
 
-          <div style="position: relative; z-index: 2; padding: 70px 0 80px; padding-top: 0px">
+          <div class="hero-copy" style="position: relative; z-index: 2; padding: 70px 0 80px; padding-top: 0px">
             
             <img id="hero-logo" src="./jr-consulting-monogram-logo-white-mriaefzg.png" alt="JR monogram" style="height:130px; width:auto; margin-bottom:24px;">
             <h1 style="font-family: 'Cormorant Garamond',serif; font-size: clamp(36px,5vw,60px); font-weight: 500; line-height: 1.1; margin: 0 0 24px; color: #f7f5ef; max-width: 25ch">Building digital experiences people love and trust.</h1>
@@ -92,7 +120,7 @@
           </div>
         </div>
 
-        <div style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(-70px);">
+        <div class="hero-ctas" style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(-70px);">
           <a href="#experience" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
             <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Hiring a Product Leader?</div>
             <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore my experience, leadership background, and resume.</div>
@@ -117,7 +145,7 @@
         <div style="border-left:3px solid {{ t.accent }}; padding-left:26px; margin-bottom:36px;">
           <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; line-height:1.6; color:{{ t.text }}; margin:0;">Preparation, collaboration, adaptability, and performing at your best as part of a team — the same principles that guide my music have shaped how I lead.</p>
         </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:44px; font-size:16px; line-height:1.8; color:{{ t.textMuted }};">
+        <div class="cols-2" style="display:grid; grid-template-columns:1fr 1fr; gap:44px; font-size:16px; line-height:1.8; color:{{ t.textMuted }};">
           <p style="margin:0;">Throughout my career I've been driven by a passion for solving complex business problems — bringing together leadership, stakeholders, designers, and developers to align around a shared vision, then turning that vision into practical digital products, intuitive customer experiences, and scalable technology solutions.</p>
           <p style="margin:0;">Outside of work, I'm a lifelong drummer and musician who has performed professionally since childhood. I'm also a husband and father of three daughters; one has a rare genetic syndrome, and caring for her has deepened my appreciation for empathy, patience, and what truly matters, in life and in work.</p>
         </div>
@@ -126,7 +154,7 @@
 
       <!-- WORK -->
       <section id="work" data-screen-label="Selected Work" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:85px 48px 90px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; box-sizing:border-box; overflow:hidden;">
-        <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
+        <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
         <div style="position:relative; z-index:1; max-width:1100px;">
         <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
           <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Selected Work</h2>
@@ -134,7 +162,7 @@
           <a href="https://www.behance.net/jrenner" target="_blank" rel="noopener" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; white-space:nowrap;">View Full Portfolio ↗</a>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div class="work-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
           <sc-for list="{{ cases }}" as="c" hint-placeholder-count="6">
           <div onClick="{{ c.open }}" style="position:relative; background:{{ t.cardBg }}; border:1px solid {{ t.border }}; border-radius:14px; overflow:hidden; cursor:pointer; transition:transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;" style-hover="transform:translateY(-6px); box-shadow:0 16px 32px rgba(0,0,0,0.28); border-color:{{ t.accent }};">
             <div style="position:relative; width:100%; aspect-ratio:16/10; background:#0B1826; overflow:hidden;">
@@ -162,7 +190,7 @@
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
           <a href="assets/Jonathan_Renner_Resume.pdf" download="" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; white-space:nowrap; text-decoration:none;">Download Resume →</a>
         </div>
-        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:28px;">
+        <div class="skills-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:28px;">
           <div>
             <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Product</h3>
             <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
@@ -199,7 +227,7 @@
 
       <!-- EXPERIENCE -->
       <section id="experience" data-screen-label="Experience" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:85px 48px 90px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; box-sizing:border-box; overflow:hidden;">
-        <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
+        <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
         <div style="position:relative; z-index:1; max-width:1100px;">
         <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
           <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Experience</h2>
@@ -208,35 +236,35 @@
         </div>
 
         <div style="display:flex; flex-direction:column;">
-          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+          <div class="exp-row" style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
             <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2025—Present</div>
             <div>
               <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Head of Product &amp; Strategy · NeuroLexIQ</h3>
               <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">Founding partner leading product strategy, UX/UI, and brand development for an mTBI care platform.</p>
             </div>
           </div>
-          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+          <div class="exp-row" style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
             <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2012—Present</div>
             <div>
               <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Director of Digital Development · Sound Mind Investing</h3>
               <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">UX/UI, branding, web platforms, SEO, email marketing, and AI-powered workflows.</p>
             </div>
           </div>
-          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+          <div class="exp-row" style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
             <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2001—Present</div>
             <div>
               <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Founder / Digital Consultant · Renner Web Consulting</h3>
               <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">Independent practice serving nonprofits, startups, and Fortune 500 companies.</p>
             </div>
           </div>
-          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+          <div class="exp-row" style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
             <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2010—2014</div>
             <div>
               <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Co-Founder &amp; Design Lead · 32 Leap</h3>
               <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">150,000+ downloads across three apps, two featured by Apple.</p>
             </div>
           </div>
-          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }};">
+          <div class="exp-row" style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }};">
             <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2003—2012</div>
             <div>
               <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Creative Director · MedAvant &nbsp;/&nbsp; Web Architect · Southeast Christian Church</h3>
@@ -265,9 +293,9 @@
 
       <!-- CONTACT -->
       <section id="contact" data-screen-label="Contact" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:90px 48px 70px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; box-sizing:border-box;">
-        <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0; overflow:hidden;"></div>
+        <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0; overflow:hidden;"></div>
         <div style="position:relative; z-index:1; max-width:1100px;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px;">
+        <div class="contact-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:56px;">
           <div>
             <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:24px;">
               <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Contact</h2>
@@ -302,7 +330,7 @@
         </div>
 
         <section style="padding:20px 0 0 26px;">
-          <div style="width:calc(100vw - 496px - max(0px, 50vw - 720px));">
+          <div class="case-hero-wrap" style="width:calc(100vw - 496px - max(0px, 50vw - 720px));">
           <div style="position:relative; width:100%; aspect-ratio:20/9; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end;">
             <div onClick="{{ stopProp }}" style="position:absolute; inset:0;">
               <img src="{{ activeCaseData.heroSrc }}" alt="{{ activeCaseData.title }}" style="width:100%; height:100%; object-fit:cover; object-position:{{ activeCaseData.cropPos }}; display:block;">
@@ -322,7 +350,7 @@
         </section>
 
         <section style="padding:56px 56px 20px 73px;">
-          <div style="max-width:1100px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+          <div class="case-meta" style="max-width:1100px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
             <div style="border-top:1px solid {{ t.border }}; padding-top:14px;">
               <div style="font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; margin-bottom:8px;">Role</div>
               <div style="font-size:14.5px; color:{{ t.text }};">{{ activeCaseData.role }}</div>
@@ -344,7 +372,7 @@
               <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:21px; line-height:1.6; color:{{ t.text }}; margin:0;">{{ activeCaseData.overview }}</p>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:44px; margin-bottom:48px;">
+            <div class="cols-2" style="display:grid; grid-template-columns:1fr 1fr; gap:44px; margin-bottom:48px;">
               <div>
                 <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">The Challenge</h3>
                 <p style="font-size:15.5px; line-height:1.75; color:{{ t.textMuted }}; margin:0;">{{ activeCaseData.challenge }}</p>
@@ -355,7 +383,7 @@
               </div>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:20px;">
+            <div class="gallery-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:20px;">
               <sc-for list="{{ activeCaseData.galleryItems }}" as="g" hint-placeholder-count="2">
               <div class="gallery-item" style="position:relative; aspect-ratio:4/3; border-radius:14px; overflow:hidden; border:1px solid {{ t.border }};">
                 <div onClick="{{ g.open }}" style="position:absolute; inset:0; cursor:{{ g.cursorStyle }};">
