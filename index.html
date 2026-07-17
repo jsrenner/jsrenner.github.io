@@ -1,109 +1,723 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Site made with Mobirise Website Builder v3.10.4, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v3.10.4, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/socicon/css/socicon.min.css">
-  <link rel="stylesheet" href="assets/unicore/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jonathan Renner | Digital Product & Experience Leader</title>
+<script src="./support.js"></script>
 </head>
 <body>
-<div id="pricing-table1-k" custom-code="true"><section class="mbr-section--bg-adapted mbr-section--relative mbr-parallax-background" style="background-image: url(assets/images/full-unsplash-photo-1459287548155-43ae47657dee-2000x1502-73.jpg);">
-    <div class="pricing" id="pricing" style="padding-top: 150px; padding-bottom: 200px;">
-        <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(21, 21, 21);"></div>
-        <div class="container">
-            <div class="section-head-lite text-center col-md-8 col-md-offset-2 space80">
-                
-                
-                
-                
-                    
-                            <div class="mbr-figure"><img src="https://dcktxkaneetr8.cloudfront.net/smifund/smi-crown-mark-white.png" style="width: 100px;"></div><br><br><br>
-                            
-                      
-                
-                    
-                    
-                    
-                <h1 class="mbr-title-font mbr-editable-content">welcome to SMI Advisory Services</h1>
-                <p class="mbr-editable-content">Please make a selection below.</p>
-            </div>
-            <div class="row pricing1">
-                <div class="col-md-12">
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    .gallery-item .pdf-toggle-btn { opacity: 0; }
+    .gallery-item:hover .pdf-toggle-btn { opacity: 1 !important; }
+  </style>
+</helmet>
 
-                    <!-- Pricing Plan - 1 -->
-                    <div class="col-sm-4 price-styles" style="display: block;">
-                        <div class="pricing__item" data-hover="">
-                            <h3 class="pricing__title mbr-title-font mbr-primary-color mbr-editable-content" style="text-align: center;">SMI Private Client</h3>
-                            <p class="pricing__sentence mbr-editable-content">Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement A/B testing shrink a market venture capital pitch deck.&nbsp;</p>
-                           
-                            <div class="mbr-editable-content"><ul class="pricing__feature-list mbr-text-font"></ul></div>
-                            <div><a href="https://mobirise.com" class="btn mbr-title-font btn-primary mbr-editable-button">LEARN MORE</a></div>
-                        </div>
-                    </div>
+<div style="font-family:'Work Sans',sans-serif; width:100%; background:{{ t.bg }}; transition:background 0.3s ease;">
 
-                    <!-- Pricing Plan - 2 -->
-                    <div class="col-sm-4 price-styles" style="display: block;">
-                       <div class="pricing__item" data-hover="">
-                            <h3 class="pricing__title mbr-title-font mbr-primary-color mbr-editable-content" style="text-align: center;">smi plan&nbsp;</h3>
-                            <p class="pricing__sentence mbr-editable-content">Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement A/B testing shrink a market venture capital pitch deck.&nbsp;</p>
-                           
-                            <div class="mbr-editable-content"><ul class="pricing__feature-list mbr-text-font"></ul></div>
-                            <div><a href="https://mobirise.com" class="btn mbr-title-font btn-primary mbr-editable-button">LEARN MORE</a></div>
-                      
-                    </div>
-                    </div>
+  <!-- NAV -->
+  <nav style="position:sticky; top:0; z-index:60; background:{{ t.sidebarBg }}; border-bottom:1px solid {{ t.border }};">
+    <img src="./jr-consulting-monogram-logo-white-mriaefzg.png" alt="JR monogram" onClick="{{ goHome }}" style="{{ navLogoStyle }}">
+    <div style="max-width:1440px; margin:0 auto; display:flex; align-items:center; justify-content:flex-end; padding:18px 40px;">
+      <div style="display:flex; gap:30px; align-items:center;">
+        <a href="#hero" onClick="{{ goHome }}" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navHomeColor }}; font-weight:600; text-decoration:none;">Home</a>
+        <a href="#about" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navAboutColor }}; font-weight:600; text-decoration:none;">About</a>
+        <a href="#work" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navWorkColor }}; font-weight:600; text-decoration:none;">Portfolio</a>
+        <a href="#skills" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:{{ navSkillsColor }}; font-weight:600; text-decoration:none;">Experience</a>
+        <a href="#contact" style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:11px 22px; border-radius:100px; background:{{ t.accent }}; color:{{ t.accentText }}; text-decoration:none; transition:transform 200ms ease, box-shadow 200ms ease;" style-hover="transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.3);">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
 
-                    <!-- Pricing Plan - 3 -->
-                    <div class="col-sm-4 price-styles" style="display: block;">
-                        <div class="pricing__item" data-hover="">
-                            <h3 class="pricing__title mbr-title-font mbr-primary-color mbr-editable-content" style="text-align: center;">SMI funds</h3>
-                            <p class="pricing__sentence mbr-editable-content">Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement A/B testing shrink a market venture capital pitch deck.&nbsp;</p>
-                           
-                            <div class="mbr-editable-content"><ul class="pricing__feature-list mbr-text-font"></ul></div>
-                            <div><a href="https://mobirise.com" class="btn mbr-title-font btn-primary mbr-editable-button">LEARN MORE</a></div>
-                        </div>
-                    </div>
-                    </div>
+  <!-- BODY: sidebar + scrolling content -->
+  <div style="display:grid; grid-template-columns:380px 1fr; align-items:start; max-width:1440px; margin:0 auto; padding-left:30px;">
 
-                     <!-- Pricing Plan - 4 -->
-                    <div class="col-sm-4 price-styles" style="display: none;"><div class="col-sm-4 price-styles" style="display: none;">Most Popular</div>
-                        <div class="col-sm-4 price-styles" style="display: none;">
-                            <h3 class="pricing__title mbr-title-font mbr-primary-color mbr-editable-content">SUPER</h3>
-                            <p class="pricing__sentence mbr-editable-content">Perfect for small less than 10 team</p>
-                            <div class="pricing__price mbr-title-font">
-                                <span class="pricing__currency mbr-editable-content">$</span>
-                                <span class="mbr-editable-content">199</span>
-                                <span class="pricing__period mbr-editable-content">/ month</span>
-                            </div>
-                            <div class="mbr-editable-content"><ul class="pricing__feature-list mbr-text-font"><li class="pricing__feature">9 GB of space</li><li class="pricing__feature">Support at $25/hour</li><li class="pricing__feature">Small social media</li></ul></div>
-                            <div><a href="https://mobirise.com" class="btn mbr-title-font btn-primary mbr-editable-button">CHOOSE PLAN</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- SIDEBAR (sticky, static) -->
     
-</section></div>
+
+    <!-- MAIN SCROLLING CONTENT -->
+    <aside style="position: sticky; top: 0; margin-top: {{ asideMarginTop }}; height: calc(100vh + 27px); overflow-y: auto; width: 332px; flex-shrink: 0; margin-left: 74px; border-radius: 12px; box-shadow: 8px 8px 28px rgba(0,0,0,0.28); padding: 60px 34px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 65; background: linear-gradient(0deg, #0B1826F0, #122D4BF0)">
+      <div onClick="{{ goHome }}" style="flex-shrink:0; width:185px; height:185px; border-radius:50%; overflow:hidden; margin-bottom:22px; border:3px solid {{ t.accent }}; cursor:pointer;">
+        <img src="assets/jon-bio.jpg" alt="Jonathan Renner" style="width:100%; height:100%; object-fit:cover; object-position:top center;">
+      </div>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Jonathan Renner</h2>
+      <div style="font-size: 11.5px; letter-spacing: 0.06em; color: {{ t.textMuted }}; font-weight: 500; margin-bottom: 35px; text-transform: uppercase; width: 100%; max-width: 264px; line-height: 1.5">Digital Product &amp; Experience Leader</div>
+
+      <div style="width:100%; border-top:1px dotted {{ t.border }}; margin-bottom:22px;"></div>
+
+      <div style="display:flex; gap:14px; margin-bottom:22px;">
+        <a href="mailto:jon@jonrenner.com" style="width:42px; height:42px; border-radius:50%; border:1px solid {{ t.border }}; display:flex; align-items:center; justify-content:center; color:{{ t.text }}; text-decoration-line:none; transition:all 200ms ease; --accent-hover:{{ t.accent }};" style-hover="border-color:var(--accent-hover) !important; color:var(--accent-hover) !important;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" fill="none"></path><path d="M4 4l8 8 8-8"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/jonathanrenner/" target="_blank" rel="noopener" style="width:42px; height:42px; border-radius:50%; border:1px solid {{ t.border }}; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:{{ t.text }}; text-decoration-line:none; transition:all 200ms ease; --accent-hover:{{ t.accent }};" style-hover="border-color:var(--accent-hover) !important; color:var(--accent-hover) !important;">in</a>
+        <a href="https://www.behance.net/jrenner" target="_blank" rel="noopener" style="width:42px; height:42px; border-radius:50%; border:1px solid {{ t.border }}; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:{{ t.text }}; text-decoration-line:none; transition:all 200ms ease; --accent-hover:{{ t.accent }};" style-hover="border-color:var(--accent-hover) !important; color:var(--accent-hover) !important;">Be</a>
+      </div>
+
+      <div style="width: 100%; border-top: 1px dotted {{ t.border }}; margin-bottom: 15px"></div>
+
+      <div style="width:100%; display:flex; flex-direction:column; gap:12px; font-size:13.5px; margin-bottom:40px; margin-top:10px;">
+        <div style="display:flex; justify-content:center;"><span style="color: #9EB0BF; text-align: center">Based in Louisville, Kentucky</span></div>
+        
+        
+      </div>
+
+      <a href="#contact" style="width: 100%; padding: 14px; border-radius: 100px; background: {{ t.accent }}; color: {{ t.accentText }}; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration-line: none; transition: all 250ms ease; box-sizing: border-box; padding-top: 14px; padding-right: 14px; padding-bottom: 14px; padding-left: 14px" style-hover="transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.25);">Contact</a>
+
+      <a href="assets/Jonathan_Renner_Resume.pdf" download="" style="width: 100%; margin-top: 15px; padding: 13px 18px 13px 8px; border-radius: 100px; border: 1.5px solid {{ t.accent }}; color: {{ t.accent }}; font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; text-decoration-line: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 250ms ease; box-sizing: border-box" style-hover="transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.25); background:#5fd6e3 !important; border-color:#5fd6e3 !important; color:#06222a !important; font-weight:600 !important;" target="_blank" rel="noopener noreferrer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>
+        Resume
+      </a>
+    </aside><div style="min-width:0;">
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+      <!-- HERO -->
+      <section id="hero" data-screen-label="Hero" style="padding:0;">
+        <div style="position:relative; margin-left:calc(-350px - max(0px, 50vw - 720px)); width:calc(100vw - 120px); min-height:78vh; border-radius:0 0 22px 22px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:0 48px 0 calc(423px + max(0px, 50vw - 720px)); border-left:1px solid rgba(244,241,234,0.18); border-right:1px solid rgba(244,241,234,0.18); box-sizing:border-box;">
+          <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:calc(50% - 30px) center; background-attachment:fixed; z-index:0;"></div>
+          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.35) 40%, rgba(6,14,26,0.8) 100%); z-index: 1; opacity: 0.5; border-radius: 12px"></div>
+
+          <div style="position: relative; z-index: 2; padding: 70px 0 80px; padding-top: 0px">
+            
+            <img id="hero-logo" src="./jr-consulting-monogram-logo-white-mriaefzg.png" alt="JR monogram" style="height:130px; width:auto; margin-bottom:24px;">
+            <h1 style="font-family: 'Cormorant Garamond',serif; font-size: clamp(36px,5vw,60px); font-weight: 500; line-height: 1.1; margin: 0 0 24px; color: #f7f5ef; max-width: 25ch">Building digital experiences people love and trust.</h1>
+            <p style="font-size: 17px; line-height: 1.7; color: #dfe6ec; max-width: 70ch; margin: 0">For more than 26 years, I've partnered with organizations to define strategy, lead design, guide development, and deliver digital products, platforms, and brands that drive measurable business results. Now I'm helping organizations leverage AI to build the next generation of digital experiences.</p>
+          </div>
+        </div>
+
+        <div style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(-70px);">
+          <a href="#experience" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
+            <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Hiring a Product Leader?</div>
+            <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore my experience, leadership background, and resume.</div>
+            <div style="font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: {{ t.text }}; margin-top: 6px;">View Resume →</div>
+          </a><a href="#work" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
+            <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Need a Digital Partner?</div>
+            <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore my consulting services and client work.</div>
+            <div style="font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: {{ t.text }}; margin-top: 6px;">View Consulting →</div>
+          </a>
+          
+          
+        </div>
+      </section>
+
+      <!-- MY STORY -->
+      <section id="about" data-screen-label="About" style="padding: 110px 56px 90px 73px; padding-top: 10px">
+        <div style="max-width:1100px;">
+        <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
+          <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">My Story</h2>
+          <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
+        </div>
+        <div style="border-left:3px solid {{ t.accent }}; padding-left:26px; margin-bottom:36px;">
+          <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; line-height:1.6; color:{{ t.text }}; margin:0;">Preparation, collaboration, adaptability, and performing at your best as part of a team — the same principles that guide my music have shaped how I lead.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:44px; font-size:16px; line-height:1.8; color:{{ t.textMuted }};">
+          <p style="margin:0;">Throughout my career I've been driven by a passion for solving complex business problems — bringing together leadership, stakeholders, designers, and developers to align around a shared vision, then turning that vision into practical digital products, intuitive customer experiences, and scalable technology solutions.</p>
+          <p style="margin:0;">Outside of work, I'm a lifelong drummer and musician who has performed professionally since childhood. I'm also a husband and father of three daughters; one has a rare genetic syndrome, and caring for her has deepened my appreciation for empathy, patience, and what truly matters, in life and in work.</p>
+        </div>
+        </div>
+      </section>
+
+      <!-- WORK -->
+      <section id="work" data-screen-label="Selected Work" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:85px 48px 90px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; box-sizing:border-box; overflow:hidden;">
+        <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
+        <div style="position:relative; z-index:1; max-width:1100px;">
+        <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
+          <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Selected Work</h2>
+          <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
+          <a href="https://www.behance.net/jrenner" target="_blank" rel="noopener" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; white-space:nowrap;">View Full Portfolio ↗</a>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+          <sc-for list="{{ cases }}" as="c" hint-placeholder-count="6">
+          <div onClick="{{ c.open }}" style="position:relative; background:{{ t.cardBg }}; border:1px solid {{ t.border }}; border-radius:14px; overflow:hidden; cursor:pointer; transition:transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;" style-hover="transform:translateY(-6px); box-shadow:0 16px 32px rgba(0,0,0,0.28); border-color:{{ t.accent }};">
+            <div style="position:relative; width:100%; aspect-ratio:16/10; background:#0B1826; overflow:hidden;">
+              <img src="{{ c.heroSrc }}" alt="{{ c.title }}" style="width:100%; height:100%; object-fit:cover; object-position:{{ c.cropPos }}; display:block;">
+            </div>
+            <div style="padding:28px 34px 34px;">
+              <h3 style="cursor:pointer; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 10px; color:{{ t.text }};">{{ c.title }}</h3>
+              <p style="font-size:14.5px; line-height:1.65; color:{{ t.textMuted }}; margin:0 0 16px;">{{ c.blurb }}</p>
+              <span style="cursor:pointer; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; color:{{ t.accent }};">View case study →</span>
+            </div>
+          </div>
+          </sc-for>
+        </div>
+        <div style="display:flex; justify-content:center; margin-top:40px;">
+          <a href="https://www.behance.net/jrenner" target="_blank" rel="noopener" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }};">VIEW FULL PORTFOLIO ↗</a>
+        </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" data-screen-label="Skills" style="padding:85px 56px 90px 73px; scroll-margin-top:35px;">
+        <div style="max-width:1100px;">
+        <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
+          <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Skills</h2>
+          <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
+          <a href="assets/Jonathan_Renner_Resume.pdf" download="" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; white-space:nowrap; text-decoration:none;">Download Resume →</a>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:28px;">
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Product</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>Product Strategy</li><li>UX/UI</li><li>Information Architecture</li><li>Platform Architecture</li><li>Digital Strategy</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Leadership</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>Cross-Functional Leadership</li><li>Stakeholder Management</li><li>Agency Leadership</li><li>Business Strategy</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Tech &amp; AI</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>AI Workflow Design</li><li>Marketing Automation</li><li>Web Development</li><li>CMS Architecture</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Growth</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>SEO</li><li>Email Marketing</li><li>Conversion Optimization</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Creative</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>Brand Strategy</li><li>Creative Direction</li><li>Visual Identity</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" data-screen-label="Experience" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:85px 48px 90px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; box-sizing:border-box; overflow:hidden;">
+        <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
+        <div style="position:relative; z-index:1; max-width:1100px;">
+        <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
+          <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Experience</h2>
+          <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
+          <a href="assets/Jonathan_Renner_Resume.pdf" download="" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; white-space:nowrap; text-decoration:none;">Download Resume →</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column;">
+          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+            <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2025—Present</div>
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Head of Product &amp; Strategy · NeuroLexIQ</h3>
+              <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">Founding partner leading product strategy, UX/UI, and brand development for an mTBI care platform.</p>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+            <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2012—Present</div>
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Director of Digital Development · Sound Mind Investing</h3>
+              <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">UX/UI, branding, web platforms, SEO, email marketing, and AI-powered workflows.</p>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+            <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2001—Present</div>
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Founder / Digital Consultant · Renner Web Consulting</h3>
+              <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">Independent practice serving nonprofits, startups, and Fortune 500 companies.</p>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }};">
+            <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2010—2014</div>
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Co-Founder &amp; Design Lead · 32 Leap</h3>
+              <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">150,000+ downloads across three apps, two featured by Apple.</p>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }};">
+            <div style="font-size:13px; color:{{ t.textMuted }}; font-weight:600;">2003—2012</div>
+            <div>
+              <h3 style="font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; margin:0 0 6px; color:{{ t.text }};">Creative Director · MedAvant &nbsp;/&nbsp; Web Architect · Southeast Christian Church</h3>
+              <p style="font-size:14px; line-height:1.65; color:{{ t.textMuted }}; margin:0;">Corporate rebrand and executive brand strategy; multi-site church web platform and mobile app.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" data-screen-label="Testimonials" style="padding:90px 56px 90px 73px;">
+        <div style="max-width:1100px;">
+        <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
+          <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Testimonials</h2>
+          <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr; gap:22px;">
+          <div style="border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
+            <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px;">"I've had the privilege of working with Jon at two companies: MedAvant, where he served at Creative Director on our corporate marketing team, and at Capario, where he designed the new user interface for our flagship product – an online portal for healthcare revenue cycle management. Jon has a remarkable ability to understand the user experience and translate that into exceptional design. Jon is a team player and always exceeds expectations. I highly recommend Jon for any organization that is looking for an exceptional creative marketing/design/UX expert."</p>
+            <div style="font-size:13px; font-weight:700; color:{{ t.text }};">Teresa Stubbs — Former Product Marketing Director, Provider Solutions at Change Healthcare (Now UnitedHealth Group)</div>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" data-screen-label="Contact" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:90px 48px 70px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; box-sizing:border-box;">
+        <div style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0; overflow:hidden;"></div>
+        <div style="position:relative; z-index:1; max-width:1100px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px;">
+          <div>
+            <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:24px;">
+              <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Contact</h2>
+            </div>
+            <p style="font-size:15.5px; line-height:1.7; color:{{ t.textMuted }}; max-width:42ch; margin:0 0 26px;">Open to product leadership roles, consulting engagements, and interesting problems in UX, brand, and AI-enabled systems.</p>
+            <div style="display:flex; flex-direction:column; gap:12px; font-size:15px;">
+              <a href="mailto:jon@jonrenner.com" style="color:{{ t.text }}; font-weight:600;">jon@jonrenner.com</a>
+              <a href="tel:5026933050" style="color:{{ t.text }}; font-weight:600;">502‑693‑3050</a>
+              <a href="https://jonrenner.com" target="_blank" rel="noopener" style="color:{{ t.text }}; font-weight:600;">JonRenner.com</a>
+            </div>
+          </div>
+          <form onsubmit="event.preventDefault();" style="display:flex; flex-direction:column; gap:14px; background:{{ t.cardBg }}; border:1px solid {{ t.border }}; border-radius:14px; padding:30px;">
+            <input type="text" placeholder="Your name" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }};">
+            <input type="email" placeholder="you@company.com" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }};">
+            <textarea rows="4" placeholder="Tell me about your project" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; resize:vertical;"></textarea>
+            <button type="submit" style="font-family:inherit; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; padding:14px; border:none; border-radius:100px; background:{{ t.accent }}; color:{{ t.accentText }}; cursor:pointer;">Send Message</button>
+          </form>
+        </div>
+        </div>
+      </section>
+
+      <footer style="padding:26px 56px 26px 73px; display:flex; justify-content:space-between; font-size:12.5px; color:{{ t.textMuted }};">
+        <span>© 2026 Jonathan Renner</span>
+        <span>Louisville, KY</span>
+      </footer>
+
+      </sc-if>
+      <sc-if value="{{ activeCaseData }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="padding:20px 56px 0 73px;">
+          <span onClick="{{ closeCase }}" style="cursor:pointer; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }};">← Back to Portfolio</span>
+        </div>
+
+        <section style="padding:20px 0 0 26px;">
+          <div style="width:calc(100vw - 496px - max(0px, 50vw - 720px));">
+          <div style="position:relative; width:100%; aspect-ratio:20/9; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end;">
+            <div onClick="{{ stopProp }}" style="position:absolute; inset:0;">
+              <img src="{{ activeCaseData.heroSrc }}" alt="{{ activeCaseData.title }}" style="width:100%; height:100%; object-fit:cover; object-position:{{ activeCaseData.cropPos }}; display:block;">
+            </div>
+            <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, #FAF9F500, #0C1C308E, #0C1C30)"></div>
+            <div style="position: relative; z-index: 2; padding: 0 40px 2px 47px;">
+              <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4.5vw,52px); font-weight:500; color:#f7f5ef; margin:0;">{{ activeCaseData.title }}</h1>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <section style="padding: 24px 56px 0 73px; padding-top: 15px">
+          <div style="max-width:1100px;">
+            <p style="font-size: 16.5px; color: {{ t.textMuted }}; max-width: 70ch; margin: 0">{{ activeCaseData.tagline }}</p>
+          </div>
+        </section>
+
+        <section style="padding:56px 56px 20px 73px;">
+          <div style="max-width:1100px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+            <div style="border-top:1px solid {{ t.border }}; padding-top:14px;">
+              <div style="font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; margin-bottom:8px;">Role</div>
+              <div style="font-size:14.5px; color:{{ t.text }};">{{ activeCaseData.role }}</div>
+            </div>
+            <div style="border-top:1px solid {{ t.border }}; padding-top:14px;">
+              <div style="font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; margin-bottom:8px;">Timeline</div>
+              <div style="font-size:14.5px; color:{{ t.text }};">{{ activeCaseData.timeline }}</div>
+            </div>
+            <div style="border-top:1px solid {{ t.border }}; padding-top:14px;">
+              <div style="font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; margin-bottom:8px;">Engagement</div>
+              <div style="font-size:14.5px; color:{{ t.text }};">{{ activeCaseData.client }}</div>
+            </div>
+          </div>
+        </section>
+
+        <section style="padding:20px 56px 60px 73px;">
+          <div style="max-width:1100px;">
+            <div style="border-left:3px solid {{ t.accent }}; padding-left:26px; margin-bottom:48px;">
+              <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:21px; line-height:1.6; color:{{ t.text }}; margin:0;">{{ activeCaseData.overview }}</p>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:44px; margin-bottom:48px;">
+              <div>
+                <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">The Challenge</h3>
+                <p style="font-size:15.5px; line-height:1.75; color:{{ t.textMuted }}; margin:0;">{{ activeCaseData.challenge }}</p>
+              </div>
+              <div>
+                <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">The Approach</h3>
+                <p style="font-size:15.5px; line-height:1.75; color:{{ t.textMuted }}; margin:0;">{{ activeCaseData.solution }}</p>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:20px;">
+              <sc-for list="{{ activeCaseData.galleryItems }}" as="g" hint-placeholder-count="2">
+              <div class="gallery-item" style="position:relative; aspect-ratio:4/3; border-radius:14px; overflow:hidden; border:1px solid {{ t.border }};">
+                <div onClick="{{ g.open }}" style="position:absolute; inset:0; cursor:{{ g.cursorStyle }};">
+                  <img src="{{ g.src }}" alt="" style="width:100%; height:100%; object-fit:cover; object-position:{{ g.cropPos }}; display:block;">
+                </div>
+                <sc-if value="{{ g.isPdf }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; bottom:8px; right:8px; z-index:3; width:30px; height:30px; border-radius:6px; background:#e5342a; color:#ffffff; font-size:9px; font-weight:700; letter-spacing:0.02em; display:flex; align-items:center; justify-content:center; pointer-events:none;">PDF</div>
+                </sc-if>
+              </div>
+              </sc-for>
+            </div>
+            <div style="background:{{ t.cardBg }}; border:1px solid {{ t.border }}; border-radius:14px; padding:32px 36px;">
+              <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 12px; color:{{ t.accent }};">Results</h3>
+              <p style="font-size:15.5px; line-height:1.75; color:{{ t.text }}; margin:0;">{{ activeCaseData.results }}</p>
+            </div>
+          </div>
+        </section>
+
+        <div style="padding:0 56px 70px 73px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+          <span onClick="{{ closeCase }}" style="cursor:pointer; display:inline-block; padding:14px 30px; border-radius:100px; background:{{ t.accent }}; color:{{ t.accentText }}; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;">← Back to Portfolio</span>
+          <a href="https://www.behance.net/jrenner" target="_blank" rel="noopener" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }};">View Full Portfolio on Behance ↗</a>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ lightboxId }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeLightbox }}" style="position:fixed; inset:0; z-index:200; background:rgba(6,14,26,0.92); display:flex; align-items:flex-start; justify-content:center; padding:50px 48px 48px; overflow-y:auto; cursor:zoom-out;">
+        <div onClick="{{ stopProp }}" style="width:1280px; max-width:74vw; border-radius:10px; overflow:hidden; cursor:default;">
+          <img src="{{ lightboxSrc }}" alt="" style="width:100%; height:auto; display:block;">
+        </div>
+        <sc-if value="{{ lightboxHasMultiple }}" hint-placeholder-val="{{ false }}">
+        <span onClick="{{ lightboxPrev }}" style="position:fixed; left:32px; top:50%; transform:translateY(-50%); font-size:32px; color:#f7f5ef; cursor:pointer; width:56px; height:56px; display:flex; align-items:center; justify-content:center; background:rgba(6,14,26,0.55); border-radius:50%;">‹</span>
+        <span onClick="{{ lightboxNext }}" style="position:fixed; right:32px; top:50%; transform:translateY(-50%); font-size:32px; color:#f7f5ef; cursor:pointer; width:56px; height:56px; display:flex; align-items:center; justify-content:center; background:rgba(6,14,26,0.55); border-radius:50%;">›</span>
+        </sc-if>
+        <span onClick="{{ closeLightbox }}" style="position:fixed; top:28px; right:40px; font-size:15px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; color:#f7f5ef; cursor:pointer;">Close ×</span>
+      </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static DEFAULT_GALLERY_IDS = {
+    'case-neurolexiq': ['case-neurolexiq-g1','case-neurolexiq-g2','case-neurolexiq-g3-1784119064545','case-neurolexiq-g7-1784119302053','case-neurolexiq-g5-1784119197347','case-neurolexiq-g4-1784119195180','case-neurolexiq-g8-1784119316345','case-neurolexiq-g9-1784140364749'],
+    'case-sound-mind': ['case-sound-mind-g3-1784133140500','case-sound-mind-g2','case-sound-mind-g4-1784133204156','case-sound-mind-g6-1784133273729','case-sound-mind-g16-1784133860719','case-sound-mind-g7-1784133313923','case-sound-mind-g6-1784133301990','case-sound-mind-g10-1784133384661','case-sound-mind-g8-1784133336004','case-sound-mind-g1','case-sound-mind-g11-1784133736622','case-sound-mind-g13-1784133785478','case-sound-mind-g12-1784133758276','case-sound-mind-g9-1784133355541','case-sound-mind-g14-1784133803508','case-sound-mind-g15-1784133826185','case-sound-mind-g17','case-sound-mind-g18'],
+    'case-medavant': ['case-medavant-g1','case-medavant-g2','case-medavant-g3-1784144306761','case-medavant-g4-1784144338347','case-medavant-g5-1784144362020','case-medavant-g8-1784144576677','case-medavant-g9-1784144606054','case-medavant-g10-1784144802969','case-medavant-g6-1784144509039','case-medavant-g8-1784144551654'],
+    'case-consumer-websites': ['case-consumer-websites-g8-1784174693914','case-consumer-websites-g13-1784174693914','case-consumer-websites-g9-1784174693914','case-consumer-websites-g12-1784174693914','case-consumer-websites-g6-1784174693914','case-consumer-websites-g10-1784174693914','case-consumer-websites-g11-1784174693914','case-consumer-websites-g7-1784174693914','case-consumer-websites-g14-1784174693914','case-consumer-websites-g15','case-consumer-websites-g16','case-consumer-websites-g17'],
+    'case-32-leap': ['case-32-leap-g2'],
+    'case-bachman': ['case-bachman-g2','case-bachman-g3']
+  };
+  state = { theme: 'dark', showBrandedLogo: false, activeNav: 'hero', activeCase: null, lightboxId: null, lightboxSrc: '', lightboxList: [], lightboxIndex: 0, galleryIds: {}, cardOrder: null, pdfHrefs: { 'case-sound-mind-g1': 'assets/ira-401k-social-security-retirement-report-2.26.pdf', 'case-32-leap-g2': 'assets/heiyer-estate-proposal-NEWEST.pdf' }, imageCrops: {} };
+
+  _lsKey = 'jr-portfolio-layout-v1';
+
+  _loadLayout() {
+    try {
+      const raw = window.localStorage.getItem(this._lsKey);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      const removedIds = parsed.removedIds || {};
+      const galleryIds = { ...(parsed.galleryIds || {}) };
+      Object.keys(Component.DEFAULT_GALLERY_IDS).forEach(cid => {
+        const cur = galleryIds[cid] || [];
+        const removedForCase = removedIds[cid] || [];
+        const merged = [...cur];
+        Component.DEFAULT_GALLERY_IDS[cid].forEach(gid => { if (!merged.includes(gid) && !removedForCase.includes(gid)) merged.push(gid); });
+        galleryIds[cid] = merged;
+      });
+      this.setState({ galleryIds, cardOrder: parsed.cardOrder || null, pdfHrefs: parsed.pdfHrefs || {}, imageCrops: parsed.imageCrops || {}, removedIds });
+    } catch (e) {}
+  }
+
+  _saveLayout(galleryIds, cardOrder, pdfHrefs, imageCrops, removedIds) {
+    try { window.localStorage.setItem(this._lsKey, JSON.stringify({ galleryIds, cardOrder, pdfHrefs: pdfHrefs || this.state.pdfHrefs, imageCrops: imageCrops || this.state.imageCrops, removedIds: removedIds || this.state.removedIds || {} })); } catch (e) {}
+  }
+
+  nudgeCrop = (cid, dx, dy) => (e) => {
+    if (e) e.stopPropagation();
+    this.setState(s => {
+      const cur = s.imageCrops[cid] || { x: 50, y: 50 };
+      const x = Math.max(0, Math.min(100, cur.x + dx));
+      const y = Math.max(0, Math.min(100, cur.y + dy));
+      const imageCrops = { ...s.imageCrops, [cid]: { x, y } };
+      this._saveLayout(s.galleryIds, s.cardOrder, s.pdfHrefs, imageCrops);
+      return { imageCrops };
+    });
+  };
+
+  resetCrop = (cid) => (e) => {
+    if (e) e.stopPropagation();
+    this.setState(s => {
+      const imageCrops = { ...s.imageCrops };
+      delete imageCrops[cid];
+      this._saveLayout(s.galleryIds, s.cardOrder, s.pdfHrefs, imageCrops);
+      return { imageCrops };
+    });
+  };
+
+  togglePdf = (gid) => (e) => {
+    if (e) e.stopPropagation();
+    this.setState(s => {
+      const current = { ...s.pdfHrefs };
+      if (current[gid]) {
+        delete current[gid];
+      } else {
+        const href = window.prompt('Enter the PDF file path (e.g. assets/my-file.pdf) — drop the PDF into the assets folder first:', 'assets/');
+        if (!href) return {};
+        current[gid] = href;
+      }
+      this._saveLayout(s.galleryIds, s.cardOrder, current);
+      return { pdfHrefs: current };
+    });
+  };
+
+  openPdf = (href) => (e) => {
+    if (e) e.stopPropagation();
+    const a = document.createElement('a');
+    a.href = href;
+    a.download = '';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  moveCard = (id, dir) => (e) => {
+    if (e) e.stopPropagation();
+    this.setState(s => {
+      const order = (s.cardOrder && s.cardOrder.length ? [...s.cardOrder] : [...this._defaultCaseOrder]);
+      for (const cid of this._defaultCaseOrder) if (!order.includes(cid)) order.push(cid);
+      const i = order.indexOf(id);
+      const j = i + dir;
+      if (i < 0 || j < 0 || j >= order.length) return {};
+      [order[i], order[j]] = [order[j], order[i]];
+      this._saveLayout(s.galleryIds, order);
+      return { cardOrder: order };
+    });
+  };
+
+  openLightbox = (id, src, list, index) => (e) => { if (e) e.stopPropagation(); this.setState({ lightboxId: id, lightboxSrc: src || '', lightboxList: list || [], lightboxIndex: index != null ? index : 0 }); };
+  closeLightbox = () => this.setState({ lightboxId: null });
+  lightboxNav = (dir) => (e) => {
+    if (e) e.stopPropagation();
+    this.setState(s => {
+      const list = s.lightboxList || [];
+      if (!list.length) return null;
+      const next = (s.lightboxIndex + dir + list.length) % list.length;
+      return { lightboxIndex: next, lightboxId: list[next].id, lightboxSrc: list[next].src };
+    });
+  };
+  stopProp = (e) => { if (e) e.stopPropagation(); };
+
+  removeGalleryImage = (caseId, gid) => (e) => {
+    if (e) e.stopPropagation();
+    if (!window.confirm('Remove this image?')) return;
+    this.setState(s => {
+      const current = s.galleryIds[caseId] || Component.DEFAULT_GALLERY_IDS[caseId] || [caseId + '-g1', caseId + '-g2'];
+      const galleryIds = { ...s.galleryIds, [caseId]: current.filter(x => x !== gid) };
+      const removedIds = { ...(s.removedIds || {}) };
+      removedIds[caseId] = [...(removedIds[caseId] || []), gid];
+      this._saveLayout(galleryIds, s.cardOrder, s.pdfHrefs, s.imageCrops, removedIds);
+      return { galleryIds, removedIds };
+    });
+  };
+
+  moveGalleryImage = (caseId, gid, dir) => (e) => {
+    if (e) e.stopPropagation();
+    this.setState(s => {
+      const current = [...(s.galleryIds[caseId] || Component.DEFAULT_GALLERY_IDS[caseId] || [caseId + '-g1', caseId + '-g2'])];
+      const i = current.indexOf(gid);
+      const j = i + dir;
+      if (i < 0 || j < 0 || j >= current.length) return {};
+      [current[i], current[j]] = [current[j], current[i]];
+      const galleryIds = { ...s.galleryIds, [caseId]: current };
+      this._saveLayout(galleryIds, s.cardOrder);
+      return { galleryIds };
+    });
+  };
+
+  toggleTheme = () => {
+    this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }));
+  };
+
+  openCase = (id) => {
+    this.setState({ activeCase: id });
+    window.scrollTo(0, 0);
+  };
+
+  closeCase = () => {
+    this.setState({ activeCase: null });
+    setTimeout(() => {
+      const el = document.getElementById('work');
+      if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset);
+    }, 0);
+  };
+
+  goHome = (e) => {
+    if (e) e.preventDefault();
+    this.setState({ activeCase: null, activeNav: 'hero' });
+    window.scrollTo(0, 0);
+  };
 
 
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smooth-scroll/SmoothScroll.js"></script>
-  <script src="assets/jarallax/jarallax.js"></script>
-  <script src="assets/unicore/js/script.js"></script>
-  
-  
+
+  componentDidMount() {
+    this._loadLayout();
+    this._scrollThreshold = 175;
+    this._navSections = ['hero', 'about', 'work', 'skills'];
+    this._onScroll = () => {
+      const show = window.scrollY > this._scrollThreshold;
+      if (show !== this.state.showBrandedLogo) this.setState({ showBrandedLogo: show });
+      if (!this.state.activeCase) {
+        let current = 'hero';
+        for (const id of this._navSections) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= 140) current = id;
+        }
+        if (current !== this.state.activeNav) this.setState({ activeNav: current });
+      }
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  renderVals() {
+    const dark = {
+      bg: '#0c1c30',
+      bgAlt: '#0a1826',
+      sidebarBg: '#0a1826',
+      sidebarAccentBg: '#12294a',
+      cardBg: '#0f2138',
+      cardHoverBg: '#152c4d',
+      text: '#f4f1ea',
+      textMuted: '#9fb0bf',
+      border: 'rgba(244,241,234,0.14)',
+      accent: '#5fd6e3',
+      accentText: '#06222a',
+      logoFilter: 'none',
+      knobLeft: '28px'
+    };
+    const light = {
+      bg: '#faf9f6',
+      bgAlt: '#f1efe9',
+      sidebarBg: '#ffffff',
+      sidebarAccentBg: '#ffffff',
+      cardBg: '#ffffff',
+      cardHoverBg: '#f2f6fb',
+      text: '#16233a',
+      textMuted: '#5b6b81',
+      border: 'rgba(22,35,58,0.12)',
+      accent: '#1f4e8c',
+      accentText: '#ffffff',
+      logoFilter: 'invert(1) brightness(0.6)',
+      knobLeft: '3px'
+    };
+    const t = this.state.theme === 'dark' ? dark : light;
+    const show = this.state.showBrandedLogo;
+    const navLogoStyle = 'position:absolute; left:calc(475px + max(0px, 50vw - 720px)); top:50%; height:42px; width:auto; z-index:1; transition:opacity 320ms ease, transform 320ms ease; filter:' + t.logoFilter + '; opacity:' + (show ? 0.85 : 0) + '; transform:translateY(-50%) translateX(' + (show ? 0 : -10) + 'px); pointer-events:' + (show ? 'auto' : 'none') + ';';
+
+    const raw = [
+      { id: 'neurolexiq', title: 'NeuroLexIQ',
+        blurb: 'Concussion pre-screening platform — brand identity, UX/UI, and product strategy for attorneys and care teams.',
+        tagline: 'A concussion pre-screening platform built for attorneys and care teams who need fast, defensible answers.',
+        role: 'Head of Product & Strategy, Founding Partner', timeline: '2025—Present', client: 'Founding Partner (Equity)',
+        overview: 'NeuroLexIQ gives attorneys and care teams a fast, standardized way to pre-screen for mild traumatic brain injury symptoms — without requiring a clinical visit to get started.',
+        challenge: 'Legal teams and care coordinators lacked a fast, structured way to identify potential mTBI symptoms during intake. As a new venture entering the market, NeuroLexIQ also needed a credible brand, clear product positioning, and professional sales materials to communicate its value to prospective customers, partners, and investors.',
+        solution: 'As a founding partner, I led product strategy, brand development, and UX/UI design for a lightweight web-based screening platform built around the needs of legal intake and care coordination. I also designed the public-facing website, brochures, and supporting sales materials to establish a cohesive market presence and equip the company for customer acquisition, partnership development, and investor conversations.',
+        results: 'Designed and launched the complete product and brand experience, including the public-facing website, guided assessment, user dashboard, risk-reporting interface, brochures, and supporting sales materials. The product is now being refined with founding partners and early users as the company strengthens its market positioning and commercial infrastructure in preparation for broader rollout, outside investment, or a potential strategic acquisition.\n',
+        heroSrc: 'assets/gallery-backup/case-neurolexiq.webp' },
+      { id: 'sound-mind', title: 'Sound Mind Investing',
+        blurb: 'Two subscription platform rebuilds — product requirements, UX/UI, information architecture, and CMS workflows.',
+        tagline: "Rebuilding a subscription investment-education platform for growth, twice over.",
+        role: 'Director of Digital Development', timeline: '2012—Present', client: 'In-House, Sound Mind Investing',
+        overview: "Sound Mind Investing's platform serves a long-running subscriber base who rely on it daily for investment education and portfolio guidance — it needed to keep pace with their expectations twice over.",
+        challenge: "The existing platform's architecture made it slow to publish new content and difficult to evolve the subscriber experience as expectations rose.",
+        solution: 'I led two full platform rebuilds — UX/UI, information architecture, and CMS workflows — giving the editorial team faster publishing tools and subscribers a modern, easier experience.',
+        results: 'Two generations of the platform later, publishing is faster and the subscriber experience has kept pace with a growing, engaged membership base.',
+        heroSrc: 'assets/gallery-backup/case-sound-mind.webp' },
+      { id: 'bachman', title: 'Bachman',
+        blurb: 'Brand and digital experience work for Bachman.',
+        tagline: 'Brand and digital experience work for Bachman.',
+        role: 'Creative Director', timeline: '', client: '',
+        overview: 'Overview of the Bachman engagement.',
+        challenge: 'Challenge details go here.',
+        solution: 'Approach details go here.',
+        results: 'Results details go here.',
+        heroSrc: 'assets/gallery-backup/case-bachman.png' },
+      { id: 'consumer-websites', title: 'Consumer-Facing Websites',
+        blurb: 'Design and development of consumer-facing websites across multiple brands.',
+        tagline: 'Design and development of consumer-facing websites across multiple brands.',
+        role: 'Creative Director', timeline: '', client: '',
+        overview: 'Overview of the consumer-facing website work.',
+        challenge: 'Challenge details go here.',
+        solution: 'Approach details go here.',
+        results: 'Results details go here.',
+        heroSrc: 'assets/gallery-backup/case-consumer-websites.jpg' },
+      { id: 'medavant', title: 'Capario Healthcare (Now UnitedHealth Group)',
+        blurb: "Corporate rebrand as Creative Director, chosen over a nationally recognized agency's competing proposal.",
+        tagline: "A corporate rebrand chosen over a nationally recognized agency's competing pitch.",
+        role: 'Creative Director', timeline: '2003—2012', client: 'In-House, Creative Director',
+        overview: "MedAvant needed a brand that could carry a fast-growing healthcare technology company into its next stage — and win the confidence of its own leadership over an outside agency's pitch.",
+        challenge: "As the company scaled, its brand hadn't kept pace — marketing, product, and leadership needed one identity that felt credible to enterprise healthcare partners.",
+        solution: 'As Creative Director, I led the rebrand strategy and execution in-house, presenting directly against a nationally recognized agency\'s competing proposal.',
+        results: 'Leadership selected the in-house rebrand over the agency proposal, and it was rolled out company-wide.',
+        heroSrc: 'assets/gallery-backup/case-medavant.jpg' },
+      { id: '32-leap', title: 'Heiyer Estate',
+        blurb: 'Co-founded a mobile app studio; three iOS/Android apps, 150,000+ downloads, two featured by Apple.',
+        tagline: 'An independent app studio that shipped three consumer apps and got noticed by Apple.',
+        role: 'Co-Founder & Design Lead', timeline: '2010—2014', client: 'Independent Studio, Co-Founder',
+        overview: '32 Leap set out to prove that a small, founder-led studio could compete with much larger teams on craft, polish, and App Store visibility.',
+        challenge: 'Bootstrapping a studio meant designing, building, and shipping polished consumer apps with a founder-level budget and no safety net.',
+        solution: 'I led design across brand, UX/UI, and App Store presence for three apps, balancing speed with the polish needed to stand out in a crowded store.',
+        results: 'The studio shipped three apps with 150,000+ combined downloads, two of which were featured by Apple.',
+        heroSrc: 'assets/gallery-backup/case-32-leap.webp' }
+    ];
+    const DEFAULT_GALLERY_IDS = Component.DEFAULT_GALLERY_IDS;
+    const GALLERY_SRC = {"case-neurolexiq":"assets/gallery-backup/case-neurolexiq.webp","case-neurolexiq-g2":"assets/gallery-backup/case-neurolexiq-g2.webp","case-neurolexiq-g2-full":"assets/gallery-backup/case-neurolexiq-g2-full.webp","case-neurolexiq-g1":"assets/gallery-backup/case-neurolexiq-g1.webp","case-neurolexiq-g1-full":"assets/gallery-backup/case-neurolexiq-g1-full.jpg","case-sound-mind":"assets/gallery-backup/case-sound-mind.webp","case-32-leap":"assets/gallery-backup/case-32-leap.webp","case-medavant":"assets/gallery-backup/case-medavant.jpg","case-sound-mind-g1-full":"assets/gallery-backup/case-sound-mind-g1-full.webp","case-sound-mind-g1":"assets/gallery-backup/case-sound-mind-g1.webp","case-sound-mind-g2":"assets/gallery-backup/case-sound-mind-g2.webp","case-sound-mind-g3-1784133140500":"assets/gallery-backup/case-sound-mind-g3-1784133140500.webp","case-sound-mind-g4-1784133204156":"assets/gallery-backup/case-sound-mind-g4-1784133204156.webp","case-sound-mind-g6-1784133273729":"assets/gallery-backup/case-sound-mind-g6-1784133273729.webp","case-sound-mind-g6-1784133301990":"assets/gallery-backup/case-sound-mind-g6-1784133301990.webp","case-sound-mind-g7-1784133313923":"assets/gallery-backup/case-sound-mind-g7-1784133313923.webp","case-sound-mind-g8-1784133336004":"assets/gallery-backup/case-sound-mind-g8-1784133336004.webp","case-sound-mind-g9-1784133355541":"assets/gallery-backup/case-sound-mind-g9-1784133355541.webp","case-sound-mind-g10-1784133384661":"assets/gallery-backup/case-sound-mind-g10-1784133384661.webp","case-sound-mind-g11-1784133736622":"assets/gallery-backup/case-sound-mind-g11-1784133736622.webp","case-sound-mind-g12-1784133758276":"assets/gallery-backup/case-sound-mind-g12-1784133758276.webp","case-sound-mind-g13-1784133785478":"assets/gallery-backup/case-sound-mind-g13-1784133785478.webp","case-sound-mind-g14-1784133803508":"assets/gallery-backup/case-sound-mind-g14-1784133803508.webp","case-sound-mind-g15-1784133826185":"assets/gallery-backup/case-sound-mind-g15-1784133826185.webp","case-sound-mind-g16-1784133860719":"assets/gallery-backup/case-sound-mind-g16-1784133860719.webp","case-sound-mind-g2-full":"assets/gallery-backup/case-sound-mind-g2-full.jpg","case-sound-mind-g3-1784133140500-full":"assets/gallery-backup/case-sound-mind-g3-1784133140500-full.png","case-sound-mind-g4-1784133204156-full":"assets/gallery-backup/case-sound-mind-g4-1784133204156-full.png","case-sound-mind-g6-1784133273729-full":"assets/gallery-backup/case-sound-mind-g6-1784133273729-full.png","case-sound-mind-g16-1784133860719-full":"assets/gallery-backup/case-sound-mind-g16-1784133860719-full.png","case-sound-mind-g7-1784133313923-full":"assets/gallery-backup/case-sound-mind-g7-1784133313923-full.jpg","case-sound-mind-g10-1784133384661-full":"assets/gallery-backup/case-sound-mind-g10-1784133384661-full.jpg","case-sound-mind-g8-1784133336004-full":"assets/gallery-backup/case-sound-mind-g8-1784133336004-full.png","case-sound-mind-g11-1784133736622-full":"assets/gallery-backup/case-sound-mind-g11-1784133736622-full.png","case-sound-mind-g13-1784133785478-full":"assets/gallery-backup/case-sound-mind-g13-1784133785478-full.png","case-sound-mind-g12-1784133758276-full":"assets/gallery-backup/case-sound-mind-g12-1784133758276-full.png","case-sound-mind-g9-1784133355541-full":"assets/gallery-backup/case-sound-mind-g9-1784133355541-full.png","case-sound-mind-g14-1784133803508-full":"assets/gallery-backup/case-sound-mind-g14-1784133803508-full.png","case-sound-mind-g15-1784133826185-full":"assets/gallery-backup/case-sound-mind-g15-1784133826185-full.png","case-sound-mind-g17":"assets/gallery-backup/case-sound-mind-g17.png","case-sound-mind-g17-full":"assets/gallery-backup/case-sound-mind-g17.png","case-sound-mind-g18":"assets/gallery-backup/case-sound-mind-g18.webp","case-sound-mind-g18-full":"assets/gallery-backup/case-sound-mind-g18-full.png","case-neurolexiq-g7-1784119302053-full":"assets/gallery-backup/case-neurolexiq-g7-1784119302053-full.jpg","case-neurolexiq-g7-1784119302053":"assets/gallery-backup/case-neurolexiq-g7-1784119302053.jpg","case-neurolexiq-g4-1784119195180":"assets/gallery-backup/case-neurolexiq-g4-1784119195180.webp","case-neurolexiq-g4-1784119195180-full":"assets/gallery-backup/case-neurolexiq-g4-1784119195180-full.webp","case-neurolexiq-g8-1784119316345":"assets/gallery-backup/case-neurolexiq-g8-1784119316345.webp","case-neurolexiq-g8-1784119316345-full":"assets/gallery-backup/case-neurolexiq-g8-1784119316345-full.webp","case-neurolexiq-g5-1784119197347":"assets/gallery-backup/case-neurolexiq-g5-1784119197347.webp","case-neurolexiq-g5-1784119197347-full":"assets/gallery-backup/case-neurolexiq-g5-1784119197347-full.webp","case-neurolexiq-g9-1784140364749":"assets/gallery-backup/case-neurolexiq-g9-1784140364749.png","case-neurolexiq-g9-1784140364749-full":"assets/gallery-backup/case-neurolexiq-g9-1784140364749-full.png","case-neurolexiq-g3-1784119064545":"assets/gallery-backup/case-neurolexiq-g3-1784119064545.webp","case-neurolexiq-g3-1784119064545-full":"assets/gallery-backup/case-neurolexiq-g3-1784119064545-full.jpg","case-medavant-g1":"assets/gallery-backup/case-medavant-g1.webp","case-medavant-g1-full":"assets/gallery-backup/case-medavant-g1-full.webp","case-medavant-g2":"assets/gallery-backup/case-medavant-g2.webp","case-medavant-g2-full":"assets/gallery-backup/case-medavant-g2-full.webp","case-medavant-g3-1784144306761":"assets/gallery-backup/case-medavant-g3-1784144306761.webp","case-medavant-g3-1784144306761-full":"assets/gallery-backup/case-medavant-g3-1784144306761-full.webp","case-medavant-g4-1784144338347":"assets/gallery-backup/case-medavant-g4-1784144338347.webp","case-medavant-g4-1784144338347-full":"assets/gallery-backup/case-medavant-g4-1784144338347-full.webp","case-medavant-g5-1784144362020":"assets/gallery-backup/case-medavant-g5-1784144362020.webp","case-medavant-g5-1784144362020-full":"assets/gallery-backup/case-medavant-g5-1784144362020-full.png","case-medavant-g8-1784144576677":"assets/gallery-backup/case-medavant-g8-1784144576677.webp","case-medavant-g8-1784144576677-full":"assets/gallery-backup/case-medavant-g8-1784144576677-full.webp","case-medavant-g9-1784144606054":"assets/gallery-backup/case-medavant-g9-1784144606054.webp","case-medavant-g9-1784144606054-full":"assets/gallery-backup/case-medavant-g9-1784144606054-full.webp","case-medavant-g10-1784144802969":"assets/gallery-backup/case-medavant-g10-1784144802969.webp","case-medavant-g10-1784144802969-full":"assets/gallery-backup/case-medavant-g10-1784144802969-full.webp","case-medavant-g6-1784144509039":"assets/gallery-backup/case-medavant-g6-1784144509039.webp","case-medavant-g6-1784144509039-full":"assets/gallery-backup/case-medavant-g6-1784144509039-full.webp","case-medavant-g8-1784144551654":"assets/gallery-backup/case-medavant-g8-1784144551654.jpg","case-medavant-g8-1784144551654-full":"assets/gallery-backup/case-medavant-g8-1784144551654-full.webp","case-bachman":"assets/gallery-backup/case-bachman.png","case-bachman-g2":"assets/gallery-backup/case-bachman-g2.jpg","case-bachman-g3":"assets/gallery-backup/case-bachman-g3.jpg","case-bachman-g3-full":"assets/gallery-backup/case-bachman-g3-full.png","case-bachman-g4":"assets/gallery-backup/case-bachman-g4.jpg","case-bachman-g4-full":"assets/gallery-backup/case-bachman-g4-full.png","case-32-leap-g2":"assets/gallery-backup/case-32-leap-g2.jpg","case-consumer-websites":"assets/gallery-backup/case-consumer-websites.jpg","case-consumer-websites-g6-1784174693914":"assets/gallery-backup/case-consumer-websites-g6-1784174693914.jpg","case-consumer-websites-g6-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g6-full-v2.png","case-consumer-websites-g7-1784174693914":"assets/gallery-backup/case-consumer-websites-g7-1784174693914.jpg","case-consumer-websites-g7-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g7-full-v2.jpg","case-consumer-websites-g8-1784174693914":"assets/gallery-backup/case-consumer-websites-g8-1784174693914.jpg","case-consumer-websites-g8-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g8-1784174693914-full.jpg","case-consumer-websites-g9-1784174693914":"assets/gallery-backup/case-consumer-websites-g9-1784174693914.jpg","case-consumer-websites-g9-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g9-1784174693914-full-v2.png","case-consumer-websites-g10-1784174693914":"assets/gallery-backup/case-consumer-websites-g10-1784174693914.jpg","case-consumer-websites-g10-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g10-full-v2.webp","case-consumer-websites-g11-1784174693914":"assets/gallery-backup/case-consumer-websites-g11-1784174693914.jpg","case-consumer-websites-g11-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g11-full-v2.webp","case-consumer-websites-g12-1784174693914":"assets/gallery-backup/case-consumer-websites-g12-1784174693914.jpg","case-consumer-websites-g13-1784174693914":"assets/gallery-backup/case-consumer-websites-g13-1784174693914.jpg","case-consumer-websites-g14-1784174693914":"assets/gallery-backup/case-consumer-websites-g14-1784174693914.jpg","case-consumer-websites-g14-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g14-full-v2.jpg","case-consumer-websites-g15":"assets/gallery-backup/case-consumer-websites-g15.jpg","case-consumer-websites-g16":"assets/gallery-backup/case-consumer-websites-g16.jpg","case-consumer-websites-g17":"assets/gallery-backup/case-consumer-websites-g17.jpg","case-consumer-websites-g17-full":"assets/gallery-backup/case-consumer-websites-g17-full.png","case-aweglo":"assets/gallery-backup/case-aweglo.jpg","case-aweglo-g1":"assets/gallery-backup/case-aweglo-g1-full.png","case-aweglo-g1-full":"assets/gallery-backup/case-aweglo-g1-full.png","case-consumer-websites-g13-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g14-full-v4.jpg"};
+    let cases = raw.map(c => {
+      const cid = 'case-' + c.id;
+      const galleryIds = this.state.galleryIds[cid] || DEFAULT_GALLERY_IDS[cid] || [cid + '-g1', cid + '-g2'];
+      const galleryItems = galleryIds.map((gid, gi) => {
+        const pdfHref = this.state.pdfHrefs[gid];
+        const isPdf = !!pdfHref;
+        const thumbSrc = GALLERY_SRC[gid] || '';
+        const fullSrc = GALLERY_SRC[gid + '-full'] || thumbSrc;
+        return { id: gid, fullId: gid + '-full', src: thumbSrc, fullSrc, isPdf, pdfHref, remove: this.removeGalleryImage(cid, gid), canMoveUp: gi > 0, canMoveDown: gi < galleryIds.length - 1, moveUp: this.moveGalleryImage(cid, gid, -1), moveDown: this.moveGalleryImage(cid, gid, 1), togglePdf: this.togglePdf(gid), cursorStyle: isPdf ? 'pointer' : 'zoom-in', pdfBadgeBg: isPdf ? '#e11d2e' : 'rgba(6,14,26,0.55)', pdfBtnOpacity: isPdf ? 1 : 0 };
+      });
+      const lightboxList = [{ id: cid + '-full', src: c.heroSrc }, ...galleryItems.filter(g => !g.isPdf).map(g => ({ id: g.fullId, src: g.fullSrc }))];
+      const galleryItemsWithOpen = galleryItems.map(g => ({ ...g, open: g.isPdf ? this.openPdf(g.pdfHref) : this.openLightbox(g.fullId, g.fullSrc, lightboxList, lightboxList.findIndex(l => l.id === g.fullId)),
+        cropPos: (this.state.imageCrops[g.id] ? this.state.imageCrops[g.id].x + '% ' + this.state.imageCrops[g.id].y + '%' : '50% 50%'),
+        cropUp: this.nudgeCrop(g.id, 0, -5), cropDown: this.nudgeCrop(g.id, 0, 5), cropLeft: this.nudgeCrop(g.id, -5, 0), cropRight: this.nudgeCrop(g.id, 5, 0), cropReset: this.resetCrop(g.id) }));
+      return { ...c, id: cid, imgId: cid, fullId: cid + '-full', galleryIds, galleryItems: galleryItemsWithOpen, lightboxList, openHero: this.openLightbox(cid + '-full', c.heroSrc, lightboxList, 0), open: () => this.openCase(cid),
+        cropPos: (this.state.imageCrops[cid] ? this.state.imageCrops[cid].x + '% ' + this.state.imageCrops[cid].y + '%' : '50% 50%'),
+        cropUp: this.nudgeCrop(cid, 0, -5), cropDown: this.nudgeCrop(cid, 0, 5), cropLeft: this.nudgeCrop(cid, -5, 0), cropRight: this.nudgeCrop(cid, 5, 0), cropReset: this.resetCrop(cid) };
+    });
+    this._defaultCaseOrder = cases.map(c => c.id);
+    const order = this.state.cardOrder || this._defaultCaseOrder;
+    const orderedIds = order.filter(id => cases.some(c => c.id === id));
+    const extraIds = cases.map(c => c.id).filter(id => !orderedIds.includes(id));
+    cases = [...orderedIds, ...extraIds].map(id => cases.find(c => c.id === id)).filter(Boolean);
+    cases = cases.map((c, i) => ({ ...c, canMoveUp: i > 0, canMoveDown: i < cases.length - 1, moveUp: this.moveCard(c.id, -1), moveDown: this.moveCard(c.id, 1) }));
+    const isHome = this.state.activeCase === null;
+    const activeCaseData = cases.find(c => c.id === this.state.activeCase) || null;
+
+    const asideMarginTop = '-27px';
+    const activeNav = this.state.activeCase ? null : this.state.activeNav;
+    const navHomeColor = activeNav === 'hero' ? t.accent : '#ffffff';
+    const navAboutColor = activeNav === 'about' ? t.accent : '#ffffff';
+    const navWorkColor = activeNav === 'work' ? t.accent : '#ffffff';
+    const navSkillsColor = activeNav === 'skills' ? t.accent : '#ffffff';
+    return { t, toggleTheme: this.toggleTheme, navLogoStyle: navLogoStyle + ' cursor:pointer;', cases, isHome, activeCaseData, closeCase: this.closeCase, goHome: this.goHome, asideMarginTop,
+      navHomeColor, navAboutColor, navWorkColor, navSkillsColor,
+      lightboxId: this.state.lightboxId, lightboxSrc: this.state.lightboxSrc, openLightbox: this.openLightbox, closeLightbox: this.closeLightbox, stopProp: this.stopProp,
+      lightboxHasMultiple: (this.state.lightboxList || []).length > 1, lightboxPrev: this.lightboxNav(-1), lightboxNext: this.lightboxNav(1),
+      removeGalleryImage: this.removeGalleryImage };
+  }
+}
+</script>
 </body>
 </html>
