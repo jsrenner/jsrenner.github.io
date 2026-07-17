@@ -4,6 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jonathan Renner | Digital Product & Experience Leader</title>
+<meta name="description" content="Digital product and experience leader with 26 years across UX, digital strategy, AI-enabled workflows, and platform development. Based in Louisville, Kentucky.">
+<link rel="canonical" href="https://jonrenner.com/">
+<link rel="icon" type="image/png" href="./jr-consulting-monogram-logo-white-mriaefzg.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jonrenner.com/">
+<meta property="og:title" content="Jonathan Renner | Digital Product & Experience Leader">
+<meta property="og:description" content="Digital product and experience leader with 26 years across UX, digital strategy, AI-enabled workflows, and platform development. Based in Louisville, Kentucky.">
+<meta property="og:image" content="https://jonrenner.com/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jonathan Renner | Digital Product & Experience Leader">
+<meta name="twitter:description" content="Digital product and experience leader with 26 years across UX, digital strategy, AI-enabled workflows, and platform development. Based in Louisville, Kentucky.">
+<meta name="twitter:image" content="https://jonrenner.com/assets/og-card.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jonathan Renner",
+  "jobTitle": "Digital Product & Experience Leader",
+  "url": "https://jonrenner.com/",
+  "email": "mailto:jon@jonrenner.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Louisville", "addressRegion": "KY", "addressCountry": "US" },
+  "sameAs": ["https://www.behance.net/jrenner"]
+}
+</script>
 <style>
 .mobile-cta { display: none; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
@@ -156,11 +182,17 @@
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
         </div>
         <div style="border-left:3px solid {{ t.accent }}; padding-left:26px; margin-bottom:36px;">
-          <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; line-height:1.6; color:{{ t.text }}; margin:0;">Preparation, collaboration, adaptability, and performing at your best as part of a team — the same principles that guide my music have shaped how I lead.</p>
+          <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; line-height:1.6; color:{{ t.text }}; margin:0;">The best solutions begin with understanding people and come to life through teams united by curiosity, trust, and a shared commitment to making things better.</p>
         </div>
         <div class="cols-2" style="display:grid; grid-template-columns:1fr 1fr; gap:44px; font-size:16px; line-height:1.8; color:{{ t.textMuted }};">
-          <p style="margin:0;">Throughout my career I've been driven by a passion for solving complex business problems — bringing together leadership, stakeholders, designers, and developers to align around a shared vision, then turning that vision into practical digital products, intuitive customer experiences, and scalable technology solutions.</p>
-          <p style="margin:0;">Outside of work, I'm a lifelong drummer and musician who has performed professionally since childhood. I'm also a husband and father of three daughters; one has a rare genetic syndrome, and caring for her has deepened my appreciation for empathy, patience, and what truly matters, in life and in work.</p>
+          <div>
+            <p style="margin:0 0 18px;">Throughout my career, I've been driven by a passion for solving complex business problems. For more than 26 years, I've brought together leaders, stakeholders, designers, and developers around a shared vision, then helped turn that vision into practical digital products, intuitive customer experiences, and scalable technology solutions.</p>
+            <p style="margin:0;">More recently, I've expanded this work into AI-enabled applications, automations, and tools that streamline workflows and help organizations work smarter.</p>
+          </div>
+          <div>
+            <p style="margin:0 0 18px;">Alongside my career, I've performed professionally as a drummer and musician since childhood with touring bands and live productions. Music taught me to prepare, listen closely, adapt in the moment, and understand how each person's contribution strengthens the whole.</p>
+            <p style="margin:0;">Most importantly, I'm a husband and father of three daughters. One of my daughters lives with a rare genetic syndrome and significant disabilities. Being her father and advocate has profoundly shaped how I see people—deepening my empathy, strengthening my resilience, and reminding me that everyone deserves to be understood, valued, and included.</p>
+          </div>
         </div>
         </div>
       </section>
@@ -392,7 +424,7 @@
               </div>
               <div>
                 <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">The Approach</h3>
-                <p style="font-size:15.5px; line-height:1.75; color:{{ t.textMuted }}; margin:0;">{{ activeCaseData.solution }}</p>
+                <p style="font-size:15.5px; line-height:1.75; color:{{ t.textMuted }}; margin:0; white-space:pre-line;">{{ activeCaseData.solution }}</p>
               </div>
             </div>
 
@@ -410,7 +442,7 @@
             </div>
             <div style="background:{{ t.cardBg }}; border:1px solid {{ t.border }}; border-radius:14px; padding:32px 36px;">
               <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 12px; color:{{ t.accent }};">Results</h3>
-              <p style="font-size:15.5px; line-height:1.75; color:{{ t.text }}; margin:0;">{{ activeCaseData.results }}</p>
+              <p style="font-size:15.5px; line-height:1.75; color:{{ t.text }}; margin:0; white-space:pre-line;">{{ activeCaseData.results }}</p>
             </div>
           </div>
         </section>
@@ -689,49 +721,49 @@ class Component extends DCLogic {
         heroSrc: 'assets/gallery-backup/case-neurolexiq.webp' },
       { id: 'sound-mind', title: 'Sound Mind Investing',
         blurb: 'Two subscription platform rebuilds — product requirements, UX/UI, information architecture, and CMS workflows.',
-        tagline: "Rebuilding a subscription investment-education platform for growth, twice over.",
+        tagline: "Modernizing a subscription investment platform—and expanding the digital ecosystem around it.",
         role: 'Director of Digital Development', timeline: '2012—Present', client: 'In-House, Sound Mind Investing',
-        overview: "Sound Mind Investing's platform serves a long-running subscriber base who rely on it daily for investment education and portfolio guidance — it needed to keep pace with their expectations twice over.",
-        challenge: "The existing platform's architecture made it slow to publish new content and difficult to evolve the subscriber experience as expectations rose.",
-        solution: 'I led two full platform rebuilds — UX/UI, information architecture, and CMS workflows — giving the editorial team faster publishing tools and subscribers a modern, easier experience.',
-        results: 'Two generations of the platform later, publishing is faster and the subscriber experience has kept pace with a growing, engaged membership base.',
+        overview: "For more than 14 years, I've helped SMI turn complex financial guidance into clear, accessible digital experiences—evolving its subscription platform while building the marketing, advisory, and investment-product experiences around it.",
+        challenge: "SMI needed to modernize a content-rich subscription platform without disrupting the extensive archive, established workflows, or daily access subscribers depended on. Publishing had become cumbersome, information was increasingly difficult to navigate, and the underlying platform needed greater flexibility to support evolving products, campaigns, and business lines.",
+        solution: "I led strategy, UX, information architecture, and CMS planning for two full platform rebuilds, partnering with stakeholders and developers through requirements, migration, testing, and launch. Beyond the core website, I designed connected experiences for lead generation, webinars, educational reports, email journeys, subscriber onboarding, advisory services, and investment products—bringing greater clarity and consistency across the ecosystem.",
+        results: "Each rebuild made publishing faster, improved content discovery and subscriber access, and created a more flexible foundation for growth. Today, the broader digital ecosystem supports investment education, subscription conversion, advisor engagement, and multiple investment brands—including an advisory business managing more than $1.1 billion in assets.",
         heroSrc: 'assets/gallery-backup/case-sound-mind.webp' },
       { id: 'bachman', title: 'Bachman',
-        blurb: 'Brand and digital experience work for Bachman.',
-        tagline: 'Brand and digital experience work for Bachman.',
-        role: 'Creative Director', timeline: '', client: '',
-        overview: 'Overview of the Bachman engagement.',
-        challenge: 'Challenge details go here.',
-        solution: 'Approach details go here.',
-        results: 'Results details go here.',
+        blurb: 'Turning complex dealership content into clear, brand-driven customer journeys.',
+        tagline: 'Turning complex dealership content into clear, brand-driven customer journeys.',
+        role: 'Creative Director', timeline: '2022—2025', client: 'Independent Consulting — Bachman Auto Group',
+        overview: 'Bachman needed to express the personality of each automotive brand while giving customers a clear, consistent path from vehicle discovery to dealership action.',
+        challenge: 'Automotive websites must organize a large amount of frequently changing information without overwhelming the customer. Bachman needed digital experiences that could accommodate inventory, promotions, financing, service, and dealership content while maintaining the distinct identities and manufacturer standards of its Chevrolet and Subaru brands.',
+        solution: "I led the creative direction and experience design for Bachman's dealership websites, developing responsive, brand-specific experiences around the needs of local car buyers. I organized complex content into clearer customer journeys and prioritized high-value actions such as browsing inventory, exploring offers, securing financing, and scheduling service.",
+        results: "The work delivered modern, cohesive digital experiences that strengthened each dealership's brand presence and made essential information and actions easier for customers to find. The flexible design system also gave Bachman a stronger foundation for changing inventory, seasonal promotions, and ongoing campaign content.",
         heroSrc: 'assets/gallery-backup/case-bachman.png' },
-      { id: 'consumer-websites', title: 'Consumer-Facing Websites',
-        blurb: 'Design and development of consumer-facing websites across multiple brands.',
-        tagline: 'Design and development of consumer-facing websites across multiple brands.',
-        role: 'Creative Director', timeline: '', client: '',
-        overview: 'Overview of the consumer-facing website work.',
-        challenge: 'Challenge details go here.',
-        solution: 'Approach details go here.',
-        results: 'Results details go here.',
+      { id: 'consumer-websites', title: 'Digital Experiences Across Industries',
+        blurb: 'Designing distinctive, user-centered websites for organizations, brands, and causes of every size.',
+        tagline: 'Designing distinctive, user-centered websites for organizations, brands, and causes of every size.',
+        role: 'Creative Director & Digital Consultant', timeline: '2001—Present', client: 'Independent Consulting, Agency & In-House Work',
+        overview: 'From national brands and growing businesses to nonprofits and personal causes, every engagement begins with the same question: What do people need, and how can the experience make their next step clear?',
+        challenge: 'Each organization came with a different audience, objective, and level of digital maturity. Some needed their first credible online presence, while others needed to modernize an established brand, simplify complex information, or create a clearer path to action. The challenge was never simply designing a website—it was understanding what mattered to the organization and the people it served.',
+        solution: 'I led strategy, creative direction, information architecture, UX/UI design, content structure, and development across a wide range of engagements. Working directly with leaders and stakeholders, I translated business goals and audience needs into distinctive, intuitive experiences designed around clear actions—from making an appointment or requesting information to registering, purchasing, booking, or supporting a cause.',
+        results: 'The work spans healthcare, professional services, hospitality, aviation, retail, events, nonprofits, and national consumer brands. Each solution brought brand, content, and functionality together in a purposeful digital experience—helping organizations strengthen credibility, communicate more clearly, and turn audience interest into meaningful action.',
         heroSrc: 'assets/gallery-backup/case-consumer-websites.jpg' },
-      { id: 'medavant', title: 'Capario Healthcare (Now UnitedHealth Group)',
-        blurb: "Corporate rebrand as Creative Director, chosen over a nationally recognized agency's competing proposal.",
-        tagline: "A corporate rebrand chosen over a nationally recognized agency's competing pitch.",
-        role: 'Creative Director', timeline: '2003—2012', client: 'In-House, Creative Director',
-        overview: "MedAvant needed a brand that could carry a fast-growing healthcare technology company into its next stage — and win the confidence of its own leadership over an outside agency's pitch.",
-        challenge: "As the company scaled, its brand hadn't kept pace — marketing, product, and leadership needed one identity that felt credible to enterprise healthcare partners.",
-        solution: 'As Creative Director, I led the rebrand strategy and execution in-house, presenting directly against a nationally recognized agency\'s competing proposal.',
-        results: 'Leadership selected the in-house rebrand over the agency proposal, and it was rolled out company-wide.',
+      { id: 'medavant', title: 'Capario Healthcare Solutions (Later Change Healthcare/Optum)',
+        blurb: 'Bringing brand, product, and marketing together for a leading healthcare revenue cycle platform.',
+        tagline: 'Bringing brand, product, and marketing together for a leading healthcare revenue cycle platform.',
+        role: 'Creative Director & UI/UX Consultant', timeline: '2015—2016', client: 'Independent Consulting — Capario Healthcare Solutions',
+        overview: "Capario's work was complex by nature. My role was to make it easier to understand and use—across its corporate website, healthcare applications, customer education, and marketing.",
+        challenge: 'Capario helped healthcare providers simplify claims processing, improve reimbursement, and manage complex financial workflows. The company needed to communicate a sophisticated suite of services clearly while creating intuitive product experiences and maintaining a consistent visual identity across every customer touchpoint.',
+        solution: "As an independent consultant, I led creative direction and UX/UI design across Capario's digital products and marketing ecosystem. I designed the corporate website and customer-facing software experiences, including dashboards, claims workflows, reporting tools, navigation systems, and other application interfaces.\n\nI also developed a cohesive visual system that extended across Capario University, marketing campaigns, landing pages, email, sales collateral, infographics, presentations, advertisements, trade-show materials, and product communications.",
+        results: "The work brought greater clarity and consistency to Capario's brand and customer experience. Its website, software products, training platform, and marketing materials shared a unified visual language—making complex revenue cycle concepts easier to understand and giving the company a flexible system for communicating across digital, print, sales, and product channels.",
         heroSrc: 'assets/gallery-backup/case-medavant.jpg' },
       { id: '32-leap', title: 'Heiyer Estate',
-        blurb: 'Co-founded a mobile app studio; three iOS/Android apps, 150,000+ downloads, two featured by Apple.',
-        tagline: 'An independent app studio that shipped three consumer apps and got noticed by Apple.',
-        role: 'Co-Founder & Design Lead', timeline: '2010—2014', client: 'Independent Studio, Co-Founder',
-        overview: '32 Leap set out to prove that a small, founder-led studio could compete with much larger teams on craft, polish, and App Store visibility.',
-        challenge: 'Bootstrapping a studio meant designing, building, and shipping polished consumer apps with a founder-level budget and no safety net.',
-        solution: 'I led design across brand, UX/UI, and App Store presence for three apps, balancing speed with the polish needed to stand out in a crowded store.',
-        results: 'The studio shipped three apps with 150,000+ combined downloads, two of which were featured by Apple.',
-        heroSrc: 'assets/gallery-backup/case-32-leap.webp' }
+        blurb: 'Building a purpose-driven luxury hospitality concept—from brand story and guest experience to business model and investment proposal.',
+        tagline: 'Building a purpose-driven luxury hospitality concept—from brand story and guest experience to business model and investment proposal.',
+        role: 'Founder & Creative Director', timeline: '2018', client: 'Self-Initiated Hospitality Venture',
+        overview: 'Heiyer Estate began with a question: What if a world-class hospitality destination could create unforgettable experiences while helping build a more inclusive world?',
+        challenge: 'The vision was ambitious: transform hundreds of acres outside Louisville into a destination combining a five-star château-style hotel and spa, dining, a winery, an artisan village, a working farm, gardens, outdoor experiences, and event spaces. The challenge was to bring those elements together as one cohesive guest experience—and build a credible business model around a meaningful social mission.',
+        solution: "I developed Heiyer Estate from the ground up, beginning with the name and story inspired by my daughter Grace. I created the brand strategy, visual identity, positioning, mission, vision, and values, then designed the property concept, guest journey, amenities, service offerings, and connected experience across the estate.\n\nI also developed the market research, competitive analysis, operating model, revenue strategy, preliminary development budget, financial projections, social-impact plan, business plan, and complete investor proposal—including the copywriting, editorial design, and presentation materials.",
+        results: 'The result was a fully articulated hospitality venture that transformed a personal vision into a cohesive brand, guest experience, and investor-facing business concept. The completed proposal connected luxury hospitality with sustainable operations, local culture, meaningful employment for people with disabilities, and financial support for disability-focused organizations.',
+        heroSrc: 'assets/gallery-backup/case-heiyer.jpg' }
     ];
     const DEFAULT_GALLERY_IDS = Component.DEFAULT_GALLERY_IDS;
     const GALLERY_SRC = {"case-neurolexiq":"assets/gallery-backup/case-neurolexiq.webp","case-neurolexiq-g2":"assets/gallery-backup/case-neurolexiq-g2.webp","case-neurolexiq-g2-full":"assets/gallery-backup/case-neurolexiq-g2-full.webp","case-neurolexiq-g1":"assets/gallery-backup/case-neurolexiq-g1.webp","case-neurolexiq-g1-full":"assets/gallery-backup/case-neurolexiq-g1-full.jpg","case-sound-mind":"assets/gallery-backup/case-sound-mind.webp","case-32-leap":"assets/gallery-backup/case-32-leap.webp","case-medavant":"assets/gallery-backup/case-medavant.jpg","case-sound-mind-g1-full":"assets/gallery-backup/case-sound-mind-g1-full.webp","case-sound-mind-g1":"assets/gallery-backup/case-sound-mind-g1.webp","case-sound-mind-g2":"assets/gallery-backup/case-sound-mind-g2.webp","case-sound-mind-g3-1784133140500":"assets/gallery-backup/case-sound-mind-g3-1784133140500.webp","case-sound-mind-g4-1784133204156":"assets/gallery-backup/case-sound-mind-g4-1784133204156.webp","case-sound-mind-g6-1784133273729":"assets/gallery-backup/case-sound-mind-g6-1784133273729.webp","case-sound-mind-g6-1784133301990":"assets/gallery-backup/case-sound-mind-g6-1784133301990.webp","case-sound-mind-g7-1784133313923":"assets/gallery-backup/case-sound-mind-g7-1784133313923.webp","case-sound-mind-g8-1784133336004":"assets/gallery-backup/case-sound-mind-g8-1784133336004.webp","case-sound-mind-g9-1784133355541":"assets/gallery-backup/case-sound-mind-g9-1784133355541.webp","case-sound-mind-g10-1784133384661":"assets/gallery-backup/case-sound-mind-g10-1784133384661.webp","case-sound-mind-g11-1784133736622":"assets/gallery-backup/case-sound-mind-g11-1784133736622.webp","case-sound-mind-g12-1784133758276":"assets/gallery-backup/case-sound-mind-g12-1784133758276.webp","case-sound-mind-g13-1784133785478":"assets/gallery-backup/case-sound-mind-g13-1784133785478.webp","case-sound-mind-g14-1784133803508":"assets/gallery-backup/case-sound-mind-g14-1784133803508.webp","case-sound-mind-g15-1784133826185":"assets/gallery-backup/case-sound-mind-g15-1784133826185.webp","case-sound-mind-g16-1784133860719":"assets/gallery-backup/case-sound-mind-g16-1784133860719.webp","case-sound-mind-g2-full":"assets/gallery-backup/case-sound-mind-g2-full.jpg","case-sound-mind-g3-1784133140500-full":"assets/gallery-backup/case-sound-mind-g3-1784133140500-full.png","case-sound-mind-g4-1784133204156-full":"assets/gallery-backup/case-sound-mind-g4-1784133204156-full.png","case-sound-mind-g6-1784133273729-full":"assets/gallery-backup/case-sound-mind-g6-1784133273729-full.png","case-sound-mind-g16-1784133860719-full":"assets/gallery-backup/case-sound-mind-g16-1784133860719-full.png","case-sound-mind-g7-1784133313923-full":"assets/gallery-backup/case-sound-mind-g7-1784133313923-full.jpg","case-sound-mind-g10-1784133384661-full":"assets/gallery-backup/case-sound-mind-g10-1784133384661-full.jpg","case-sound-mind-g8-1784133336004-full":"assets/gallery-backup/case-sound-mind-g8-1784133336004-full.png","case-sound-mind-g11-1784133736622-full":"assets/gallery-backup/case-sound-mind-g11-1784133736622-full.png","case-sound-mind-g13-1784133785478-full":"assets/gallery-backup/case-sound-mind-g13-1784133785478-full.png","case-sound-mind-g12-1784133758276-full":"assets/gallery-backup/case-sound-mind-g12-1784133758276-full.png","case-sound-mind-g9-1784133355541-full":"assets/gallery-backup/case-sound-mind-g9-1784133355541-full.png","case-sound-mind-g14-1784133803508-full":"assets/gallery-backup/case-sound-mind-g14-1784133803508-full.png","case-sound-mind-g15-1784133826185-full":"assets/gallery-backup/case-sound-mind-g15-1784133826185-full.png","case-sound-mind-g17":"assets/gallery-backup/case-sound-mind-g17.png","case-sound-mind-g17-full":"assets/gallery-backup/case-sound-mind-g17.png","case-sound-mind-g18":"assets/gallery-backup/case-sound-mind-g18.webp","case-sound-mind-g18-full":"assets/gallery-backup/case-sound-mind-g18-full.png","case-neurolexiq-g7-1784119302053-full":"assets/gallery-backup/case-neurolexiq-g7-1784119302053-full.jpg","case-neurolexiq-g7-1784119302053":"assets/gallery-backup/case-neurolexiq-g7-1784119302053.jpg","case-neurolexiq-g4-1784119195180":"assets/gallery-backup/case-neurolexiq-g4-1784119195180.webp","case-neurolexiq-g4-1784119195180-full":"assets/gallery-backup/case-neurolexiq-g4-1784119195180-full.webp","case-neurolexiq-g8-1784119316345":"assets/gallery-backup/case-neurolexiq-g8-1784119316345.webp","case-neurolexiq-g8-1784119316345-full":"assets/gallery-backup/case-neurolexiq-g8-1784119316345-full.webp","case-neurolexiq-g5-1784119197347":"assets/gallery-backup/case-neurolexiq-g5-1784119197347.webp","case-neurolexiq-g5-1784119197347-full":"assets/gallery-backup/case-neurolexiq-g5-1784119197347-full.webp","case-neurolexiq-g9-1784140364749":"assets/gallery-backup/case-neurolexiq-g9-1784140364749.png","case-neurolexiq-g9-1784140364749-full":"assets/gallery-backup/case-neurolexiq-g9-1784140364749-full.png","case-neurolexiq-g3-1784119064545":"assets/gallery-backup/case-neurolexiq-g3-1784119064545.webp","case-neurolexiq-g3-1784119064545-full":"assets/gallery-backup/case-neurolexiq-g3-1784119064545-full.jpg","case-medavant-g1":"assets/gallery-backup/case-medavant-g1.webp","case-medavant-g1-full":"assets/gallery-backup/case-medavant-g1-full.webp","case-medavant-g2":"assets/gallery-backup/case-medavant-g2.webp","case-medavant-g2-full":"assets/gallery-backup/case-medavant-g2-full.webp","case-medavant-g3-1784144306761":"assets/gallery-backup/case-medavant-g3-1784144306761.webp","case-medavant-g3-1784144306761-full":"assets/gallery-backup/case-medavant-g3-1784144306761-full.webp","case-medavant-g4-1784144338347":"assets/gallery-backup/case-medavant-g4-1784144338347.webp","case-medavant-g4-1784144338347-full":"assets/gallery-backup/case-medavant-g4-1784144338347-full.webp","case-medavant-g5-1784144362020":"assets/gallery-backup/case-medavant-g5-1784144362020.webp","case-medavant-g5-1784144362020-full":"assets/gallery-backup/case-medavant-g5-1784144362020-full.png","case-medavant-g8-1784144576677":"assets/gallery-backup/case-medavant-g8-1784144576677.webp","case-medavant-g8-1784144576677-full":"assets/gallery-backup/case-medavant-g8-1784144576677-full.webp","case-medavant-g9-1784144606054":"assets/gallery-backup/case-medavant-g9-1784144606054.webp","case-medavant-g9-1784144606054-full":"assets/gallery-backup/case-medavant-g9-1784144606054-full.webp","case-medavant-g10-1784144802969":"assets/gallery-backup/case-medavant-g10-1784144802969.webp","case-medavant-g10-1784144802969-full":"assets/gallery-backup/case-medavant-g10-1784144802969-full.webp","case-medavant-g6-1784144509039":"assets/gallery-backup/case-medavant-g6-1784144509039.webp","case-medavant-g6-1784144509039-full":"assets/gallery-backup/case-medavant-g6-1784144509039-full.webp","case-medavant-g8-1784144551654":"assets/gallery-backup/case-medavant-g8-1784144551654.jpg","case-medavant-g8-1784144551654-full":"assets/gallery-backup/case-medavant-g8-1784144551654-full.webp","case-bachman":"assets/gallery-backup/case-bachman.png","case-bachman-g2":"assets/gallery-backup/case-bachman-g2.jpg","case-bachman-g3":"assets/gallery-backup/case-bachman-g3.jpg","case-bachman-g3-full":"assets/gallery-backup/case-bachman-g3-full.png","case-bachman-g4":"assets/gallery-backup/case-bachman-g4.jpg","case-bachman-g4-full":"assets/gallery-backup/case-bachman-g4-full.png","case-32-leap-g2":"assets/gallery-backup/case-32-leap-g2.jpg","case-consumer-websites":"assets/gallery-backup/case-consumer-websites.jpg","case-consumer-websites-g6-1784174693914":"assets/gallery-backup/case-consumer-websites-g6-1784174693914.jpg","case-consumer-websites-g6-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g6-full-v2.png","case-consumer-websites-g7-1784174693914":"assets/gallery-backup/case-consumer-websites-g7-1784174693914.jpg","case-consumer-websites-g7-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g7-full-v2.jpg","case-consumer-websites-g8-1784174693914":"assets/gallery-backup/case-consumer-websites-g8-1784174693914.jpg","case-consumer-websites-g8-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g8-1784174693914-full.jpg","case-consumer-websites-g9-1784174693914":"assets/gallery-backup/case-consumer-websites-g9-1784174693914.jpg","case-consumer-websites-g9-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g9-1784174693914-full-v2.png","case-consumer-websites-g10-1784174693914":"assets/gallery-backup/case-consumer-websites-g10-1784174693914.jpg","case-consumer-websites-g10-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g10-full-v2.webp","case-consumer-websites-g11-1784174693914":"assets/gallery-backup/case-consumer-websites-g11-1784174693914.jpg","case-consumer-websites-g11-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g11-full-v2.webp","case-consumer-websites-g12-1784174693914":"assets/gallery-backup/case-consumer-websites-g12-1784174693914.jpg","case-consumer-websites-g13-1784174693914":"assets/gallery-backup/case-consumer-websites-g13-1784174693914.jpg","case-consumer-websites-g14-1784174693914":"assets/gallery-backup/case-consumer-websites-g14-1784174693914.jpg","case-consumer-websites-g14-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g14-full-v2.jpg","case-consumer-websites-g15":"assets/gallery-backup/case-consumer-websites-g15.jpg","case-consumer-websites-g16":"assets/gallery-backup/case-consumer-websites-g16.jpg","case-consumer-websites-g17":"assets/gallery-backup/case-consumer-websites-g17.jpg","case-consumer-websites-g17-full":"assets/gallery-backup/case-consumer-websites-g17-full.png","case-aweglo":"assets/gallery-backup/case-aweglo.jpg","case-aweglo-g1":"assets/gallery-backup/case-aweglo-g1-full.png","case-aweglo-g1-full":"assets/gallery-backup/case-aweglo-g1-full.png","case-consumer-websites-g13-1784174693914-full":"assets/gallery-backup/case-consumer-websites-g14-full-v4.jpg"};
