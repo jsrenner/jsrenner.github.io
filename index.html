@@ -481,6 +481,7 @@ class Component extends DCLogic {
     'case-heiyer': ['case-heiyer-g2'],
     'case-bachman': ['case-bachman-g2','case-bachman-g3']
   };
+  static DEFAULT_CROPS = { 'case-neurolexiq-g1': { x: 50, y: 0 } };
   state = { theme: 'dark', showBrandedLogo: false, menuOpen: false, activeNav: 'hero', activeCase: null, lightboxId: null, lightboxSrc: '', lightboxList: [], lightboxIndex: 0, galleryIds: {}, cardOrder: null, pdfHrefs: { 'case-sound-mind-g1': 'assets/ira-401k-social-security-retirement-report-2.26.pdf', 'case-heiyer-g2': 'assets/heiyer-estate-proposal-NEWEST.pdf' }, imageCrops: {} };
 
   _lsKey = 'jr-portfolio-layout-v1';
@@ -778,10 +779,10 @@ class Component extends DCLogic {
       });
       const lightboxList = [{ id: cid + '-full', src: c.heroSrc }, ...galleryItems.filter(g => !g.isPdf).map(g => ({ id: g.fullId, src: g.fullSrc }))];
       const galleryItemsWithOpen = galleryItems.map(g => ({ ...g, open: g.isPdf ? this.openPdf(g.pdfHref) : this.openLightbox(g.fullId, g.fullSrc, lightboxList, lightboxList.findIndex(l => l.id === g.fullId)),
-        cropPos: (this.state.imageCrops[g.id] ? this.state.imageCrops[g.id].x + '% ' + this.state.imageCrops[g.id].y + '%' : '50% 50%'),
+        cropPos: (() => { const cc = this.state.imageCrops[g.id] || Component.DEFAULT_CROPS[g.id]; return cc ? cc.x + '% ' + cc.y + '%' : '50% 50%'; })(),
         cropUp: this.nudgeCrop(g.id, 0, -5), cropDown: this.nudgeCrop(g.id, 0, 5), cropLeft: this.nudgeCrop(g.id, -5, 0), cropRight: this.nudgeCrop(g.id, 5, 0), cropReset: this.resetCrop(g.id) }));
       return { ...c, id: cid, imgId: cid, fullId: cid + '-full', galleryIds, galleryItems: galleryItemsWithOpen, lightboxList, openHero: this.openLightbox(cid + '-full', c.heroSrc, lightboxList, 0), open: () => this.openCase(cid),
-        cropPos: (this.state.imageCrops[cid] ? this.state.imageCrops[cid].x + '% ' + this.state.imageCrops[cid].y + '%' : '50% 50%'),
+        cropPos: (() => { const cc = this.state.imageCrops[cid] || Component.DEFAULT_CROPS[cid]; return cc ? cc.x + '% ' + cc.y + '%' : '50% 50%'; })(),
         cropUp: this.nudgeCrop(cid, 0, -5), cropDown: this.nudgeCrop(cid, 0, 5), cropLeft: this.nudgeCrop(cid, -5, 0), cropRight: this.nudgeCrop(cid, 5, 0), cropReset: this.resetCrop(cid) };
     });
     this._defaultCaseOrder = cases.map(c => c.id);
