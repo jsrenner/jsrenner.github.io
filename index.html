@@ -614,6 +614,11 @@ class Component extends DCLogic {
     this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' }));
   };
 
+  _jumpTop = () => {
+    try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+    catch (e) { window.scrollTo(0, 0); }
+  };
+
   _caseFromHash = () => {
     const m = window.location.hash.match(/^#\/project\/([a-z0-9-]+)\/?$/);
     if (!m) return null;
@@ -633,7 +638,7 @@ class Component extends DCLogic {
   _applyRoute = () => {
     const id = this._caseFromHash();
     if (id && id !== this.state.activeCase) {
-      this.setState({ activeCase: id, menuOpen: false }, () => { window.scrollTo(0, 0); requestAnimationFrame(() => window.scrollTo(0, 0)); });
+      this.setState({ activeCase: id, menuOpen: false }, () => { this._jumpTop(); requestAnimationFrame(this._jumpTop); });
     } else if (!id && this.state.activeCase !== null) {
       this.setState({ activeCase: null, menuOpen: false });
       setTimeout(() => {
@@ -645,7 +650,7 @@ class Component extends DCLogic {
 
   openCase = (id) => {
     this._pushCaseURL(id);
-    this.setState({ activeCase: id }, () => { window.scrollTo(0, 0); requestAnimationFrame(() => window.scrollTo(0, 0)); });
+    this.setState({ activeCase: id }, () => { this._jumpTop(); requestAnimationFrame(this._jumpTop); });
   };
 
   closeCase = () => {
