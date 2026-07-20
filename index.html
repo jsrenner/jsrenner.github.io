@@ -361,11 +361,16 @@
               <a href="https://jonrenner.com" target="_blank" rel="noopener" style="color:{{ t.text }}; font-weight:600;">JonRenner.com</a>
             </div>
           </div>
-          <form onsubmit="event.preventDefault();" style="display:flex; flex-direction:column; gap:14px; background:{{ t.cardBg }}; border:1px solid {{ t.border }}; border-radius:14px; padding:30px;">
-            <input type="text" placeholder="Your name" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }};">
-            <input type="email" placeholder="you@company.com" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }};">
-            <textarea rows="4" placeholder="Tell me about your project" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; resize:vertical;"></textarea>
+          <form id="contact-form" style="display:flex; flex-direction:column; gap:14px; background:{{ t.cardBg }}; border:1px solid {{ t.border }}; border-radius:14px; padding:30px;">
+            <input type="hidden" name="access_key" value="ff854642-9833-4908-9dd4-74cd5730d164">
+            <input type="hidden" name="subject" value="New inquiry from JonRenner.com">
+            <input type="hidden" name="from_name" value="JonRenner.com">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="text" name="name" placeholder="Your name" required="required" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }};">
+            <input type="email" name="email" placeholder="you@company.com" required="required" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }};">
+            <textarea rows="4" name="message" placeholder="Tell me about your project" required="required" style="font-family:inherit; font-size:14px; padding:12px 14px; border-radius:9px; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; resize:vertical;"></textarea>
             <button type="submit" style="font-family:inherit; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; padding:14px; border:none; border-radius:100px; background:{{ t.accent }}; color:{{ t.accentText }}; cursor:pointer;">Send Message</button>
+            <div id="contact-status" role="status" aria-live="polite" style="font-size:13px; line-height:1.5; min-height:0;"></div>
           </form>
         </div>
         </div>
@@ -859,6 +864,66 @@ class Component extends DCLogic {
       removeGalleryImage: this.removeGalleryImage };
   }
 }
+</script>
+<script>
+(function () {
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form || form.id !== 'contact-form') return;
+    e.preventDefault();
+
+    var btn = form.querySelector('button[type="submit"]');
+    var status = form.querySelector('#contact-status');
+    if (!btn || !status) return;
+    if (form.dataset.submitting === '1') return;
+
+    // Honeypot: silently ignore bot submissions
+    var honey = form.querySelector('input[name="botcheck"]');
+    if (honey && honey.checked) return;
+
+    form.dataset.submitting = '1';
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.cursor = 'default';
+    btn.textContent = 'Sending\u2026';
+    status.textContent = '';
+    status.style.color = '';
+
+    var formData = new FormData(form);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: formData
+    })
+      .then(function (res) { return res.json().then(function (json) { return { ok: res.ok, json: json }; }); })
+      .then(function (result) {
+        form.dataset.submitting = '0';
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.style.cursor = 'pointer';
+        btn.textContent = originalText;
+        if (result.ok && result.json && result.json.success) {
+          status.textContent = 'Thanks! Your message has been sent.';
+          status.style.color = '#4ADE80';
+          form.reset();
+        } else {
+          status.textContent = 'Something went wrong. Please try again.';
+          status.style.color = '#F87171';
+        }
+      })
+      .catch(function () {
+        form.dataset.submitting = '0';
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.style.cursor = 'pointer';
+        btn.textContent = originalText;
+        status.textContent = 'Something went wrong. Please try again.';
+        status.style.color = '#F87171';
+      });
+  });
+})();
 </script>
 </body>
 </html>
