@@ -152,19 +152,19 @@
 
       <!-- HERO -->
       <section id="hero" data-screen-label="Hero" style="padding:0 0 20px; margin-top:-20px;">
-        <div class="hero-banner" style="position:relative; margin-left:calc(-350px - max(0px, 50vw - 720px)); width:calc(100vw - 120px); min-height:78vh; border-radius:0 0 22px 22px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:0 48px 0 calc(423px + max(0px, 50vw - 720px)); border-left:1px solid rgba(244,241,234,0.18); border-right:1px solid rgba(244,241,234,0.18); box-sizing:border-box;">
+        <div class="hero-banner" style="position:relative; margin-left:calc(-350px - max(0px, 50vw - 720px)); width:calc(100vw - 120px); min-height:clamp(560px, 78vh, 900px); border-radius:0 0 22px 22px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:0 48px 0 calc(423px + max(0px, 50vw - 720px)); border-left:1px solid rgba(244,241,234,0.18); border-right:1px solid rgba(244,241,234,0.18); box-sizing:border-box;">
           <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:calc(50% - 30px) center; background-attachment:fixed; z-index:0;"></div>
           <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.35) 40%, rgba(6,14,26,0.8) 100%); z-index: 1; opacity: 0.5; border-radius: 12px"></div>
 
           <div class="hero-copy" style="position: relative; z-index: 2; padding: 70px 0 80px; padding-top: 0px">
             
-            <img id="hero-logo" src="./jr-consulting-monogram-logo-white-mriaefzg.png" alt="JR monogram" style="height:150px; width:auto; margin-bottom:24px;">
+            <img id="hero-logo" src="./jr-consulting-monogram-logo-white-mriaefzg.png" alt="JR monogram" style="height:clamp(90px, 16vh, 150px); width:auto; margin-bottom:24px;">
             <h1 style="font-family: 'Cormorant Garamond',serif; font-size: clamp(36px,5vw,60px); font-weight: 500; line-height: 1.1; margin: 0 0 24px; color: #f7f5ef; max-width: 25ch">Building digital experiences people love and trust.</h1>
             <p style="font-size: 17px; line-height: 1.7; color: #dfe6ec; max-width: 70ch; margin: 0">For more than 26 years, I've partnered with organizations to define strategy, lead design, guide development, and deliver digital products, platforms, and brands that drive measurable business results. Now I'm helping organizations leverage AI to build the next generation of digital experiences.</p>
           </div>
         </div>
 
-        <div class="hero-ctas" style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(-97px);">
+        <div class="hero-ctas" style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(clamp(-100px, -12vh, -30px));">
           <a href="#experience" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
             <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Hiring a Digital Leader?</div>
             <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore 26 years of experience leading digital products, platforms, brands, and customer experiences.</div>
