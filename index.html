@@ -150,7 +150,7 @@
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 
       <!-- HERO -->
-      <section id="hero" data-screen-label="Hero" style="padding:0;">
+      <section id="hero" data-screen-label="Hero" style="padding:0 0 20px; margin-top:-20px;">
         <div class="hero-banner" style="position:relative; margin-left:calc(-350px - max(0px, 50vw - 720px)); width:calc(100vw - 120px); min-height:78vh; border-radius:0 0 22px 22px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:0 48px 0 calc(423px + max(0px, 50vw - 720px)); border-left:1px solid rgba(244,241,234,0.18); border-right:1px solid rgba(244,241,234,0.18); box-sizing:border-box;">
           <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:calc(50% - 30px) center; background-attachment:fixed; z-index:0;"></div>
           <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.35) 40%, rgba(6,14,26,0.8) 100%); z-index: 1; opacity: 0.5; border-radius: 12px"></div>
@@ -163,7 +163,7 @@
           </div>
         </div>
 
-        <div class="hero-ctas" style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(-70px);">
+        <div class="hero-ctas" style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(-90px);">
           <a href="#experience" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
             <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Hiring a Digital Leader?</div>
             <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore 26 years of experience leading digital products, platforms, brands, and customer experiences.</div>
