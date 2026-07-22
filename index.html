@@ -47,6 +47,8 @@
 #about, #contact { scroll-margin-top: 95px; }
 #work { scroll-margin-top: 35px; }
 @media (max-width: 900px) {
+  #testimonials .testimonial-wrap { width: 100% !important; }
+  #testimonials .testimonial-next-btn { right: 12px !important; }
   .bio-aside { padding-top: 50px !important; }
   .bio-title { margin-bottom: 25px !important; }
   .bio-name { font-size: 29px !important; }
@@ -102,8 +104,8 @@
     html { overflow-x: hidden; overflow-x: clip; }
     @keyframes testimonialSlideInRight { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes testimonialSlideInLeft { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: translateX(0); } }
-    .testimonial-fade-next { animation: testimonialSlideInRight 420ms ease; }
-    .testimonial-fade-prev { animation: testimonialSlideInLeft 420ms ease; }
+    .testimonial-fade-next { animation: testimonialSlideInRight 600ms ease; }
+    .testimonial-fade-prev { animation: testimonialSlideInLeft 600ms ease; }
     body { margin: 0; overflow-x: hidden; overflow-x: clip; touch-action: pan-y pinch-zoom; }
     html { scroll-behavior: smooth; }
     .gallery-item .pdf-toggle-btn { opacity: 0; }
@@ -358,15 +360,17 @@
           <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Testimonials</h2>
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
         </div>
-        <div style="position:relative; overflow:hidden; border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px 88px 36px 36px; background:{{ t.cardBg }};">
-          <p key="{{ testimonialIndex }}" class="{{ testimonialAnimClass }}" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px; white-space:pre-line;">&#8220;{{ activeTestimonial.quote }}&#8221;</p>
-          <div class="{{ testimonialAnimClass }}" style="font-size:13px; font-weight:700; color:{{ t.text }};">{{ activeTestimonial.name }} — {{ activeTestimonial.title }}</div>
-          <div style="display:flex; gap:8px; margin-top:22px;">
-            <sc-for list="{{ testimonialDots }}" as="dot" hint-placeholder-count="2">
-            <button type="button" onClick="{{ dot.onClick }}" aria-label="Go to testimonial" style="width:8px; height:8px; padding:0; border-radius:50%; border:none; cursor:pointer; background:{{ dot.active ? t.accent : t.border }}; transition:background 200ms ease;"></button>
-            </sc-for>
+        <div class="testimonial-wrap" style="position:relative; width:calc(100% + 25px);">
+          <div style="overflow:hidden; border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
+            <p key="{{ testimonialIndex }}" class="{{ testimonialAnimClass }}" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px; white-space:pre-line;">&#8220;{{ activeTestimonial.quote }}&#8221;</p>
+            <div class="{{ testimonialAnimClass }}" style="font-size:13px; font-weight:700; color:{{ t.text }};">{{ activeTestimonial.name }} — {{ activeTestimonial.title }}</div>
+            <div style="display:flex; gap:8px; margin-top:22px;">
+              <sc-for list="{{ testimonialDots }}" as="dot" hint-placeholder-count="2">
+              <button type="button" onClick="{{ dot.onClick }}" aria-label="Go to testimonial" style="width:8px; height:8px; padding:0; border-radius:50%; border:none; cursor:pointer; background:{{ dot.active ? t.accent : t.border }}; transition:background 200ms ease;"></button>
+              </sc-for>
+            </div>
           </div>
-          <button type="button" onClick="{{ nextTestimonial }}" aria-label="Next testimonial" style="position:absolute; top:50%; right:24px; transform:translateY(-50%); flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:{{ t.cardBg }}; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;">&#8594;</button>
+          <button type="button" onClick="{{ nextTestimonial }}" aria-label="Next testimonial" class="testimonial-next-btn" style="position:absolute; top:50%; right:-54px; transform:translateY(-50%); flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;">&#8594;</button>
         </div>
         </div>
       </section>
