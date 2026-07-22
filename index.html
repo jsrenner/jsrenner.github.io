@@ -360,8 +360,8 @@
           <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Testimonials</h2>
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
         </div>
-        <div class="testimonial-wrap" style="position:relative; width:calc(100% + 25px);">
-          <div style="overflow:hidden; border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
+        <div class="testimonial-wrap" style="display:flex; align-items:center; gap:16px; width:calc(100% + 25px);">
+          <div style="flex:1; min-width:0; overflow:hidden; border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
             <p key="{{ testimonialIndex }}" class="{{ testimonialAnimClass }}" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px; white-space:pre-line;">&#8220;{{ activeTestimonial.quote }}&#8221;</p>
             <div class="{{ testimonialAnimClass }}" style="font-size:13px; font-weight:700; color:{{ t.text }};">{{ activeTestimonial.name }} — {{ activeTestimonial.title }}</div>
             <div style="display:flex; gap:8px; margin-top:22px;">
@@ -370,7 +370,7 @@
               </sc-for>
             </div>
           </div>
-          <button type="button" onClick="{{ nextTestimonial }}" aria-label="Next testimonial" class="testimonial-next-btn" style="position:absolute; top:50%; right:-54px; transform:translateY(-50%); flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;">&#8594;</button>
+          <button type="button" onClick="{{ nextTestimonial }}" aria-label="Next testimonial" class="testimonial-next-btn" style="flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;">&#8594;</button>
         </div>
         </div>
       </section>
