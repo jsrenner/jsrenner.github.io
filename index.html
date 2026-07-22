@@ -100,6 +100,8 @@
   <style>
     * { box-sizing: border-box; }
     html { overflow-x: hidden; overflow-x: clip; }
+    @keyframes testimonialFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .testimonial-fade { animation: testimonialFadeIn 450ms ease; }
     body { margin: 0; overflow-x: hidden; overflow-x: clip; touch-action: pan-y pinch-zoom; }
     html { scroll-behavior: smooth; }
     .gallery-item .pdf-toggle-btn { opacity: 0; }
@@ -354,11 +356,18 @@
           <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Testimonials</h2>
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
         </div>
-        <div style="display:grid; grid-template-columns:1fr; gap:22px;">
-          <div style="border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
-            <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px;">"I've had the privilege of working with Jon at two companies: MedAvant, where he served at Creative Director on our corporate marketing team, and at Capario, where he designed the new user interface for our flagship product – an online portal for healthcare revenue cycle management. Jon has a remarkable ability to understand the user experience and translate that into exceptional design. Jon is a team player and always exceeds expectations. I highly recommend Jon for any organization that is looking for an exceptional creative marketing/design/UX expert."</p>
-            <div style="font-size:13px; font-weight:700; color:{{ t.text }};">Teresa Stubbs — Former Product Marketing Director, Provider Solutions at Change Healthcare (Now UnitedHealth Group)</div>
+        <div style="position:relative; display:flex; align-items:center; gap:18px;">
+          <button type="button" onClick="{{ prevTestimonial }}" aria-label="Previous testimonial" style="flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;">&#8592;</button>
+          <div style="flex:1; min-width:0; border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
+            <p key="{{ testimonialIndex }}" class="testimonial-fade" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px; white-space:pre-line;">&#8220;{{ activeTestimonial.quote }}&#8221;</p>
+            <div class="testimonial-fade" style="font-size:13px; font-weight:700; color:{{ t.text }};">{{ activeTestimonial.name }} — {{ activeTestimonial.title }}</div>
+            <div style="display:flex; gap:8px; margin-top:22px;">
+              <sc-for list="{{ testimonialDots }}" as="dot" hint-placeholder-count="2">
+              <button type="button" onClick="{{ dot.onClick }}" aria-label="Go to testimonial" style="width:8px; height:8px; padding:0; border-radius:50%; border:none; cursor:pointer; background:{{ dot.active ? t.accent : t.border }}; transition:background 200ms ease;"></button>
+              </sc-for>
+            </div>
           </div>
+          <button type="button" onClick="{{ nextTestimonial }}" aria-label="Next testimonial" style="flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;">&#8594;</button>
         </div>
         </div>
       </section>
@@ -515,7 +524,19 @@ class Component extends DCLogic {
   };
   static DEFAULT_CROPS = { 'case-neurolexiq-g1': { x: 50, y: 0 }, 'case-sound-mind-g12-1784133758276': { x: 0, y: 0 } };
   static CASE_SLUGS = { 'case-neurolexiq': 'neurolexiq', 'case-sound-mind': 'sound-mind-investing', 'case-bachman': 'bachman-auto-group', 'case-consumer-websites': 'digital-experiences', 'case-capario': 'capario-healthcare', 'case-heiyer': 'heiyer-estate' };
-  state = { theme: 'dark', showBrandedLogo: false, menuOpen: false, activeNav: 'hero', activeCase: null, lightboxId: null, lightboxSrc: '', lightboxList: [], lightboxIndex: 0, galleryIds: {}, cardOrder: null, pdfHrefs: { 'case-sound-mind-g1': 'assets/ira-401k-social-security-retirement-report-2.26.pdf', 'case-heiyer-g2': 'assets/heiyer-estate-proposal-NEWEST.pdf' }, imageCrops: {} };
+  static TESTIMONIALS = [
+    {
+      quote: "I've had the privilege of working with Jon at two companies: MedAvant, where he served at Creative Director on our corporate marketing team, and at Capario, where he designed the new user interface for our flagship product \u2013 an online portal for healthcare revenue cycle management. Jon has a remarkable ability to understand the user experience and translate that into exceptional design. Jon is a team player and always exceeds expectations. I highly recommend Jon for any organization that is looking for an exceptional creative marketing/design/UX expert.",
+      name: "Teresa Stubbs",
+      title: "Former Product Marketing Director, Provider Solutions at Change Healthcare (Now UnitedHealth Group)"
+    },
+    {
+      quote: "I worked with Jon at Sound Mind Investing, and I am glad to recommend him. We spent a lot of time together on product and web projects, and I got a close look at how he thinks through user experience and messy business problems.\n\nJon excels at connecting what the business wants, what users actually need, and what's technically possible into something clear that the whole team can build toward. He asks good questions early, which saves everyone a lot of wasted effort. He's not a developer himself, but he gets the process, and he's great at translating between business folks and the technical team so nobody is talking past each other.\n\nJon is also just a good person to work with. He is trustworthy, encouraging, and quick to share what he knows. He is quick to give credit to others when it is due, and is open to feedback when it is offered. Most importantly, he makes the people around him feel valued. He cares about the people building the product as much as the product itself, making him an a great asset on any team!",
+      name: "Michael McDowell",
+      title: "Software Engineer"
+    }
+  ];
+  state = { theme: 'dark', showBrandedLogo: false, menuOpen: false, activeNav: 'hero', activeCase: null, testimonialIndex: 0, lightboxId: null, lightboxSrc: '', lightboxList: [], lightboxIndex: 0, galleryIds: {}, cardOrder: null, pdfHrefs: { 'case-sound-mind-g1': 'assets/ira-401k-social-security-retirement-report-2.26.pdf', 'case-heiyer-g2': 'assets/heiyer-estate-proposal-NEWEST.pdf' }, imageCrops: {} };
 
   _lsKey = 'jr-portfolio-layout-v1';
 
@@ -742,10 +763,28 @@ class Component extends DCLogic {
     };
     window.addEventListener('scroll', this._onScroll, { passive: true });
     this._onScroll();
+    this._startTestimonialTimer();
   }
+
+  _startTestimonialTimer = () => {
+    clearInterval(this._testimonialTimer);
+    this._testimonialTimer = setInterval(() => {
+      this.setState(s => ({ testimonialIndex: (s.testimonialIndex + 1) % Component.TESTIMONIALS.length }));
+    }, 9000);
+  };
+
+  goToTestimonial = (i) => {
+    const n = Component.TESTIMONIALS.length;
+    this.setState({ testimonialIndex: ((i % n) + n) % n });
+    this._startTestimonialTimer();
+  };
+
+  nextTestimonial = () => this.goToTestimonial(this.state.testimonialIndex + 1);
+  prevTestimonial = () => this.goToTestimonial(this.state.testimonialIndex - 1);
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this._onScroll);
+    clearInterval(this._testimonialTimer);
   }
 
   renderVals() {
@@ -867,6 +906,8 @@ class Component extends DCLogic {
     cases = cases.map((c, i) => ({ ...c, canMoveUp: i > 0, canMoveDown: i < cases.length - 1, moveUp: this.moveCard(c.id, -1), moveDown: this.moveCard(c.id, 1) }));
     const isHome = this.state.activeCase === null;
     const activeCaseData = cases.find(c => c.id === this.state.activeCase) || null;
+    const activeTestimonial = Component.TESTIMONIALS[this.state.testimonialIndex];
+    const testimonialDots = Component.TESTIMONIALS.map((tItem, i) => ({ active: i === this.state.testimonialIndex, onClick: () => this.goToTestimonial(i) }));
 
     const asideMarginTop = '-27px';
     const activeNav = this.state.activeCase ? null : this.state.activeNav;
@@ -874,7 +915,7 @@ class Component extends DCLogic {
     const navAboutColor = activeNav === 'about' ? t.accent : '#ffffff';
     const navWorkColor = activeNav === 'work' ? t.accent : '#ffffff';
     const navSkillsColor = activeNav === 'skills' ? t.accent : '#ffffff';
-    return { t, toggleTheme: this.toggleTheme, navLogoStyle: navLogoStyle + ' cursor:pointer;', cases, isHome, activeCaseData, closeCase: this.closeCase, goHome: this.goHome, asideMarginTop,
+    return { t, toggleTheme: this.toggleTheme, navLogoStyle: navLogoStyle + ' cursor:pointer;', cases, isHome, activeCaseData, closeCase: this.closeCase, goHome: this.goHome, asideMarginTop, activeTestimonial, testimonialIndex: this.state.testimonialIndex, testimonialCount: Component.TESTIMONIALS.length, nextTestimonial: this.nextTestimonial, prevTestimonial: this.prevTestimonial, goToTestimonial: this.goToTestimonial, testimonialDots,
       navHomeColor, navAboutColor, navWorkColor, navSkillsColor,
       goAbout: this.goSection('about'), goWork: this.goSection('work'), goSkills: this.goSection('skills'), goContact: this.goSection('contact'), toggleMenu: this.toggleMenu, menuOpenClass: (this.state.menuOpen ? 'open' : ''), caseModeClass: (isHome ? '' : 'case-mode'),
       lightboxId: this.state.lightboxId, lightboxSrc: this.state.lightboxSrc, openLightbox: this.openLightbox, closeLightbox: this.closeLightbox, stopProp: this.stopProp,
