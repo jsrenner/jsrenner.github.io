@@ -84,7 +84,8 @@
   .cols-2, .work-grid, .contact-grid, .gallery-grid { grid-template-columns: 1fr !important; }
   .cols-2 { gap: 22px !important; }
   .contact-grid { gap: 36px !important; }
-  .skills-grid { grid-template-columns: 1fr !important; gap: 34px !important; }
+  .skills-grid { display: block !important; column-count: 2 !important; column-gap: 28px !important; }
+  .skills-grid > div { break-inside: avoid; margin-bottom: 34px; }
   .exp-row { grid-template-columns: 1fr !important; gap: 4px !important; }
   .case-hero-wrap { width: 100% !important; }
   .case-meta { grid-template-columns: 1fr !important; gap: 16px !important; }
