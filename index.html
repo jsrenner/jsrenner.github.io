@@ -55,7 +55,7 @@
   .bio-social-row a { font-size: 16px !important; }
   .bio-mail-icon { width: 19px !important; height: 19px !important; }
   .bio-btn { transform: translateY(-5px); }
-  nav > img { display: block !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-31%, -50%) !important; height: 48px !important; opacity: 0.95 !important; pointer-events: auto !important; }
+  nav > img { display: block !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-31%, -50%) !important; height: 48px !important; opacity: 1 !important; pointer-events: auto !important; }
   .nav-inner { padding: 18px 22px !important; justify-content: space-between !important; }
   #about, #work { scroll-margin-top: 62px; }
   #skills, #contact { scroll-margin-top: 92px; }
@@ -867,7 +867,7 @@ class Component extends DCLogic {
     };
     const t = this.state.theme === 'dark' ? dark : light;
     const show = this.state.showBrandedLogo;
-    const navLogoStyle = 'position:absolute; left:calc(475px + max(0px, 50vw - 720px)); top:50%; height:42px; width:auto; z-index:1; transition:opacity 320ms ease, transform 320ms ease; filter:' + t.logoFilter + '; opacity:' + (show ? 0.85 : 0) + '; transform:translateY(-50%) translateX(' + (show ? 0 : -10) + 'px); pointer-events:' + (show ? 'auto' : 'none') + ';';
+    const navLogoStyle = 'position:absolute; left:calc(475px + max(0px, 50vw - 720px)); top:50%; height:42px; width:auto; z-index:1; transition:opacity 320ms ease, transform 320ms ease; filter:' + t.logoFilter + '; opacity:' + (show ? 1 : 0) + '; transform:translateY(-50%) translateX(' + (show ? 0 : -10) + 'px); pointer-events:' + (show ? 'auto' : 'none') + ';';
 
     const raw = [
       { id: 'neurolexiq', title: 'NeuroLexIQ',
