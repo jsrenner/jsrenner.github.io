@@ -84,8 +84,9 @@
   .cols-2, .work-grid, .contact-grid, .gallery-grid { grid-template-columns: 1fr !important; }
   .cols-2 { gap: 22px !important; }
   .contact-grid { gap: 36px !important; }
-  .skills-grid { display: block !important; column-count: 2 !important; column-gap: 28px !important; }
-  .skills-grid > div { break-inside: avoid; margin-bottom: 34px; }
+  .skills-desktop-grid { display: none !important; }
+  .skills-mobile-cols { display: flex !important; gap: 24px !important; align-items: flex-start; }
+  .skills-mobile-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 34px; }
   .exp-row { grid-template-columns: 1fr !important; gap: 4px !important; }
   .case-hero-wrap { width: 100% !important; }
   .case-meta { grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -255,7 +256,7 @@
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
           <a href="assets/Jonathan_Renner_Resume.pdf" download="" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; white-space:nowrap; text-decoration:none;">Download Resume →</a>
         </div>
-        <div class="skills-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:28px;">
+        <div class="skills-grid skills-desktop-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:28px;">
           <div>
             <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Product</h3>
             <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
@@ -285,6 +286,42 @@
             <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
               <li>Brand Strategy</li><li>Creative Direction</li><li>Video Direction</li><li>Visual Identity Systems</li><li>Web Design</li><li>Print &amp; Digital Production</li>
             </ul>
+          </div>
+        </div>
+        <div class="skills-mobile-cols" style="display:none;">
+          <div class="skills-mobile-col">
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Product</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>Product Strategy</li><li>Product Development</li><li>UX/UI</li><li>Information Architecture</li><li>Platform Architecture</li><li>Digital Strategy</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Leadership</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>Cross-Functional Leadership</li><li>Stakeholder Management</li><li>Technical Leadership</li><li>Product Vision</li><li>Business Strategy</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Technology &amp; AI</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>AI App Development</li><li>AI Workflow Design</li><li>API & Systems Integration</li><li>Knowledge Systems</li><li>CMS Architecture</li>
+            </ul>
+          </div>
+          </div>
+          <div class="skills-mobile-col">
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Growth</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>SEO</li><li>Content Intelligence</li><li>Marketing Automation</li><li>Email Marketing</li><li>Conversion Optimization</li><li>Paid Media Strategy</li><li>Campaign Analytics</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Creative</h3>
+            <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
+              <li>Brand Strategy</li><li>Creative Direction</li><li>Video Direction</li><li>Visual Identity Systems</li><li>Web Design</li><li>Print &amp; Digital Production</li>
+            </ul>
+          </div>
           </div>
         </div>
         </div>
