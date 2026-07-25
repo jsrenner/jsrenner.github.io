@@ -49,7 +49,9 @@
 @media (max-width: 900px) {
   #testimonials .testimonial-wrap { position: relative !important; width: 100% !important; gap: 0 !important; }
   #testimonials .testimonial-card { padding: 32px 24px !important; }
-  #testimonials .testimonial-next-btn { position: absolute !important; top: 50% !important; right: 14px !important; transform: translateY(-50%) !important; }
+  #testimonials .testimonial-next-btn { position: absolute !important; top: 50% !important; right: 4px !important; transform: translateY(-50%) !important; width: auto !important; height: auto !important; border: none !important; background: transparent !important; padding: 6px !important; }
+  #testimonials .testimonial-arrow-icon { display: none !important; }
+  #testimonials .testimonial-chevron-icon { display: inline !important; font-size: 26px !important; line-height: 1 !important; }
   #testimonials .testimonial-quote, #testimonials .testimonial-author { text-align: center !important; }
   #testimonials .testimonial-dots { justify-content: center !important; }
   .bio-aside { padding-top: 50px !important; }
@@ -110,6 +112,7 @@
     @keyframes testimonialSlideInRight { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes testimonialSlideInLeft { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: translateX(0); } }
     .testimonial-fade-next { animation: testimonialSlideInRight 600ms ease; }
+    .testimonial-chevron-icon { display: none; }
     .testimonial-fade-prev { animation: testimonialSlideInLeft 600ms ease; }
     body { margin: 0; overflow-x: hidden; overflow-x: clip; touch-action: pan-y pinch-zoom; }
     html { scroll-behavior: smooth; }
@@ -411,7 +414,7 @@
               </sc-for>
             </div>
           </div>
-          <button type="button" onClick="{{ nextTestimonial }}" aria-label="Next testimonial" class="testimonial-next-btn" style="flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;">&#8594;</button>
+          <button type="button" onClick="{{ nextTestimonial }}" aria-label="Next testimonial" class="testimonial-next-btn" style="flex-shrink:0; width:40px; height:40px; border-radius:50%; border:1px solid {{ t.border }}; background:transparent; color:{{ t.text }}; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all 200ms ease;" style-hover="border-color:{{ t.accent }} !important; color:{{ t.accent }} !important;"><span class="testimonial-arrow-icon">&#8594;</span><span class="testimonial-chevron-icon">&#8250;</span></button>
         </div>
         </div>
       </section>
