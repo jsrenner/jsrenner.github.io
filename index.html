@@ -47,8 +47,11 @@
 #about, #contact { scroll-margin-top: 95px; }
 #work { scroll-margin-top: 35px; }
 @media (max-width: 900px) {
-  #testimonials .testimonial-wrap { width: 100% !important; }
-  #testimonials .testimonial-next-btn { right: 12px !important; }
+  #testimonials .testimonial-wrap { position: relative !important; width: 100% !important; gap: 0 !important; }
+  #testimonials .testimonial-card { padding: 32px 24px !important; }
+  #testimonials .testimonial-next-btn { position: absolute !important; top: 50% !important; right: 14px !important; transform: translateY(-50%) !important; }
+  #testimonials .testimonial-quote, #testimonials .testimonial-author { text-align: center !important; }
+  #testimonials .testimonial-dots { justify-content: center !important; }
   .bio-aside { padding-top: 50px !important; }
   .bio-title { margin-bottom: 25px !important; }
   .bio-name { font-size: 29px !important; }
@@ -399,10 +402,10 @@
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
         </div>
         <div class="testimonial-wrap" style="display:flex; align-items:center; gap:16px; width:calc(100% + 25px);">
-          <div style="flex:1; min-width:0; overflow:hidden; border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
-            <p key="{{ testimonialIndex }}" class="{{ testimonialAnimClass }}" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px; white-space:pre-line;">&#8220;{{ activeTestimonial.quote }}&#8221;</p>
-            <div class="{{ testimonialAnimClass }}" style="font-size:13px; font-weight:700; color:{{ t.text }};">{{ activeTestimonial.name }} — {{ activeTestimonial.title }}</div>
-            <div style="display:flex; gap:8px; margin-top:22px;">
+          <div class="testimonial-card" style="position:relative; flex:1; min-width:0; overflow:hidden; border:1.5px dashed {{ t.border }}; border-radius:14px; padding:36px; background:{{ t.cardBg }};">
+            <p key="{{ testimonialIndex }}" class="{{ testimonialAnimClass }} testimonial-quote" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; line-height:1.7; color:{{ t.text }}; margin:0 0 20px; white-space:pre-line;">&#8220;{{ activeTestimonial.quote }}&#8221;</p>
+            <div class="{{ testimonialAnimClass }} testimonial-author" style="font-size:13px; font-weight:700; color:{{ t.text }};">{{ activeTestimonial.name }} — {{ activeTestimonial.title }}</div>
+            <div class="testimonial-dots" style="display:flex; gap:8px; margin-top:22px;">
               <sc-for list="{{ testimonialDots }}" as="dot" hint-placeholder-count="2">
               <button type="button" onClick="{{ dot.onClick }}" aria-label="Go to testimonial" style="width:8px; height:8px; padding:0; border-radius:50%; border:none; cursor:pointer; background:{{ dot.active ? t.accent : t.border }}; transition:background 200ms ease;"></button>
               </sc-for>
@@ -816,7 +819,7 @@ class Component extends DCLogic {
     clearInterval(this._testimonialTimer);
     this._testimonialTimer = setInterval(() => {
       this.setState(s => ({ testimonialIndex: (s.testimonialIndex + 1) % Component.TESTIMONIALS.length, testimonialDir: 1 }));
-    }, 9000);
+    }, 13000);
   };
 
   goToTestimonial = (i) => {
