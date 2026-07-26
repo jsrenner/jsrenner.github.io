@@ -226,7 +226,7 @@
 
       <!-- WORK -->
       <section id="work" data-screen-label="Selected Work" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:85px 48px 90px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; box-sizing:border-box; overflow:hidden;">
-        <div id="work-parallax-bg" style="position:absolute; top:-160px; left:0; right:0; bottom:-160px; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; opacity:0.12; z-index:0; will-change:transform;"></div>
+        <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
         <div style="position:relative; z-index:1; max-width:1100px;">
         <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
           <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Selected Work</h2>
@@ -336,7 +336,7 @@
 
       <!-- EXPERIENCE -->
       <section id="experience" data-screen-label="Experience" style="position:relative; background:{{ t.bgAlt }}; margin-left:calc(-410px - max(0px, 50vw - 720px)); width:100vw; padding:85px 48px 90px calc(483px + max(0px, 50vw - 720px)); border-top:1px solid {{ t.border }}; border-bottom:1px solid {{ t.border }}; box-sizing:border-box; overflow:hidden;">
-        <div id="experience-parallax-bg" style="position:absolute; top:-160px; left:0; right:0; bottom:-160px; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; opacity:0.12; z-index:0; will-change:transform;"></div>
+        <div class="bg-fixed" style="position:absolute; inset:0; background-image:url('assets/ocean-background.jpg'); background-size:cover; background-position:center; background-attachment:fixed; opacity:0.12; z-index:0;"></div>
         <div style="position:relative; z-index:1; max-width:1100px;">
         <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:40px;">
           <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">Experience</h2>
@@ -802,15 +802,6 @@ class Component extends DCLogic {
     this._applyRoute();
     this._scrollThreshold = 175;
     this._navSections = ['hero', 'about', 'work', 'skills'];
-    this._sectionParallax = (sectionId, bgId, maxOffset) => {
-      const section = document.getElementById(sectionId);
-      const bg = document.getElementById(bgId);
-      if (!section || !bg) return;
-      const rect = section.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh + rect.height)));
-      bg.style.transform = 'translateY(' + (progress * maxOffset) + 'px)';
-    };
     this._onScroll = () => {
       const show = window.scrollY > this._scrollThreshold;
       if (show !== this.state.showBrandedLogo) this.setState({ showBrandedLogo: show });
@@ -822,8 +813,6 @@ class Component extends DCLogic {
         }
         if (current !== this.state.activeNav) this.setState({ activeNav: current });
       }
-      this._sectionParallax('work', 'work-parallax-bg', 140);
-      this._sectionParallax('experience', 'experience-parallax-bg', 140);
     };
     window.addEventListener('scroll', this._onScroll, { passive: true });
     this._onScroll();
