@@ -85,7 +85,7 @@
   .hero-banner { margin-left: 0 !important; width: 100% !important; min-height: 0 !important; padding: 34px 22px 90px !important; border-radius: 0 0 18px 18px !important; }
   .hero-copy { padding: 0 !important; }
   #hero-logo { height: 84px !important; }
-  .hero-ctas { grid-template-columns: 1fr !important; margin: 0 20px !important; padding: 0 !important; max-width: none !important; transform: translateY(-56px) !important; }
+  .hero-ctas { grid-template-columns: 1fr !important; margin: 0 20px !important; padding: 0 !important; max-width: none !important; transform: translateY(-41px) !important; }
   .cols-2, .work-grid, .contact-grid, .gallery-grid { grid-template-columns: 1fr !important; }
   .cols-2 { gap: 22px !important; }
   .contact-grid { gap: 36px !important; }
@@ -195,7 +195,7 @@
           </div>
         </div>
 
-        <div class="hero-ctas" style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(clamp(-100px, -12vh, -30px));">
+        <div class="hero-ctas" style="position: relative; z-index: 2; max-width: 900px; margin: 0 0 0 73px; display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; padding: 0 48px 0 0; transform: translateY(clamp(-85px, calc(-12vh + 15px), -15px));">
           <a href="#skills" onClick="{{ goSkills }}" style="background: {{ t.cardBg }}; border: 1px solid {{ t.border }}; border-radius: 14px; padding: 36px 30px; text-align: center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; min-height:190px; cursor:pointer; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg);">
             <div style="font-family: 'Cormorant Garamond',serif; font-size: 25px; font-weight: 600; color: {{ t.accent }}">Hiring a Digital Leader?</div>
             <div style="font-size: 14.5px; color: {{ t.textMuted }}; font-weight: 500; line-height: 1.5;">Explore 26 years of experience leading marketing, digital products, platforms, brands, and customer experiences.</div>
