@@ -80,7 +80,7 @@
   aside { position: static !important; width: auto !important; height: auto !important; margin: 16px 16px 34px !important; overflow: visible !important; border-radius: 18px; }
   section[id] { padding: 52px 20px !important; }
   #hero { padding: 0 !important; margin-bottom: -10px !important; }
-  #work, #experience, #contact { margin-left: 0 !important; width: 100% !important; }
+  #work, #experience, #contact, #skills { margin-left: 0 !important; width: 100% !important; }
   section:not([id]) { padding-left: 20px !important; padding-right: 20px !important; }
   .bg-fixed { background-attachment: scroll !important; }
   .hero-banner { margin-left: 0 !important; width: 100% !important; min-height: 0 !important; padding: 34px 22px 90px !important; border-radius: 0 0 18px 18px !important; }
@@ -297,7 +297,7 @@
           <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
           <a href="assets/Jonathan_Renner_Resume.pdf" download="" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:{{ t.accent }}; white-space:nowrap; text-decoration:none;">Download Resume →</a>
         </div>
-        <div class="skills-grid skills-desktop-grid" style="display:grid; grid-template-columns:repeat(5,max-content); justify-content:space-between; column-gap:24px; row-gap:28px;">
+        <div class="skills-grid skills-desktop-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:28px;">
           <div>
             <h3 style="font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin:0 0 14px; color:{{ t.accent }};">Product</h3>
             <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px; line-height:1.5; color:{{ t.textMuted }};">
