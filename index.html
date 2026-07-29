@@ -47,6 +47,7 @@
 #about, #contact { scroll-margin-top: 95px; }
 #work { scroll-margin-top: 35px; }
 @media (max-width: 900px) {
+  .wired-grid { grid-template-columns: 1fr !important; }
   #testimonials .testimonial-wrap { position: relative !important; width: 100% !important; gap: 0 !important; }
   #testimonials .testimonial-card { padding: 32px 24px !important; }
   #testimonials .testimonial-next-btn { position: absolute !important; top: 50% !important; right: 4px !important; transform: translateY(-50%) !important; width: auto !important; height: auto !important; border: none !important; background: transparent !important; padding: 6px !important; }
@@ -221,6 +222,39 @@
           <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; line-height:1.6; color:{{ t.text }}; margin:0;">I'm a curious builder, so my career has never fit neatly into one box. It's been shaped by a willingness to learn and a passion for making complicated things work better.</p>
         </div>
         <div class="cols-2" style="display:grid; grid-template-columns:1fr 1fr; gap:44px; font-size:16px; line-height:1.8; color:{{ t.textMuted }};"><div><p style="margin:0 0 18px;">I've always been driven by a passion for solving complex business challenges. I enjoy bringing together leaders, stakeholders, designers, developers, and marketers around a shared vision, then turning that vision into practical digital products, effective marketing, and intuitive customer experiences. Whether launching a new product, rebranding an organization, modernizing a digital platform, or applying AI to improve workflows, my goal is to create thoughtful, scalable, human-centered solutions that deliver lasting value.</p><p style="margin:0;">Over the past 26 years, I've led strategy, marketing, design, and development for digital products, platforms, brands, and customer experiences across nonprofit, corporate, startup, and consulting environments. More recently, I've expanded into AI-enabled applications, automations, and business solutions that improve efficiency and help organizations work smarter.</p></div><div><p style="margin:0 0 18px;">Outside of work, I'm a lifelong drummer and musician. Performing professionally since childhood with touring bands and live productions has reinforced many of the same principles I value professionally: preparation, collaboration, adaptability, and performing at my best under pressure as part of a team.</p><p style="margin:0;">Most importantly, I'm a husband and father of three daughters. One of my daughters lives with a rare genetic syndrome and significant disabilities. The privilege of caring for her has shaped my leadership, strengthened my resilience, and deepened my appreciation for empathy, patience, and what truly matters in both life and work.</p></div></div>
+        </div>
+      </section>
+
+      <!-- HOW I'M WIRED -->
+      <section id="strengths" data-screen-label="How I'm Wired" style="padding: 0px 56px 90px 73px;">
+        <div style="max-width:1100px;">
+        <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:24px;">
+          <h2 style="font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(26px,3vw,34px); margin:0; color:{{ t.text }};">How I'm Wired</h2>
+          <div style="flex:1; border-top:1px dotted {{ t.border }};"></div>
+        </div>
+        <p style="font-size:16px; line-height:1.7; color:{{ t.textMuted }}; max-width:78ch; margin:0 0 36px;">Gallup's CliftonStrengths assessment identifies the natural ways we think, work, and solve problems. These are my top five, in order, and how they show up in my work. Select any theme to learn more.</p>
+        <div class="wired-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+          <a href="https://www.gallup.com/cliftonstrengths/en/252197/connectedness-theme.aspx" target="_blank" rel="noopener" class="wired-card" style="display:block; border:1px solid {{ t.border }}; border-radius:14px; padding:30px 28px; background:{{ t.cardBg }}; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg); box-shadow:0 12px 28px rgba(0,0,0,0.22);">
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 12px; color:{{ t.accent }};">1. Connectedness</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:{{ t.textMuted }}; margin:0;">I see connections between people, ideas, and the bigger picture.</p>
+          </a>
+          <a href="https://www.gallup.com/cliftonstrengths/en/252209/context-theme.aspx" target="_blank" rel="noopener" class="wired-card" style="display:block; border:1px solid {{ t.border }}; border-radius:14px; padding:30px 28px; background:{{ t.cardBg }}; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg); box-shadow:0 12px 28px rgba(0,0,0,0.22);">
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 12px; color:{{ t.accent }};">2. Context</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:{{ t.textMuted }}; margin:0;">I look to what came before to better understand the present.</p>
+          </a>
+          <a href="https://www.gallup.com/cliftonstrengths/en/252350/strategic-theme.aspx" target="_blank" rel="noopener" class="wired-card" style="display:block; border:1px solid {{ t.border }}; border-radius:14px; padding:30px 28px; background:{{ t.cardBg }}; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg); box-shadow:0 12px 28px rgba(0,0,0,0.22);">
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 12px; color:{{ t.accent }};">3. Strategic</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:{{ t.textMuted }}; margin:0;">I see different possibilities and identify the best path forward.</p>
+          </a>
+          <a href="https://www.gallup.com/cliftonstrengths/en/252320/responsibility-theme.aspx" target="_blank" rel="noopener" class="wired-card" style="display:block; border:1px solid {{ t.border }}; border-radius:14px; padding:30px 28px; background:{{ t.cardBg }}; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg); box-shadow:0 12px 28px rgba(0,0,0,0.22);">
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 12px; color:{{ t.accent }};">4. Responsibility</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:{{ t.textMuted }}; margin:0;">I take ownership of my commitments and follow through.</p>
+          </a>
+          <a href="https://www.gallup.com/cliftonstrengths/en/252323/restorative-theme.aspx" target="_blank" rel="noopener" class="wired-card" style="display:block; border:1px solid {{ t.border }}; border-radius:14px; padding:30px 28px; background:{{ t.cardBg }}; text-decoration:none; transition:all 250ms ease; --accent-hover:{{ t.accent }}; --card-hover-bg:{{ t.cardHoverBg }};" style-hover="transform:translateY(-4px); border-color:var(--accent-hover); background:var(--card-hover-bg); box-shadow:0 12px 28px rgba(0,0,0,0.22);">
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin:0 0 12px; color:{{ t.accent }};">5. Restorative</h3>
+            <p style="font-size:14.5px; line-height:1.6; color:{{ t.textMuted }}; margin:0;">I enjoy diagnosing problems and making things work better.</p>
+          </a>
+        </div>
         </div>
       </section>
 
