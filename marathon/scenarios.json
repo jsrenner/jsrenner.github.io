@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Savings only",
+    "d": { "p": "savings" }
+  },
+  {
+    "name": "Savings + HELOC",
+    "d": { "p": "noRetire" }
+  }
+]
