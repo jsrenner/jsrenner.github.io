@@ -40,7 +40,6 @@
   @keyframes cfr-hero-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes cfr-breathe-a { 0% { transform: translateY(0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translateY(7px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translateY(0); } }
   @keyframes cfr-breathe-b { 0% { transform: translateY(0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translateY(-7px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translateY(0); } }
-  @keyframes cfr-breathe-b-off { 0% { transform: translateY(17px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translateY(10px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translateY(17px); } }
   @keyframes cfr-img-zoom { 0% { transform: scale(1.06); filter: saturate(0.6) brightness(0.86); } 100% { transform: scale(1); filter: saturate(1) brightness(1); } }
   @keyframes cfr-ants-path { to { stroke-dashoffset: 8.5; } }
   @keyframes cfr-ants-path-rev { to { stroke-dashoffset: -7; } }
@@ -53,7 +52,7 @@
   @keyframes cfr-drift-b { 0% { transform: translate3d(0, 0, 0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translate3d(-11px, 8px, 0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translate3d(0, 0, 0); } }
 
   @media (min-width: 901px) {
-    #cfr-intro-front-wrap { transform: translateY(17px); }
+    #cfr-intro-front-wrap { bottom: -24px !important; }
     #cfr-intro-photo-front img { margin-left: 4px; }
     #cfr-intro-photo-back img { margin-left: 5px; transform: translate(-50%, -50%) scale(1.08); }
     #cfr-hero-couple img { object-position: 51% calc(50% + 20px); }
@@ -1424,7 +1423,7 @@ class Component extends DCLogic {
         const back = document.getElementById("cfr-intro-back-wrap");
         const front = document.getElementById("cfr-intro-front-wrap");
         if (back) back.style.animation = "cfr-breathe-a 11s ease-in-out infinite";
-        if (front) front.style.animation = (window.matchMedia("(min-width: 901px)").matches ? "cfr-breathe-b-off" : "cfr-breathe-b") + " 11s ease-in-out infinite";
+        if (front) front.style.animation = "cfr-breathe-b 11s ease-in-out infinite";
       }, 1500);
     };
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return show();
