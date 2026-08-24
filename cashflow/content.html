@@ -412,7 +412,7 @@
           <span id="cfr-hiw-mloop-label" style="position: absolute; right: 1px; top: 50%; transform: translate(50%, -50%) rotate(90deg); transform-origin: center; background: #061628; padding: 0 12px; opacity: 0; transition: opacity 500ms ease; font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #ffffff; white-space: nowrap;">The cycle repeats itself</span>
         </div>
         <div id="cfr-hiw-loop" style="position: absolute; left: calc(16.666% - 16px); right: calc(16.666% - 16px); bottom: 78px; height: 58px; pointer-events: none; opacity: 0; transition: opacity 500ms ease;">
-          <svg viewBox="0 0 1000 58" preserveAspectRatio="none" id="cfr-hiw-loop-svg" style="width: 100%; height: 58px; display: block; overflow: visible; clip-path: inset(-40% 0 -40% 100%); transition: clip-path 1500ms cubic-bezier(0.33,0,0.25,1);" fill="none"><path d="M1.5 0 V38 Q1.5 56.5 20 56.5 H980 Q998.5 56.5 998.5 38 V0" stroke="rgba(224,123,42,0.75)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 5" vector-effect="non-scaling-stroke" style="animation: cfr-ants-path 900ms linear infinite;"></path></svg>
+          <svg viewBox="0 0 1000 58" preserveAspectRatio="none" id="cfr-hiw-loop-svg" style="width: 100%; height: 58px; display: block; overflow: visible; clip-path: inset(-40% 0 -40% 100%); transition: clip-path 850ms cubic-bezier(0.33,0,0.25,1);" fill="none"><path d="M1.5 0 V38 Q1.5 56.5 20 56.5 H980 Q998.5 56.5 998.5 38 V0" stroke="rgba(224,123,42,0.75)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 5" vector-effect="non-scaling-stroke" style="animation: cfr-ants-path 900ms linear infinite;"></path></svg>
           <span id="cfr-hiw-loop-tip" style="position: absolute; left: -8px; top: -3px; width: 17px; height: 17px; border-left: 2.5px solid rgba(224,123,42,0.75); border-top: 2.5px solid rgba(224,123,42,0.75); transform: rotate(45deg); opacity: 0; transition: opacity 320ms ease;"></span>
           <span style="position: absolute; left: 50%; bottom: -15px; transform: translateX(-50%); background: #061628; padding: 0 18px; font-size: 15.5px; line-height: 1.9; font-weight: 700; color: #ffffff; white-space: nowrap;">The cycle repeats every year, on its own.</span>
         </div>
@@ -920,7 +920,7 @@ class Component extends DCLogic {
     const tip = document.getElementById("cfr-hiw-loop-tip");
     if (loop) loop.style.opacity = "1";
     if (svg) svg.style.clipPath = "inset(-40% 0 -40% 0)";
-    if (tip) setTimeout(() => { tip.style.opacity = "1"; }, 1500);
+    if (tip) setTimeout(() => { tip.style.opacity = "1"; }, 850);
   }
 
   initHiwReveal() {
@@ -938,7 +938,7 @@ class Component extends DCLogic {
     if (loop && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const lio = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) { lio.disconnect(); this.drawLoop(); } });
-      }, { threshold: 0, rootMargin: "0px 0px -22% 0px" });
+      }, { threshold: 0, rootMargin: "0px 0px -40% 0px" });
       lio.observe(loop);
       this._loopIO = lio;
     }
@@ -972,7 +972,7 @@ class Component extends DCLogic {
         const svg = document.getElementById("cfr-hiw-loop-svg");
         if (svg) svg.style.clipPath = "inset(-40% 0 -40% 0)";
         const tip = document.getElementById("cfr-hiw-loop-tip");
-        if (tip) setTimeout(() => { tip.style.opacity = "1"; }, 1500);
+        if (tip) setTimeout(() => { tip.style.opacity = "1"; }, 850);
         return;
       }
       if (e.id.indexOf("arrow") > -1) { e.style.clipPath = "inset(0 0 0 0)"; return; }
