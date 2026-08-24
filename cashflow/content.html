@@ -40,7 +40,8 @@
   @keyframes cfr-hero-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes cfr-breathe-a { 0% { transform: translateY(0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translateY(7px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translateY(0); } }
   @keyframes cfr-breathe-b { 0% { transform: translateY(0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translateY(-7px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translateY(0); } }
-  @keyframes cfr-img-zoom { 0% { transform: scale(1.2); filter: saturate(0.6) brightness(0.86); } 100% { transform: scale(1); filter: saturate(1) brightness(1); } }
+  @keyframes cfr-breathe-b-off { 0% { transform: translateY(17px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translateY(10px); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translateY(17px); } }
+  @keyframes cfr-img-zoom { 0% { transform: scale(1.06); filter: saturate(0.6) brightness(0.86); } 100% { transform: scale(1); filter: saturate(1) brightness(1); } }
   @keyframes cfr-ants-path { to { stroke-dashoffset: 8.5; } }
   @keyframes cfr-ants-path-rev { to { stroke-dashoffset: -7; } }
   @keyframes cfr-ants-path-rev2 { to { stroke-dashoffset: -8.5; } }
@@ -52,14 +53,20 @@
   @keyframes cfr-drift-b { 0% { transform: translate3d(0, 0, 0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 50% { transform: translate3d(-11px, 8px, 0); animation-timing-function: cubic-bezier(0.37,0,0.63,1); } 100% { transform: translate3d(0, 0, 0); } }
 
   @media (min-width: 901px) {
+    #cfr-intro-front-wrap { transform: translateY(17px); }
+    #cfr-intro-photo-front img { margin-left: 4px; }
+    #cfr-intro-photo-back img { margin-left: 5px; transform: translate(-50%, -50%) scale(1.08); }
     #cfr-hero-couple img { object-position: 51% calc(50% + 20px); }
     #cfr-intro-photo-front img { object-fit: cover !important; object-position: calc(81.63% - 18px) 50% !important; }
   }
   #cfr-nav a img { max-width: none; }
   body, button, a, span { font-variant-emoji: text; }
   #cfr-signup-hero img { object-position: 50% 50%; }
+  #cfr-step-1 img, #cfr-step-2 img, #cfr-step-3 img { margin-top: -15px; margin-left: -3px; }
+  #cfr-step-1 img, #cfr-step-2 img { margin-left: -6px; }
+  #cfr-step-2 img { margin-top: -12px; }
   @media (min-width: 901px) and (hover: hover) {
-    [data-card] [data-m="cardover"] { clip-path: inset(50% 0 50% 0 round 20px) !important; transition: clip-path 620ms cubic-bezier(0.4, 0, 0.2, 1) !important; }
+    [data-card] [data-m="cardover"] { clip-path: inset(50% 0 50% 0 round 20px) !important; transition: clip-path 380ms cubic-bezier(0.22, 0.9, 0.3, 1) !important; }
     [data-card]:hover [data-m="cardover"] { clip-path: inset(0% 0 0% 0 round 20px) !important; }
     [data-card] [data-m="cardrow"] > a { width: 52px !important; background-color: #ffffff !important; color: #020E1B !important; border-color: rgba(2,14,27,0.14) !important; }
     [data-card] [data-m="cardrow"] > a > span:last-child { opacity: 0 !important; }
@@ -482,7 +489,7 @@
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #3f4a54;">We monitor and manage your income reserves for you. No calendar alerts, no trades to remember.</p>
           <a href="https://smiprivateclient.youcanbook.me" onClick="{{ openBooking }}" style="position: relative; z-index: 4; height: 52px; width: {{ btnW1 }}; overflow: hidden; border-radius: 999px; background-color: {{ btnBg1 }}; background-image: linear-gradient(112deg, #020E1B 0 50%, rgba(2,14,27,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: {{ btnFg1 }}; border: 1px solid {{ btnBd1 }}; box-sizing: border-box; display: flex; align-items: center; justify-self: end; white-space: nowrap; transition: width 560ms cubic-bezier(0.4, 0, 0.2, 1), background-position 240ms linear, background-color 420ms ease, color 200ms ease, border-color 420ms ease;" style-hover="background-position: 0% 0; border-color: #020E1B; color: #ffffff;"><span style="width: 52px; flex: none; display: flex; align-items: center; justify-content: center; font-size: 17px;">↗︎</span><span style="font-size: 13.5px; font-weight: 700; padding-right: 24px; opacity: {{ btnO1 }}; transition: opacity 340ms ease 160ms;">Schedule a Call</span></a>
         </div>
-        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip1 }}; transition: clip-path 620ms cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
+        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip1 }}; transition: clip-path 380ms cubic-bezier(0.22, 0.9, 0.3, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
           <svg viewBox="0 0 24 24" style="width: 38px; height: 38px;" fill="none" stroke="#93a0ac" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6l7.2 2.7v6.1c0 4.6-3 8.1-7.2 10-4.2-1.9-7.2-5.4-7.2-10V5.3z"></path><path d="M8.6 11.9l2.6 2.6 4.4-5"></path></svg>
           <h3 style="margin: 0 0 0 -15px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; color: #020E1B;">Professional Management</h3>
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #4c545c;">We monitor and manage your income reserves for you. No calendar alerts, no trades to remember.</p>
@@ -497,7 +504,7 @@
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #3f4a54;">Current year income sits in a Treasury money market fund, which is often exempt from state income tax.</p>
           <a href="https://smiprivateclient.youcanbook.me" onClick="{{ openBooking }}" style="position: relative; z-index: 4; height: 52px; width: {{ btnW2 }}; overflow: hidden; border-radius: 999px; background-color: {{ btnBg2 }}; background-image: linear-gradient(112deg, #020E1B 0 50%, rgba(2,14,27,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: {{ btnFg2 }}; border: 1px solid {{ btnBd2 }}; box-sizing: border-box; display: flex; align-items: center; justify-self: end; white-space: nowrap; transition: width 560ms cubic-bezier(0.4, 0, 0.2, 1), background-position 240ms linear, background-color 420ms ease, color 200ms ease, border-color 420ms ease;" style-hover="background-position: 0% 0; border-color: #020E1B; color: #ffffff;"><span style="width: 52px; flex: none; display: flex; align-items: center; justify-content: center; font-size: 17px;">↗︎</span><span style="font-size: 13.5px; font-weight: 700; padding-right: 24px; opacity: {{ btnO2 }}; transition: opacity 340ms ease 160ms;">Schedule a Call</span></a>
         </div>
-        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip2 }}; transition: clip-path 620ms cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
+        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip2 }}; transition: clip-path 380ms cubic-bezier(0.22, 0.9, 0.3, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
           <svg viewBox="0 0 24 24" style="width: 38px; height: 38px;" fill="none" stroke="#93a0ac" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"></circle><path d="M8.4 15.6l7.2-7.2"></path><circle cx="9" cy="9" r="1.5"></circle><circle cx="15" cy="15" r="1.5"></circle></svg>
           <h3 style="margin: 0 0 0 -15px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; color: #020E1B;">Tax-Smart Structure</h3>
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #4c545c;">Current year income sits in a Treasury money market fund, which is often exempt from state income tax.</p>
@@ -512,7 +519,7 @@
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #3f4a54;">Your scheduled withdrawals are pre-funded and sent automatically, on the schedule you choose.</p>
           <a href="https://smiprivateclient.youcanbook.me" onClick="{{ openBooking }}" style="position: relative; z-index: 4; height: 52px; width: {{ btnW3 }}; overflow: hidden; border-radius: 999px; background-color: {{ btnBg3 }}; background-image: linear-gradient(112deg, #020E1B 0 50%, rgba(2,14,27,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: {{ btnFg3 }}; border: 1px solid {{ btnBd3 }}; box-sizing: border-box; display: flex; align-items: center; justify-self: end; white-space: nowrap; transition: width 560ms cubic-bezier(0.4, 0, 0.2, 1), background-position 240ms linear, background-color 420ms ease, color 200ms ease, border-color 420ms ease;" style-hover="background-position: 0% 0; border-color: #020E1B; color: #ffffff;"><span style="width: 52px; flex: none; display: flex; align-items: center; justify-content: center; font-size: 17px;">↗︎</span><span style="font-size: 13.5px; font-weight: 700; padding-right: 24px; opacity: {{ btnO3 }}; transition: opacity 340ms ease 160ms;">Schedule a Call</span></a>
         </div>
-        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip3 }}; transition: clip-path 620ms cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
+        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip3 }}; transition: clip-path 380ms cubic-bezier(0.22, 0.9, 0.3, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
           <svg viewBox="0 0 24 24" style="width: 38px; height: 38px;" fill="none" stroke="#93a0ac" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="4.6" width="17.6" height="16.2" rx="2.4"></rect><path d="M3.2 9.4h17.6M8 3.2v3.2M16 3.2v3.2M9 15h6M12.4 12.6L15 15l-2.6 2.4"></path></svg>
           <h3 style="margin: 0 0 0 -15px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; color: #020E1B;">Automatic Income Delivery</h3>
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #4c545c;">Your scheduled withdrawals are pre-funded and sent automatically, on the schedule you choose.</p>
@@ -527,7 +534,7 @@
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #3f4a54;">The system harvests gains from appreciated holdings when markets are up and preserves equities when markets are down.</p>
           <a href="https://smiprivateclient.youcanbook.me" onClick="{{ openBooking }}" style="position: relative; z-index: 4; height: 52px; width: {{ btnW4 }}; overflow: hidden; border-radius: 999px; background-color: {{ btnBg4 }}; background-image: linear-gradient(112deg, #020E1B 0 50%, rgba(2,14,27,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: {{ btnFg4 }}; border: 1px solid {{ btnBd4 }}; box-sizing: border-box; display: flex; align-items: center; justify-self: end; white-space: nowrap; transition: width 560ms cubic-bezier(0.4, 0, 0.2, 1), background-position 240ms linear, background-color 420ms ease, color 200ms ease, border-color 420ms ease;" style-hover="background-position: 0% 0; border-color: #020E1B; color: #ffffff;"><span style="width: 52px; flex: none; display: flex; align-items: center; justify-content: center; font-size: 17px;">↗︎</span><span style="font-size: 13.5px; font-weight: 700; padding-right: 24px; opacity: {{ btnO4 }}; transition: opacity 340ms ease 160ms;">Schedule a Call</span></a>
         </div>
-        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip4 }}; transition: clip-path 620ms cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
+        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip4 }}; transition: clip-path 380ms cubic-bezier(0.22, 0.9, 0.3, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
           <svg viewBox="0 0 24 24" style="width: 38px; height: 38px;" fill="none" stroke="#93a0ac" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.2A8.2 8.2 0 0 1 18.4 6.6"></path><path d="M18.6 3.4v3.4h-3.4"></path><path d="M20 13.8A8.2 8.2 0 0 1 5.6 17.4"></path><path d="M5.4 20.6v-3.4h3.4"></path></svg>
           <h3 style="margin: 0 0 0 -15px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; color: #020E1B;">Dynamic Rebalancing</h3>
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #4c545c;">The system harvests gains from appreciated holdings when markets are up and preserves equities when markets are down.</p>
@@ -542,7 +549,7 @@
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #3f4a54;">Because the reserve lives inside Bond Upgrading, your portfolio stays aimed at long-term growth while covering near-term income.</p>
           <a href="https://smiprivateclient.youcanbook.me" onClick="{{ openBooking }}" style="position: relative; z-index: 4; height: 52px; width: {{ btnW5 }}; overflow: hidden; border-radius: 999px; background-color: {{ btnBg5 }}; background-image: linear-gradient(112deg, #020E1B 0 50%, rgba(2,14,27,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: {{ btnFg5 }}; border: 1px solid {{ btnBd5 }}; box-sizing: border-box; display: flex; align-items: center; justify-self: end; white-space: nowrap; transition: width 560ms cubic-bezier(0.4, 0, 0.2, 1), background-position 240ms linear, background-color 420ms ease, color 200ms ease, border-color 420ms ease;" style-hover="background-position: 0% 0; border-color: #020E1B; color: #ffffff;"><span style="width: 52px; flex: none; display: flex; align-items: center; justify-content: center; font-size: 17px;">↗︎</span><span style="font-size: 13.5px; font-weight: 700; padding-right: 24px; opacity: {{ btnO5 }}; transition: opacity 340ms ease 160ms;">Schedule a Call</span></a>
         </div>
-        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip5 }}; transition: clip-path 620ms cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
+        <div style="position: absolute; inset: 0; background: #ffffff; clip-path: {{ clip5 }}; transition: clip-path 380ms cubic-bezier(0.22, 0.9, 0.3, 1); display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.85fr) minmax(52px, 282px); gap: 26px; align-items: center; padding: 32px 40px; box-shadow: inset 0 0 0 1px rgba(2,14,27,0.10);" data-m="cardover">
           <svg viewBox="0 0 24 24" style="width: 38px; height: 38px;" fill="none" stroke="#93a0ac" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2l8.4 4.3-8.4 4.3L3.6 7.5z"></path><path d="M3.6 12l8.4 4.3 8.4-4.3"></path><path d="M3.6 16.5l8.4 4.3 8.4-4.3"></path></svg>
           <h3 style="margin: 0 0 0 -15px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; color: #020E1B;">Integrated Efficiency</h3>
           <p style="margin: 0; max-width: 400px; font-size: 16.5px; line-height: 1.7; color: #4c545c;">Because the reserve lives inside Bond Upgrading, your portfolio stays aimed at long-term growth while covering near-term income.</p>
@@ -939,17 +946,21 @@ class Component extends DCLogic {
       if (!img) return;
       img.style.animation = "none";
       void img.offsetWidth;
-      img.style.animation = "cfr-img-zoom 1100ms cubic-bezier(0.22,0.61,0.36,1)";
+      img.style.animation = "cfr-img-zoom 900ms cubic-bezier(0.22,0.61,0.36,1) both";
     };
     if (!this._imgHoverWired) {
       this._imgHoverWired = true;
       [1, 2, 3].forEach(n => {
         const img = document.getElementById("cfr-step-" + n);
         if (!img) return;
+        img.style.transition = "transform 620ms cubic-bezier(0.22,0.61,0.36,1)";
         img.addEventListener("mouseenter", () => {
+          // drop the entrance animation a frame early, else the first hover has
+          // no start value to transition from and snaps
           img.style.animation = "none";
-          img.style.transition = "transform 620ms cubic-bezier(0.22,0.61,0.36,1)";
-          img.style.transform = "scale(1.08)";
+          img.style.transform = "scale(1)";
+          void img.offsetWidth;
+          requestAnimationFrame(() => { img.style.transform = "scale(1.08)"; });
         });
         img.addEventListener("mouseleave", () => { img.style.transform = "scale(1)"; });
       });
@@ -1413,7 +1424,7 @@ class Component extends DCLogic {
         const back = document.getElementById("cfr-intro-back-wrap");
         const front = document.getElementById("cfr-intro-front-wrap");
         if (back) back.style.animation = "cfr-breathe-a 11s ease-in-out infinite";
-        if (front) front.style.animation = "cfr-breathe-b 11s ease-in-out infinite";
+        if (front) front.style.animation = (window.matchMedia("(min-width: 901px)").matches ? "cfr-breathe-b-off" : "cfr-breathe-b") + " 11s ease-in-out infinite";
       }, 1500);
     };
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return show();
