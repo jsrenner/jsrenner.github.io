@@ -1467,8 +1467,8 @@ class Component extends DCLogic {
     };
     this._onMove = (e) => {
       const w = window.innerWidth || 1, h = window.innerHeight || 1;
-      my = ((e.clientX / w) - 0.5) * -2 * amt;
-      mx = ((e.clientY / h) - 0.5) * -2 * (amt * 0.55);
+      my = ((e.clientY / h) - 0.5) * -2 * (amt * 0.3);
+      mx = ((e.clientX / w) - 0.5) * -2 * (amt * 0.55);
     };
     window.addEventListener("mousemove", this._onMove, { passive: true });
     tick();
