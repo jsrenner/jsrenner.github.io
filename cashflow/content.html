@@ -924,11 +924,11 @@ class Component extends DCLogic {
   initHiwReveal() {
     const seq = [
       ["cfr-hiw-head", 0],
-      ["cfr-hiw-col1", 400],
-      ["cfr-hiw-arrow1", 1900],
-      ["cfr-hiw-col2", 3000],
-      ["cfr-hiw-arrow2", 4500],
-      ["cfr-hiw-col3", 5600]
+      ["cfr-hiw-col1", 300],
+      ["cfr-hiw-arrow1", 1450],
+      ["cfr-hiw-col2", 2300],
+      ["cfr-hiw-arrow2", 3450],
+      ["cfr-hiw-col3", 4300]
     ];
     const els = seq.map(([id, d]) => [document.getElementById(id), d]).filter(([e]) => e);
     if (els.length < 6) return;
@@ -1019,7 +1019,7 @@ class Component extends DCLogic {
     if (window.matchMedia("(max-width: 900px)").matches) {
       const sio = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) { reveal(e.target); sio.unobserve(e.target); } });
-      }, { threshold: 0.06, rootMargin: "0px 0px 14% 0px" });
+      }, { threshold: 0, rootMargin: "0px 0px 55% 0px" });
       els.forEach(([e]) => sio.observe(e));
       this._hiwMobileIO = sio;
       return;
@@ -1032,7 +1032,7 @@ class Component extends DCLogic {
       raf = requestAnimationFrame(() => {
         raf = null;
         const vh = window.innerHeight || 1;
-        const trip = window.matchMedia("(max-width: 900px)").matches ? 0.95 : 0.62;
+        const trip = window.matchMedia("(max-width: 900px)").matches ? 0.95 : 0.98;
         if (anchor.getBoundingClientRect().top > vh * trip) return;
         fired = true;
         window.removeEventListener("scroll", onScroll);
@@ -1105,8 +1105,8 @@ class Component extends DCLogic {
     const lines = [];
     for (let k = 0; k < chars.length; k += 2) lines.push(chars.slice(k, k + 2));
     const mobileFast = key === "cfr-simple-type" && window.matchMedia("(max-width: 900px)").matches;
-    const step = mobileFast ? 34 : 80;
-    const dur = mobileFast ? 420 : 780;
+    const step = mobileFast ? 34 : 52;
+    const dur = mobileFast ? 420 : 560;
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
