@@ -119,6 +119,8 @@
     #cfr-intro-back-wrap { width: 74% !important; margin-left: 26% !important; aspect-ratio: 3 / 4 !important; max-height: 62vh; }
     #cfr-intro-front-wrap { width: 62% !important; aspect-ratio: 4 / 5 !important; max-height: 44vh; border-top-left-radius: 48px !important; border-bottom-right-radius: 48px !important; }
     #cfr-adv-photo-wrap { min-height: 220px; }
+    #cfr-advisor-photo img { height: 128% !important; object-position: 50% calc(50% + 20px) !important; }
+    #cfr-signup-hero img { object-position: calc(50% + 95px) 50% !important; }
     #cfr-type-span { font-size: 26px !important; margin-left: 0 !important; }
     #cfr-intro-head { font-size: 26px !important; }
     #cfr-type-span, #cfr-type-span + * { max-width: none !important; }
@@ -1251,7 +1253,9 @@ class Component extends DCLogic {
     }
     const io = new IntersectionObserver((es) => {
       es.forEach(e => { if (e.isIntersecting) { io.disconnect(); go(); } });
-    }, { threshold: 0, rootMargin: "0px 0px 15% 0px" });
+    }, window.matchMedia("(max-width: 900px)").matches
+      ? { threshold: 0, rootMargin: "0px 0px 15% 0px" }
+      : { threshold: 0.35, rootMargin: "0px 0px -18% 0px" });
     [copy, stage, photo].forEach(e => { if (e) io.observe(e); });
     this._advIO = io;
   }
