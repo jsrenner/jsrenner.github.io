@@ -938,7 +938,7 @@ class Component extends DCLogic {
     if (loop && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const lio = new IntersectionObserver((es) => {
         es.forEach(e => { if (e.isIntersecting) { lio.disconnect(); this.drawLoop(); } });
-      }, { threshold: 0, rootMargin: "0px 0px -40% 0px" });
+      }, { threshold: 0, rootMargin: "0px 0px -30% 0px" });
       lio.observe(loop);
       this._loopIO = lio;
     }
