@@ -295,7 +295,7 @@
               <path d="M71.667,10c-10.127,0-18.334,4.479-18.334,10v53.333c0,5.524,8.207,10,18.334,10c10.123,0,18.333-4.476,18.333-10V20  C90,14.479,81.79,10,71.667,10z M71.667,16.667c6.328,0,10.384,2.148,11.478,3.333c-1.094,1.188-5.149,3.333-11.478,3.333  c-6.332,0-10.388-2.145-11.479-3.333C61.282,18.815,65.335,16.667,71.667,16.667z M83.333,74.382  c-3.17,1.426-7.232,2.285-11.666,2.285S63.171,75.811,60,74.382v-6.667C63.171,69.144,67.233,70,71.667,70s8.496-0.859,11.666-2.285  V74.382z M83.333,61.048c-3.17,1.426-7.232,2.285-11.666,2.285S63.171,62.478,60,61.048v-6.666  c3.171,1.429,7.233,2.285,11.667,2.285s8.496-0.859,11.666-2.285V61.048z M83.333,47.715C80.163,49.141,76.101,50,71.667,50  S63.171,49.144,60,47.715v-6.667c3.171,1.43,7.233,2.285,11.667,2.285s8.496-0.859,11.666-2.285V47.715z M83.333,34.382  c-3.17,1.426-7.232,2.285-11.666,2.285S63.171,35.811,60,34.382v-6.667C63.171,29.144,67.233,30,71.667,30s8.496-0.859,11.666-2.285  V34.382z"></path>
             </svg>
             <div>
-              <div style="font-size: 30px; font-weight: 700; color: #12384C; line-height: 1; letter-spacing: -0.01em;">2 years</div>
+              <div style="font-size: 30px; font-weight: 700; color: #12384C; line-height: 1; letter-spacing: -0.01em;">Up to 2 yrs</div>
               <div style="font-size: 15px; color: #12384C; margin-top: 3px; font-weight: 700">of income set aside</div>
             </div>
           </div>
@@ -1034,7 +1034,7 @@ class Component extends DCLogic {
       raf = requestAnimationFrame(() => {
         raf = null;
         const vh = window.innerHeight || 1;
-        const trip = window.matchMedia("(max-width: 900px)").matches ? 0.95 : 0.98;
+        const trip = window.matchMedia("(max-width: 900px)").matches ? 0.95 : 1.08;
         if (anchor.getBoundingClientRect().top > vh * trip) return;
         fired = true;
         window.removeEventListener("scroll", onScroll);
@@ -1088,7 +1088,7 @@ class Component extends DCLogic {
               if (key === "cfr-type-span" && !node.parentElement.closest("span[style*='020E1B']") && node === el) {
                 s.style.cursor = "default";
                 s.style.transition = "color 220ms ease";
-                s.addEventListener("mouseenter", () => { s.style.color = "#020E1B"; });
+                s.addEventListener("mouseenter", () => { s.style.color = "#E07B2A"; });
                 s.addEventListener("mouseleave", () => { s.style.color = ""; });
               }
               s.style.display = "inline-block";
@@ -1126,10 +1126,8 @@ class Component extends DCLogic {
             w.style.opacity = "";
             w.style.transform = "";
             w.style.filter = "";
-            w.style.display = "";
             w.style.willChange = "";
           });
-          el.normalize();
         }, lines.length * step + dur + 60);
       });
     }, { threshold: 0, rootMargin: key === "cfr-diff-type" ? "0px 0px -48% 0px" : "0px 0px -35% 0px" });
@@ -1456,7 +1454,7 @@ class Component extends DCLogic {
       const cap = headroom();
       const cursorX = mob ? 0 : my;
       const cursorY = mob ? 0 : mx;
-      const scroll = Math.min(mob ? 38 : 46, (window.scrollY || 0) * (mob ? 0.14 : 0.16));
+      const scroll = Math.min(mob ? 38 : 140, (window.scrollY || 0) * (mob ? 0.14 : 0.44));
       const targetY = Math.max(-cap, Math.min(cap, cursorY + scroll));
       const targetX = Math.max(-28, Math.min(28, cursorX));
       const ease = mob ? 0.16 : 0.08;
