@@ -127,8 +127,8 @@
 
     #cfr-hero-parallax { inset: -48px 0 !important; transition: none !important; }
     #cfr-hero-parallax, #cfr-hero-couple { pointer-events: none !important; -webkit-user-drag: none !important; -webkit-touch-callout: none !important; }
-    #cfr-hero-couple img { object-position: calc(51% - 2px) calc(50% + 20px) !important; }
-    @media (min-width: 601px) { #cfr-hero-couple img { object-position: calc(51% - 2px) calc(50% + 20px) !important; } }
+    #cfr-hero-couple img { object-position: calc(51% - 2px) calc(64% + 20px) !important; }
+    @media (min-width: 601px) { #cfr-hero-couple img { object-position: calc(51% - 2px) calc(64% + 20px) !important; } }
     #cfr-hero-couple { animation: cfr-hero-zoom-loop 14s ease-in-out infinite !important; transform-origin: 58% 44% !important; }
 
     #cfr-hiw-eyebrow { transform: translateY(-12px) !important; }
@@ -316,7 +316,7 @@
         </div>
       </div><div style="position: relative; overflow: hidden; border-top-left-radius: 190px; background: #E8DED2; margin-right: var(--bleed, 0px);">
         <div id="cfr-hero-parallax" style="position: absolute; inset: -88px -28px; opacity: 0; animation: cfr-hero-fade 700ms ease 260ms forwards; will-change: transform; transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);">
-        <div id="cfr-hero-couple" style="display: block; position: relative; overflow: hidden; border-radius: inherit; position: absolute; inset: 0; width: 100%; height: 100%; animation: cfr-hero-zoom 9s cubic-bezier(0.33, 0, 0.28, 1) forwards; transform-origin: 0% 45%; will-change: transform;"><img src="images/hero-couple.webp" alt="Retired couple at home — primary hero photo" decoding="async" style="position: absolute; border-radius: inherit; left: 50%; top: 50%; width: 100%; height: 100%; object-fit: cover; object-position: 51% 50%; transform: translate(-50%, -50%); -webkit-user-drag: none;"></div>
+        <div id="cfr-hero-couple" style="display: block; position: relative; overflow: hidden; border-radius: inherit; position: absolute; inset: 0; width: 100%; height: 100%; animation: cfr-hero-zoom 9s cubic-bezier(0.33, 0, 0.28, 1) forwards; transform-origin: 0% 45%; will-change: transform;"><img src="images/hero-couple.webp" alt="Retired couple at home — primary hero photo" decoding="async" style="position: absolute; border-radius: inherit; left: 50%; top: 50%; width: 100%; height: 100%; object-fit: cover; object-position: 51% 64%; transform: translate(-50%, calc(-50% + 30px)); -webkit-user-drag: none;"></div>
         </div>
       </div>
     </div>
@@ -848,7 +848,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     if (this.props.faqFirstOpen ?? false) this.setState({ open: 0 });
-    this.initHeroParallax();
+    // hero parallax removed
     this.initIntroReveal();
     this.initTypeReveal();
     this.initTypeReveal("cfr-diff-type");
