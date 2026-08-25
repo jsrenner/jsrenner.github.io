@@ -127,7 +127,7 @@
 
     #cfr-hero-parallax { inset: -48px 0 !important; transition: none !important; }
     #cfr-hero-parallax, #cfr-hero-couple { pointer-events: none !important; -webkit-user-drag: none !important; -webkit-touch-callout: none !important; }
-    #cfr-hero-couple img { object-position: calc(51% - 2px) calc(64% + 20px) !important; }
+    #cfr-hero-couple img { object-position: calc(51% - 2px) calc(64% + 20px) !important; transform: translate(-50%, calc(-50% - 5px)) !important; }
     @media (min-width: 601px) { #cfr-hero-couple img { object-position: calc(51% - 2px) calc(64% + 20px) !important; } }
     #cfr-hero-couple { animation: cfr-hero-zoom-loop 14s ease-in-out infinite !important; transform-origin: 58% 44% !important; }
 
@@ -222,9 +222,9 @@
 <div style="width: 100%; background: #ffffff; overflow-x: clip; --gut: max(44px, calc((min(100vw, 1720px) - 1180px) / 2)); --pad: 44px; --canvas: 1720px; --bleed: calc((min(100vw, 1720px) - 100vw) / 2);">
 
   <div id="cfr-nav" style="background: rgba(2,14,27,1); backdrop-filter: blur(0px); width: 100%; position: sticky; top: 0; z-index: 200; transition: background-color 120ms linear, backdrop-filter 120ms linear, --nav-pad 260ms ease;">
-    <div style="max-width: var(--canvas); margin: 0 auto; padding: 0 calc(var(--gut) + 24px) 0 calc(var(--gut) - 17px); display: flex; align-items: center; flex-wrap: nowrap; gap: 0 20px; min-width: 0;">
-      <a href="https://www.smiprivateclient.com/" style="flex: 0 1 auto; min-width: 0; display: block; transform: translateY(-2px);"><img src="assets/smipc-logo-white.png" alt="SMI Private Client" style="height: var(--nav-logo, 54px); width: auto; max-width: 100%; display: block;"></a>
-      <div id="m-navlinks" style="flex: 0 1 auto; margin-left: auto; display: flex; align-items: center; gap: clamp(10px, 2.1vw, 38px); flex-wrap: nowrap; justify-content: flex-end;">
+    <div style="max-width: var(--canvas); margin: 0 auto; padding: 0 calc(var(--gut) + 10px) 0 calc(var(--gut) - 17px); display: flex; align-items: center; flex-wrap: nowrap; gap: 0 20px; min-width: 0;">
+      <a href="https://www.smiprivateclient.com/" style="flex: 0 1 auto; min-width: 0; display: block; transform: translate(9px, -2px);"><img src="assets/smipc-logo-white.png" alt="SMI Private Client" style="height: var(--nav-logo, 54px); width: auto; max-width: 100%; display: block;"></a>
+      <div id="m-navlinks" style="flex: 0 1 auto; margin-left: auto; display: flex; align-items: center; gap: clamp(14px, 2.8vw, 52px); flex-wrap: nowrap; justify-content: flex-end;">
         <a href="https://www.smiprivateclient.com/#benefits" style="color: #ffffff; font-size: 13.5px; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400; white-space: nowrap; padding: var(--nav-pad, 40.5px) 0; display: inline-block; transition: color 200ms ease;" style-hover="color: #E07B2A;">Benefits</a>
         <a href="https://www.smiprivateclient.com/#signup" style="color: #ffffff; font-size: 13.5px; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400; white-space: nowrap; padding: var(--nav-pad, 40.5px) 0; display: inline-block; transition: color 200ms ease;" style-hover="color: #E07B2A;">Sign Up</a>
 
