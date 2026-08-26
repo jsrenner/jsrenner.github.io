@@ -78,13 +78,15 @@
     #cfr-hero-couple img { object-position: 51% calc(50% - 100px) !important; }
   }
 
-  @media (max-width: 900px) {
-    :root, body > div { --pad: 26px; }
-    [style*="--canvas"] { --pad: 26px !important; }
+  @media (max-width: 1060px) {
     #cfr-nav > div:first-child { padding: 12px 26px !important; }
     #m-navlinks { display: none !important; }
     #m-navmobile { display: flex !important; }
     #cfr-nav a img { height: 34px !important; }
+  }
+  @media (max-width: 900px) {
+    :root, body > div { --pad: 26px; }
+    [style*="--canvas"] { --pad: 26px !important; }
 
     #m-hero { grid-template-columns: 1fr !important; min-height: 0 !important; padding-top: 0 !important; }
     #m-hero > div:first-child { order: 2; }
@@ -121,14 +123,16 @@
     #cfr-adv-photo-wrap { min-height: 220px; }
     #cfr-advisor-photo img { height: 128% !important; object-position: 50% calc(50% + 20px) !important; }
     #cfr-signup-hero img { object-position: calc(50% + 95px) 50% !important; }
+    #cfr-hero-sub { font-size: 17px !important; }
+    #cfr-res-sub { font-weight: 400 !important; }
     #cfr-type-span { font-size: 26px !important; margin-left: 0 !important; }
     #cfr-intro-head { font-size: 26px !important; }
     #cfr-type-span, #cfr-type-span + * { max-width: none !important; }
 
     #cfr-hero-parallax { inset: -48px 0 !important; transition: none !important; }
     #cfr-hero-parallax, #cfr-hero-couple { pointer-events: none !important; -webkit-user-drag: none !important; -webkit-touch-callout: none !important; }
-    #cfr-hero-couple img { object-position: calc(51% - 2px) calc(64% + 20px) !important; transform: translate(-50%, calc(-50% - 5px)) !important; }
-    @media (min-width: 601px) { #cfr-hero-couple img { object-position: calc(51% - 2px) calc(64% + 20px) !important; } }
+    #cfr-hero-couple img { object-position: calc(51% - 2px) calc(50% + 20px) !important; transform: translate(-50%, calc(-50% - 5px)) !important; }
+    @media (min-width: 601px) { #cfr-hero-couple img { object-position: calc(51% - 2px) calc(50% + 20px) !important; } }
     #cfr-hero-couple { animation: cfr-hero-zoom-loop 14s ease-in-out infinite !important; transform-origin: 58% 44% !important; }
 
     #cfr-hiw-eyebrow { transform: translateY(-12px) !important; }
@@ -195,7 +199,7 @@
     #cfr-adv-photo-wrap { border-radius: 0 !important; transform: none !important; transition: opacity 700ms ease !important; }
     #cfr-adv-copy { order: 2; margin-top: 34px; }
     #m-adv { display: flex !important; flex-direction: column; gap: 0 !important; align-items: stretch !important; }
-    #cfr-advisor-photo { position: relative; height: 128% !important; top: -14%; }
+    #cfr-advisor-photo { position: relative; height: 112% !important; top: -6%; }
     #cfr-adv-photo-wrap { aspect-ratio: 1.65 / 1 !important; }
     #cfr-intro-back-wrap, #cfr-intro-front-wrap { animation: none !important; }
     #cfr-adv-stage > div:not(#cfr-adv-photo-wrap) { display: none !important; }
@@ -221,10 +225,10 @@
 
 <div style="width: 100%; background: #ffffff; overflow-x: clip; --gut: max(44px, calc((min(100vw, 1720px) - 1180px) / 2)); --pad: 44px; --canvas: 1720px; --bleed: calc((min(100vw, 1720px) - 100vw) / 2);">
 
-  <div id="cfr-nav" style="background: rgba(2,14,27,1); backdrop-filter: blur(0px); width: 100%; position: sticky; top: 0; z-index: 200; transition: background-color 120ms linear, backdrop-filter 120ms linear, --nav-pad 260ms ease;">
-    <div style="max-width: var(--canvas); margin: 0 auto; padding: 0 calc(var(--gut) + 10px) 0 calc(var(--gut) - 17px); display: flex; align-items: center; flex-wrap: nowrap; gap: 0 20px; min-width: 0;">
-      <a href="https://www.smiprivateclient.com/" style="flex: 0 1 auto; min-width: 0; display: block; transform: translate(9px, -2px);"><img src="assets/smipc-logo-white.png" alt="SMI Private Client" style="height: var(--nav-logo, 54px); width: auto; max-width: 100%; display: block;"></a>
-      <div id="m-navlinks" style="flex: 0 1 auto; margin-left: auto; display: flex; align-items: center; gap: clamp(14px, 2.8vw, 52px); flex-wrap: nowrap; justify-content: flex-end;">
+  <div id="cfr-nav" style="background: #020E1B; width: 100%; position: sticky; top: 0; z-index: 200; transition: none, --nav-pad 260ms ease;">
+    <div style="max-width: 1234px; box-sizing: border-box; margin: 0 auto; padding: 0 54px 0 27px; display: flex; align-items: center; flex-wrap: nowrap; gap: 0 20px; min-width: 0;">
+      <a href="https://www.smiprivateclient.com/" style="flex: 0 0 auto; display: block; transform: translate(-8px, -2px);"><img src="assets/smipc-logo-white.png" alt="SMI Private Client" style="height: var(--nav-logo, 54px); width: auto; max-width: 100%; display: block;"></a>
+      <div id="m-navlinks" style="flex: 0 1 auto; margin-left: auto; transform: translateX(10px); display: flex; align-items: center; gap: clamp(8px, 2.4vw, 44px); flex-wrap: nowrap; justify-content: flex-end;">
         <a href="https://www.smiprivateclient.com/#benefits" style="color: #ffffff; font-size: 13.5px; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400; white-space: nowrap; padding: var(--nav-pad, 40.5px) 0; display: inline-block; transition: color 200ms ease;" style-hover="color: #E07B2A;">Benefits</a>
         <a href="https://www.smiprivateclient.com/#signup" style="color: #ffffff; font-size: 13.5px; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400; white-space: nowrap; padding: var(--nav-pad, 40.5px) 0; display: inline-block; transition: color 200ms ease;" style-hover="color: #E07B2A;">Sign Up</a>
 
@@ -248,7 +252,7 @@
 
         <a href="https://www.smiprivateclient.com/contact" style="color: #ffffff; font-size: 13.5px; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 400; white-space: nowrap; padding: var(--nav-pad, 40.5px) 0; display: inline-block; transition: color 200ms ease;" style-hover="color: #E07B2A;">Contact Us</a>
         <span style="color: #4a5766; font-size: 14px; font-weight: 400;">|</span>
-        <a href="https://smiprivateclient.portal.tamaracinc.com" target="_blank" style="color: #ffffff; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding: var(--nav-pad, 40.5px) 0; display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; transition: color 200ms ease;" style-hover="color: #E07B2A;"><svg viewBox="0 0 24 24" style="width: 15px; height: 15px; flex: none; display: block;" fill="#3B9ED4"><circle cx="12" cy="7.6" r="4.1"></circle><path d="M12 13.4c-4.3 0-7.8 2.6-7.8 5.9 0 .6.5 1.1 1.1 1.1h13.4c.6 0 1.1-.5 1.1-1.1 0-3.3-3.5-5.9-7.8-5.9z"></path></svg>Login</a>
+        <a href="https://smiprivateclient.portal.tamaracinc.com" target="_blank" style="color: #ffffff; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding: var(--nav-pad, 40.5px) 0; display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; transform: translateX(0px); transition: color 200ms ease;" style-hover="color: #E07B2A;"><svg viewBox="0 0 24 24" style="width: 15px; height: 15px; flex: none; display: block;" fill="#3B9ED4"><circle cx="12" cy="7.6" r="4.1"></circle><path d="M12 13.4c-4.3 0-7.8 2.6-7.8 5.9 0 .6.5 1.1 1.1 1.1h13.4c.6 0 1.1-.5 1.1-1.1 0-3.3-3.5-5.9-7.8-5.9z"></path></svg>Login</a>
       </div>
       <div id="m-navmobile" style="display: none; align-items: center; gap: 12px; margin-left: auto;">
         <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 36px; padding: 0; background: none; border: 1px solid rgba(255,255,255,0.85); border-radius: 4px; color: #ffffff; cursor: pointer;">
@@ -275,7 +279,7 @@
     </div>
   </div>
 
-  <div style="position: relative; background: linear-gradient(155deg, #FBF4EC 0%, #F3E7D8 48%, #E9D8C3 100%); overflow: hidden;">
+  <div style="position: relative; background: linear-gradient(150deg, #FCF6EE 0%, #F5EBDD 28%, #EADDCB 68%, #DFCFB8 100%); overflow: hidden;">
     <div id="m-hero" style="max-width: var(--canvas); margin: 0 auto; display: grid; grid-template-columns: calc(var(--gut) + 622px) minmax(0, 1fr); align-items: stretch; min-height: 860px; padding-top: 44px;">
       
       <div style="display: flex; flex-direction: column; justify-content: center; padding: 21px 72px 205px var(--gut);">
@@ -283,7 +287,7 @@
           <svg viewBox="0 0 16 16" style="width: 17px; height: 17px; flex: none;" fill="none" stroke="#E07B2A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.8l4 4L13.5 4"></path></svg>A smarter approach to retirement income
         </div>
         <h1 style="opacity: 0; animation: cfr-hero-in 620ms cubic-bezier(0.22,0.61,0.36,1) 220ms forwards; margin: 22px 0 0; font-size: 60px; line-height: 0.98; font-weight: 700; letter-spacing: -0.025em; color: #020E1B; max-width: 18ch">Cash Flow Reserve</h1>
-        <p style="max-width: 520px; margin: 26px 0 40px; font-size: 17px; line-height: 1.7; color: #514a43; opacity: 0; animation: cfr-hero-in 620ms cubic-bezier(0.22,0.61,0.36,1) 320ms forwards;">Turning a lifetime of savings into steady income shouldn't feel like guesswork. Cash Flow Reserve uses a structured bucket strategy to protect your near-term needs from market swings, delivering a reliable paycheck from your own portfolio. Here's how it works.</p>
+        <p id="cfr-hero-sub" style="max-width: 520px; margin: 26px 0 40px; font-size: 18px; font-weight: 500; line-height: 1.7; color: #514a43; opacity: 0; animation: cfr-hero-in 620ms cubic-bezier(0.22,0.61,0.36,1) 320ms forwards;">Turning a lifetime of savings into steady income shouldn't feel like guesswork. Cash Flow Reserve uses a structured bucket strategy to protect your near-term needs from market swings, delivering a reliable paycheck from your own portfolio. Here's how it works.</p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; opacity: 0; animation: cfr-hero-in 620ms cubic-bezier(0.22,0.61,0.36,1) 420ms forwards;">
           <a href="https://smiprivateclient.youcanbook.me" onClick="{{ openBooking }}" onMouseEnter="{{ ctaEnter }}" onMouseLeave="{{ ctaLeave }}" style="display: inline-flex; align-items: center; justify-content: center; gap: 11px; background-color: #E07B2A; background-image: linear-gradient(112deg, #020E1B 0 50%, rgba(2,14,27,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: #ffffff; font-size: 16px; line-height: 1.35; font-weight: 700; padding: 17px 26px; border-radius: 999px; transition: background-position 240ms linear;" style-hover="background-position: 0% 0; color: #ffffff;"><span style="{{ ctaArrowLeft }}">→</span><span style="{{ ctaLabel }}">Schedule a Call</span><span style="{{ ctaArrowRight }}">↗︎</span></a>
           <a href="https://forms.smiprivateclient.com/welcome" onMouseEnter="{{ cta2Enter }}" onMouseLeave="{{ cta2Leave }}" style="display: inline-flex; align-items: center; justify-content: center; gap: 11px; border: 1px solid #020E1B; background-color: transparent; background-image: linear-gradient(112deg, #020E1B 0 50%, rgba(2,14,27,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: #020E1B; font-size: 16px; line-height: 1.35; font-weight: 700; padding: 16px 26px; border-radius: 999px; transition: background-position 240ms linear, color 200ms ease;" style-hover="background-position: 0% 0; color: #ffffff;"><span style="{{ cta2ArrowLeft }}">→</span><span style="{{ cta2Label }}">Get Started</span><span style="{{ cta2ArrowRight }}">↗︎</span></a>
@@ -323,8 +327,8 @@
     <div id="m-heroband" style="position: absolute; left: 0; right: 0; bottom: 0; height: 146px; background: rgba(255,255,255,0.55); border-top-right-radius: 150px; border-top-left-radius: 150px; pointer-events: none;"></div>
   </div>
 
-  <div id="m-intro-wrap" style="position: relative; z-index: 2; margin-top: -120px; padding-top: 120px; background: linear-gradient(165deg, #FDFAF6 0%, #ffffff 38%, #FBF7F1 74%, #F5EFE7 100%); border-top-right-radius: 150px; border-top-left-radius: 150px; overflow: hidden; padding-left: 24px; padding-right: 24px;">
-  <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(118deg, rgba(232,222,210,0.55) 0%, rgba(255,255,255,0) 42%, rgba(245,239,231,0.35) 72%, rgba(226,214,199,0.6) 100%);"></div>
+  <div id="m-intro-wrap" style="position: relative; z-index: 2; margin-top: -120px; padding-top: 120px; background: linear-gradient(210deg, #ffffff 0%, #FDFBF7 18%, #FAF6EF 52%, #F6EFE4 100%); border-top-right-radius: 150px; border-top-left-radius: 150px; overflow: hidden; padding-left: 24px; padding-right: 24px;">
+  <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(118deg, rgba(232,222,210,0) 0%, rgba(255,255,255,0) 42%, rgba(245,239,231,0) 72%, rgba(226,214,199,0.6) 100%);"></div>
   <div style="position: relative; max-width: 1180px; margin: 0 auto; padding: 8px var(--pad, 44px) 48px;">
     <div id="m-intro" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start;">
       <div id="cfr-intro-media" style="position: relative; padding: 0 0 70px 0;">
@@ -435,7 +439,7 @@
     </div>
   </div>
 
-  <div style="position: relative; overflow: hidden; background: linear-gradient(150deg, #FBF4EC 0%, #F5EDE3 55%, #EDE2D3 100%);">
+  <div style="position: relative; overflow: hidden; background: linear-gradient(150deg, #FEFBF7 0%, #FAF5EC 24%, #F5EDE1 62%, #EFE6D8 100%);">
     <div id="m-diy" style="max-width: var(--canvas); margin: 0 auto; display: grid; grid-template-columns: calc(var(--gut) + 622px) minmax(0, 1fr); align-items: center; min-height: 660px;">
       <div style="position: relative; z-index: 3; padding: 84px clamp(28px, 6vw, 96px) 84px calc(var(--gut) + 24px); padding-top: 100px; padding-bottom: 100px">
         <h2 id="cfr-diy-head" style="margin: 0 0 8px; font-size: 39px; font-weight: 700; line-height: 1.16; letter-spacing: -0.02em; color: #020E1B; opacity: 0; transform: translateX(-60px); transition: opacity 1100ms ease, transform 1400ms cubic-bezier(0.22,0.61,0.36,1);">Why DIY buckets are harder than they look</h2>
@@ -632,7 +636,7 @@
   </div>
 
   <!-- Idea A: flat-lay photo surface, guide on warm paper, copy to the side -->
-  <div id="resources" style="background: #E6DCC9; padding: 96px var(--pad, 44px); position: relative; overflow: hidden; border-top: 1px solid rgba(2,14,27,0.14);">
+  <div id="resources" style="background: #EFE7D8; padding: 96px var(--pad, 44px); position: relative; overflow: hidden; border-top: 1px solid rgba(2,14,27,0.14);">
     <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 45%, rgba(255,255,255,0.55) 0%, transparent 62%); pointer-events: none;"></div>
     <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 100%, rgba(120,104,80,0.16) 0%, transparent 60%); pointer-events: none;"></div>
     <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 8px; align-items: center; position: relative; z-index: 1;" id="m-res">
@@ -643,7 +647,7 @@
       <div id="cfr-res-copy" style="margin: -50px 0 0 0; opacity: 0; transform: translateX(48px); transition: opacity 900ms ease 160ms, transform 1100ms cubic-bezier(0.22,0.61,0.36,1) 160ms;">
         <span style="display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(2,14,27,0.18); border-radius: 999px; padding: 8px 18px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #12384C;"><span style="width: 7px; height: 7px; background: #E07B2A; border-radius: 50%;"></span>Learn more</span>
         <h2 style="margin: 24px 0 0; font-size: 46px; line-height: 1.06; font-weight: 700; letter-spacing: -0.03em; color: #020E1B; max-width: 26ch;">Cash Flow Reserve: A Smarter Approach to Retirement Income</h2>
-        <p style="margin: 22px 0 0; font-size: 17px; line-height: 1.8; color: #5a5348; max-width: 62ch;">Want the full details? This guide walks through exactly how the reserve is funded, how it's rebalanced through full market cycles, and how it's tailored to your situation.</p>
+        <p id="cfr-res-sub" style="margin: 22px 0 0; font-size: 17px; font-weight: 600; line-height: 1.8; color: #5a5348; max-width: 62ch;">Want the full details? This guide walks through exactly how the reserve is funded, how it's rebalanced through full market cycles, and how it's tailored to your situation.</p>
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 36px;">
           <a href="https://www.smiprivateclient.com/educational-articles" onClick="{{ openArticle }}" onMouseEnter="{{ cta7Enter }}" onMouseLeave="{{ cta7Leave }}" style="display: inline-flex; align-items: center; justify-content: center; gap: 11px; background-color: #020E1B; background-image: linear-gradient(112deg, #ffffff 0 50%, rgba(255,255,255,0) 50.1% 100%); background-size: 260% 100%; background-position: 100% 0; background-repeat: no-repeat; color: #ffffff; font-size: 15px; font-weight: 700; padding: 12px 14px; border-radius: 999px; white-space: nowrap; transition: background-position 240ms linear, color 200ms ease;" style-hover="background-position: 0% 0; color: #E07B2A;"><span style="{{ cta7CircleLeft }}">↓</span><span style="{{ cta7Label }}">Download the Guide</span><span style="{{ cta7CircleRight }}">↓</span></a>
           <span style="font-size: 13px; color: #8a8072;">PDF · 12 pages</span>
@@ -746,7 +750,7 @@
               <span style="width: 34px; height: 34px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 400; line-height: 1; color: #ffffff; background: {{ item.iconBg }}; transition: background 260ms ease;"><span style="{{ item.signStyle }}">+</span></span>
             </button>
             <div style="{{ item.panel }}">
-              <p style="margin: -8px 0 0; padding: 0 70px 30px 4px; font-size: 17px; line-height: 1.8; color: #5a6370; max-width: 76ch;">{{ item.a }}</p>
+              <p style="margin: -8px 0 0; padding: 0 70px 30px 4px; font-size: 17px; font-weight: 500; line-height: 1.8; color: #5a6370; max-width: 76ch;">{{ item.a }}</p>
             </div>
           </div>
         </sc-for>
@@ -754,8 +758,8 @@
     </div>
   </div>
 
-  <div style="background: #020E1B; position: relative;">
-    <div id="contact" style="max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; transform: translateY(-50%); background: #3B9ED4; box-shadow: 0 10px 26px rgba(2,14,27,0.35); padding: 26px 56px; display: grid; grid-template-columns: auto minmax(0, 1.35fr) auto auto; gap: 44px; align-items: center;">
+  <div style="background: #020E1B; position: relative; margin-top: 30px;">
+    <div id="contact" style="max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; transform: translateY(-50%); background: #3B9ED4; border-radius: 15px; box-shadow: 0 10px 26px rgba(2,14,27,0.35); padding: 26px 56px; display: grid; grid-template-columns: auto minmax(0, 1.35fr) auto auto; gap: 44px; align-items: center;">
       <div style="font-size: 30px; font-weight: 400; letter-spacing: 0.02em; color: #ffffff; text-transform: uppercase; line-height: 1;">Contact:</div>
       <div style="font-size: 15px; line-height: 1.5; color: #ffffff; text-align: center;">If you have questions or would like to speak to someone about SMI Private Client, reach out to us by phone or email.</div>
       <a href="tel:8007964975" style="font-size: 20px; color: #ffffff; text-decoration: none; white-space: nowrap;" style-hover="color: #020E1B;">800-796-4975</a>
@@ -816,7 +820,7 @@
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showCharitableBullet&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;faqFirstOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;heroParallaxStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:18,&quot;min&quot;:0,&quot;max&quot;:40,&quot;step&quot;:2,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;showCharitableBullet&quot;:{&quot;editor&quot;:null,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;faqFirstOpen&quot;:{&quot;editor&quot;:null,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;heroParallaxStrength&quot;:{&quot;editor&quot;:null,&quot;default&quot;:18,&quot;tsType&quot;:&quot;number&quot;}}">
 class Component extends DCLogic {
   state = { open: 0, hover: null };
 
@@ -840,9 +844,9 @@ class Component extends DCLogic {
       ["How much do I need to withdraw for Cash Flow Reserve to make sense?", "It is generally a fit for investors taking at least $60,000 a year in recurring distributions. Smaller amounts can be considered case by case, so ask your advisor."],
       ["How often can I receive my paycheck?", "Monthly, quarterly, or annually, whichever fits your budgeting rhythm."],
       ["Does the cash sitting in reserve drag down my returns?", "The reserve is carved out of your Bond Upgrading allocation rather than added on top of it, so your overall risk level and growth allocation stay where they should be. Next year's income sits in a defined-maturity corporate bond fund that normally yields more than a money market fund."],
-      ["What happens if the market drops right before a withdrawal?", "Nothing changes. Your next two years of income are already set aside, so we are not forced to sell stocks at a bad time to pay you."],
-      ["Can I use this for charitable giving instead of living expenses?", "Yes. Some clients use Cash Flow Reserve to fund recurring gifts, including qualified charitable distributions from an IRA, so the money is reserved and scheduled well ahead of time."],
-      ["Do I have to manage any of this?", "No. Your reserve is funded, rebalanced, and refilled by our team as part of managing your portfolio."]
+      ["What happens if the market drops right before a withdrawal?", "Nothing changes. Up to two years of income are already set aside, so we are not forced to sell stocks at a bad time to pay you."],
+      ["Can I use this for charitable giving instead of living expenses?", "Yes. Some clients use Cash Flow Reserve to fund recurring gifts, including qualified charitable distributions from an IRA. The money sits in stable, low-volatility holdings, so a downturn in the market doesn\u2019t put your giving plans at risk."],
+      ["Do I have to manage any of this?", "No. Your reserve is automatically funded, rebalanced, and refilled by our team as part of the professional management of your portfolio."]
     ];
   }
 
@@ -1107,18 +1111,20 @@ class Component extends DCLogic {
     const lines = [];
     for (let k = 0; k < chars.length; k += 2) lines.push(chars.slice(k, k + 2));
     const mobileFast = key === "cfr-simple-type" && window.matchMedia("(max-width: 900px)").matches;
-    const step = mobileFast ? 34 : 52;
-    const dur = mobileFast ? 420 : 560;
+    const fastKey = key === "cfr-type-span";
+    const step = mobileFast ? 34 : (fastKey ? 42 : 52);
+    const dur = mobileFast ? 420 : (fastKey ? 470 : 560);
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
         io.disconnect();
         this._typeDoneMap = this._typeDoneMap || {};
         this._typeDoneMap[key] = true;
+        const hold = key === "cfr-type-span" && !window.matchMedia("(max-width: 900px)").matches ? 500 : 0;
         lines.forEach((line, li) => {
           setTimeout(() => line.forEach(w => {
             w.style.animation = "cfr-word-land " + dur + "ms linear forwards";
-          }), li * step);
+          }), hold + li * step);
         });
         setTimeout(() => {
           chars.forEach(w => {
@@ -1128,9 +1134,9 @@ class Component extends DCLogic {
             w.style.filter = "";
             w.style.willChange = "";
           });
-        }, lines.length * step + dur + 60);
+        }, hold + lines.length * step + dur + 60);
       });
-    }, { threshold: 0, rootMargin: key === "cfr-diff-type" ? "0px 0px -48% 0px" : "0px 0px -35% 0px" });
+    }, { threshold: 0, rootMargin: key === "cfr-diff-type" ? "0px 0px -48% 0px" : (key === "cfr-type-span" && !window.matchMedia("(max-width: 900px)").matches ? "0px 0px -82% 0px" : "0px 0px -35% 0px") });
     io.observe(el);
     this._typeIOs[key] = io;
   }
@@ -1144,12 +1150,10 @@ class Component extends DCLogic {
       raf = requestAnimationFrame(() => {
         raf = null;
         const p = Math.min(1, Math.max(0, window.scrollY / 700));
-        nav.style.backgroundColor = "rgba(2,14,27," + (1 - 0.04 * p).toFixed(3) + ")";
-        nav.style.backdropFilter = "blur(" + (9 * p).toFixed(2) + "px) saturate(120%)";
+        const qc = Math.min(1, Math.max(0, window.scrollY / 120));
         const q = Math.min(1, Math.max(0, window.scrollY / 120));
         nav.style.setProperty("--nav-pad", (40.5 - 13.5 * q).toFixed(2) + "px");
-        const base = Math.min(54, Math.max(32, window.innerWidth * 0.044));
-        nav.style.setProperty("--nav-logo", (base - 10 * q).toFixed(2) + "px");
+        nav.style.setProperty("--nav-logo", (54 - 10 * q).toFixed(2) + "px");
       });
     };
     window.addEventListener("scroll", this._navScroll, { passive: true });
@@ -1222,10 +1226,10 @@ class Component extends DCLogic {
       raf = requestAnimationFrame(() => {
         raf = null;
         if (!window.matchMedia("(max-width: 900px)").matches) { slot.style.transform = ""; return; }
-        const cap = Math.max(0, (slot.offsetHeight - wrap.clientHeight) / 2 - 1);
+        const cap = Math.max(0, ((slot.offsetHeight - wrap.clientHeight) / 2 - 2) * 0.8);
         const r = wrap.getBoundingClientRect();
         const vh = window.innerHeight || 1;
-        const shift = Math.max(-cap, Math.min(cap, -(r.top - vh * 0.5) * 0.09));
+        const shift = Math.max(-cap, Math.min(cap, -(r.top - vh * 0.5) * 0.035));
         slot.style.transform = "translate3d(0, " + shift.toFixed(1) + "px, 0)";
       });
     };
@@ -1499,14 +1503,10 @@ class Component extends DCLogic {
 
   openBooking(e) {
     e.preventDefault();
-    // On phones YCB's own widget tends to take over the document instead of
-    // layering, which leaves a blank page on close. Use our own overlay iframe
-    // there so opening and closing are fully under our control.
-    if (window.matchMedia("(max-width: 900px)").matches) { this.openBookingOverlay(); return; }
-    const host = document.getElementById("ycb-host");
-    const trigger = host && host.querySelector("a, button");
-    if (trigger) { trigger.click(); this.pollBookingClose(); return; }
-    window.open("https://smiprivateclient.youcanbook.me", "_blank", "noopener");
+    // YCB's own widget takes over the document rather than layering (Safari
+    // scrolls to the top on open and paints blank on close), so always use our
+    // own overlay iframe — opening and closing stay fully under our control.
+    this.openBookingOverlay();
   }
 
   openBookingOverlay() {
@@ -1514,9 +1514,14 @@ class Component extends DCLogic {
     const y = window.scrollY;
     const wrap = document.createElement("div");
     wrap.id = "cfr-book-overlay";
-    wrap.setAttribute("style", "position: fixed; inset: 0; z-index: 99999; background: rgba(2,14,27,0.72); display: flex; flex-direction: column; opacity: 0; transition: opacity 220ms ease;");
+    const wide = window.matchMedia("(min-width: 901px)").matches;
+    wrap.setAttribute("style", "position: fixed; inset: 0; z-index: 99999; background: rgba(2,14,27,0.72); display: flex; flex-direction: column; align-items: " + (wide ? "center" : "stretch") + "; justify-content: " + (wide ? "center" : "flex-start") + "; padding: " + (wide ? "32px" : "0") + "; opacity: 0; transition: opacity 220ms ease;");
+    const panel = document.createElement("div");
+    panel.setAttribute("style", wide
+      ? "width: 100%; max-width: 620px; height: auto; max-height: 88vh; display: flex; flex-direction: column; box-sizing: border-box;"
+      : "flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0;");
     const bar = document.createElement("div");
-    bar.setAttribute("style", "flex: none; display: flex; justify-content: flex-end; padding: max(10px, env(safe-area-inset-top)) 12px 10px;");
+    bar.setAttribute("style", "flex: none; display: flex; justify-content: flex-end; padding: " + (wide ? "0 0 10px" : "max(10px, env(safe-area-inset-top)) 12px 10px") + ";");
     const close = document.createElement("button");
     close.setAttribute("aria-label", "Close scheduling");
     close.setAttribute("style", "width: 44px; height: 44px; border-radius: 999px; border: none; background: #ffffff; color: #020E1B; font-size: 22px; line-height: 1; font-weight: 600; cursor: pointer;");
@@ -1524,16 +1529,27 @@ class Component extends DCLogic {
     const frame = document.createElement("iframe");
     frame.src = "https://smiprivateclient.youcanbook.me";
     frame.setAttribute("title", "Schedule a call");
-    frame.setAttribute("style", "flex: 1 1 auto; width: 100%; border: 0; background: #ffffff; border-top-left-radius: 14px; border-top-right-radius: 14px;");
+    frame.setAttribute("style", "flex: 1 1 auto; width: 100%; " + (wide ? "height: 760px; max-height: calc(88vh - 64px);" : "min-height: 0;") + " border: 0; background: #ffffff; border-radius: " + (wide ? "16px" : "14px 14px 0 0") + ";");
     bar.appendChild(close);
-    wrap.appendChild(bar);
-    wrap.appendChild(frame);
+    panel.appendChild(bar);
+    panel.appendChild(frame);
+    wrap.appendChild(panel);
     document.body.appendChild(wrap);
     requestAnimationFrame(() => { wrap.style.opacity = "1"; });
+    // hiding overflow removes the scrollbar, which would shift the page sideways —
+    // hold its width back as padding while the overlay is open
+    const sbw = window.innerWidth - document.documentElement.clientWidth;
+    this._sbPad = document.body.style.paddingRight;
+    if (sbw > 0) document.body.style.paddingRight = sbw + "px";
     document.body.style.overflow = "hidden";
     const shut = () => {
       wrap.style.opacity = "0";
-      setTimeout(() => { wrap.remove(); this.unlockScroll(); window.scrollTo(0, y); }, 200);
+      setTimeout(() => {
+        wrap.remove();
+        document.body.style.paddingRight = this._sbPad || "";
+        this.unlockScroll();
+        window.scrollTo(0, y);
+      }, 200);
     };
     close.addEventListener("click", shut);
     wrap.addEventListener("click", (ev) => { if (ev.target === wrap) shut(); });
