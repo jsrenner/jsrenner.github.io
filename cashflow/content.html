@@ -1112,15 +1112,15 @@ class Component extends DCLogic {
     for (let k = 0; k < chars.length; k += 2) lines.push(chars.slice(k, k + 2));
     const mobileFast = key === "cfr-simple-type" && window.matchMedia("(max-width: 900px)").matches;
     const fastKey = key === "cfr-type-span";
-    const step = mobileFast ? 34 : (fastKey ? 42 : 52);
-    const dur = mobileFast ? 420 : (fastKey ? 470 : 560);
+    const step = mobileFast ? 34 : (fastKey ? 30 : 52);
+    const dur = mobileFast ? 420 : (fastKey ? 380 : 560);
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
         io.disconnect();
         this._typeDoneMap = this._typeDoneMap || {};
         this._typeDoneMap[key] = true;
-        const hold = key === "cfr-type-span" && !window.matchMedia("(max-width: 900px)").matches ? 160 : 0;
+        const hold = key === "cfr-type-span" && !window.matchMedia("(max-width: 900px)").matches ? 0 : 0;
         lines.forEach((line, li) => {
           setTimeout(() => line.forEach(w => {
             w.style.animation = "cfr-word-land " + dur + "ms linear forwards";
@@ -1136,7 +1136,7 @@ class Component extends DCLogic {
           });
         }, hold + lines.length * step + dur + 60);
       });
-    }, { threshold: 0, rootMargin: key === "cfr-diff-type" ? "0px 0px -48% 0px" : (key === "cfr-type-span" && !window.matchMedia("(max-width: 900px)").matches ? "0px 0px -50% 0px" : "0px 0px -35% 0px") });
+    }, { threshold: 0, rootMargin: key === "cfr-diff-type" ? "0px 0px -48% 0px" : (key === "cfr-type-span" && !window.matchMedia("(max-width: 900px)").matches ? "0px 0px -60px 0px" : "0px 0px -35% 0px") });
     io.observe(el);
     this._typeIOs[key] = io;
   }
@@ -1257,7 +1257,7 @@ class Component extends DCLogic {
       es.forEach(e => { if (e.isIntersecting) { io.disconnect(); go(); } });
     }, window.matchMedia("(max-width: 900px)").matches
       ? { threshold: 0, rootMargin: "0px 0px 15% 0px" }
-      : { threshold: 0.35, rootMargin: "0px 0px -18% 0px" });
+      : { threshold: 0.35, rootMargin: "0px 0px -60px 0px" });
     [copy, stage, photo].forEach(e => { if (e) io.observe(e); });
     this._advIO = io;
   }
@@ -1435,7 +1435,7 @@ class Component extends DCLogic {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return show();
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { show(); io.disconnect(); } });
-    }, { threshold: 0.25, rootMargin: "0px 0px -18% 0px" });
+    }, { threshold: 0.25, rootMargin: "0px 0px -60px 0px" });
     io.observe(root);
     this._introIO = io;
   }
