@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      background: #020E1B;
+      display: flex; align-items: center; justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 20px;
+    }
+    #__pw_box {
+      background: #faf9f5; border-radius: 10px; padding: 32px 28px;
+      width: 320px; max-width: 100%; box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+    #__pw_box h1 { font-size: 16px; margin: 0 0 18px; color: #020E1B; font-weight: 600; }
+    #__pw_box input {
+      width: 100%; padding: 11px 10px; margin-bottom: 10px;
+      border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box;
+    }
+    #__pw_box button {
+      width: 100%; padding: 12px; background: #E07B2A; color: #fff; border: none;
+      border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer;
+    }
+    #__pw_box button:hover { background: #c96a20; }
+    #__pw_error { color: #c0392b; font-size: 13px; margin-top: 8px; min-height: 16px; }
+  </style>
+</head>
+<body>
+  <div id="__pw_box">
+    <h1>This page is private. Sign in to continue.</h1>
+    <form id="__pw_form" autocomplete="off">
+      <input type="text" id="__pw_user" placeholder="Username" autocomplete="off" autocapitalize="none" spellcheck="false">
+      <input type="password" id="__pw_pass" placeholder="Password" autocomplete="off">
+      <button type="submit">Enter</button>
+      <div id="__pw_error"></div>
+    </form>
+  </div>
+  <script>
+    (function() {
+      var EXPECTED_HASH = "4497c1a2e55f597669691923303208a1965f7836dc2582f3256b8a92fc1bd2e8";
+      var SESSION_KEY = "__marathonpp_authed";
+
+      if (sessionStorage.getItem(SESSION_KEY) === "1") {
+        window.location.replace("./content.html");
+      }
+
+      function sha256Hex(str) {
+        var enc = new TextEncoder().encode(str);
+        return crypto.subtle.digest("SHA-256", enc).then(function(buf) {
+          var arr = Array.from(new Uint8Array(buf));
+          return arr.map(function(b) { return b.toString(16).padStart(2, "0"); }).join("");
+        });
+      }
+
+      document.getElementById("__pw_form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        var user = document.getElementById("__pw_user").value.trim();
+        var pass = document.getElementById("__pw_pass").value;
+        sha256Hex(user + ":" + pass).then(function(hash) {
+          if (hash === EXPECTED_HASH) {
+            sessionStorage.setItem(SESSION_KEY, "1");
+            window.location.replace("./content.html");
+          } else {
+            document.getElementById("__pw_error").textContent = "Incorrect username or password.";
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

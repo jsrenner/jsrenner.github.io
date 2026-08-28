@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <script>
-  if (sessionStorage.getItem("__marathon_authed") !== "1") {
+  if (sessionStorage.getItem("__marathonpp_authed") !== "1") {
     window.location.replace("./index.html");
   }
 </script>
@@ -160,24 +160,147 @@
 
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="var(--c-deep)"></rect><rect x="120" y="90" width="160" height="120" fill="#E07B2A"></rect><text x="200" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="72" font-weight="700" fill="var(--c-deep)">MP</text></svg></template>
 
+<sc-if value="{{ setupOpen }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:100vh;box-sizing:border-box;padding:44px 26px 90px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:680px;align-content:start">
+
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:18px;border-bottom:3px solid #E07B2A;padding-bottom:14px">
+      <div style="font-family:Georgia,serif;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#E07B2A;font-weight:700">Marathon Partner Projection</div>
+      <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#31A6E6;font-weight:700">{{ wizStepLabel }}</div>
+    </div>
+
+    <div style="display:flex;gap:4px;margin-top:14px">
+      <sc-for list="{{ wizDots }}" as="d" hint-placeholder-count="8">
+        <div style="{{ d.style }}"></div>
+      </sc-for>
+    </div>
+
+    <h1 style="font-family:Georgia,serif;font-size:31px;line-height:1.15;color:var(--c-paperInk);margin:26px 0 10px;font-weight:700;text-wrap:pretty">{{ wizTitle }}</h1>
+    <div style="font-size:15px;line-height:1.55;color:var(--c-muted3);text-wrap:pretty">{{ wizSub }}</div>
+
+    <sc-if value="{{ wizIsWelcome }}" hint-placeholder-val="{{ true }}">
+      <sc-if value="{{ hasSaved }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;background:var(--c-deep);border-left:3px solid #31A6E6;padding:13px 16px">
+          <div style="font-size:12.5px;line-height:1.5;color:var(--c-muted);text-wrap:pretty">A setup is already saved in this browser, so the fields below start from those answers rather than from scratch.</div>
+          <button onClick="{{ clearSetup }}" style="flex-shrink:0;background:transparent;border:1px solid var(--c-chipb);color:var(--c-ink);padding:9px 16px;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;cursor:pointer" style-hover="border-color:#31A6E6">Start over from blank</button>
+        </div>
+      </sc-if>
+      <div style="margin-top:30px">
+        <div style="font-family: 'Open Sans',sans-serif; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: #FFFFFF; font-weight: 700">{{ wizIntroLead }}</div>
+        <div style="font-size: 15px; line-height: 1.55; color: var(--c-muted); margin-top: 8px; text-wrap: pretty">{{ wizIntroSub }}</div>
+        <div style="display:grid;gap:0;margin-top:18px;border-top:1px solid var(--c-border)">
+          <sc-for list="{{ wizIntro }}" as="b" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;align-items:start;padding:16px 2px;border-bottom:1px solid var(--c-border)">
+              <div style="font-family:Georgia,serif;font-size:22px;line-height:1;font-weight:700;color:#31A6E6;font-variant-numeric:tabular-nums">{{ b.n }}</div>
+              <div style="display:grid;gap:5px">
+                <div style="font-family: 'Open Sans',sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .04em; color: #E07B2A">{{ b.head }}</div>
+                <div style="font-size: 13px; line-height: 1.55; color: #B7BFC8; text-wrap: pretty">{{ b.body }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ wizIsTax }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;gap:14px;margin-top:26px">
+        <div style="background:var(--c-deep);border:1px solid #E07B2A;padding:17px;display:grid;gap:10px">
+          <div style="font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#E07B2A;font-weight:700">Optional — let AI read your return for you</div>
+          <div style="font-size:13px;line-height:1.55;color:var(--c-muted);text-wrap:pretty">You do not have to hunt through your return for any of this. Hand the job to an AI assistant instead — it takes about a minute.</div>
+          <div style="display:grid;gap:9px">
+            <sc-for list="{{ wizTaxHow }}" as="h" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:20px minmax(0,1fr);gap:11px;align-items:start">
+                <div style="font-family:Georgia,serif;font-size:15px;line-height:1.4;font-weight:700;color:#31A6E6;font-variant-numeric:tabular-nums">{{ h.n }}</div>
+                <div style="font-size:13px;line-height:1.5;color:var(--c-muted);text-wrap:pretty">{{ h.t }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;line-height:1.5;color:var(--c-muted2);text-wrap:pretty">Nothing you type on this page ever leaves your browser. There is no server behind it and no account — the numbers stay on your own computer.</div>
+          <textarea value="{{ taxPrompt }}" readOnly="{{ true }}" onFocus="{{ selectPrompt }}" onClick="{{ selectPrompt }}" rows="9" style="width:100%;box-sizing:border-box;resize:vertical;background:var(--c-card);border:1px solid var(--c-chipb);color:var(--c-text2);font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.5;padding:11px 12px"></textarea>
+          <button onClick="{{ copyPrompt }}" style="justify-self:start;background:#E07B2A;color:var(--c-bg);border:0;padding:11px 20px;font-family:'Open Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;cursor:pointer">Copy the prompt</button>
+        </div>
+        <div style="background:var(--c-deep);border:1px solid var(--c-border);padding:17px;display:grid;gap:10px">
+          <div style="font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#31A6E6;font-weight:700">Paste the answer back</div>
+          <textarea value="{{ taxPaste }}" onChange="{{ onTaxPaste }}" onInput="{{ onTaxPaste }}" rows="7" placeholder="FILING: mfj" style="width:100%;box-sizing:border-box;resize:vertical;background:var(--c-card);border:1px solid var(--c-chipb);color:var(--c-ink);font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.5;padding:11px 12px"></textarea>
+          <button onClick="{{ parseTax }}" style="justify-self:start;background:var(--c-chip);border:1px solid var(--c-chipb);color:var(--c-ink);font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:700;padding:10px 18px;cursor:pointer" style-hover="border-color:#E07B2A">Fill in my numbers</button>
+          <sc-if value="{{ hasParseMsg }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:12px;line-height:1.5;color:#1D9E75;font-weight:600;text-wrap:pretty">{{ parseMsg }}</div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ wizHasFields }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;gap:12px;margin-top:24px">
+        <sc-for list="{{ wizFields }}" as="f" hint-placeholder-count="3">
+          <div style="display:grid;gap:8px;background:var(--c-deep);border:1px solid var(--c-border);padding:15px 17px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+              <div style="font-family:'Open Sans',sans-serif;font-size:13.5px;font-weight:600;color:var(--c-ink)">{{ f.label }}</div>
+              <div style="font-size:12px;color:#31A6E6;font-variant-numeric:tabular-nums;white-space:nowrap">{{ f.display }}</div>
+            </div>
+            <sc-if value="{{ f.isNum }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;background:var(--c-card);border:1px solid var(--c-chipb);height:40px;padding:0 12px">
+                <span style="font-size:14px;color:var(--c-muted2)">{{ f.pre }}</span>
+                <input type="number" min="{{ f.min }}" step="{{ f.step }}" placeholder="0" value="{{ f.value }}" onChange="{{ f.onInput }}" onInput="{{ f.onInput }}" style="width:100%;min-width:0;background:transparent;border:none;color:var(--c-ink);font-family:Georgia,serif;font-size:17px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;padding:0">
+                <span style="font-size:14px;color:var(--c-muted2);padding-left:6px">{{ f.post }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ f.isChoice }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <sc-for list="{{ f.opts }}" as="o" hint-placeholder-count="2">
+                  <button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button>
+                </sc-for>
+              </div>
+            </sc-if>
+            <div style="font-size:12px;line-height:1.5;color:var(--c-muted2);text-wrap:pretty">{{ f.hint }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:30px;border-top:1px solid var(--c-border);padding-top:18px">
+      <button onClick="{{ wizBack }}" style="{{ wizBackStyle }}">← Back</button>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end">
+        <sc-if value="{{ wizNavMsg }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:12px;line-height:1.5;color:#1D9E75;font-weight:600;text-wrap:pretty;flex:1;min-width:180px">{{ parseMsg }}</div>
+        </sc-if>
+        <sc-if value="{{ wizCanSkip }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ skipTax }}" style="background:transparent;border:0;color:var(--c-muted2);font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;padding:8px 2px;text-align:right" style-hover="color:var(--c-ink)">{{ wizSkipLabel }}</button>
+        </sc-if>
+        <button onClick="{{ wizNext }}" style="background:#E07B2A;color:var(--c-bg);border:0;padding:13px 26px;font-family:'Open Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;cursor:pointer">{{ wizNextLabel }}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ modelOpen }}" hint-placeholder-val="{{ false }}">
 <div data-mq="shell" style="container-type:inline-size;max-width:2400px;margin:0 auto;padding:32px 56px 90px">
 
   <div data-mq="head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:3px solid #E07B2A;padding-bottom:18px">
     <div>
-      <div style="font-family:Georgia,serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#E07B2A;font-weight:700">Ownership Decision Model</div>
-      <h1 style="font-family:Georgia,serif;font-size:38px;line-height:1.1;color:var(--c-paperInk);margin:8px 0 6px;font-weight:700">Marathon Partners share purchase</h1>
-      <div style="font-size:15px;color:var(--c-muted3);max-width:640px">Funding mix, payout, tax reserve, HELOC drag and downside stress — all from your own assumptions. Change anything on the left; every number below recalculates.</div>
+      <div style="font-family:Georgia,serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#E07B2A;font-weight:700">Marathon Partner Projection</div>
+      <h1 style="font-family:Georgia,serif;font-size:38px;line-height:1.1;color:var(--c-paperInk);margin:8px 0 6px;font-weight:700">Your position, projected</h1>
+      <div style="font-size:15px;color:var(--c-muted3);max-width:640px">Distributions, real tax, debt drag and downside stress — all from the numbers you entered. Change anything on the left; every figure below recalculates.</div>
     </div>
     <div data-noprint="" style="display:flex;flex-direction:column;gap:8px;flex-shrink:0">
       <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:transparent;color:var(--c-paperMuted);border:1px solid var(--c-paperb);padding:8px 10px 8px 12px;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;cursor:pointer;width:100%">
         <span>{{ themeLabel }}</span>
         <span style="{{ themeTrackStyle }}"><span style="{{ themeKnobStyle }}"></span></span>
       </button>
-      <a href="marathon-light.html" style="text-align:center;border:1px solid var(--c-paperb);color:var(--c-paperMuted);padding:9px 18px;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em">Simple version →</a>
+      <button onClick="{{ reopenSetup }}" style="background:transparent;border:1px solid var(--c-paperb);color:var(--c-paperMuted);padding:9px 18px;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;cursor:pointer;width:100%" style-hover="border-color:#E07B2A">Edit my setup</button>
       <button onClick="{{ doPrint }}" style="background: #E07B2A; color: #000000; border: 0; padding: 11px 18px; font-family: 'Open Sans',sans-serif; font-size: 13px; font-weight: 900; letter-spacing: .04em; cursor: pointer; text-transform: uppercase">Print / Save as PDF</button>
       <div style="font-size:12px;color:var(--c-muted2);text-align:center">{{ printNote }}</div>
     </div>
   </div>
+
+  <sc-if value="{{ stdBanner }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px;background:var(--c-deep);border-left:3px solid #E07B2A;padding:13px 16px">
+      <div style="font-size:12.5px;line-height:1.5;color:var(--c-muted);text-wrap:pretty">Running on standard assumptions — the standard deduction and default rates, not your own return. Every tax figure below is directional until you add your deductions and withholding.</div>
+      <button onClick="{{ openTaxStep }}" style="flex-shrink:0;background:#E07B2A;color:var(--c-bg);border:0;padding:9px 16px;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.04em;cursor:pointer">Add my tax numbers</button>
+    </div>
+  </sc-if>
 
   <div data-mq="layout" style="display:grid;grid-template-columns:368px minmax(0,1fr);gap:30px;margin-top:26px;align-items:start">
 
@@ -192,7 +315,7 @@
         <div style="border:1px solid var(--c-border)">
           <button onClick="{{ tSaved }}" style="{{ hdrSaved }}">
             <span style="display:grid;gap:2px;text-align:left">
-              <span style="font-family: 'Open Sans',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #31A6E6; font-weight: 700">Saved scenarios</span>
+              <span style="font-family: 'Open Sans',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #31A6E6; font-weight: 700">Saved setups</span>
               <span style="font-size:12px;color:var(--c-muted2)">{{ savedCount }}</span>
             </span>
             <span style="{{ chevSaved }}">▾</span>
@@ -200,7 +323,7 @@
           <sc-if value="{{ openSaved }}" hint-placeholder-val="{{ true }}">
             <div style="display:grid;gap:13px;padding:11px 15px 17px">
               <div style="display:flex;gap:6px;align-items:stretch">
-                <input type="text" value="{{ saveName }}" onChange="{{ setSaveName }}" onInput="{{ setSaveName }}" placeholder="Name this scenario" style="flex:1;min-width:0;background:var(--c-card);border:1px solid var(--c-chipb);color:var(--c-ink);font-family:'Open Sans',sans-serif;font-size:12px;padding:7px 9px">
+                <input type="text" value="{{ saveName }}" onChange="{{ setSaveName }}" onInput="{{ setSaveName }}" placeholder="Name this setup" style="flex:1;min-width:0;background:var(--c-card);border:1px solid var(--c-chipb);color:var(--c-ink);font-family:'Open Sans',sans-serif;font-size:12px;padding:7px 9px">
                 <button onClick="{{ saveScenario }}" style="flex-shrink:0;background:#E07B2A;border:0;color:var(--c-bg);font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;padding:0 14px;cursor:pointer">Save</button>
               </div>
               <sc-for list="{{ savedList }}" as="s" hint-placeholder-count="2">
@@ -217,7 +340,7 @@
               </sc-for>
               <sc-if value="{{ hasShared }}" hint-placeholder-val="{{ false }}">
                 <div style="display:grid;gap:6px;padding-top:4px">
-                  <div style="font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#3B9ED4;font-weight:700">From scenarios.json</div>
+                  <div style="font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#3B9ED4;font-weight:700">Shared setups</div>
                   <sc-for list="{{ sharedList }}" as="s" hint-placeholder-count="2">
                     <div onClick="{{ s.load }}" style="display:grid;gap:2px;padding:9px 11px;background:var(--c-card);border:1px solid var(--c-chipb);border-left:3px solid #3B9ED4;cursor:pointer" style-hover="border-color:#E07B2A">
                       <span style="font-size:12.5px;font-weight:600;color:var(--c-ink)">{{ s.name }}</span>
@@ -244,7 +367,7 @@
                   <button onClick="{{ clearPayload }}" style="justify-self:start;background:transparent;border:0;color:var(--c-muted2);font-family:'Open Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;padding:0">Hide</button>
                 </div>
               </sc-if>
-              <div style="font-size:12px;color:var(--c-muted2);line-height:1.6">Click a name to restore every slider, funding mix and share purchase. The link carries the whole scenario in the URL — no database, works on any device, and anyone with the file can open it.</div>
+              <div style="font-size:12px;color:var(--c-muted2);line-height:1.6">Click a name to restore every slider, funding mix and share purchase. The link carries the whole setup in the URL — no database, works on any device, and anyone with the file can open it.</div>
             </div>
           </sc-if>
         </div>
@@ -252,19 +375,46 @@
         <div style="border:1px solid var(--c-border)">
           <button onClick="{{ tScenario }}" style="{{ hdrScenario }}">
             <span style="display:grid;gap:2px;text-align:left">
-              <span style="font-family: 'Open Sans',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #31A6E6; font-weight: 700">Scenario</span>
-              <span style="font-size:12px;color:var(--c-muted2)">{{ sumScenario }}</span>
+              <span style="font-family: 'Open Sans',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #31A6E6; font-weight: 700">What I own</span>
+              <span style="font-size:12px;color:var(--c-muted2)">{{ sumOwn }}</span>
             </span>
             <span style="{{ chevScenario }}">▾</span>
           </button>
           <sc-if value="{{ openScenario }}" hint-placeholder-val="{{ true }}">
-            <div style="display:grid;gap:10px;padding:11px 15px 17px">
-              <sc-for list="{{ presets }}" as="p" hint-placeholder-count="3">
-                <button onClick="{{ p.pick }}" style="{{ p.style }}">
-                  <span style="font-weight:700;font-size:13px">{{ p.name }}</span>
-                  <span style="font-size:12px;opacity:.75">{{ p.sub }}</span>
-                </button>
-              </sc-for>
+            <div style="display:grid;gap:15px;padding:11px 15px 17px">
+              <div style="display:grid;gap:6px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+                  <span style="font-size:12px;color:var(--c-text2)">Shares I own today</span>
+                </div>
+                <div style="display:flex;align-items:center;background:var(--c-card);border:1px solid var(--c-chipb);height:34px;padding:0 10px">
+                  <span style="font-size:12px;color:var(--c-muted2)"></span>
+                  <input type="number" min="0" max="10000" step="0.05" placeholder="0" value="{{ ownedSharesValue }}" onChange="{{ onOwnedShares }}" onInput="{{ onOwnedShares }}" style="width:100%;min-width:0;background:transparent;border:none;color:var(--c-ink);font-family:Georgia,serif;font-size:15px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;padding:0">
+                  <span style="font-size:12px;color:var(--c-muted2);padding-left:5px">sh</span>
+                </div>
+                <div style="font-size:12px;line-height:1.6;color:var(--c-muted2)">As the partnership states it — 10 for ten shares, 0.10 for a tenth.</div>
+              </div>
+              <div style="display:grid;gap:6px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+                  <span style="font-size:12px;color:var(--c-text2)">My age</span>
+                </div>
+                <div style="display:flex;align-items:center;background:var(--c-card);border:1px solid var(--c-chipb);height:34px;padding:0 10px">
+                  <span style="font-size:12px;color:var(--c-muted2)"></span>
+                  <input type="number" min="0" max="100" step="1" placeholder="0" value="{{ ageValue }}" onChange="{{ onAge }}" onInput="{{ onAge }}" style="width:100%;min-width:0;background:transparent;border:none;color:var(--c-ink);font-family:Georgia,serif;font-size:15px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;padding:0">
+                  <span style="font-size:12px;color:var(--c-muted2);padding-left:5px">yrs</span>
+                </div>
+                <div style="font-size:12px;line-height:1.6;color:var(--c-muted2)">Only used to test whether a retirement withdrawal carries the early-withdrawal penalty.</div>
+              </div>
+              <sc-if value="{{ canBuy }}" hint-placeholder-val="{{ true }}">
+                <div style="display:grid;gap:7px;border-top:1px solid var(--c-divider);padding-top:12px">
+                  <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-muted2);font-weight:700">How a purchase gets funded</div>
+                  <sc-for list="{{ presets }}" as="p" hint-placeholder-count="3">
+                    <button onClick="{{ p.pick }}" style="{{ p.style }}">
+                      <span style="font-weight:700;font-size:13px">{{ p.name }}</span>
+                      <span style="font-size:12px;opacity:.75">{{ p.sub }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
               <sc-if value="{{ dollarMode }}" hint-placeholder-val="{{ false }}">
                 <div style="border:1px solid var(--c-chipb);background:var(--c-card);padding:11px 12px;display:grid;gap:12px">
                   <div style="font-size: 10.5px; color: #31A6E6; line-height: 1.45">{{ tenthPrice }}</div>
@@ -295,6 +445,7 @@
                     </sc-if>
                     <div style="font-size:11px;color:{{ cashVsColor }};line-height:1.4;text-wrap:pretty">{{ cashVsSavings }}</div>
                   </div>
+                  <sc-if value="{{ helocOn }}" hint-placeholder-val="{{ true }}">
                   <div style="display:grid;gap:7px;border-top:1px solid var(--c-chipb);padding-top:11px">
                     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:var(--c-text2)">
                       <span>HELOC draw</span>
@@ -322,11 +473,12 @@
                     </sc-if>
                     <div style="font-size:11px;color:{{ helocVsColor }};line-height:1.4;text-wrap:pretty">{{ helocVsAvail }}</div>
                   </div>
+                  </sc-if>
                   <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:2px solid #E07B2A;padding-top:9px;font-size:12px;color:var(--c-ink);font-weight:700">
                     <span>Total deployed</span>
                     <span style="font-variant-numeric:tabular-nums;text-align:right">{{ customTotalLabel }}</span>
                   </div>
-                  <div style="font-size:12px;color:var(--c-muted2);line-height:1.6;text-wrap:pretty">Set either to 0.0 to use just one. The HELOC figure drives interest, payoff months and the NuLu payoff — the rate and payoff settings live in the Debt section.</div>
+                  <div style="font-size:12px;color:var(--c-muted2);line-height:1.6;text-wrap:pretty">{{ mixerNote }}</div>
                 </div>
               </sc-if>
             </div>
@@ -403,12 +555,9 @@
                       <input type="number" min="{{ k.min }}" max="{{ k.max }}" step="{{ k.step }}" value="{{ k.value }}" onChange="{{ k.set }}" onInput="{{ k.set }}" style="flex:1;min-width:0;background:var(--c-card);border:1px solid var(--c-border2);color:var(--c-ink);font-family:'Open Sans',sans-serif;font-size:12px;padding:6px 8px">
                     </div>
                   </sc-if>
-                  <sc-if value="{{ k.note }}" hint-placeholder-val="{{ false }}">
-                    <div style="font-size:11px;color:var(--c-muted2);line-height:1.55;margin-top:6px;text-wrap:pretty">{{ k.note }}</div>
-                  </sc-if>
                 </div>
               </sc-for>
-              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted2);font-weight:700;margin-top:6px">NuLu syndication</div>
+              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted2);font-weight:700;margin-top:6px">Asset you would sell</div>
               <sc-for list="{{ nuluSliders }}" as="k" hint-placeholder-count="3">
                 <div style="border-top:1px solid var(--c-border);padding-top:9px">
                   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 8px;font-size:12px;color:var(--c-text2);line-height:1.3;margin-bottom:7px">
@@ -423,8 +572,10 @@
                   </sc-if>
                 </div>
               </sc-for>
-              <button onClick="{{ toggleNuluToHeloc }}" style="{{ nuluToHelocStyle }}">{{ nuluToHelocLabel }}</button>
-              <div style="font-size:12px;color:var(--c-muted2);line-height:1.55;text-wrap:pretty">{{ nuluNote }}</div>
+              <sc-if value="{{ helocOn }}" hint-placeholder-val="{{ true }}">
+                <button onClick="{{ toggleNuluToHeloc }}" style="{{ nuluToHelocStyle }}">{{ nuluToHelocLabel }}</button>
+                <div style="font-size:12px;color:var(--c-muted2);line-height:1.55;text-wrap:pretty">{{ nuluNote }}</div>
+              </sc-if>
             </div>
           </sc-if>
         </div>
@@ -473,7 +624,7 @@
             <div style="display:grid;padding:11px 15px 8px">
               <div style="display:grid;gap:7px;padding:11px 0;border-bottom:1px solid var(--c-divider)">
                 <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted2);font-weight:700">Tax view</div>
-                <div style="font-size:12px;color:var(--c-muted2);line-height:1.6;text-wrap:pretty">All four run the same §743(b) engine off your 2025 K-1, and all four price every year with today’s tax law held constant. They differ in how much of the step-up you get credit for, whether the NuLu and consulting losses still net against QBI, whether SMI is treated as a service business (which phases the QBI deduction out at higher income), and how much medical is left to itemize.</div>
+                <div style="font-size:12px;color:var(--c-muted2);line-height:1.6;text-wrap:pretty">All four run the same §743(b) engine off your own purchase price, and all four price every year with today’s tax law held constant. They differ in how much of the step-up you get credit for, whether other business losses still net against your QBI deduction, whether the business is treated as a service business (which phases the QBI deduction out at higher income), and how much medical is left to itemize.</div>
                 <div style="display:grid;gap:6px">
                   <sc-for list="{{ taxViews }}" as="v" hint-placeholder-count="3">
                     <button onClick="{{ v.pick }}" style="{{ v.style }}">
@@ -626,7 +777,7 @@
 
       <div style="display:grid;gap:26px">
         <div style="background:var(--c-deep);padding:24px 26px" data-card="">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px">
             <div>
               <div style="font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: #E07B2A; font-weight: 700">Selected scenario</div>
               <div style="font-family:Georgia,serif;font-size:28px;color:var(--c-ink);font-weight:700;margin-top:5px">{{ scenarioName }}</div>
@@ -671,13 +822,8 @@
               <div style="display:grid;gap:0;margin-top:6px">
                 <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="6">
                   <div style="{{ r.style }}">
-                    <span style="display:grid;gap:3px;min-width:0">
-                      <span style="font-size:13px">{{ r.label }}</span>
-                      <sc-if value="{{ r.sub }}" hint-placeholder-val="{{ false }}">
-                        <span style="font-size:12px;color:var(--c-paperFaint);line-height:1.45;text-wrap:pretty">{{ r.sub }}</span>
-                      </sc-if>
-                    </span>
-                    <span style="font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;flex-shrink:0">{{ r.value }}</span>
+                    <span style="font-size:13px">{{ r.label }}</span>
+                    <span style="font-size:14px;font-weight:700;font-variant-numeric:tabular-nums">{{ r.value }}</span>
                   </div>
                 </sc-for>
               </div>
@@ -792,17 +938,17 @@
             <sc-for list="{{ milestoneCards }}" as="c" hint-placeholder-count="16">
               <div style="{{ c.cardStyle }}">
                 <div style="display:grid;gap:5px;min-height:62px;align-content:start;border-bottom:1px solid var(--c-border);padding-bottom:14px">
-                  <span style="font-family:Georgia,serif;font-size:19px;color:var(--c-ink);font-weight:700;line-height:1.2">{{ c.label }}</span>
+                  <span style="font-family: Georgia,serif; font-size: 21px; color: var(--c-ink); font-weight: 700; line-height: 1.2">{{ c.label }}</span>
                   <span style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:{{ c.accent }};font-weight:700;line-height:1.4">{{ c.tag }}</span>
                 </div>
                 <div style="margin-top:16px">
                   <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted2);font-weight:700">Net position</div>
-                  <div style="font-family: Merriweather; font-size: 40px; color: var(--c-ink); font-weight: 700; line-height: 1.08; margin-top: 5px; font-variant-numeric: tabular-nums; letter-spacing: -.02em">{{ c.net }}</div>
+                  <div style="font-family: Merriweather; font-size: 40px; color: var(--c-ink); font-weight: 700; line-height: 1.08; margin-top: 5px; font-variant-numeric: tabular-nums; letter-spacing: 0em">{{ c.net }}</div>
                 </div>
                 <div style="display:grid;gap:2px;margin-top:18px;background:var(--c-border)">
                   <sc-for list="{{ c.tiers }}" as="t" hint-placeholder-count="3">
                     <div style="background:var(--c-deep);border-left:3px solid {{ t.tone }};padding:14px 15px;display:grid;gap:6px">
-                      <div style="font-family: 'Open Sans',sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; line-height: 1.2; color: {{ t.tone }}">{{ t.key }}</div>
+                      <div style="font-family: 'Open Sans',sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; line-height: 1.2; color: {{ t.tone }}">{{ t.key }}</div>
                       <div style="font-family: Merriweather; font-size: 23px; color: var(--c-ink); font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums">{{ t.val }}</div>
                       <div style="font-size:12px;color:var(--c-muted2);line-height:1.55;text-wrap:pretty;max-width:88%">{{ t.sub }}</div>
                     </div>
@@ -872,12 +1018,14 @@
           <div style="font-family:Georgia,serif;font-size:19px;color:var(--c-paperInk);font-weight:700">If the doubling doesn't happen</div>
           <div style="font-size:13px;color:var(--c-paperMuted);margin-top:5px;max-width:760px">The whole case rests on one assumption. Here is the same funding mix at four different outcomes in year 2 — value and payout move together, and the bonus moves with the business.</div>
           <div data-mq="table" style="overflow:hidden;margin-top:16px;--mqmin:840px">
-            <div style="display:grid;grid-template-columns:1.05fr .85fr .8fr .95fr .95fr 1.7fr;background:var(--c-deep);color:var(--c-ink)">
+            <div style="{{ stressHeadStyle }}">
               <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700">Year-2 outcome</div>
               <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:right">Position value</div>
               <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:right">Gross / mo</div>
-              <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:right">Net after tax + HELOC</div>
-              <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:right">HELOC status</div>
+              <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:right">{{ stressNetHead }}</div>
+              <sc-if value="{{ helocOn }}" hint-placeholder-val="{{ true }}">
+                <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;text-align:right">HELOC status</div>
+              </sc-if>
               <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700">What it means</div>
             </div>
             <sc-for list="{{ stressRows }}" as="s" hint-placeholder-count="4">
@@ -886,7 +1034,9 @@
                 <div style="padding:12px;font-size:13px;text-align:right;font-variant-numeric:tabular-nums">{{ s.value }}</div>
                 <div style="padding:12px;font-size:13px;text-align:right;font-variant-numeric:tabular-nums">{{ s.gross }}</div>
                 <div style="padding:12px;font-size:13px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:{{ s.netColor }}">{{ s.net }}</div>
-                <div style="padding:12px;font-size:12px;text-align:right;color:var(--c-muted);font-variant-numeric:tabular-nums">{{ s.heloc }}</div>
+                <sc-if value="{{ helocOn }}" hint-placeholder-val="{{ true }}">
+                  <div style="padding:12px;font-size:12px;text-align:right;color:var(--c-muted);font-variant-numeric:tabular-nums">{{ s.heloc }}</div>
+                </sc-if>
                 <div style="padding:12px;font-size:12px;color:var(--c-muted);line-height:1.45">{{ s.note }}</div>
               </div>
             </sc-for>
@@ -894,7 +1044,8 @@
           <div style="font-size:12px;color:var(--c-muted2);margin-top:10px;line-height:1.55">{{ stressCaveat }}</div>
         </div>
 
-        <div data-page="" data-mq="two" style="display:grid;grid-template-columns:1.25fr 1fr;gap:24px">
+        <div data-page="" data-mq="two" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">
+          <sc-if value="{{ helocOn }}" hint-placeholder-val="{{ true }}">
           <div data-card="" style="background:var(--c-paper);border:1px solid var(--c-paperb);padding:20px 22px;border-top:3px solid #1D9E75">
             <div style="font-family:Georgia,serif;font-size:19px;color:var(--c-paperInk);font-weight:700">HELOC payoff path</div>
             <div style="font-size:13px;color:var(--c-paperMuted);margin-top:5px">{{ payoffAssumption }}</div>
@@ -918,6 +1069,9 @@
             </div>
           </div>
 
+          </sc-if>
+
+          <sc-if value="{{ canBuy }}" hint-placeholder-val="{{ true }}">
           <div data-card="" style="background:var(--c-paper);border:1px solid var(--c-paperb);padding:20px 22px;border-top:3px solid #E07B2A">
             <div style="font-family:Georgia,serif;font-size:19px;color:var(--c-paperInk);font-weight:700">What each dollar costs</div>
             <div style="font-size:13px;color:var(--c-paperMuted);margin-top:5px">Cheapest capital first.</div>
@@ -933,6 +1087,7 @@
               </sc-for>
             </div>
           </div>
+          </sc-if>
         </div>
       </div>
 
@@ -941,7 +1096,7 @@
           <div style="font-family:Georgia,serif;font-size:19px;color:var(--c-paperInk);font-weight:700">The funding mixes side by side</div>
           <div style="font-size:13px;color:var(--c-paperMuted);margin-top:5px">Same assumptions as the panel; only how much goes in, and where it comes from, changes. The last column is your own amounts — the cash you enter plus an optional HELOC draw.</div>
           <div data-mq="table" style="margin-top:16px;--mqmin:760px">
-            <div style="display:grid;grid-template-columns:1.35fr repeat(5,1fr);background:var(--c-deep);color:var(--c-ink)">
+            <div style="display:grid;grid-template-columns:1.35fr repeat(4,1fr);background:var(--c-deep);color:var(--c-ink)">
               <div style="padding:10px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700">Metric</div>
               <sc-for list="{{ compareHeads }}" as="h" hint-placeholder-count="4">
                 <div style="{{ h.style }}">{{ h.name }}</div>
@@ -958,20 +1113,7 @@
           </div>
         </div>
 
-        <div data-mq="two" style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
-          <div data-card="" style="background:var(--c-deep);padding:20px 22px">
-            <div style="font-family:Georgia,serif;font-size:19px;color:var(--c-ink);font-weight:700">Verify before wiring a dollar</div>
-            <div style="font-size:12.5px;color:var(--c-muted);margin-top:5px">Any single "no" here changes the answer.</div>
-            <div style="display:grid;gap:9px;margin-top:16px">
-              <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="8">
-                <div style="display:flex;gap:10px;align-items:flex-start">
-                  <span style="width:15px;height:15px;border:1.5px solid #E07B2A;flex-shrink:0;margin-top:2px"></span>
-                  <span style="font-size:12.5px;color:var(--c-paperMuted);line-height:1.45">{{ c }}</span>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-
+        <div data-mq="two" style="display:grid;grid-template-columns:minmax(0,1fr);gap:22px">
           <div data-card="" style="background:var(--c-paper);border:1px solid var(--c-paperb);padding:20px 22px;border-top:3px solid #E07575">
             <div style="font-family:Georgia,serif;font-size:19px;color:var(--c-paperInk);font-weight:700">The paper trail, and the honest risks</div>
             <div style="display:grid;gap:12px;margin-top:14px">
@@ -1004,28 +1146,27 @@
         </div>
 
         <div style="font-size:12px;color:var(--c-muted2);line-height:1.6;border-top:1px solid var(--c-chipb);padding-top:12px">
-          Personal planning model built from your own stated assumptions and your 2025 K-1 and return. Not tax, legal or investment advice. Distribution taxability is modeled as a flat reserve; actual liability depends on QBI/199A, PTET credits, state and local treatment. Confirm all of it with your CPA and read the operating agreement's valuation and redemption language before funding.
+          Personal planning model built from the assumptions you entered. Not tax, legal or investment advice. Tax is modeled on current law held constant, and depends in practice on QBI/199A, any pass-through entity credits, and your state and local treatment. Confirm all of it with your CPA, and read the operating agreement's valuation and redemption language before funding anything.
         </div>
       </div>
 
     </div>
   </div>
 </div>
+</sc-if>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180}}">
 const SOURCES = {
-  savings: { label: 'Savings', amount: 50000, note: 'No interest cost. Drains liquid reserve.' },
-  heloc:   { label: 'HELOC draw', amount: 140000, note: 'Interest-only, secured by the house.' },
-  retire:  { label: 'Retirement cash-out', amount: 115000, note: 'gross → net after tax + penalty.' }
+  savings: { label: 'Savings', amount: 0, note: 'No interest cost. Drains liquid reserve.' },
+  heloc:   { label: 'HELOC draw', amount: 0, note: 'Interest-only, secured by the house.' },
+  retire:  { label: 'Retirement cash-out', amount: 0, note: 'gross → net after tax + penalty.' }
 };
 const PRESETS = [
-  // No purchase at all: the position, income and tax you already have, straight off the rail.
-  { key:'today',     name:'Present day',        sub:'· nothing bought, just what you already own', set:[] },
   // One extra tenth of a share, bought with cash: 0.1 × price on top of the existing 0.10.
-  { key:'savings',   name:'Locked In',          sub:'· one more tenth from savings, no debt', set:['savings'], tenths:1 },
-  { key:'noRetire',  name:'Savings + HELOC',   sub:'$190K · keeps retirement intact',   set:['savings','heloc'] },
-  { key:'aggressive',name:'Full bet',          sub:'$305K · retirement + HELOC + savings', set:['savings','heloc','retire'] },
+  { key:'savings',   name:'Cash only',        sub:'· one more tenth from savings, no debt', set:['savings'], tenths:1 },
+  { key:'noRetire',  name:'Cash + credit line', sub:'· keeps retirement intact',   set:['savings','heloc'] },
+  { key:'aggressive',name:'Everything',        sub:'· retirement + credit line + cash', set:['savings','heloc','retire'] },
   { key:'dollar',    name:'Enter my own amounts', sub:'— · shares in tenths, cash + HELOC', set:[], dollar:true }
 ];
 const selFor = (p) => p.dollar ? { dollar:true }
@@ -1035,7 +1176,7 @@ const presetCapital = (p, st) => p.dollar
   ? (Math.max(st.customCashT,0) + Math.max(st.customHelocT,0)) / 10 * st.price
   : p.tenths ? p.tenths / 10 * st.price
   : p.set.reduce((a,k) => a + srcAmount(k, st), 0);
-const BASE = { price:206000, payout:3700, growth:2, taxRate:16, helocRate:7, salary:97000, bonus:30000, horizon:24,
+const BASE = { price:206000, payout:3700, growth:2, taxRate:16, helocRate:7, salary:0, bonus:0, horizon:24,
   // Aug 2026 paystub: $4,032.60 gross semi-monthly ($96,782/yr) less $728.45 of withholding
   // (occupational, federal, SS, Medicare, KY) = 18.06% all-in, less $99.12 of Roth 401(k),
   // nets $3,205.03 a check — $6,410/mo deposited. The Roth line is savings, not tax.
@@ -1049,42 +1190,51 @@ const BASE = { price:206000, payout:3700, growth:2, taxRate:16, helocRate:7, sal
   // Sec 743(b) engine, calibrated to the 2025 K-1: your tenth carries $8,805 of step-up
   // amortising over 15 years ($587/yr). Step-up is created by YOUR purchase price, so a
   // bigger buy creates a proportionally bigger deduction. QBI is 20% off taxable income,
-  // currently consumed by the NuLu and consulting losses — turn on for the post-exit years.
-  stepUpPct:42.7, amortYears:15, existingPaid:20620, qbiOn:true,
+  // currently consumed by the the asset sale and consulting losses — turn on for the post-exit years.
+  // Sec 743(b) step-up: created by YOUR purchase price, so a bigger buy creates a proportionally
+  // bigger deduction. Defaults to 0 — the partnership's accountant supplies the real percentage.
+  stepUpPct:0, amortYears:15, existingPaid:0, qbiOn:true,
   // How the K-1 tax is actually settled. 'refund' = let it eat the year-end refund and
   // hold nothing back monthly (your situation). 'reserve' = set money aside every month,
   // which keeps the refund whole. Doing both would double-count the same tax.
   k1PayFrom:'refund',
-  // QBI is NOT simply blocked — it nets. 2025 Form 8995: NuLu −$3,269 and consulting −$2,027
+  // QBI is NOT simply blocked — it nets. 2025 Form 8995: the asset sale −$3,269 and consulting −$2,027
   // swamped Marathon's $3,877, so the deduction was zero. At a full share Marathon's income
   // dwarfs those losses and 20% of the excess becomes deductible.
-  qbiOtherLoss:5296,
-  // Marathon's 52% share of SMI's Kentucky and Indiana income is taxed at the ENTITY level
+  qbiOtherLoss:0,
+  // Marathon's 52% share of SMI's state and Indiana income is taxed at the ENTITY level
   // (PTET) and credited back to you, so your personal rate on this income is federal-only.
   ptetOn:true, stateRate:4.5,
   // ---- Schedule A, straight off the 2024 return (total $37,506) ----
   // Medical $20,409 gross (only the excess over 7.5% of AGI deducts — $10,907 that year),
   // SALT $12,154 paid, mortgage interest $4,242, charitable $12,357.
-  medExp:20409, charity:12357, mortInt:4242, propTax:3951, saltCap:40000,
-  // Kentucky is flat and stepped down to 3.5% for 2026. Louisville Metro + JCPS = 2.2% on wages.
-  kyRate:3.5, localRate:2.2,
-  // Three qualifying children at $2,200 each under current law; phases out above $400K MAGI.
-  kids:3, ctcPerKid:2200, currentAge:48,
+  medExp:0, charity:0, mortInt:0, propTax:0, saltCap:40000,
+  kyRate:0, localRate:0,
+  kids:0, ctcPerKid:2200, currentAge:0,
   // Shares you already own today. New purchases stack on top of this.
   ownedShares:0.10,
   // Federal withholding on comp: 2024 withheld $10,825 on $122,968 of wages = 8.8%.
-  fedWhRate:8.8,
+  fedWhRate:0,
   // Is SMI a specified service trade or business? Only matters above the §199A threshold.
   sstb:false,
-  // Spouse take-home, off by default — already net, so no tax rate is applied to it.
-  spouseOn:false, spouseNet:60400,
-  salaryEffRate:18.1, roth401Yr:2379, refundYr:5000, seTax:false, seRate:15.3, niit:false, marginalRate:16, retireGross:178000, penalty:61000, helocDraw:140000, payoffShare:100,
-  savingsBal:50000, cashMode:'dollars', helocMode:'dollars',
-  // $45,200 of cash + a full $140,000 HELOC draw, held as tenths of a share at the base price
-  customCashT: 45400 / 20600, customHelocT: 140000 / 20600, helocDeduct:true, deductRate:27,
-  nuluGross:100000, nuluReserve:17.5, nuluExitMonths:22, nuluToHeloc:true,
-  projYears:17, saveRetire:10, saveSave:10, y3Growth:10, aprRetire:12, aprRetireEarly:12, aprSave:4, k401Pct:3.91, autoBuy:false, autoFloor:50000 };
-const NULU_BASIS = 50000;
+  // Spouse / partner income. `spouseTaxable` decides whether it stacks into the brackets as W-2
+  // wages or arrives as non-taxable household cash (a Medicaid waiver, disability, family support).
+  spouseOn:false, spouseNet:0, spouseTaxable:true,
+  // Whether buying more shares is even on the table. No = the funding step is skipped entirely.
+  canBuy:true,
+  // Filing status drives brackets, standard deduction, surtax floor and credit phase-outs.
+  filing:'mfj',
+  // Interest + dividends for the year.
+  otherInc:0,
+  salaryEffRate:18.1, roth401Yr:0, refundYr:0, seTax:false, seRate:15.3, niit:false, marginalRate:16, retireGross:0, penalty:0, helocDraw:0, payoffShare:100,
+  savingsBal:0, cashMode:'dollars', helocMode:'dollars',
+  // Custom mix, held as tenths of a share. Both start at zero — the user dials them in.
+  customCashT: 0, customHelocT: 0, helocDeduct:true, deductRate:27,
+  nuluGross:0, nuluReserve:17.5, nuluExitMonths:22, nuluToHeloc:true,
+  projYears:17, saveRetire:10, saveSave:10, y3Growth:10, aprRetire:12, aprRetireEarly:12, aprSave:0, k401Pct:0, autoBuy:false, autoFloor:50000 };
+const NULU_BASIS = 0;
+// Bump whenever the saved-setup shape or its defaults change: older blobs are dropped, not restored.
+const SETUP_V = 2;
 const srcAmount = (k, st) => k === 'retire' ? Math.max(st.retireGross - st.penalty, 0)
   : k === 'heloc' ? st.helocDraw
   : k === 'savings' ? Math.max(st.savingsBal, 0)
@@ -1115,6 +1265,115 @@ const shareNum = (s) => { const two = s.toFixed(2);
   return Math.abs(s - parseFloat(two)) > 0.0005 ? s.toFixed(3) : two; };
 const moneyK = n => '$' + (Math.round(n / 1000)).toLocaleString('en-US') + 'K';
 
+// ============================ INTAKE ============================
+// Everything the engine needs, asked once before the model opens. The answers are ordinary state
+// keys, so every one of them still has a control in the model afterwards — nothing here is a
+// separate source of truth.
+const TAX_PROMPT = `I am filling in a financial projection model and I need specific figures from my tax return. I have attached my most recent Form 1040, including Schedule A and any Schedule K-1s.
+
+Please read them and reply with ONLY the lines below, each filled in. Whole dollars, no commas, no dollar signs, no explanation. If a figure is not on my return, put 0.
+
+FILING: mfj or single
+STATE_RATE: my state income tax divided by my state taxable income, as a percent to one decimal
+LOCAL_RATE: any city or county income / occupational tax rate as a percent, 0 if none
+KIDS: number of qualifying children under 17
+MEDICAL: total medical and dental expenses, Schedule A line 1
+CHARITY: total gifts to charity from Schedule A
+MORTGAGE_INTEREST: home mortgage interest from Schedule A
+PROPERTY_TAX: state and local real estate taxes from Schedule A
+INTEREST_DIVIDENDS: taxable interest plus ordinary dividends from Form 1040
+FED_WH_RATE: federal income tax withheld divided by total wages, as a percent to one decimal
+PTET: yes if any K-1 shows a state pass-through entity tax credit, otherwise no`;
+
+const WIZ_MAP = { STATE_RATE:'kyRate', LOCAL_RATE:'localRate', KIDS:'kids', MEDICAL:'medExp',
+  CHARITY:'charity', MORTGAGE_INTEREST:'mortInt', PROPERTY_TAX:'propTax',
+  INTEREST_DIVIDENDS:'otherInc', FED_WH_RATE:'fedWhRate' };
+
+const WIZ = (st) => {
+  const num = (key, label, hint, x) => ({ kind:'num', key, label, hint, pre:'$', post:'', step:1000, min:0, ...(x || {}) });
+  const pct = (key, label, hint, x) => num(key, label, hint, { pre:'', post:'%', step:0.1, ...(x || {}) });
+  return [
+    { id:'welcome',
+      title:'Project what your position does next',
+      sub:'You already own shares and you know how the distributions work. This model takes your position, your income and your debts and shows what the years ahead actually look like — month by month, after real tax.',
+      lead:'Before you start',
+      leadSub:'Four things worth knowing, so none of it comes as a surprise halfway through.',
+      intro:[
+        { head:'What you will be asked', body:'Nine quick screens: what you own, what you already have saved, where you think the business is headed, what you earn, who else in the house brings money in, whether buying more is even on the table, what you are saving for, and how you are taxed. Most of it you already know off the top of your head.' },
+        { head:'Where your numbers go', body:'Nowhere. This page has no server and no login — it is a single file running on your own computer. What you type stays in this browser, and it is remembered here so you never have to type it twice.' },
+        { head:'The tax screen is worth the trouble', body:'Tax is what most projections get wrong, because they use one flat rate. This one runs real brackets. The last screen hands you a block of text to give an AI assistant along with your tax return — it reads off the handful of figures this model needs, and you paste them back. Not in the mood? Skip it, and the model uses average assumptions and tells you it did.' },
+        { head:'Nothing here is final', body:'Every number you enter gets a control in the model afterward. Move one and the whole projection redraws on the spot, so a rough guess now costs you nothing.' }
+      ] },
+    { id:'shares', title:'Your shares today', sub:'What you hold right now, and what one share is worth and pays.',
+      fields:[
+        num('ownedShares','Shares you own today','Enter it the way the partnership states it — 10 for ten shares, 1.00 for a full share, 0.10 for a tenth.',{ pre:'', step:0.05 }),
+        num('price','Value of one share','The current per-share valuation. The model grows this on the trailing-average formula rather than letting it jump.',{ step:1000 }),
+        num('payout','Monthly distribution per share','What one full share pays you in a month, before tax.',{ step:50 })
+      ] },
+    { id:'outlook', title:'Where you think the business goes', sub:'The whole projection hangs on this one judgement. Be honest rather than optimistic — the stress tests will show you the other cases.',
+      fields:[
+        num('growth','How much the business multiplies over the upcoming growth period','2 means the business doubles. Distributions move first; the share price follows a year at a time.',{ pre:'', post:'×', step:0.1 }),
+        num('horizon','Months to get there','How long you think that multiple takes.',{ pre:'', post:' mo', step:1 }),
+        pct('y3Growth','Annual growth after that','Steady-state growth once the step-up has been absorbed.',{ step:0.5 })
+      ] },
+    { id:'income', title:'Your income', sub:'Wages first. The model deliberately holds your base salary flat for the whole projection and grows only the bonus.',
+      fields:[
+        num('salary','Base salary','Your gross pay before anything is taken out — the figure on your offer letter, not what lands in the bank.',{ step:500 }),
+        num('bonus','Annual bonus','What you typically get in a year. The model spreads it evenly across the months so the monthly figures stay readable.',{ step:500 }),
+        num('otherInc','Interest and dividends','What your savings and investments paid you last year: bank and CD interest, plus dividends from stocks or funds held OUTSIDE a retirement account. It is on the front of your 1040. Leave it at 0 if you are unsure — it rarely moves the projection much.',{ step:100 })
+      ] },
+    { id:'household', title:'Household income', sub:'Anything a spouse or partner brings in. The before-tax / after-tax switch is the part that matters.',
+      fields:[
+        { kind:'choice', key:'spouseOn', label:'Is there other household income?',
+          hint:'Turn this off if the projection should show your income only.',
+          opts:[{ v:true, label:'Yes' }, { v:false, label:'No' }] },
+        ...(st.spouseOn ? [
+          num('spouseNet','How much per year','',{ step:500 }),
+          { kind:'choice', key:'spouseTaxable', label:'Is that figure before or after tax?',
+            hint:'Before tax means W-2 wages: the model stacks it into the brackets and charges payroll and local tax on it. After tax means the money arrives already net — a Medicaid waiver, disability, or family support that is never taxable income. Getting this wrong moves the whole projection.',
+            opts:[{ v:true, label:'Before tax — W-2 wages' }, { v:false, label:'After tax — already net' }] }
+        ] : []) ] },
+    { id:'assets', title:'What you already have', sub:'Two balances the model tracks and grows for you from here. They show up in the rail and in the net-position figure on every year card.',
+      fields:[
+        num('savingsBal','Cash savings today','Everything liquid you could reach without a penalty — checking, savings, money market, brokerage cash.',{ step:1000 }),
+        num('retireGross','Retirement balance today','The total in your 401(k), IRA and any other retirement accounts. The model compounds it forward.',{ step:5000 }),
+        num('currentAge','Your age','Used only to know whether a retirement withdrawal would carry the early-withdrawal penalty.',{ pre:'', post:'', step:1 })
+      ] },
+    { id:'buy', title:'Could you buy more shares?', sub:'Some people open this model to plan around the shares they already hold. Others are weighing whether to add to them. The answer changes what comes next.',
+      fields:[
+        { kind:'choice', key:'canBuy', label:'Is buying more shares on the table?',
+          hint:'Yes and the next screen asks what you could fund a purchase with — cash, a credit line, a retirement account. No and we skip straight past it, and the model just projects the position you already hold. You can change your mind later without redoing any of this.',
+          opts:[{ v:true, label:'Yes — I might buy more' }, { v:false, label:'No — just project what I own' }] }
+      ] },
+    ...(st.canBuy ? [{ id:'funding', title:'What you could put into more shares', sub:'How much you could actually put in, on top of the cash and retirement balances you just entered. Fill in whichever are genuinely available and leave the rest at zero — nothing here commits you to spending a dollar of it.',
+      fields:[
+        num('helocDraw','Home equity line available','If you have a line of credit against your house, the most you could draw on it — not what you would take. You choose the actual draw inside the model.',{ step:5000 }),
+        pct('helocRate','Rate on that line','The interest rate you would pay on the money you borrow.',{ step:0.25 }),
+        num('penalty','Tax and penalty if you tapped it','What the government takes off the top of an early withdrawal. Roughly a third is typical before age 59½.',{ step:1000 }),
+        num('nuluGross','An asset you would sell to clear the loan','Something you could sell later to pay off money you borrowed — a rental, a lot, a business interest. The model treats it as an escape hatch on the debt. Zero if there is none.',{ step:5000 })
+      ] }] : []),
+    { id:'goals', title:'Debts and savings goals', sub: st.canBuy ? 'Before you can spend a dollar of the distributions, some of it is already promised — to a loan, to retirement, to whatever you are putting money aside for. This screen sets those three claims, so the number the model calls “available to spend” is honest.' : 'Some of your income is promised before you can spend it — to retirement, and to whatever else you are putting money aside for. This screen sets those two claims, so the number the model calls “available to spend” is honest.',
+      fields:[
+        ...(st.canBuy ? [pct('payoffShare','Of the leftover distribution money, how much attacks loan principal?','If you borrowed to buy shares, the distributions can pay that loan back. 100% throws every spare dollar at the balance and clears it as fast as the payout allows. 0% means you cover only the interest and keep the rest as spending money. Anywhere in between is normal.',{ step:5 })] : []),
+        pct('saveRetire','Of your after-tax income, how much to retirement?','The slice you want going into retirement accounts every month. This is money you keep, not money you lose — it moves out of spending and into a balance the model tracks and grows for you.',{ step:1 }),
+        pct('saveSave','Of your after-tax income, how much to savings goals?','Everything that is not retirement — a vacation, a car, a college fund, an emergency cushion. Once the model is open you can name the individual goals, and it will tell you the month each one gets funded.',{ step:1 })
+      ] },
+    { id:'tax', title:'Your taxes', sub:'Most projections use one flat tax rate, and that is exactly where they go wrong. As the distributions grow, more of your income lands in higher brackets, so your real rate climbs on its own — a flat rate hides that. This model runs the actual brackets, year by year. To do that it needs to know two things: what you deduct, and what is already being withheld from your paycheck. The nine figures below are all it needs, and every one of them sits on your last tax return.',
+      fields:[
+        { kind:'choice', key:'filing', label:'Filing status', hint:'Married filing jointly gets roughly double the brackets and deduction of a single filer, so this one choice moves every tax figure in the model.',
+          opts:[{ v:'mfj', label:'Married filing jointly' }, { v:'single', label:'Single' }] },
+        pct('kyRate','State income tax rate','What your state charges on income. If your state has a flat rate, use it. Otherwise divide the state tax you paid by your state taxable income. 0 if your state has no income tax.',{ step:0.1 }),
+        pct('localRate','City or county income tax rate','Some cities and counties take a cut of wages on top of the state — often called an occupational or local wage tax. 0 if yours does not.',{ step:0.1 }),
+        num('kids','Children under 17','Each one is worth $2,200 off your federal tax under current law. They age out at 17.',{ pre:'', step:1 }),
+        num('medExp','Medical and dental expenses','The full amount you paid out of pocket last year, before any limits — Schedule A line 1. Only the part above 7.5% of your income actually deducts, and the model recalculates that every year as your income grows.',{ step:500 }),
+        num('charity','Gifts to charity','What you gave to churches, nonprofits and donor-advised funds last year.',{ step:500 }),
+        num('mortInt','Home mortgage interest','The interest portion of your house payments for the year — your lender sends this on Form 1098.',{ step:500 }),
+        num('propTax','Real estate taxes','Property tax on your home for the year.',{ step:500 }),
+        pct('fedWhRate','Federal withholding rate on wages','Take the federal income tax withheld from your W-2 and divide it by your total wages. $10,800 withheld on $122,000 of wages is 8.8%. This is the single figure that decides whether the distributions leave you with a refund in April or a bill.',{ step:0.1 })
+      ] }
+  ];
+};
+
 // ============================ CURRENT-LAW TAX ENGINE ============================
 // Every projected year is priced with TODAY'S tax law held constant. No attempt is made to
 // guess future legislation — the note under each card says so. Parameters are the 2025/2026
@@ -1123,17 +1382,21 @@ const moneyK = n => '$' + (Math.round(n / 1000)).toLocaleString('en-US') + 'K';
 //   federal tax $10,111 − $6,000 child credit + $375 SE = $4,486 total
 //   withheld $10,825 → refund $6,339
 const FED_BRACKETS = [[23850,.10],[96950,.12],[206700,.22],[394600,.24],[501050,.32],[751600,.35],[Infinity,.37]];
+const FED_BRACKETS_S = [[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]];
 const STD_DED_MFJ = 31500;                                  // 2025 MFJ standard deduction
+const STD_DED_S = 15750;                                    // 2025 single standard deduction
+const QBI_THRESH_S = 197300;
 const SS_CAP = 176100, SS_RATE = .062;                      // Social Security stops at the wage cap
 const MED_RATE = .0145, ADDL_MED_RATE = .009, ADDL_MED_FLOOR = 250000;
-const KY_STD = 3270;                                        // Kentucky standard deduction
+const KY_STD = 3270;                                        // state standard deduction
 const QBI_THRESH = 394600, QBI_PHASE = 150000;              // §199A threshold + phase-in range, MFJ
 const CTC_FLOOR = 400000;                                   // child credit phases out above this
-const OTHER_INC = 1257;                                     // 2024 interest $795 + dividends $462
-const fedTaxOn = (ti) => { let t = 0, prev = 0;
-  for (const [cap, rate] of FED_BRACKETS) { if (ti <= prev) break; t += (Math.min(ti, cap) - prev) * rate; prev = cap; }
+// Interest + dividends. Set from the intake step; every engine call reads this one value.
+let OTHER_INC = 0;
+const fedTaxOn = (ti, br) => { let t = 0, prev = 0;
+  for (const [cap, rate] of (br || FED_BRACKETS)) { if (ti <= prev) break; t += (Math.min(ti, cap) - prev) * rate; prev = cap; }
   return t; };
-const fedMarginalOn = (ti) => { for (const [cap, rate] of FED_BRACKETS) if (ti < cap) return rate; return .37; };
+const fedMarginalOn = (ti, br) => { for (const [cap, rate] of (br || FED_BRACKETS)) if (ti < cap) return rate; return .37; };
 
 // One household year, built the way the return is built.
 //   wages   W-2 comp — the FIXED base salary plus that year's bonus
@@ -1143,22 +1406,35 @@ const fedMarginalOn = (ti) => { for (const [cap, rate] of FED_BRACKETS) if (ti <
 //   waiver  spouse's Medicaid waiver income — excluded from income under IRS Notice 2014-7,
 //           so it is household cash but never taxable income
 const taxYear = (a, st) => {
-  const wages = Math.max(a.wages, 0), k1 = Math.max(a.k1, 0), other = Math.max(a.other, 0);
+  // Filing status swaps the whole parameter set: brackets, standard deduction, the surtax floor,
+  // the QBI threshold and the child-credit phase-out all differ between joint and single.
+  const single = st.filing === 'single';
+  const BR = single ? FED_BRACKETS_S : FED_BRACKETS;
+  const STD = single ? STD_DED_S : STD_DED_MFJ;
+  const MED_FLOOR = single ? 200000 : ADDL_MED_FLOOR;
+  const QBI_T = single ? QBI_THRESH_S : QBI_THRESH;
+  const QBI_P = single ? 75000 : QBI_PHASE;
+  const CTC_F = single ? 200000 : CTC_FLOOR;
+  // A spouse's W-2 income is ordinary wages: it stacks into the brackets, carries its own payroll
+  // and local tax, and is withheld on at the same rate. Household income that is NOT taxable —
+  // a Medicaid waiver, disability, support from family — arrives as `waiver` and is never taxed.
+  const spouseWages = st.spouseOn && st.spouseTaxable ? Math.max(st.spouseNet, 0) : 0;
+  const wages = Math.max(a.wages, 0) + spouseWages, k1 = Math.max(a.k1, 0), other = Math.max(a.other, 0);
   const waiver = Math.max(a.waiver, 0), dist = Math.max(a.dist, 0);
   const agi = wages + k1 + other;
-  // Kentucky and local first — neither depends on the federal itemized total, so no circularity.
-  // KY has allowed only mortgage interest and charitable gifts since HB 366 (2018). Marathon's
-  // Kentucky income is paid at the entity level under the PTET election and credited back, so it
+  // state and local first — neither depends on the federal itemized total, so no circularity.
+  // Many states allow only mortgage interest and charitable gifts. Marathon's
+  // state income is paid at the entity level under the entity-level election and credited back, so it
   // is not taxed again on the personal return.
   const kyItem = Math.max(Math.max(st.mortInt, 0) + Math.max(st.charity, 0), KY_STD);
   const kyGross = Math.max(wages + other - kyItem, 0) * Math.max(st.kyRate, 0) / 100;
-  // Kentucky's pass-through entity tax (HB 360): Marathon pays the tax on your share at the
-  // entity level and you claim a REFUNDABLE credit on Form PTET-CR. Refundable means it offsets
-  // your Kentucky tax on WAGES too, and anything left over comes back as cash. That is why a
-  // bigger Marathon position can improve your Kentucky refund even as federal tax rises.
+  // A state pass-through entity tax: Marathon pays the tax on your share at the
+  // entity level and you claim a REFUNDABLE credit on the state credit form. Refundable means it offsets
+  // your state tax on WAGES too, and anything left over comes back as cash. That is why a
+  // bigger Marathon position can improve your state refund even as federal tax rises.
   const ptetCredit = st.ptetOn ? k1 * Math.max(st.stateRate, 0) / 100 : 0;
   const kyTax = kyGross - ptetCredit;
-  // Louisville Metro 1.45% + JCPS 0.75% on EARNED income only — not on Marathon distributions,
+  // City and county wage tax on EARNED income only — not on Marathon distributions,
   // which are taxed at the entity level where the business files.
   const localTax = wages * Math.max(st.localRate, 0) / 100;
   // Federal Schedule A. Medical only counts above 7.5% of AGI, so the deduction SHRINKS as
@@ -1167,48 +1443,49 @@ const taxYear = (a, st) => {
   const saltPaid = Math.max(kyTax, 0) + localTax + Math.max(st.propTax, 0);
   const salt = Math.min(saltPaid, Math.max(st.saltCap, 0));
   const itemized = medDed + salt + Math.max(st.mortInt, 0) + Math.max(st.charity, 0);
-  const deduction = Math.max(itemized, STD_DED_MFJ);
+  const deduction = Math.max(itemized, STD);
   const preQbi = Math.max(agi - deduction, 0);
   // §199A: 20% of the business income that survives netting against the other losses, capped at
   // 20% of taxable income. Above the threshold the SSTB / W-2-wage limit phases in over $150K.
   const qbiIncome = st.qbiOn ? Math.max(k1 - Math.max(st.qbiOtherLoss, 0), 0) : 0;
-  const over = Math.max(preQbi - QBI_THRESH, 0);
+  const over = Math.max(preQbi - QBI_T, 0);
   let qbi = Math.min(0.2 * qbiIncome, 0.2 * preQbi);
-  if (st.sstb && over > 0) qbi *= Math.max(1 - Math.min(over / QBI_PHASE, 1), 0);
+  if (st.sstb && over > 0) qbi *= Math.max(1 - Math.min(over / QBI_P, 1), 0);
   const taxable = Math.max(preQbi - qbi, 0);
-  const fedBefore = fedTaxOn(taxable);
+  const fedBefore = fedTaxOn(taxable, BR);
   const ctcFull = Math.max(st.kids, 0) * Math.max(st.ctcPerKid, 0);
-  const ctc = Math.max(ctcFull - Math.ceil(Math.max(agi - CTC_FLOOR, 0) / 1000) * 50, 0);
+  const ctc = Math.max(ctcFull - Math.ceil(Math.max(agi - CTC_F, 0) / 1000) * 50, 0);
   const fed = Math.max(fedBefore - ctc, 0);
   // Payroll: Social Security stops at the wage cap, Medicare never does, and an extra 0.9%
   // lands on wages over $250K. Marathon distributions carry no payroll tax at all.
   const ss = Math.min(wages, SS_CAP) * SS_RATE;
-  const medi = wages * MED_RATE + Math.max(wages - ADDL_MED_FLOOR, 0) * ADDL_MED_RATE;
+  const medi = wages * MED_RATE + Math.max(wages - MED_FLOOR, 0) * ADDL_MED_RATE;
   const fica = ss + medi;
   const totalTax = fed + kyTax + localTax + fica;
   const grossCash = wages + dist + waiver + other;
   // Withholding runs on comp only, so the refund is DERIVED — it shrinks and can go negative
   // ("owed at filing") as Marathon income grows against fixed withholding.
   const fedWithheld = wages * Math.max(st.fedWhRate, 0) / 100;
-  return { wages, k1, dist, other, waiver, agi, medDed, salt, saltPaid, itemized, deduction,
-           usedItemized: itemized > STD_DED_MFJ, preQbi, qbi, qbiIncome, taxable,
+  return { wages, k1, dist, other, waiver, spouseWages, agi, medDed, salt, saltPaid, itemized, deduction,
+           usedItemized: itemized > STD, preQbi, qbi, qbiIncome, taxable,
            fedBefore, ctc, fed, kyTax, kyGross, ptetCredit, localTax, fica, ss, medi, totalTax, grossCash,
            fedWithheld, kyWithheld: kyGross,
            refund: (fedWithheld - fed) + (kyGross - kyTax),
            afterTax: grossCash - totalTax,
            taxableGross: wages + dist + other,
            effRate: grossCash > 0 ? totalTax / grossCash * 100 : 0,
-           fedMarginal: fedMarginalOn(taxable) * 100,
+           fedMarginal: fedMarginalOn(taxable, BR) * 100,
            qbiPhasing: !!(st.sstb && over > 0), overThreshold: over > 0 };
 };
 
 class Component extends DCLogic {
-  state = { ...BASE, preset:'today', sel: selFor(PRESETS.find(p => p.key === 'today')),
+  state = { ...BASE, preset:'dollar', sel: selFor(PRESETS.find(p => p.key === 'dollar')),
             open:{ saved:false, scenario:true, sources:false, share:false, debt:false, goals:false, nulu:false, longterm:false },
             overrides:{}, yearPct:{}, openYears:{}, pages:0, buys:{}, goals:[], nextGoal:1,
             cashRaw:'', helocRaw:'', tips:{},
+            wizStep:0, setupDone:false, taxPaste:'', parseMsg:'', usingStd:false,
             light: false,   // dark is the default
-            saveName:'', importCode:'', copied:'', copyPayload:'', shared:[], saved: (() => { try { return JSON.parse(localStorage.getItem('mp_scenarios') || '[]'); } catch (e) { return []; } })() };
+            saveName:'', importCode:'', copied:'', copyPayload:'', shared:[], saved: (() => { try { return JSON.parse(localStorage.getItem('sp_scenarios') || '[]'); } catch (e) { return []; } })() };
 
   setYearPct = (n, key) => (e) => {
     const v = parseFloat(e.target.value);
@@ -1274,6 +1551,7 @@ class Component extends DCLogic {
   });
 
   model(sel, st) {
+    OTHER_INC = Math.max(st.otherInc, 0);
     const price = st.price, payout = st.payout, r = st.helocRate / 100;
     // Income tax always; SE tax only if the K-1 income is treated as self-employment income
     // (your 2024 return says it is not); NIIT 3.8% on passive income once MAGI clears $250K.
@@ -1291,7 +1569,9 @@ class Component extends DCLogic {
     // Box 1 $3,877 + Box 5 $5 of income against Box 19A $3,816 of cash: income runs
     // slightly ahead of distributions. The whole pass-through reduction is the step-up.
     const INCOME_RATIO = 3882 / 3816;
-    const EX_AMORT = 587;                       // your existing tenth, $8,805 over 15 years
+    const EX_AMORT_BASE = (st) => Math.max(st.existingPaid, 0) * Math.max(st.stepUpPct, 0) / 100
+      / Math.max(Math.round(st.amortYears) || 1, 1);
+    const EX_AMORT = EX_AMORT_BASE(st);         // step-up already carried on the shares you own
     const stepPct = Math.max(st.stepUpPct, 0) / 100;
     const aYears = Math.max(Math.round(st.amortYears) || 1, 1);
     // ---- What the K-1 income actually costs, from the bracket engine ----
@@ -1299,7 +1579,7 @@ class Component extends DCLogic {
     // income is federal-only. NIIT does NOT apply: you materially participate in the business
     // Marathon holds 52% of, which is the material-participation exception to §1411.
     const stateCredit = st.ptetOn ? Math.max(st.stateRate, 0) : 0;
-    const waiverAmt = st.spouseOn ? Math.max(st.spouseNet, 0) : 0;
+    const waiverAmt = st.spouseOn && !st.spouseTaxable ? Math.max(st.spouseNet, 0) : 0;
     const baseWages = Math.max(st.salary, 0) + Math.max(st.bonus, 0);
     // Incremental tax on a slug of K-1 income: run the year with and without it. This is what
     // makes the rate rise on its own as the bonus and the distributions grow.
@@ -1312,13 +1592,13 @@ class Component extends DCLogic {
     const baseYear = taxYear({ wages: baseWages, k1: 0, other: OTHER_INC, waiver: waiverAmt, dist: 0 }, st);
     const personalRate = baseYear.fedMarginal + seEff;
     const otherLoss = Math.max(st.qbiOtherLoss, 0);
-    // Amortisation from any purchase, plus the existing tenth's $587.
+    // Amortisation from any purchase, plus whatever the shares you already own carry.
     const amortOn = (purchase) => EX_AMORT + Math.max(purchase, 0) * stepPct / aYears;
     const amortYr = amortOn(capital);
     // Tax on a year of distributions. Amortisation is a fixed dollar deduction, so the
     // effective rate rises as distributions grow — which a flat percentage cannot show.
     // Taxable income after the step-up, then the 20% QBI deduction on whatever survives
-    // netting against the NuLu and consulting losses.
+    // netting against the the asset sale and consulting losses.
     // Taxable K-1 income for a year of distributions: cash × the income ratio, less the 743(b)
     // amortisation your own purchase price creates. The QBI deduction is NOT applied here — it
     // is applied inside the engine, where it can be capped by taxable income.
@@ -1336,7 +1616,7 @@ class Component extends DCLogic {
     const heloc = sel.dollar ? Math.max(st.customHelocT, 0) / 10 * st.price : (sel.heloc ? st.helocDraw : 0);
     const share = Math.min(Math.max(st.payoffShare, 0), 100) / 100;
     const retireHeld = sel.retire ? 0 : st.retireGross;   // not cashed out → still invested
-    const nuluHeld = true;                                          // NuLu is never used to buy shares
+    const nuluHeld = true;                                          // the asset sale is never used to buy shares
     const nuluNet = nuluHeld ? st.nuluGross * (1 - st.nuluReserve/100) : 0;
     const nuluApplied = nuluHeld && st.nuluToHeloc && heloc > 0;
     // Interest tracing: the HELOC proceeds bought a partnership interest, so the interest is
@@ -1397,7 +1677,7 @@ class Component extends DCLogic {
     const balAtMonth = (mo) => mo <= lastM ? sched[mo] : sched[lastM];
     const intUpTo = (mo) => mo <= lastM ? intAt[mo] : intAt[lastM] + sched[lastM] * r / 12 * (mo - lastM);
     if (heloc > 0 && months !== null && months <= st.horizon) balAt24 = 0;
-    // Year-2 column reflects the balance actually outstanding then (incl. any NuLu payoff)
+    // Year-2 column reflects the balance actually outstanding then (incl. any the asset sale payoff)
     if (heloc > 0) {
       const laterBal = balAt24;
       later.helocInt = laterBal * r / 12 * (1 - ded);
@@ -1453,7 +1733,7 @@ class Component extends DCLogic {
     out.yearPct = { ...s.yearPct };
     return out;
   };
-  persistSaved = (saved) => { try { localStorage.setItem('mp_scenarios', JSON.stringify(saved)); } catch (e) {} };
+  persistSaved = (saved) => { try { localStorage.setItem('sp_scenarios', JSON.stringify(saved)); } catch (e) {} };
   saveScenario = () => this.setState(s => {
     const name = (s.saveName || '').trim() || (PRESETS.find(p => p.key === s.preset) || {}).name || 'Scenario';
     const saved = [...s.saved.filter(x => x.name !== name), { name, ts: Date.now(), snap: this.snapshot() }]
@@ -1567,7 +1847,7 @@ class Component extends DCLogic {
       () => setTimeout(() => this.setState({ copied:'' }), 2500));
   };
   // A saved default is the whole rail — every value the user has dialled in — restored on open.
-  DEFAULTS_KEY = 'mp_defaults';
+  DEFAULTS_KEY = 'sp_defaults';
   readDefaults = () => { try { return JSON.parse(localStorage.getItem(this.DEFAULTS_KEY) || 'null'); } catch (e) { return null; } };
   saveDefaults = () => {
     try {
@@ -1590,9 +1870,141 @@ class Component extends DCLogic {
   componentDidMount() {
     setTimeout(this.countPages, 400);
     this.applyTheme();
+    this.restoreSetup();
+    // Saved defaults are the newer, explicit choice — they win over the stored setup answers.
     this.loadDefaults();
     this.loadFromUrl();
     this.loadShared();
+  }
+  // The intake answers, remembered in this browser so the wizard is a one-time cost.
+  restoreSetup = () => {
+    try {
+      const raw = localStorage.getItem('sp_setup');
+      if (!raw) return;
+      const o = JSON.parse(raw);
+      // Saved setups from before the model was generalized carried seeded personal figures.
+      // Anything without the current schema version is discarded rather than rehydrated.
+      if (!o || typeof o !== 'object' || o.v !== SETUP_V) { localStorage.removeItem('sp_setup'); return; }
+      this.setState({ ...o, setupDone:true });
+    } catch (e) {}
+  };
+  persistSetup = () => {
+    try {
+      const o = { v: SETUP_V };
+      Object.keys(BASE).forEach(k => { o[k] = this.state[k]; });
+      o.usingStd = this.state.usingStd;
+      localStorage.setItem('sp_setup', JSON.stringify(o));
+    } catch (e) {}
+  };
+  finishSetup = () => { this.persistSetup(); this.setState({ setupDone:true, parseMsg:'' }); };
+  reopenSetup = () => this.setState({ setupDone:false, wizStep:0, parseMsg:'' });
+  openTaxStep = () => this.setState({ setupDone:false, wizStep: WIZ(this.state).length - 1, parseMsg:'' });
+  wizNext = () => {
+    const last = WIZ(this.state).length - 1;
+    if (this.state.wizStep >= last) this.finishSetup();
+    else this.setState(s => ({ wizStep: Math.min(s.wizStep + 1, last), parseMsg:'' }));
+  };
+  wizBack = () => this.setState(s => ({ wizStep: Math.max(s.wizStep - 1, 0), parseMsg:'' }));
+  // Welcome screen: open the model on the sample numbers. Tax step: run the standard deduction
+  // instead of a Schedule A, and flag it in the model so no one mistakes it for their own return.
+  wizSkip = () => {
+    if (this.state.wizStep === 0) return this.finishSetup();
+    this.setState({ usingStd:true, medExp:0, charity:0, mortInt:0, propTax:0 }, this.finishSetup);
+  };
+  clearSetup = () => {
+    try { localStorage.removeItem('sp_setup'); } catch (e) {}
+    this.setState({ ...BASE, wizStep:0, setupDone:false, usingStd:false, taxPaste:'',
+                    parseMsg:'Saved setup cleared. Every field is back to an empty starting point.' });
+  };
+  onTaxPaste = (e) => this.setState({ taxPaste: e.target.value });
+  selectPrompt = (e) => { try { e.target.select(); } catch (err) {} };
+  copyPrompt = () => {
+    this.copyText(TAX_PROMPT, '');
+    this.setState({ parseMsg:'Prompt copied. Run it with your return attached, then paste the reply below.' });
+  };
+  // Forgiving parser: any line shaped KEY: value, in any order, with or without $ and commas.
+  parseTax = () => {
+    const t = this.state.taxPaste || '';
+    const grab = (k) => {
+      const mm = t.match(new RegExp(k + '\\s*[:=]\\s*([^\\n\\r]+)', 'i'));
+      return mm ? mm[1].trim() : null;
+    };
+    const next = {};
+    let found = 0;
+    Object.keys(WIZ_MAP).forEach(k => {
+      const raw = grab(k);
+      if (raw === null) return;
+      const n = parseFloat(raw.replace(/[$,%\s]/g, ''));
+      if (!isNaN(n)) { next[WIZ_MAP[k]] = n; found++; }
+    });
+    const f = grab('FILING');
+    if (f) { next.filing = /single/i.test(f) ? 'single' : 'mfj'; found++; }
+    const p = grab('PTET');
+    if (p) { next.ptetOn = /yes|true/i.test(p); found++; }
+    if (!found) return this.setState({ parseMsg:'Could not find any of those labels in that text. Each line needs to look like MEDICAL: 20409 — or just type the numbers into the fields below.' });
+    next.usingStd = false;
+    next.parseMsg = found + ' of 11 values read in. Check them below and change anything that looks wrong.';
+    this.setState(next);
+  };
+  wizVals() {
+    const st = this.state;
+    const steps = WIZ(st);
+    const i = Math.min(Math.max(st.wizStep, 0), steps.length - 1);
+    const step = steps[i];
+    const last = i === steps.length - 1;
+    const opt = (on) => `background:${on ? '#E07B2A' : 'var(--c-chip)'};border:1px solid ${on ? '#E07B2A' : 'var(--c-chipb)'};color:${on ? 'var(--c-bg)' : 'var(--c-ink)'};font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:${on ? 700 : 600};padding:10px 16px;cursor:pointer`;
+    return {
+      setupOpen: !st.setupDone,
+      modelOpen: !!st.setupDone,
+      stdBanner: !!(st.setupDone && st.usingStd),
+      wizTitle: step.title,
+      wizSub: step.sub,
+      wizStepLabel: 'Step ' + (i + 1) + ' of ' + steps.length,
+      wizDots: steps.map((s, n) => ({ style:`flex:1;height:3px;background:${n <= i ? '#31A6E6' : 'var(--c-border)'}` })),
+      wizIsWelcome: step.id === 'welcome',
+      wizIsTax: step.id === 'tax',
+      wizIntroLead: step.lead || '',
+      wizIntroSub: step.leadSub || '',
+      wizIntro: (step.intro || []).map((b, n) => ({ ...b, n: n + 1 })),
+      wizHasFields: !!(step.fields && step.fields.length),
+      wizFields: (step.fields || []).map(f => f.kind === 'choice'
+        ? { label:f.label, hint:f.hint, display:'', isNum:false, isChoice:true,
+            opts: f.opts.map(o => ({ label:o.label, style: opt(st[f.key] === o.v),
+              pick: () => this.setState({ [f.key]: o.v }) })) }
+        : { label:f.label, hint:f.hint, isNum:true, isChoice:false, opts:[],
+            pre:f.pre, post:f.post, step:f.step, min:f.min,
+            // Blank rather than 0 so tapping in and typing does not leave a leading zero.
+            value: (st[f.key] === 0 || st[f.key] === '' || st[f.key] == null) ? '' : st[f.key],
+            display: (st[f.key] === 0 || st[f.key] === '' || st[f.key] == null) ? '—'
+              : (f.pre === '$' ? money(st[f.key]) : st[f.key] + (f.post || '')),
+            onInput: this.set(f.key) }),
+      wizNextLabel: step.id === 'welcome' ? 'Start' : last ? 'Open my model' : 'Continue',
+      wizCanSkip: step.id === 'welcome' || step.id === 'tax',
+      wizSkipLabel: step.id === 'welcome' ? "Skip for now — I'll fill this in later" : 'Skip — use standard assumptions',
+      wizBackStyle: `background:transparent;border:1px solid var(--c-border);color:var(--c-muted);font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;padding:12px 18px;cursor:pointer;visibility:${i === 0 ? 'hidden' : 'visible'}`,
+      taxPrompt: TAX_PROMPT,
+      wizTaxHow: [
+        { n:1, t:'Press Copy the prompt below.' },
+        { n:2, t:'Open Claude, ChatGPT or any AI assistant and attach a PDF of your most recent tax return — the Form 1040 and its Schedule A, plus any K-1s you received. Paste the prompt in and send it.' },
+        { n:3, t:'It will reply with eleven short lines. Copy the whole block.' },
+        { n:4, t:'Paste it into the box below and press Fill in my numbers. The fields underneath fill themselves in, and you can correct anything that looks off.' }
+      ],
+      taxPaste: st.taxPaste,
+      parseMsg: st.parseMsg,
+      hasParseMsg: !!st.parseMsg,
+      wizNavMsg: !!st.parseMsg && step.id !== 'tax',
+      hasSaved: !!(() => { try { return localStorage.getItem('sp_setup'); } catch (e) { return false; } })(),
+      clearSetup: this.clearSetup,
+      wizNext: this.wizNext,
+      wizBack: this.wizBack,
+      skipTax: this.wizSkip,
+      copyPrompt: this.copyPrompt,
+      selectPrompt: this.selectPrompt,
+      onTaxPaste: this.onTaxPaste,
+      parseTax: this.parseTax,
+      reopenSetup: this.reopenSetup,
+      openTaxStep: this.openTaxStep
+    };
   }
   // scenarios.json sitting next to this page (e.g. committed in the repo) — read-only, shared with anyone.
   loadShared = () => {
@@ -1625,7 +2037,7 @@ class Component extends DCLogic {
   };
   toggle = (k) => () => this.setState(s => ({ sel: { ...s.sel, dollar:false, [k]: !s.sel[k] }, preset: 'custom' }));
   pick = (p) => () => this.setState({ preset: p.key, sel: selFor(p) });
-  reset = () => this.setState({ ...BASE, preset:'today', sel: selFor(PRESETS.find(p => p.key === 'today')), buys:{} });
+  reset = () => this.setState({ ...BASE, preset:'dollar', sel: selFor(PRESETS.find(p => p.key === 'dollar')), buys:{} });
   // st.buys[n] holds TENTHS of a share bought in year n.
   bumpCustom = (k, d) => () => this.setState(s => ({ [k]: Math.max(0, Math.min(200, Math.round((s[k] || 0)) + d)), preset:'dollar', cashRaw:'', helocRaw:'' }));
   bumpBuy = (n, d) => () => this.setState(s => ({
@@ -1634,6 +2046,14 @@ class Component extends DCLogic {
 
   renderVals() {
     const st = this.state;
+    // Borrowing exists only if the user said they could buy AND entered a credit line.
+    const helocLive = !!st.canBuy && (st.helocDraw > 0 || st.customHelocT > 0);
+    OTHER_INC = Math.max(st.otherInc, 0);
+    // One filing-aware parameter set for every threshold quoted in prose, so the notes always
+    // name the same numbers the engine used.
+    const P = st.filing === 'single'
+      ? { std: STD_DED_S, qbiT: QBI_THRESH_S, qbiP: 75000, ctcFloor: 200000, medFloor: 200000 }
+      : { std: STD_DED_MFJ, qbiT: QBI_THRESH, qbiP: QBI_PHASE, ctcFloor: CTC_FLOOR, medFloor: ADDL_MED_FLOOR };
     const m = this.model(st.sel, st);
     const g = st.growth;
     const active = PRESETS.find(p => p.key === st.preset);
@@ -1645,11 +2065,11 @@ class Component extends DCLogic {
     // 1  Household gross income   all cash in: fixed base salary + bonus + Marathon distributions
     //                             + non-taxable waiver income + interest/dividends
     // 2  After-tax income         gross less federal income tax (after the child credit),
-    //                             Kentucky, local occupational tax and payroll tax
+    //                             state, local occupational tax and payroll tax
     // 3  Available to spend       after-tax less what YOU CHOOSE to put away: the 401(k)
     //                             deferral, savings, goals and debt payments. Money that moves
     //                             here has not been lost — it is still yours.
-    const waiverAmt = st.spouseOn ? Math.max(st.spouseNet, 0) : 0;
+    const waiverAmt = st.spouseOn && !st.spouseTaxable ? Math.max(st.spouseNet, 0) : 0;
     const deferralYr = Math.max(st.roth401Yr, 0);
     const tierSet = (o) => {
       const T = taxYear({ wages: Math.max(o.wages, 0), k1: Math.max(o.k1, 0), dist: Math.max(o.dist, 0),
@@ -1662,13 +2082,13 @@ class Component extends DCLogic {
     const cashMoOf = (o) => {
       const T = taxYear({ wages: Math.max(o.wages, 0), k1: Math.max(o.k1, 0), dist: Math.max(o.dist, 0),
                           other: OTHER_INC, waiver: waiverAmt }, st);
-      // Withheld from the paycheck only: federal at your W-4 rate, Kentucky on wages, local, payroll.
+      // Withheld from the paycheck only: federal at your W-4 rate, state on wages, local, payroll.
       const withheldYr = T.fedWithheld + T.kyWithheld + T.localTax + T.fica + deferralYr;
       return (T.grossCash - withheldYr) / 12;
     };
     const tierRows = (F) => [
       { key:'Gross income / mo', val: money(F.grossMo), sub: money(F.T.grossCash) + ' a year'
-          + (F.T.waiver > 0 ? ' · incl. ' + money(F.T.waiver) + ' non-taxable waiver income' : ''), tone:'#31A6E6' },
+          + (F.T.waiver > 0 ? ' · incl. ' + money(F.T.waiver) + ' non-taxable household income' : ''), tone:'#31A6E6' },
       { key:'After-tax income / mo', val: money(F.afterTaxMo), sub: 'less ' + money(F.T.totalTax / 12)
           + '/mo of tax — ' + F.T.effRate.toFixed(1) + '% of gross. Charged to the year that earned it, not to the month it is paid'
           , tone:'#E07B2A' },
@@ -1681,9 +2101,9 @@ class Component extends DCLogic {
     const taxDetail = (T) => [
       { label:'Federal income tax' + (T.ctc > 0 ? ' (after ' + money(T.ctc) + ' child credit)' : ''), value:'−' + money(T.fed / 12) },
       T.kyTax >= 0
-        ? { label:'Kentucky at ' + st.kyRate + '%, net of the PTET credit', value:'−' + money(T.kyTax / 12) }
-        : { label:'Kentucky PTET credit, net refund', value:'+' + money(-T.kyTax / 12) },
-      { label:'Local occupational tax at ' + st.localRate + '% on earned income', value:'−' + money(T.localTax / 12) },
+        ? { label:'State income tax at ' + st.kyRate + '%, net of the pass-through credit', value:'−' + money(T.kyTax / 12) }
+        : { label:'State pass-through credit, net refund', value:'+' + money(-T.kyTax / 12) },
+      { label:'City or county tax at ' + st.localRate + '% on earned income', value:'−' + money(T.localTax / 12) },
       { label:'Payroll tax (Social Security + Medicare)', value:'−' + money(T.fica / 12) }
     ];
     const compNetRate = 1 - st.salaryEffRate / 100;
@@ -1745,17 +2165,18 @@ class Component extends DCLogic {
                           chosenMo: goalsMo + helocMo + principalMo });
       const T = F.T;
       const rows = [
-        { label:'Base salary — fixed, never grown in this model', value: money(st.salary / 12) },
-        { label: s.mult === 1 ? 'SMI bonus, averaged monthly' : 'SMI bonus at ' + s.mult.toFixed(1) + '× the business', value: money(s.bonus / 12) },
+        ...(st.salary > 0 ? [{ label:'Base salary — fixed, never grown in this model', value: money(st.salary / 12) }] : []),
+        ...(s.bonus > 0 ? [{ label: s.mult === 1 ? 'SMI bonus, averaged monthly' : 'SMI bonus at ' + s.mult.toFixed(1) + '× the business', value: money(s.bonus / 12) }] : []),
         { label:'Marathon distributions, gross', value: money(s.gross) },
-        ...(waiverAmt > 0 ? [{ label:'Waiver caregiver income — non-taxable', value: money(waiverAmt / 12) }] : []),
-        { label:'Interest and dividends', value: money(OTHER_INC / 12) },
+        ...(T.spouseWages > 0 ? [{ label:'Spouse wages, before tax', value: money(T.spouseWages / 12) }] : []),
+        ...(waiverAmt > 0 ? [{ label:'Non-taxable household income', value: money(waiverAmt / 12) }] : []),
+        ...(OTHER_INC > 0 ? [{ label:'Interest and dividends', value: money(OTHER_INC / 12) }] : []),
         { label:'GROSS INCOME', value: money(F.grossMo), total:true, tone:'#31A6E6' },
         ...taxDetail(T),
         { label:'AFTER-TAX INCOME', value: money(F.afterTaxMo), total:true, tone:'#E07B2A' },
         { label:'401(k) deferral out of pay', value:'−' + money(F.deferralMo) },
-        ...(helocMo > 0 ? [{ label:'HELOC interest at ' + st.helocRate + '% — cash out every month',
-            sub: m.ded > 0 ? money(helocBenefitAt(s)) + '/mo of it comes back at filing · ' + m.effRate.toFixed(2) + '% effective APR' : '',
+        ...(helocMo > 0 ? [{ label:'HELOC interest at ' + st.helocRate + '% — cash out every month'
+              + (m.ded > 0 ? ' (' + money(helocBenefitAt(s)) + '/mo of it comes back at filing)' : ''),
             value:'−' + money(helocMo) }] : []),
         ...(principalMo > 0 ? [{ label:'To HELOC principal (' + st.payoffShare + '% of net distributions)', value:'−' + money(principalMo) }] : []),
         ...(goalPctAll > 0 ? st.goals.filter(gl => Math.max(gl.pct, 0) > 0).map(gl => ({
@@ -1768,17 +2189,17 @@ class Component extends DCLogic {
           ? `display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:13px 0 4px;border-top:2px solid var(--c-deep);color:${r.tone || 'var(--c-paperInk)'};font-family:'Open Sans',sans-serif;font-weight:700;letter-spacing:.06em;font-size:14px`
           : rowStyle(i) }));
     };
-    // Does the principal line already reflect the NuLu exit? It never does: NuLu lands on the
+    // Does the principal line already reflect the asset sale? It never does: the asset sale lands on the
     // balance as a lump sum, while this line is only the monthly slice of distributions.
     const helocNote = (mo) => {
       const cleared = m.months && m.months <= mo;
       const nuluIn = m.nuluApplied && st.nuluExitMonths <= mo;
-      if (cleared) return `The HELOC is already clear by month ${m.months}${m.nuluApplied ? ` (the ${money(m.nuluNet)} NuLu exit at month ${st.nuluExitMonths} did part of it)` : ''}, so nothing is going to principal here — the figure above is what the loan was absorbing until then.`;
+      if (cleared) return `The HELOC is already clear by month ${m.months}${m.nuluApplied ? ` (the ${money(m.nuluNet)} asset sale at month ${st.nuluExitMonths} did part of it)` : ''}, so nothing is going to principal here — the figure above is what the loan was absorbing until then.`;
       return `The principal line is only the ${st.payoffShare}% monthly slice of net distributions. ` + (m.nuluApplied
         ? (nuluIn
-            ? `The ${money(m.nuluNet)} NuLu exit at month ${st.nuluExitMonths} is not in it — it hits the balance as a lump sum, shortening the payoff without changing monthly take-home.`
-            : `The NuLu exit (${money(m.nuluNet)} at month ${st.nuluExitMonths}) is still ahead and is not in this figure.`)
-        : 'No NuLu proceeds are applied to the loan in this mix.');
+            ? `The ${money(m.nuluNet)} asset sale at month ${st.nuluExitMonths} is not in it — it hits the balance as a lump sum, shortening the payoff without changing monthly take-home.`
+            : `The asset sale (${money(m.nuluNet)} at month ${st.nuluExitMonths}) is still ahead and is not in this figure.`)
+        : 'No asset-sale proceeds are applied to the loan in this mix.');
     };
     // Withholding runs on comp only, so the refund is derived, not typed in. Once Marathon
     // income outgrows fixed withholding it flips to an amount owed at filing.
@@ -1786,9 +2207,11 @@ class Component extends DCLogic {
       const T = taxYear({ wages: st.salary + sl.bonus, k1: m.taxableOn(sl.annualGross), dist: sl.annualGross,
                           other: OTHER_INC, waiver: waiverAmt }, st);
       const fedNet = T.fedWithheld - T.fed, kyNet = T.kyWithheld - T.kyTax;
-      return `Federal ${fedNet >= 0 ? money(fedNet) + ' back' : money(-fedNet) + ' due'} (${money(T.fedWithheld)} withheld vs ${money(T.fed)} owed)`
-        + ` · Kentucky ${kyNet >= 0 ? money(kyNet) + ' back' : money(-kyNet) + ' due'}`
-        + (T.ptetCredit > 0 ? ` (the ${money(T.ptetCredit)} PTET credit)` : '')
+      return (st.fedWhRate > 0
+          ? `Federal ${fedNet >= 0 ? money(fedNet) + ' back' : money(-fedNet) + ' due'} (${money(T.fedWithheld)} withheld vs ${money(T.fed)} owed)`
+          : `Federal ${money(T.fed)} due in full — no withholding rate entered`)
+        + ` · state ${kyNet >= 0 ? money(kyNet) + ' back' : money(-kyNet) + ' due'}`
+        + (T.ptetCredit > 0 ? ` (the ${money(T.ptetCredit)} pass-through credit)` : '')
         + ` · combined ${T.refund >= 0 ? money(T.refund) + ' back' : money(-T.refund) + ' due'}`;
     };
     const refundIsOwed = (sl) => taxYear({ wages: st.salary + sl.bonus, k1: m.taxableOn(sl.annualGross),
@@ -1828,7 +2251,7 @@ class Component extends DCLogic {
         : s.months ? `${money(s.balAt24)} left · clears mo ${s.months}`
         : `${money(s.balAt24)} left · no clear date`;
       const outcome = m.heloc === 0 ? ''
-        : cleared ? ` HELOC is retired by month ${s.months}${m.nuluApplied ? ' — but only because the NuLu exit lands as modeled' : ''}, so no interest is dragging on this figure.`
+        : cleared ? ` HELOC is retired by month ${s.months}${m.nuluApplied ? ' — but only because the asset sale lands as modeled' : ''}, so no interest is dragging on this figure.`
         : s.months ? ` The loan is still ${money(s.balAt24)} at month ${st.horizon} and takes until month ${s.months} to clear.`
         : ` The balance never clears from cash flow — ${money(s.balAt24)} stays on the house.`;
       return {
@@ -1851,13 +2274,13 @@ class Component extends DCLogic {
       { label:'Household gross income at ' + g + '×', get: c => money(c.m.later.household) },
       { label:`HELOC clear (at ${st.payoffShare}% to principal)`, get: c => c.m.heloc === 0 ? 'n/a' : (c.m.months ? c.m.months + ' mo' : (c.m.stalled === 'choice' ? 'interest only' : 'not from payout')) },
       { label:'Upfront penalty cost', get: c => c.m.cashOutCost ? money(c.m.cashOutCost) : '$0' },
-      { label:'NuLu exit available for HELOC', get: c => money(c.m.nuluNet) + ' net' },
+      { label:'asset sale available for HELOC', get: c => money(c.m.nuluNet) + ' net' },
       { label:'Retirement account kept intact', get: c => c.m.retireHeld ? money(c.m.retireHeld) : 'cashed out' },
       { label:'House at risk', get: c => c.m.heloc ? 'Yes' : 'No' }
     ].map((r,i) => ({
       label: r.label,
       cells: comp.map(c => cell(r.get(c), i, r.hi)),
-      rowStyle: `display:grid;grid-template-columns:1.35fr repeat(5,1fr);background:${i%2?'var(--c-paperAlt)':'var(--c-paper)'};border-bottom:1px solid var(--c-paperb)`
+      rowStyle: `display:grid;grid-template-columns:1.35fr repeat(4,1fr);background:${i%2?'var(--c-paperAlt)':'var(--c-paper)'};border-bottom:1px solid var(--c-paperb)`
     }));
 
     // Footer rows: a plain label/value table, with the long explanations behind an info icon.
@@ -1878,7 +2301,7 @@ class Component extends DCLogic {
             ? 'Because your paycheck is over-withheld, the difference comes back as a refund once a year.'
             : 'Your paycheck is no longer over-withheld enough to cover the tax the Marathon income generates, so a payment is due at filing.') },
         { k:'filing', label:'At filing', val: refundLine(s),
-          note: 'Federal and Kentucky are separate returns and separate cheques. Federal withholding runs on comp only at ' + st.fedWhRate + '%. The Kentucky figure is the refundable PTET credit the partnership already paid on your behalf, which offsets your Kentucky tax on wages too.' },
+          note: 'Federal and state are separate returns and separate cheques. Federal withholding runs on comp only at ' + st.fedWhRate + '%. The state figure is the refundable pass-through credit the partnership already paid on your behalf, which offsets your state tax on wages too.' },
         ...(m.heloc > 0 && s.mult !== 1 ? [{ k:'int', label: 'Total HELOC interest through month ' + st.horizon,
           val: money(m.intToHorizon) + (m.ded > 0 ? ' net · ' + money(m.intToHorizon / (1 - m.ded)) + ' out of pocket' : ''),
           color:'#E07575', note: helocNote(st.horizon) }] : []),
@@ -1940,7 +2363,7 @@ class Component extends DCLogic {
         + `, leaves ${money(gain)} on an accrual basis.`;
       const owed = taxYear({ wages: st.salary + s.bonus, k1: m.taxableOn(s.annualGross), dist: s.annualGross,
                               other: OTHER_INC, waiver: waiverAmt }, st).refund < 0;
-      const tail = ` That tax is settled once at filing — ${owed ? 'and withholding no longer covers it, so it comes due then' : 'absorbed by the refund your over-withheld paycheck already funds'}. It is only ${(taxPart / newGross * 100).toFixed(1)}% of the new cash because your purchase creates ${money(m.amortYr - 587)}/yr of fresh §743(b) amortisation, grows the QBI deduction, and grows the refundable Kentucky PTET credit.`;
+      const tail = ` That tax is settled once at filing — ${owed ? 'and withholding no longer covers it, so it comes due then' : 'absorbed by the refund your over-withheld paycheck already funds'}. It is only ${(taxPart / newGross * 100).toFixed(1)}% of the new cash because your purchase creates ${money(m.amortYr - 587)}/yr of fresh §743(b) amortisation, grows the QBI deduction, and grows the refundable state pass-through credit.`;
       return cash + ' ' + waterfall + tail;
     };
 
@@ -1973,7 +2396,7 @@ class Component extends DCLogic {
         + (frac >= 10 / 12 ? pending * (1 + rE * (frac - 10 / 12)) : 0);
       return bal;
     };
-    // NuLu proceeds sent to the HELOC only need to cover what is still owed at the exit month;
+    // Asset-sale proceeds sent to the HELOC only need to cover what is still owed at the exit month;
     // anything left over is cash, so it lands in savings.
     const nuluLeftover = m.nuluApplied ? Math.max(m.nuluNet - m.balAtMonth(st.nuluExitMonths - 1), 0) : 0;
     // Goals: each takes a slice of that year's take-home. A cleared debt or funded goal
@@ -2123,9 +2546,9 @@ class Component extends DCLogic {
     const helocSaveNote = (p) => {
       if (!(p.hOpen > 0)) return '';
       const left = Math.max(p.toSave * 12 - p.hUsed, 0);
-      if (p.hGrowing) return `New savings contributions only — the existing savings balance is never touched. This year's contributions can't cover the ${money(p.hInt)} of HELOC interest, so the loan balance is growing and nothing new reaches savings.`;
-      if (p.hClearedMo) return `New savings contributions only — the existing savings balance is never touched. ${money(p.hUsed)} of this year's contributions went to the HELOC — it clears in month ${p.hClearedMo}, so the rest of the year's contributions are free. ${left > 0 ? money(left) + ' lands in savings and is included in the balance above.' : 'Nothing left over this year.'}`;
-      return `New savings contributions only — the existing savings balance is never touched. All ${money(p.hUsed)} of this year's contributions goes to the HELOC — ${money(p.hInt)} interest, ${money(p.hUsed - p.hInt)} principal. ${money(p.hEnd)} still owed at year end.`;
+      if (p.hGrowing) return `Savings can't cover the ${money(p.hInt)} of HELOC interest this year, so the balance is growing. Nothing reaches savings.`;
+      if (p.hClearedMo) return `${money(p.hUsed)} of this year's savings went to the HELOC — it clears in month ${p.hClearedMo}. ${left > 0 ? money(left) + ' lands in savings.' : 'Nothing left over this year.'}`;
+      return `All ${money(p.hUsed)} of this year's savings goes to the HELOC — ${money(p.hInt)} interest, ${money(p.hUsed - p.hInt)} principal. ${money(p.hEnd)} still owed at year end.`;
     };
     const hasYearOverrides = Object.keys(st.yearPct).length > 0;
     const allYearsAtDefault = proj.every(p => Math.round(p.pr) === pctR && Math.round(p.ps) === pctS);
@@ -2150,49 +2573,48 @@ class Component extends DCLogic {
       { key:'growth', label:'Year-2 growth multiple', min:0.5, max:3, step:0.1, display: st.growth.toFixed(1) + '×' },
       { key:'horizon', label:'Months until doubling', min:12, max:60, step:3, display: st.horizon + ' mo' },
       { key:'valWindow', label:'Years in the price formula', min:1, max:6, step:1, display: st.valWindow + ' yr · yr-2 ' + money(st.price * m.later.priceMult) + ' vs ' + money(st.price * g) },
-      ...(st.ptetOn ? [{ key:'stateRate', label:'State points the partnership already paid', min:0, max:8, step:0.1, display: st.stateRate + '% credited back on Form PTET-CR',
-        note:'Marathon\u2019s share of SMI\u2019s Kentucky and Indiana income is taxed at the entity level and credited back to you, so the distributions carry no personal state tax.' }] : []),
-      { key:'qbiOtherLoss', label:'Other QBI losses to net against', min:0, max:20000, step:100, display: money(st.qbiOtherLoss) + ' · NuLu + consulting, per Form 8995', num:true },
-      { key:'stepUpPct', label:'743(b) step-up as % of purchase price', min:0, max:120, step:0.1, display: st.stepUpPct + '% · ' + money(m.stepUp) + ' step-up · ' + money(m.amortYr) + '/yr deduction' },
-      { key:'amortYears', label:'Years the step-up amortises over', min:5, max:20, step:1, display: st.amortYears + ' yr · intangibles were 15 on your K-1' },
-      { key:'existingPaid', label:'What you paid for the existing tenth', min:5000, max:60000, step:100, display: money(st.existingPaid) + ' · implies ' + (st.existingPaid > 0 ? (8805 / st.existingPaid * 100).toFixed(0) : '0') + '% step-up', num:true },
+      ...(st.ptetOn ? [{ key:'stateRate', label:'State points the partnership already paid', min:0, max:8, step:0.1, display: st.stateRate + '% credited back to you',
+        note:'Where the partnership elects to pay state tax at the entity level, your share is paid there and credited back on your return, so the distributions carry no personal state tax. Set to 0 if your partnership makes no such election.' }] : []),
+      { key:'qbiOtherLoss', label:'Other business losses to net against QBI', min:0, max:20000, step:100, display: money(st.qbiOtherLoss) + (st.qbiOtherLoss > 0 ? ' netted first' : ' — nothing to net'), num:true,
+        note:'Losses from any OTHER business you own reduce the income your 20% QBI deduction is calculated on. Leave at 0 unless you have them.' },
+      { key:'stepUpPct', label:'743(b) step-up as % of purchase price', min:0, max:120, step:0.1, display: st.stepUpPct + '% · ' + money(m.stepUp) + ' step-up · ' + money(m.amortYr) + '/yr deduction',
+        note:'When you buy an interest for more than its share of the book value, the difference can be written off over time — a real deduction against the distributions. The partnership’s accountant can tell you the percentage; leave at 0 to ignore it and be conservative.' },
+      { key:'amortYears', label:'Years the step-up amortises over', min:5, max:20, step:1, display: st.amortYears + ' yr · intangibles are typically 15' },
+      { key:'existingPaid', label:'What you paid for the shares you already own', min:0, max:400000, step:100, display: money(st.existingPaid) + (st.existingPaid > 0 ? ' · sets the step-up on that holding' : ' — no step-up carried'), num:true },
       ...(st.seTax ? [{ key:'seRate', label:'Self-employment tax rate', min:0, max:16, step:0.1, display: st.seRate + '%' }] : []),
-      { key:'salaryEffRate', label:'All-in tax on salary + bonus', min:0, max:40, step:0.1, display: st.salaryEffRate + '% · from your Aug 2026 stub' },
-      { key:'salary', label:'SMI base salary', min:60000, max:200000, step:250, display: money(st.salary) + ' · ' + money(st.salary/24) + ' a check gross', num:true },
-      { key:'bonus', label:'SMI bonus at 1× the business', min:0, max:150000, step:500, num:true,
-        display: money(st.bonus) + ' · ' + money(st.bonus/12) + '/mo averaged',
-        note:'Scales with the business: at ' + g.toFixed(1) + '× it is ' + money(st.bonus * g) + '.' },
+      { key:'salaryEffRate', label:'All-in tax on salary + bonus', min:0, max:40, step:0.1, display: st.salaryEffRate + '% · withholding plus payroll tax' },
+      { key:'salary', label:'Base salary', min:0, max:400000, step:250, display: money(st.salary) + ' · ' + money(st.salary/24) + ' a check gross', num:true },
       { key:'roth401Yr', label:'Your deferral, out of your paycheck', min:0, max:31000, step:1, display: money(st.roth401Yr) + '/yr', num:true },
       { key:'medExp', label:'Medical and dental expenses', min:0, max:60000, step:100, display: money(st.medExp) + ' · only the excess over 7.5% of AGI deducts', num:true,
-        note:'From your 2024 Schedule A: $20,409 of expenses, $9,502 absorbed by the 7.5% floor, $10,907 deducted. As income rises the floor rises with it and this deduction shrinks.' },
+        note:'Only what you paid above 7.5% of your income deducts. As income rises the floor rises with it, so this deduction shrinks every year of the projection on its own.' },
       { key:'charity', label:'Charitable gifts', min:0, max:40000, step:100, display: money(st.charity) + '/yr', num:true },
       { key:'mortInt', label:'Home mortgage interest', min:0, max:30000, step:100, display: money(st.mortInt) + '/yr', num:true,
         note:'Home mortgage only. HELOC interest is not here — it is traced to the share purchase and deducted against the Marathon income instead, so it is never counted twice.' },
       { key:'propTax', label:'Property and personal property tax', min:0, max:20000, step:50, display: money(st.propTax) + '/yr', num:true },
       { key:'saltCap', label:'State and local tax cap', min:10000, max:40000, step:1000, display: money(st.saltCap) + ' · you pay ' + money(m.baseYear.saltPaid), num:true,
         note:'Current law caps the SALT deduction at $40,000. Held constant for every projected year.' },
-      { key:'kyRate', label:'Kentucky income tax rate', min:0, max:6, step:0.1, display: st.kyRate + '% flat · ' + money(m.baseYear.kyTax) + '/yr',
-        note:'Kentucky is a flat tax, stepped down to 3.5% for 2026. Only mortgage interest and charitable gifts are deductible at the state level. Marathon income is excluded — the partnership pays it under the PTET election.' },
-      { key:'localRate', label:'Local occupational tax', min:0, max:4, step:0.05, display: st.localRate + '% on earned income · ' + money(m.baseYear.localTax) + '/yr',
-        note:'Louisville Metro 1.45% + JCPS 0.75%. Earned income only — not Marathon distributions, which are taxed where the business files.' },
-      { key:'currentAge', label:'Your age today', min:18, max:80, step:1,
+      { key:'kyRate', label:'State income tax rate', min:0, max:12, step:0.1, display: st.kyRate + '% · ' + money(m.baseYear.kyTax) + '/yr',
+        note:'Applied to wages and investment income. The model allows mortgage interest and charitable gifts against it — the common state pattern — and excludes the distributions where the partnership pays the tax at the entity level.' },
+      { key:'localRate', label:'City or county income tax rate', min:0, max:5, step:0.05, display: st.localRate + '% on earned income · ' + money(m.baseYear.localTax) + '/yr',
+        note:'Earned income only — not the distributions, which are taxed where the business files. Set to 0 if your city and county take nothing.' },
+      { key:'currentAge', label:'Your age today', min:0, max:90, step:1, num:true,
         display: st.currentAge + ' · ' + (Math.max(st.currentAge, 0) + 18) + ' at the end of the projection',
         note:'Drives the age shown on every year card. Retirement account access without penalty begins at 59½.' },
       { key:'kids', label:'Qualifying children for the child credit', min:0, max:6, step:1, display: st.kids + ' × ' + money(st.ctcPerKid) + ' = ' + money(m.baseYear.ctc),
-        note:'Your 2024 return claimed $6,000 for three children. Current law is $2,200 each, phasing out above $400K. Children age out at 17 — drop the count when that happens.' },
+        note:'Current law is $2,200 per child, phasing out above $400K of income. Children age out at 17 — drop the count when that happens.' },
       { key:'fedWhRate', label:'Federal withholding on comp', min:0, max:25, step:0.1, display: st.fedWhRate + '% · ' + money(m.baseYear.fedWithheld) + '/yr withheld', num:true,
-        note:'2024: $10,825 withheld on $122,968 of wages. The refund is derived from this — withholding less the actual bill — so it shrinks and eventually flips to an amount owed as Marathon income grows.' },
-      ...(st.spouseOn ? [{ key:'spouseNet', label:"Spouse take-home per year (untaxed)", min:0, max:150000, step:400, display: money(st.spouseNet) + ' · ' + money(st.spouseNet/12) + '/mo', num:true }] : []),
+        note:'Federal income tax withheld divided by total wages, off your last return. The refund is derived from this — withholding less the actual bill — so it shrinks and eventually flips to an amount owed as the distributions grow against fixed withholding.' },
+      ...(st.spouseOn ? [{ key:'spouseNet', label: st.spouseTaxable ? 'Spouse wages per year (before tax)' : 'Spouse income per year (non-taxable)', min:0, max:500000, step:400, display: money(st.spouseNet) + ' · ' + money(st.spouseNet/12) + '/mo', num:true }] : []),
       { key:'helocRate', label:'HELOC rate', min:4, max:12, step:0.25, display: st.helocRate + '%' },
 
       { key:'aprRetireEarly', label:'Average return, today through year 2', min:0, max:25, step:0.5,
         display: st.aprRetireEarly + '%/yr · ' + money(matchYr + Math.max(st.roth401Yr, 0)) + '/yr going in',
         note: 'Only covers the next two years. From year 3 the year cards use the long-term return in the savings split below.' },
-      { key:'penalty', label:'Lost to tax + penalty if cashed out', min:0, max:300000, step:500, display: money(st.penalty) + ' · nets ' + money(Math.max(st.retireGross - st.penalty, 0)), num:true },
+      { key:'penalty', label:'Lost to tax + penalty if cashed out', min:0, max:1000000, step:500, display: money(st.penalty) + ' · nets ' + money(Math.max(st.retireGross - st.penalty, 0)), num:true },
       { key:'payoffShare', label:'Net distributions to HELOC principal', min:0, max:100, step:5, display: st.payoffShare + '%' },
-      { key:'nuluGross', label:'NuLu exit value, gross', min:50000, max:150000, step:2500, display: money(st.nuluGross), num:true },
-      { key:'nuluReserve', label:'NuLu tax reserve (1250 recapture etc.)', min:0, max:35, step:0.5, display: st.nuluReserve + '% · nets ' + money(st.nuluGross*(1-st.nuluReserve/100)) },
-      { key:'nuluExitMonths', label:'Months until NuLu exit', min:6, max:60, step:1, display: st.nuluExitMonths + ' mo · ≈' + (2026 + Math.floor((7 + st.nuluExitMonths)/12)) }
+      { key:'nuluGross', label:'asset sale value, gross', min:0, max:1000000, step:2500, display: money(st.nuluGross), num:true },
+      { key:'nuluReserve', label:'the asset sale tax reserve (1250 recapture etc.)', min:0, max:35, step:0.5, display: st.nuluReserve + '% · nets ' + money(st.nuluGross*(1-st.nuluReserve/100)) },
+      { key:'nuluExitMonths', label:'Months until asset sale', min:6, max:60, step:1, display: st.nuluExitMonths + ' mo · ≈' + (2026 + Math.floor((7 + st.nuluExitMonths)/12)) }
     ].map(s => ({ ...s, value: st[s.key], set: this.set(s.key) }));
 
     return {
@@ -2242,7 +2664,7 @@ class Component extends DCLogic {
       defaultsNote: st.defaultsTs
         ? 'Saved ' + new Date(st.defaultsTs).toLocaleString([], { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' }) + ' — every rail value below loads this way from now on.'
         : 'Locks in everything you have entered below — income, tax, share value, debts and goals — as the starting point every time you open this page.',
-      presets: PRESETS.map(p => ({
+      presets: PRESETS.filter(p => helocLive || !(p.set || []).includes('heloc')).map(p => ({
         name: p.name,
         sub: money(presetCapital(p, st)) + ' · ' + p.sub.split('· ')[1],
         pick: this.pick(p),
@@ -2287,7 +2709,7 @@ class Component extends DCLogic {
         toggleLabel: st.sel.dollar ? 'custom mix' : (st.sel[r.key] ? '✓ funding this' : 'not funding')
       })),
       nuluSliders: sliderDefs.filter(s => s.key.startsWith('nulu')),
-      incomeSliders: sliderDefs.filter(s => ['salary','bonus','spouseNet'].includes(s.key)),
+      incomeSliders: sliderDefs.filter(s => ['salary','spouseNet'].includes(s.key)),
       nuluNote: m.nuluHeld
         ? `Held as an investment: ${money(st.nuluGross)} gross, ${money(m.nuluNet)} after the reserve.`
         : 'Deployed into shares in this mix, so there is no later exit to lean on.',
@@ -2301,7 +2723,7 @@ class Component extends DCLogic {
         ...sliderDefs.filter(s => s.key === 'roth401Yr').map(s => ({ ...s, note: deferralToDate })),
         ...[{ key:'k401Pct', label:'Employer match, % of salary', min:0, max:10, step:0.01,
              display: st.k401Pct.toFixed(2) + '% · ' + money(matchYr) + '/yr on ' + money(st.salary),
-             note: 'Your rate from the past 2 years of data is 3.91% — $3,788 on $96,782 this year, $3,689 the year before. Both years land just under a 4% formula.' }]
+             note: 'The percentage of salary your employer puts in. Check a recent statement or your plan summary — many formulas land between 3% and 5%.' }]
           .map(s2 => ({ ...s2, value: st[s2.key], set: this.set(s2.key) }))
       ],
       openLong: st.open.longterm, tLong: this.tog('longterm'), hdrLong: hdr(st.open.longterm), chevLong: chev(st.open.longterm),
@@ -2310,26 +2732,26 @@ class Component extends DCLogic {
       shareSliders: sliderDefs.filter(s => ['ownedShares','price','payout','growth','horizon','valWindow'].includes(s.key)),
       debtSliders: sliderDefs.filter(s => ['currentAge','medExp','charity','mortInt','propTax','saltCap','kyRate','localRate','kids','fedWhRate','qbiOtherLoss','stepUpPct','amortYears','existingPaid','stateRate'].includes(s.key)),
       taxViews: [
-        { key:'k1', name:'Off my 2025 K-1', sub:'743(b) step-up · QBI net of NuLu and consulting losses',
-          vals:{ stepUpPct:42.7, amortYears:15, qbiOn:true, ptetOn:true, qbiOtherLoss:5296, sstb:false, medExp:20409 } },
-        { key:'postnulu', name:'No other losses', sub:'same, once NuLu and consulting stop netting against QBI',
-          vals:{ stepUpPct:42.7, amortYears:15, qbiOn:true, ptetOn:true, qbiOtherLoss:0, sstb:false, medExp:20409 } },
-        { key:'sstb', name:'Treated as an SSTB', sub:'QBI phases out if SMI counts as a service business',
-          vals:{ stepUpPct:42.7, amortYears:15, qbiOn:true, ptetOn:true, qbiOtherLoss:0, sstb:true, medExp:20409 } },
-        { key:'conservative', name:'Conservative', sub:'no step-up, no QBI, a healthy year with less medical to itemize',
-          vals:{ stepUpPct:0, amortYears:15, qbiOn:false, ptetOn:false, qbiOtherLoss:0, sstb:false, medExp:6000 } }
+        { key:'k1', name:'As you entered it', sub:'your step-up, your other business losses, QBI on',
+          vals:{ qbiOn:true, ptetOn:true, sstb:false } },
+        { key:'postnulu', name:'No other losses', sub:'same, with nothing netting against the QBI deduction',
+          vals:{ qbiOn:true, ptetOn:true, qbiOtherLoss:0, sstb:false } },
+        { key:'sstb', name:'Treated as a service business', sub:'QBI phases out above the §199A income threshold',
+          vals:{ qbiOn:true, ptetOn:true, sstb:true } },
+        { key:'conservative', name:'Conservative', sub:'no step-up, no QBI, no entity-level state credit',
+          vals:{ stepUpPct:0, qbiOn:false, ptetOn:false, sstb:false } }
       ].map(v => {
         const on = Object.keys(v.vals).every(k => st[k] === v.vals[k]);
         return { name: v.name, sub: v.sub, apply: () => this.setState(v.vals),
           style: `display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;cursor:pointer;font-family:'Open Sans',sans-serif;border:1px solid ${on ? '#06447E' : 'var(--c-border2)'};background:${on ? 'var(--c-rowhead)' : 'var(--c-card)'};color:var(--c-ink)`,
           subStyle: `font-size:11px;color:${on ? '#31A6E6' : 'var(--c-muted2)'};line-height:1.35` };
       }),
-      taxViewNote: `Every year is priced with today's tax law held constant — 2025/2026 brackets, deductions and rates, no guess at future legislation. Federal tax runs through the real marginal brackets, so only the income inside each bracket is taxed at that rate; at ${money(m.baseYear.taxable)} of taxable income your next dollar is taxed at ${m.baseYear.fedMarginal.toFixed(0)}%. Marathon income is federal-only: the partnership pays the Kentucky tax under the PTET election and credits it back. No net investment income tax — you materially participate in the business Marathon holds 52% of, which is the exception to §1411. No self-employment tax either: your 2024 Schedule SE ties all $375 of it to consulting, none to Marathon. Itemized deductions total ${money(m.baseYear.itemized)} against a ${money(31500)} standard deduction${m.baseYear.usedItemized ? ', so you itemize' : ', so the standard deduction wins here'}. QBI is ${money(m.baseYear.qbi)} — 20% of the Marathon income that survives netting, capped at 20% of taxable income${m.baseYear.qbiPhasing ? ', and phasing out because this view treats SMI as a service business' : ''}.`,
+      taxViewNote: `Every year is priced with today's tax law held constant — 2025/2026 brackets, deductions and rates, no guess at future legislation. Federal tax runs through the real marginal brackets, so only the income inside each bracket is taxed at that rate; at ${money(m.baseYear.taxable)} of taxable income your next dollar is taxed at ${m.baseYear.fedMarginal.toFixed(0)}%. Marathon income is treated as federal-only where the partnership pays the state tax under the entity-level election and credits it back. The 3.8% net investment income tax is not applied, on the assumption that you materially participate in the business — the §1411 exception; confirm that with your CPA if you are a passive investor. Self-employment tax is not applied either, because a partner's share of profits normally is not self-employment income — check box 14 of your K-1. Itemized deductions total ${money(m.baseYear.itemized)} against a ${money(st.filing === 'single' ? STD_DED_S : STD_DED_MFJ)} standard deduction${m.baseYear.usedItemized ? ', so you itemize' : ', so the standard deduction wins here'}. QBI is ${money(m.baseYear.qbi)} — 20% of the Marathon income that survives netting, capped at 20% of taxable income${m.baseYear.qbiPhasing ? ', and phasing out because this view treats the business as a service business' : ''}.`,
       projRefundLabel: (() => {
         const T = taxYear({ wages: m.baseWages, k1: m.taxableOn(m.now.annualGross), dist: m.now.annualGross,
                             other: OTHER_INC, waiver: waiverAmt }, st);
         return `At filing with ${shareNum(m.shares)} shares — ${money(T.fedWithheld)} withheld against a ${money(T.fed)} federal bill`
-          + (T.ptetCredit > 0 ? `, plus ${money(T.ptetCredit)} of Kentucky PTET credit back` : '');
+          + (T.ptetCredit > 0 ? `, plus ${money(T.ptetCredit)} of state credit back` : '');
       })(),
       projRefundVal: (() => {
         const T = taxYear({ wages: m.baseWages, k1: m.taxableOn(m.now.annualGross), dist: m.now.annualGross,
@@ -2338,6 +2760,7 @@ class Component extends DCLogic {
       })(),
       projRefundColor: taxYear({ wages: m.baseWages, k1: m.taxableOn(m.now.annualGross), dist: m.now.annualGross,
         other: OTHER_INC, waiver: waiverAmt }, st).refund >= 0 ? '#1D9E75' : '#E07575',
+      ...this.wizVals(),
       seOn: !!st.seTax,
       toggleSe: () => this.setState(s => ({ seTax: !s.seTax })),
       seLabel: st.seTax
@@ -2346,9 +2769,9 @@ class Component extends DCLogic {
       seStyle: `display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:10px 12px;cursor:pointer;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;color:var(--c-ink);background:var(--c-chip);border:1px solid ${st.seTax ? '#31A6E6' : 'var(--c-chipb)'}`,
       seTrackStyle: `display:inline-flex;align-items:center;width:34px;height:18px;flex-shrink:0;border-radius:9px;padding:2px;box-sizing:border-box;background:${st.seTax ? '#31A6E6' : 'var(--c-chipb)'};justify-content:${st.seTax ? 'flex-end' : 'flex-start'}`,
       seNote: st.seTax
-        ? `On — the effective reserve is now ${m.totalReserveRate.toFixed(1)}% of cash instead of ${(m.totalReserveRate - m.seEff * m.taxableShare).toFixed(1)}%. Your 2024 return says you do not owe this on Marathon income, so this is a what-if: use it only to test what happens if the partnership ever starts paying you as self-employed.`
-        : `Leave this off. Self-employment tax is the 15.3% that people who work for themselves pay instead of having Social Security and Medicare withheld from a paycheck. Your Marathon money is not that kind of income — it is a partner's share of profits, and your 2024 return proves it: the only SE tax you paid, $375, came from your consulting side income, none from Marathon. Turning this on would add ${money(m.now.gross * st.seRate/100)} a month of tax you do not owe.`,
-      niitNote: `The 3.8% surtax is not applied in any year, including the later cards where household income clears ${money(250000)}. You materially participate in the business Marathon holds 52% of, which is the material-participation exception to §1411 — so the distributions are not net investment income. Not a toggle, because it is a fact about your situation rather than an assumption.`,
+        ? `On — the effective reserve is now ${m.totalReserveRate.toFixed(1)}% of cash instead of ${(m.totalReserveRate - m.seEff * m.taxableShare).toFixed(1)}%. Treat this as a what-if: use it only to test what happens if the partnership ever starts paying you as self-employed rather than as a partner.`
+        : `Leave this off unless your K-1 says otherwise. Self-employment tax is the 15.3% that people who work for themselves pay instead of having Social Security and Medicare withheld from a paycheck. A partner's share of profits is normally not that kind of income — check box 14 of your K-1, and if it is blank, this stays off. Turning it on would add ${money(m.now.gross * st.seRate/100)} a month of tax.`,
+      niitNote: `The 3.8% surtax is not applied in any year, including the later cards where household income clears ${money(P.medFloor)}. That assumes you materially participate in the business — the §1411 exception — so the distributions are not net investment income. If you are a purely passive investor in it, add 3.8% to the reserve yourself and ask your CPA.`,
       calibNote: (() => {
         // What a full share would cost in tax today, and the step-up ratio that would
         // reproduce your accountant's $1,500 — so the calibration gap is explicit.
@@ -2356,7 +2779,7 @@ class Component extends DCLogic {
         const k1 = m.taxableOn(cash, buy);
         const t = m.incTax(k1);
         const T = taxYear({ wages: m.baseWages, k1, dist: cash, other: OTHER_INC, waiver: waiverAmt }, st);
-        return `A full share today: ${money(cash)} of distributions, ${money(m.amortOn(buy))}/yr of 743(b) amortisation, so ${money(k1)} of taxable Marathon income. Run through the brackets on top of ${money(m.baseWages)} of comp that is ${money(t)} of federal tax — an incremental ${(k1 > 0 ? t / k1 * 100 : 0).toFixed(1)}% on the K-1 income, and ${(cash > 0 ? t / cash * 100 : 0).toFixed(1)}% of the cash. Household tax lands at ${money(T.totalTax)} on ${money(T.grossCash)} of gross, or ${T.effRate.toFixed(1)}% all in, and withholding on comp leaves ${T.refund >= 0 ? money(T.refund) + ' coming back' : money(-T.refund) + ' owed'} at filing.`;
+        return `A full share today: ${money(cash)} of distributions, ${money(m.amortOn(buy))}/yr of 743(b) amortisation, so ${money(k1)} of taxable Marathon income. Run through the brackets ${m.baseWages > 0 ? 'on top of ' + money(m.baseWages) + ' of comp' : 'with no wage income underneath it'} that is ${money(t)} of federal tax — an incremental ${(k1 > 0 ? t / k1 * 100 : 0).toFixed(1)}% on the K-1 income, and ${(cash > 0 ? t / cash * 100 : 0).toFixed(1)}% of the cash. Household tax lands at ${money(T.totalTax)} on ${money(T.grossCash)} of gross, or ${T.effRate.toFixed(1)}% all in, and withholding on comp leaves ${T.refund >= 0 ? money(T.refund) + ' coming back' : money(-T.refund) + ' owed'} at filing.`;
       })(),
       qbiOn: !!st.qbiOn,
       toggleQbi: () => this.setState(s => ({ qbiOn: !s.qbiOn })),
@@ -2364,24 +2787,28 @@ class Component extends DCLogic {
       qbiStyle: `display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;padding:9px 11px;cursor:pointer;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:${st.qbiOn ? 'var(--c-chip)' : 'var(--c-card)'};border:1px solid ${st.qbiOn ? '#31A6E6' : 'var(--c-chipb)'};color:var(--c-text)`,
       qbiTrackStyle: `display:inline-flex;align-items:center;width:34px;height:18px;flex-shrink:0;border-radius:9px;padding:2px;box-sizing:border-box;background:${st.qbiOn ? '#31A6E6' : 'var(--c-chipb)'};justify-content:${st.qbiOn ? 'flex-end' : 'flex-start'}`,
       qbiNote: st.qbiOn
-        ? `20% of your Marathon income after the step-up, less the ${money(m.otherLoss)} of NuLu and consulting losses it has to net against first. That netting is why 2025 gave you nothing — Marathon's $3,877 was smaller than the losses. At a full share the income dwarfs them and most of the 20% survives.`
-        : `Off — no QBI deduction at all. Harsher than your 2025 return, which only lost it because Marathon's income was small relative to the ${money(m.otherLoss)} of other losses.`,
+        ? (m.otherLoss > 0
+            ? `20% of your Marathon income after the step-up, less the ${money(m.otherLoss)} of other business losses it has to net against first. If those losses are bigger than the income, the deduction is zero — which is why a small position often gets nothing from it and a larger one keeps most of the 20%.`
+            : `20% of your Marathon income after the step-up, capped at 20% of your taxable income. Worth ${money(m.baseYear.qbi)} at today's position.`)
+        : `Off — no QBI deduction at all. That is the conservative setting: it assumes the 20% is fully consumed by other business losses or otherwise unavailable to you.`,
       ptetOn: !!st.ptetOn,
       togglePtet: () => this.setState(s => ({ ptetOn: !s.ptetOn })),
       ptetLabel: st.ptetOn ? `State tax paid by the partnership (${st.stateRate}%)` : 'State tax paid personally',
       ptetStyle: `display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;padding:9px 11px;cursor:pointer;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:${st.ptetOn ? 'var(--c-chip)' : 'var(--c-card)'};border:1px solid ${st.ptetOn ? '#31A6E6' : 'var(--c-chipb)'};color:var(--c-text)`,
       ptetTrackStyle: `display:inline-flex;align-items:center;width:34px;height:18px;flex-shrink:0;border-radius:9px;padding:2px;box-sizing:border-box;background:${st.ptetOn ? '#31A6E6' : 'var(--c-chipb)'};justify-content:${st.ptetOn ? 'flex-end' : 'flex-start'}`,
       ptetNote: st.ptetOn
-        ? `Marathon's 52% share of SMI's Kentucky and Indiana income is taxed at the entity level and credited back to you on Form PTET-CR. The credit is REFUNDABLE, so it does not just cancel the Kentucky tax on the distributions — it offsets your Kentucky tax on WAGES too, and any excess comes back as cash. At ${money(m.taxableOn(m.now.annualGross))} of Marathon income that is a ${money(m.baseYear.ptetCredit)} credit against a ${money(m.baseYear.kyGross)} Kentucky bill. This is why a bigger position can improve your refund even as federal tax rises.`
-        : `Off — Marathon income is charged personal Kentucky tax at ${st.kyRate}% on top of the federal brackets. That double-counts the tax the partnership already paid on your behalf.`,
+        ? `Your share of the partnership's state income is taxed at the entity level and credited back to you on your own return. The credit is REFUNDABLE, so it does not just cancel the state tax on the distributions — it offsets your state tax on WAGES too, and any excess comes back as cash. At ${money(m.taxableOn(m.now.annualGross))} of Marathon income that is a ${money(m.baseYear.ptetCredit)} credit against a ${money(m.baseYear.kyGross)} state bill. This is why a bigger position can improve your refund even as federal tax rises. Switch it off if your partnership makes no entity-level election.`
+        : `Off — Marathon income is charged personal state tax at ${st.kyRate}% on top of the federal brackets. That double-counts the tax the partnership already paid on your behalf.`,
       spouseOn: !!st.spouseOn,
       toggleSpouse: () => this.setState(s => ({ spouseOn: !s.spouseOn })),
       spouseLabel: st.spouseOn ? `Counting spouse take-home (${money(st.spouseNet)}/yr)` : 'Spouse take-home not counted',
       spouseStyle: `display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left;padding:9px 11px;cursor:pointer;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:${st.spouseOn ? 'var(--c-chip)' : 'var(--c-card)'};border:1px solid ${st.spouseOn ? '#31A6E6' : 'var(--c-chipb)'};color:var(--c-text)`,
       spouseTrackStyle: `display:inline-flex;align-items:center;width:34px;height:18px;flex-shrink:0;border-radius:9px;padding:2px;box-sizing:border-box;background:${st.spouseOn ? '#31A6E6' : 'var(--c-chipb)'};justify-content:${st.spouseOn ? 'flex-end' : 'flex-start'}`,
       spouseNote: st.spouseOn
-        ? `${money(st.spouseNet)} a year — ${money(st.spouseNet/12)} a month — flows into every take-home and annual salary figure on the page, in every scenario. Untaxed: it is already net, so no rate touches it.`
-        : 'Off. Every take-home and annual salary figure is your income only. Turn on to add her untaxed take-home across all scenarios.',
+        ? (st.spouseTaxable
+            ? `${money(st.spouseNet)} a year — ${money(st.spouseNet/12)} a month — counted as W-2 wages: it stacks into the brackets, carries its own payroll and local tax, and is withheld on at the same rate. Change this in the setup if the figure is already net.`
+            : `${money(st.spouseNet)} a year — ${money(st.spouseNet/12)} a month — flows into every take-home figure on the page, in every scenario. Non-taxable: the money arrives already net, so no rate touches it.`)
+        : 'Off. Every take-home and annual income figure is yours only. Turn on to add other household income across all scenarios.',
       deductOn: !!st.helocDeduct,
       toggleDeduct: () => this.setState(s => ({ helocDeduct: !s.helocDeduct })),
       deductLabel: st.helocDeduct ? 'Deducting HELOC interest' : 'Interest not deducted',
@@ -2397,6 +2824,13 @@ class Component extends DCLogic {
       sumGoals: st.goals.length
         ? `${st.goals.length} ${st.goals.length === 1 ? 'item' : 'items'} · ${st.goals.reduce((a, gl) => a + Math.max(gl.pct, 0), 0)}% of take-home`
         : 'optional · nothing added yet',
+      sumOwn: (st.ownedShares ? shareNum(st.ownedShares) + (st.ownedShares === 1 ? ' share' : ' shares') : 'no shares entered')
+        + (st.currentAge ? ' · age ' + Math.round(st.currentAge) : ''),
+      ownedSharesValue: st.ownedShares === 0 ? '' : st.ownedShares,
+      onOwnedShares: this.set('ownedShares'),
+      ageValue: st.currentAge === 0 ? '' : st.currentAge,
+      onAge: this.set('currentAge'),
+      canBuy: !!st.canBuy,
       openScenario: st.open.scenario, openSources: st.open.sources, openShare: st.open.share, openDebt: st.open.debt,
       tScenario: this.tog('scenario'), tSources: this.tog('sources'), tShare: this.tog('share'), tDebt: this.tog('debt'),
       toggleAll: this.toggleAll,
@@ -2444,7 +2878,17 @@ class Component extends DCLogic {
           pctLabel: `${g.pct}% — ${money(mo)}/mo`, outcome, outColor };
       }),
       sumScenario: active ? active.name : 'Custom mix',
-      dollarMode: !!st.sel.dollar,
+      // The funding mixer is meaningless if the user said buying more shares is off the table.
+      dollarMode: !!st.sel.dollar && !!st.canBuy,
+      // Borrowing only exists in this model if buying is on the table AND a credit line was entered.
+      helocOn: !!st.canBuy && (st.helocDraw > 0 || st.customHelocT > 0),
+      mixerNote: (!!st.canBuy && (st.helocDraw > 0 || st.customHelocT > 0))
+        ? 'Set either to 0.0 to use just one. The HELOC figure drives interest, payoff months and the asset-sale payoff — the rate and payoff settings live in the Debt section.'
+        : 'Enter the cash you would put in, in tenths of a share or in dollars.',
+      stressNetHead: (!!st.canBuy && (st.helocDraw > 0 || st.customHelocT > 0)) ? 'Net after tax + HELOC' : 'Net after tax',
+      stressHeadStyle: 'display:grid;grid-template-columns:' + ((!!st.canBuy && (st.helocDraw > 0 || st.customHelocT > 0))
+        ? '1.05fr .85fr .8fr .95fr .95fr 1.7fr' : '1.05fr .85fr .8fr .95fr 1.7fr')
+        + ';background:var(--c-deep);color:var(--c-ink)',
       cashTenths: (st.customCashT / 10).toFixed(2) + (st.customCashT === 10 ? ' share' : ' shares'),
       helocTenths: (st.customHelocT / 10).toFixed(2) + (st.customHelocT === 10 ? ' share' : ' shares'),
       cashInShares: st.cashMode !== 'dollars', cashInDollars: st.cashMode === 'dollars',
@@ -2497,8 +2941,8 @@ class Component extends DCLogic {
       })()}. ${m.heloc ? money(m.heloc) + ' of it is borrowed against the house.' : 'No borrowed money.'}`,
       assumptionNotes: [
         { heading:'The three headline numbers', items: [
-          { t:'Household gross income', d:`All cash coming in: the fixed base salary, that year's bonus, Marathon distributions, interest and dividends, and your wife's non-taxable waiver income. It does NOT include the employer 401(k) match, which never passes through your hands.` },
-          { t:'After-tax income', d:`Gross less federal income tax (after the child credit), Kentucky income tax, the local occupational tax and payroll tax. Nothing you choose to save is subtracted here. This is an ACCRUAL view — the whole year's tax is charged to the year that earned it, whatever month it is actually paid.` },
+          { t:'Household gross income', d:`All cash coming in: the fixed base salary, that year's bonus, distributions, interest and dividends, and any other household income you entered. It does NOT include the employer 401(k) match, which never passes through your hands.` },
+          { t:'After-tax income', d:`Gross less federal income tax (after the child credit), state income tax, the local occupational tax and payroll tax. Nothing you choose to save is subtracted here. This is an ACCRUAL view — the whole year's tax is charged to the year that earned it, whatever month it is actually paid.` },
           { t:'Buying more shares raises the deposit by the full distribution', d:'Withholding is calculated on your paycheck, and buying shares does not change your paycheck. So another tenth of a share adds its entire monthly distribution to what lands in the bank — no tax is taken out of it during the year. The tax those shares generate is settled once at filing — absorbed by the refund while your comp is over-withheld, and due as a payment once it no longer is. That is why the month-to-month gain is the full distribution while the accrual gain is smaller.' },
           { t:'Why monthly cash differs from after-tax income', d:'Nothing is withheld from the Marathon distributions — they arrive gross every month. Only your paycheck is withheld against, and it is over-withheld, which is exactly where the refund comes from. So monthly cash runs BELOW the after-tax figure and the refund hands the difference back once a year. The two reconcile: the "Cash in the bank monthly" line × 12, plus the "At filing" figure, equals the annual available-to-spend BEFORE debt service and goals. Where a HELOC is being serviced or goal slices are running, subtract those too — the cash line is measured before them, available-to-spend after them.' },
           { t:'Available to spend / month', d:'After-tax income less what you CHOOSE to put away: the 401(k) deferral out of your paycheck, the retirement and savings percentages, goal and debt allocations, and any HELOC servicing. Money that moves out of this line has not been lost to tax — it is still yours, sitting in the retirement and savings balances.' }
@@ -2506,40 +2950,41 @@ class Component extends DCLogic {
         { heading:'Income', items: [
           { t:'Base salary is fixed', d:`${money(st.salary)} a year, deliberately never grown, in every year of the projection.` },
           { t:'Bonus growth', d:`The bonus scales with the business: ${money(st.bonus)} today × that year's earnings multiple. Year 2 is the doubling, then ${st.y3Growth}% a year on top. Because it is W-2 pay, growing it also grows payroll and local tax.` },
-          { t:'Waiver caregiver income', d:`Excluded from taxable income under IRS Notice 2014-7, so it counts as household cash but never enters gross taxable income or any tax calculation.` },
+          ...(st.spouseOn && !st.spouseTaxable ? [{ t:'Non-taxable household income', d:`The ${money(st.spouseNet)} a year you marked as already-net arrives outside taxable income — a Medicaid waiver under IRS Notice 2014-7, disability, or family support. It counts as household cash but never enters gross taxable income or any tax calculation.` }] : []),
+          ...(st.spouseOn && st.spouseTaxable ? [{ t:'Spouse wages', d:`The ${money(st.spouseNet)} a year is treated as ordinary W-2 wages: it stacks into the federal brackets on top of your own, carries payroll and local tax, and is withheld on at the same rate as your comp.` }] : []),
           { t:'Distributions on existing shares', d:`Shares held at the start of a year earn a full twelve months of distributions at that year's payout.` },
           { t:'Distributions on new purchases', d:'Shares bought during a year earn about six months of distributions that year, then a full twelve months from the following year on.' }
         ]},
         { heading:'Taxes', items: [
-          { t:'Current law, held constant', d:`2025/2026 parameters for every projected year: the federal brackets, a ${money(31500)} standard deduction, the ${money(176100)} Social Security wage cap and a ${money(st.saltCap)} SALT cap. No attempt is made to predict future tax law.` },
+          { t:'Current law, held constant', d:`2025/2026 parameters for every projected year: the federal brackets, a ${money(P.std)} standard deduction, the ${money(176100)} Social Security wage cap and a ${money(st.saltCap)} SALT cap. No attempt is made to predict future tax law.` },
           { t:'Federal marginal brackets', d:`Only the income inside each bracket is taxed at that bracket's rate — 10, 12, 22, 24, 32, 35, 37%. Your taxable income of ${money(m.baseYear.taxable)} puts the next dollar at ${m.baseYear.fedMarginal.toFixed(0)}%, and the rate rises on its own as the bonus and distributions grow.` },
-          { t:'Itemized deductions', d:`Straight off your 2024 Schedule A, total ${money(37506)}: medical ${money(st.medExp)} gross (only the excess over 7.5% of AGI deducts, so this SHRINKS as income rises), SALT capped, mortgage interest ${money(st.mortInt)}, charitable ${money(st.charity)}. Currently ${money(m.baseYear.itemized)}.` },
-          { t:'Kentucky', d:`Flat ${st.kyRate}%, the current rate. Only mortgage interest and charitable gifts are deductible at the state level (HB 366, 2018).` },
-          { t:'Local occupational tax', d:`${st.localRate}% — Louisville Metro plus JCPS — on earned income only. Not applied to Marathon distributions, which are taxed where the business files.` },
-          { t:'Payroll tax', d:`6.2% Social Security up to the wage cap, 1.45% Medicare with no cap, plus 0.9% on wages over ${money(250000)}. Marathon distributions carry no payroll tax.` },
-          { t:'Child tax credit', d:`${st.kids} children at ${money(st.ctcPerKid)} each under current law, phasing out above ${money(400000)}. Reduce the count as children age out at 17.` }
+          { t:'Itemized deductions', d:`What you entered from your Schedule A: medical ${money(st.medExp)} gross (only the excess over 7.5% of AGI deducts, so this SHRINKS as income rises), state and local tax capped, mortgage interest ${money(st.mortInt)}, charitable ${money(st.charity)}. Currently ${money(m.baseYear.itemized)} against a ${money(m.baseYear.deduction)} deduction — whichever is larger wins.` },
+          { t:'State income tax', d:`Flat ${st.kyRate}% as entered. The model allows mortgage interest and charitable gifts against it, the common state pattern, and excludes the distributions where the partnership pays the tax at the entity level.` },
+          { t:'City or county income tax', d:`${st.localRate}% on earned income only. Not applied to Marathon distributions, which are taxed where the business files.` },
+          { t:'Payroll tax', d:`6.2% Social Security up to the wage cap, 1.45% Medicare with no cap, plus 0.9% on wages over ${money(P.medFloor)}. Marathon distributions carry no payroll tax.` },
+          { t:'Child tax credit', d:`${st.kids} children at ${money(st.ctcPerKid)} each under current law, phasing out above ${money(P.ctcFloor)}. Reduce the count as children age out at 17.` }
         ]},
         { heading:'Marathon distributions', items: [
           { t:'How the cash is calculated', d:`Shares owned × ${money(st.payout)} per share per month × that year's earnings multiple.` },
-          { t:'How much of it is taxable', d:`Your 2025 K-1 shows ${money(3882)} of income against ${money(3816)} of distributions, so taxable income runs ${((m.incomeRatio - 1) * 100).toFixed(1)}% ahead of cash. That figure is then reduced by the §743(b) step-up your own purchase price creates — ${money(m.amortYr)} a year at present.` },
+          { t:'How much of it is taxable', d:`Taxable income from a partnership normally runs slightly ahead of the cash it distributes — ${((m.incomeRatio - 1) * 100).toFixed(1)}% ahead in this model. That figure is then reduced by the §743(b) step-up your own purchase price creates — ${money(m.amortYr)} a year at present.` },
           { t:'What rate applies', d:'Taxable Marathon income stacks on top of your comp and runs through the same brackets, so a larger position pushes its own last dollars into the next bracket while the first dollars stay lower.' },
-          { t:'State tax on it — and a refundable credit', d:`Marathon's share of SMI's Kentucky and Indiana income is paid at the entity level under the PTET election (KY HB 360) and credited back to you on Form PTET-CR at ${st.stateRate}%. The credit is refundable, so it offsets your Kentucky tax on wages as well and any excess is returned in cash — currently ${money(m.baseYear.ptetCredit)} against a ${money(m.baseYear.kyGross)} Kentucky bill. Growing the position grows this credit, which is why Kentucky can move in your favor while federal tax rises.` },
-          { t:'No net investment income tax', d:'You materially participate in the business Marathon holds 52% of, which is the material-participation exception to §1411. The 3.8% surtax does not apply.' },
-          { t:'No self-employment tax', d:'Your 2024 Schedule SE ties all $375 of SE tax to consulting income, none to Marathon, so this is passive partnership income for SE purposes.' },
-          { t:'QBI deduction', d:`20% of the Marathon income that survives netting against the other business losses, capped at 20% of taxable income — currently ${money(m.baseYear.qbi)}. Above ${money(394600)} of taxable income the service-business and W-2-wage limits begin to phase in over a ${money(150000)} range; the Tax treatment panel has a view that models that.` },
+          { t:'State tax on it — and a refundable credit', d:`Where the partnership elects to pay state tax at the entity level, your share is paid there and credited back to you at ${st.stateRate}%. The credit is refundable, so it offsets your state tax on wages as well and any excess is returned in cash — currently ${money(m.baseYear.ptetCredit)} against a ${money(m.baseYear.kyGross)} state bill. Growing the position grows this credit, which is why state tax can move in your favor while federal tax rises. Turn the election off in the Tax treatment panel if your partnership does not make it.` },
+          { t:'No net investment income tax', d:'The model assumes you materially participate in the business, which is the §1411 exception, so the 3.8% surtax does not apply. If you are a purely passive investor, it would — ask your CPA.' },
+          { t:'No self-employment tax', d:'A partner’s share of profits is treated as passive partnership income for SE purposes, so the 15.3% is not applied. Check box 14 of your K-1; if it shows self-employment earnings, turn the toggle on in the Tax treatment panel.' },
+          { t:'QBI deduction', d:`20% of the Marathon income that survives netting against the other business losses, capped at 20% of taxable income — currently ${money(m.baseYear.qbi)}. Above ${money(P.qbiT)} of taxable income the service-business and W-2-wage limits begin to phase in over a ${money(P.qbiP)} range; the Tax treatment panel has a view that models that.` },
           { t:'HELOC interest', d:`Traced to the share purchase, so it deducts against the Marathon income on Schedule E rather than as home-equity interest on Schedule A. That is why it is absent from the itemized total — it is never counted twice. Benefit rate is your federal marginal ${m.dedRate.toFixed(0)}%.` }
         ]},
         { heading:'Retirement', items: [
           { t:'Two streams, one balance', d:`Your ${money(st.roth401Yr / 24)} per-paycheck deferral (${money(st.roth401Yr)}/yr) comes out of take-home; the employer match does not. Both land in the same balance — your 401(k) plus the rollover IRA, ${money(Math.max(st.retireGross, 0))} today.` },
-          { t:'Employer match', d:`${st.k401Pct}% of salary, derived from two years of statements (${money(3788)} on ${money(96782)} and ${money(3689)} the year before). Because it is a percentage, it scales if salary changes.` },
+          { t:'Employer match', d:`${st.k401Pct}% of salary, as you entered it in the rail. Because it is a percentage, it scales if salary changes.` },
           { t:'Match timing', d:`The match for a year is deposited around February or March of the FOLLOWING year, so it earns nothing in the year it is earned and picks up about ten months of growth when it arrives.` },
           { t:'Contribution growth', d:'Your own contributions are invested through the year, so they get half a year of growth in the year they are made.' },
           { t:'Return assumption', d:`${st.aprRetireEarly}% average from today through year 2, then ${st.aprRetire}% for the year cards onward.` }
         ]},
         { heading:'Refund and cash timing', items: [
-          { t:'Federal and Kentucky are separate refunds', d:'The "At filing" line breaks out both, because they are two returns and two cheques. A remembered refund figure is usually the FEDERAL one, so compare against that number rather than the combined total.' },
-          { t:'The refund is derived, not typed in', d:`Federal withholding runs on comp only at ${st.fedWhRate}% (2024: ${money(10825)} withheld on ${money(122968)} of wages). The refund is that withholding less the actual federal bill, plus the Kentucky side.` },
-          { t:'Why the Kentucky credit always comes back', d:`Kentucky withholding is set on your wages and knows nothing about the PTET credit, so the credit shows up as a Kentucky refund even when your net Kentucky tax is still positive. At the current position that is ${money(m.baseYear.ptetCredit)} of cash returned on top of the federal result — the single biggest reason a larger Marathon position can leave you with a refund rather than a bill.` },
+          { t:'Federal and state are separate refunds', d:'The "At filing" line breaks out both, because they are two returns and two cheques. A remembered refund figure is usually the FEDERAL one, so compare against that number rather than the combined total.' },
+          { t:'The refund is derived, not typed in', d:`Federal withholding runs on comp only, at the ${st.fedWhRate}% rate you entered. The refund is that withholding less the actual federal bill, plus the state side.` },
+          { t:'Why the state credit comes back', d:`State withholding is set on your wages and knows nothing about the pass-through credit, so the credit shows up as a state refund even when your net state tax is still positive. At the current position that is ${money(m.baseYear.ptetCredit)} of cash returned on top of the federal result — a large reason a bigger position can leave you with a refund rather than a bill.` },
           { t:'Owed at filing', d:'As Marathon income grows against fixed withholding, the refund shrinks and eventually flips negative. When it does, the shortfall shows as "Owed at filing" and is held back monthly so the bill is funded when it lands.' },
           { t:'Savings never looks like tax', d:'Follow the money: gross income → taxes → after-tax income → saving, investing, goals and debt → available to spend. The third tier moving down never means money went to the government.' }
         ]}
@@ -2563,7 +3008,7 @@ class Component extends DCLogic {
         const cap = `display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0 4px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:${p.dark ? 'var(--c-muted2)' : 'var(--c-muted2)'}`;
         const pm = p.years === 0 ? 1 : m.valMult(p.mult, 0);
         const valHead = p.years === 0 ? 'Value today' : `Value at ${pm.toFixed(2)}× price`;
-        rows.push({ label:'Money put in to buy the shares', value: valHead, style: cap });
+        rows.push({ label:'Money put in to the shares', value: valHead, style: cap });
         if (st.sel.dollar) {
           const cashAmt = st.customCashT / 10 * st.price, helAmt = st.customHelocT / 10 * st.price;
           if (cashAmt > 0) rows.push({ label:`My own cash — ${(st.customCashT/10).toFixed(1)} shares, ${money(cashAmt)} in`, value: money(cashAmt * pm), style: line(rows.length) });
@@ -2596,7 +3041,7 @@ class Component extends DCLogic {
           value: money(heldRet), style: line(rows.length)
         });
         if (m.nuluHeld) rows.push({
-          label: p.years === 0 ? 'NuLu syndication, held (basis)' : (nuluCredited ? `NuLu exit, net of ${st.nuluReserve}% reserve` : `NuLu proceeds — already applied to the HELOC at month ${st.nuluExitMonths}`),
+          label: p.years === 0 ? 'Asset held for sale (basis)' : (nuluCredited ? `asset sale, net of ${st.nuluReserve}% reserve` : `Asset-sale proceeds — already applied to the HELOC at month ${st.nuluExitMonths}`),
           value: money(nuluVal), style: line(rows.length)
         });
         rows.push({ label: m.heloc ? 'Less HELOC balance outstanding' : 'No borrowed money', value: p.debt ? '−' + money(p.debt) : '$0', style: line(rows.length) });
@@ -2618,8 +3063,8 @@ class Component extends DCLogic {
           rows,
           foot: (p.years === st.horizon/12 && m.nuluHeld && m.heloc > 0
                   ? (st.nuluExitMonths > st.horizon
-                      ? `NuLu exits at month ${st.nuluExitMonths}, after this month-${st.horizon} snapshot, so the HELOC toggle doesn't move this number yet — it changes the balance from month ${st.nuluExitMonths} on. `
-                      : `Sending the NuLu proceeds to the HELOC doesn't change this total — ${money(m.nuluNet)} of cash becomes ${money(m.nuluNet)} less debt. What it buys you is the interest you stop paying and the lien coming off the house. `)
+                      ? `asset sales at month ${st.nuluExitMonths}, after this month-${st.horizon} snapshot, so the HELOC toggle doesn't move this number yet — it changes the balance from month ${st.nuluExitMonths} on. `
+                      : `Sending the Asset-sale proceeds to the HELOC doesn't change this total — ${money(m.nuluNet)} of cash becomes ${money(m.nuluNet)} less debt. What it buys you is the interest you stop paying and the lien coming off the house. `)
                   : '')
                 + (m.cashOutCost ? `Not shown: the ${money(m.cashOutCost)} lost to tax and penalty on the retirement cash-out is gone before any of this is earned. ` : '')
                 + (p.years === 0 && m.heloc > 0
@@ -2636,17 +3081,16 @@ class Component extends DCLogic {
         { title:`Year 2 at ${g}×`, tag:'if the business doubles', rows: flowRows(m.later), tiers: colTiers(m.later),
           foot: footRows(m.later, 'later') }
       ],
-      // Only claim the loan is gone when there actually was one and it cleared.
-      y3Title: hCarry > 0
-        ? `Year 3 onward — ${money(hCarry)} of HELOC left`
-        : (m.heloc > 0 && m.months && m.months <= st.horizon ? 'Year 3 onward — HELOC gone' : 'Year 3 onward'),
+      y3Title: !helocLive ? 'Year 3 onward' : (hCarry > 0 ? `Year 3 onward — ${money(hCarry)} of HELOC left` : 'Year 3 onward — HELOC gone'),
       y3Note: hCarry > 0
         ? `Business up another ${gr}% on the year-2 level, but ${money(hCarry)} of HELOC is still outstanding at month ${st.horizon}. From here your savings contributions service it — interest first, then principal — ${hClearedYear ? `clearing it in year ${hClearedYear}` : 'and it does not clear inside the window'}. Only what is left over reaches savings.`
-        : `Business up another ${gr}% on the year-2 level, and no HELOC interest — ${m.heloc ? (m.months ? `the loan cleared at month ${m.months}` : 'assuming the loan is gone by then') : 'nothing was borrowed'}. Everything the distributions produce is yours.`,
+        : (!helocLive
+            ? `Business up another ${gr}% on the year-2 level, with nothing borrowed against it. Everything the distributions produce is yours.`
+            : `Business up another ${gr}% on the year-2 level, and no HELOC interest — ${m.months ? `the loan cleared at month ${m.months}` : 'assuming the loan is gone by then'}. Everything the distributions produce is yours.`),
       y3Rows: [
         { label:`Marathon distributions, gross (${signPct(gr)} on year 2)`, value: money(y3.gross) },
         { label:`K-1 reserve (after ${money(m.amortYr)}/yr amortisation)`, value: '−' + money(m.taxOnCash(y3.gross * 12) / 12) },
-        { label: y3.hOpen > 0 ? `HELOC interest (${money(y3.hOpen)} outstanding)` : 'HELOC interest', value: y3.hOpen > 0 ? '−' + money(y3.hInt / 12) : '$0' },
+        ...(helocLive ? [{ label: y3.hOpen > 0 ? `HELOC interest (${money(y3.hOpen)} outstanding)` : 'HELOC interest', value: y3.hOpen > 0 ? '−' + money(y3.hInt / 12) : '$0' }] : []),
         { label:'Base salary, fixed', value: money(st.salary / 12) },
         { label:'SMI bonus at ' + y3.factor.toFixed(2) + '×', value: money(y3.bonusYr / 12) },
         ...(waiverAmt > 0 ? [{ label:'Waiver income, non-taxable', value: money(waiverAmt / 12) }] : []),
@@ -2682,7 +3126,7 @@ class Component extends DCLogic {
         householdGross: money(p.TY.grossCash),
         tiers: [
           { key:'Gross income / mo', val: money(p.TY.grossCash / 12),
-            sub: money(p.TY.grossCash) + ' a year' + (p.TY.waiver > 0 ? ' · incl. ' + money(p.TY.waiver) + ' non-taxable waiver' : ''), tone:'#31A6E6' },
+            sub: money(p.TY.grossCash) + ' a year' + (p.TY.waiver > 0 ? ' · incl. ' + money(p.TY.waiver) + ' non-taxable household income' : ''), tone:'#31A6E6' },
           { key:'After-tax income / mo', val: money(p.TY.afterTax / 12),
             sub: 'less ' + money(p.TY.totalTax / 12) + '/mo of tax — ' + p.TY.effRate.toFixed(1) + '% of gross', tone:'#E07B2A' },
           { key:'Available to spend / mo', val: money(p.spendable),
@@ -2730,15 +3174,16 @@ class Component extends DCLogic {
               ? `Distributions / mo — new shares counted at 6 months this year`
               : 'Distributions, gross / mo', value: money(p.gross), color:'var(--c-ink)',
             showNote: p.midYear, note: `${p.sharesStart.toFixed(2)} shares held at the start earn a full year; the ${(p.bought).toFixed(2)} bought this year earn about six months.` },
-          ...(waiverAmt > 0 ? [{ label:'Waiver caregiver income — non-taxable', value: money(waiverAmt / 12), color:'var(--c-ink)' }] : []),
-          { label:'Interest and dividends', value: money(OTHER_INC / 12), color:'var(--c-ink)' },
+          ...(p.TY.spouseWages > 0 ? [{ label:'Spouse wages, before tax', value: money(p.TY.spouseWages / 12), color:'var(--c-ink)' }] : []),
+          ...(waiverAmt > 0 ? [{ label:'Non-taxable household income', value: money(waiverAmt / 12), color:'var(--c-ink)' }] : []),
+          ...(OTHER_INC > 0 ? [{ label:'Interest and dividends', value: money(OTHER_INC / 12), color:'var(--c-ink)' }] : []),
           { label:'Gross income / mo', value: money(p.TY.grossCash / 12), color:'var(--c-ink)' },
           { label:`Federal income tax${p.TY.ctc > 0 ? ' (after ' + money(p.TY.ctc) + ' child credit)' : ''}`, value:'−' + money(p.TY.fed / 12), color:'#E07575' },
           p.TY.kyTax >= 0
-            ? { label:`Kentucky at ${st.kyRate}%, net of the PTET credit`, value:'−' + money(p.TY.kyTax / 12), color:'#E07575' }
-            : { label:'Kentucky PTET credit, net refund', value:'+' + money(-p.TY.kyTax / 12), color:'#1D9E75',
-                showNote: true, note:`The refundable credit (${money(p.TY.ptetCredit)}) now exceeds your Kentucky tax on wages (${money(p.TY.kyGross)}), so Kentucky returns the difference in cash.` },
-          { label:`Local occupational at ${st.localRate}% on earned income`, value:'−' + money(p.TY.localTax / 12), color:'#E07575' },
+            ? { label:`State income tax at ${st.kyRate}%, net of the pass-through credit`, value:'−' + money(p.TY.kyTax / 12), color:'#E07575' }
+            : { label:'State pass-through credit, net refund', value:'+' + money(-p.TY.kyTax / 12), color:'#1D9E75',
+                showNote: true, note:`The refundable credit (${money(p.TY.ptetCredit)}) now exceeds your state tax on wages (${money(p.TY.kyGross)}), so the state returns the difference in cash.` },
+          { label:`City or county tax at ${st.localRate}% on earned income`, value:'−' + money(p.TY.localTax / 12), color:'#E07575' },
           { label:'Payroll tax (Social Security + Medicare)', value:'−' + money(p.TY.fica / 12), color:'#E07575',
             showNote: p.wagesYr > 176100, note:`Comp of ${money(p.wagesYr)} is past the ${money(176100)} Social Security wage cap, so that piece stops.` },
           { label:`After-tax income / mo — ${p.TY.effRate.toFixed(1)}% effective`, value: money(p.TY.afterTax / 12), color:'var(--c-ink)' },
@@ -2746,19 +3191,18 @@ class Component extends DCLogic {
           { label: p.unfunded ? 'Owed at filing' : 'Refund at filing',
             value: p.unfunded ? '−' + money(-p.TY.refund) + '/yr' : '+' + money(p.TY.refund) + '/yr',
             color: p.unfunded ? '#E07575' : '#1D9E75',
-            showNote: p.unfunded, note:`Withholding runs on comp only (${money(p.TY.fedWithheld)}) against a ${money(p.TY.fed)} federal bill${p.TY.ptetCredit > 0 ? `, plus ${money(p.TY.ptetCredit)} of Kentucky PTET credit back` : ''} — a ${money(-p.TY.refund)} shortfall, or ${money(p.setAsideMo)}/mo to park.` },
+            showNote: p.unfunded, note:`Withholding runs on comp only (${money(p.TY.fedWithheld)}) against a ${money(p.TY.fed)} federal bill${p.TY.ptetCredit > 0 ? `, plus ${money(p.TY.ptetCredit)} of state pass-through credit back` : ''} — a ${money(-p.TY.refund)} shortfall, or ${money(p.setAsideMo)}/mo to park.` },
           ...(p.setAsideMo > 0 ? [
             { label:'Of which: hold back monthly to fund that bill', value: money(p.setAsideMo) + '/mo', color:'#E0A355',
               showNote: true, note:'A timing reserve, not an extra cost — the tax is already inside the after-tax figure above. This is just how much to park each month so the bill is covered when it lands.' }
           ] : []),
           { label:'Available before your own saving', value: money(p.take), color:'var(--c-ink)' },
           { label:'Share position', value: money(p.shareVal), color:'var(--c-ink)' },
-          ...(nuluCarry ? [{ label:'NuLu proceeds held', value: money(nuluCarry), color:'var(--c-ink)' }] : []),
+          ...(nuluCarry ? [{ label:'Asset-sale proceeds held', value: money(nuluCarry), color:'var(--c-ink)' }] : []),
           { label:`Retirement (${st.aprRetire}% avg)`, value: money(p.retBal), color:'#1D9E75' },
-          { label:`Savings balance, untouched by the loan (${st.aprSave}% avg)`, value: money(p.savBal), color:'#3B9ED4',
-            showNote: true, note:`Running balance, not this year's deposit: every earlier year's savings plus ${st.aprSave}% growth, plus whatever reached savings this year. The HELOC is serviced out of the monthly savings contributions only — this balance is never tapped for it.` },
+          { label:`Savings (${st.aprSave}% avg)`, value: money(p.savBal), color:'#3B9ED4' },
           { label:`Into retirement (${Math.round(p.pr)}%${p.overridden ? ', set here' : ''})`, value: money(p.toRetire) + '/mo', color:'#1D9E75' },
-          { label:`Into savings — new money (${Math.round(p.ps)}%${p.overridden ? ', set here' : ''})`, value: money(p.toSave) + '/mo', color:'#3B9ED4',
+          { label:`Into savings (${Math.round(p.ps)}%${p.overridden ? ', set here' : ''})`, value: money(p.toSave) + '/mo', color:'#3B9ED4',
             showNote: p.hOpen > 0, note: helocSaveNote(p) },
           ...(p.toGoals > 0 ? [{ label:'To goals and debts', value:'−' + money(p.toGoals) + '/mo', color:'#E0A355' }] : []),
           ...p.goals.map(s => {
@@ -2791,7 +3235,7 @@ class Component extends DCLogic {
         }),
         foot: `${money(p.retBal + p.savBal)} of this sits outside the business, in retirement and savings.`
           + (p.hEnd > 0 ? ` Net position is after subtracting the ${money(p.hEnd)} still owed on the HELOC.` : (p.hClearedMo ? ` The HELOC cleared in month ${p.hClearedMo} of this year, so nothing is netted out here.` : ''))
-          + (nuluLeftover > 0 ? ` Includes ${money(nuluLeftover)} of NuLu proceeds left after the HELOC was cleared.` : '')
+          + (nuluLeftover > 0 ? ` Includes ${money(nuluLeftover)} of Asset-sale proceeds left after the HELOC was cleared.` : '')
           + (p.savBal < 0 ? ' Savings is negative — the extra shares cost more than you had set aside by then.' : '')
       })),
       _projRowsUnused: [].map((p,i) => ({
@@ -2837,24 +3281,52 @@ class Component extends DCLogic {
         return `First purchase in year ${firstAutoYear} · ${(tot/10).toFixed(1)} extra shares by year 17.`;
       })(),
       nuluLeftoverNote: nuluLeftover > 0
-        ? `The NuLu exit clears the HELOC with ${money(nuluLeftover)} to spare — that surplus is added to savings here, and grows at ${st.aprSave}% with the rest.`
+        ? `The asset sale clears the HELOC with ${money(nuluLeftover)} to spare — that surplus is added to savings here, and grows at ${st.aprSave}% with the rest.`
         : '',
       showNuluLeftover: nuluLeftover > 0,
-      projNote: `${money(k401All)} a year goes into the 401(k) either way — your ${money(st.roth401Yr)} of Roth withholding plus ${money(matchYr)} of employer match (${st.k401Pct.toFixed(2)}% of salary) — so it is in every retirement figure on the page. The Roth half is already out of your take-home. Retirement averages ${st.aprRetire}% and savings ${st.aprSave}% a year on the accumulated balances, on top of what you save from take-home. The business grows ${signPct(gr)} a year after the ${g}×, starting from ${money(st.price * g)} per share and ${money(st.payout * g)} per share per month. Share value, distributions and your SMI bonus all move with it. Saving starts at ${pctR + pctS}% of take-home — split ${Math.round((pctR+pctS) > 0 ? pctR/(pctR+pctS)*100 : 60)}/${100 - Math.round((pctR+pctS) > 0 ? pctR/(pctR+pctS)*100 : 60)} retirement to savings.`,
+      // Only speak to the parts the user actually set up: a zeroed 401(k), zero savings return
+      // or a zero bonus should not produce a sentence about it.
+      projNote: (() => {
+        const parts = [];
+        if (k401All > 0) {
+          const bits = [];
+          if (st.roth401Yr > 0) bits.push(money(st.roth401Yr) + ' of your own deferral');
+          if (matchYr > 0) bits.push(money(matchYr) + ' of employer match (' + st.k401Pct.toFixed(2) + '% of salary)');
+          parts.push(money(k401All) + ' a year goes into the 401(k) either way' + (bits.length ? ' — ' + bits.join(' plus ') : '')
+            + ' — so it is in every retirement figure on the page.'
+            + (st.roth401Yr > 0 ? ' Your own deferral is already out of your take-home.' : ''));
+        }
+        const growth = [];
+        if (st.aprRetire > 0) growth.push('retirement averages ' + st.aprRetire + '%');
+        if (st.aprSave > 0) growth.push('savings ' + st.aprSave + '%');
+        if (growth.length) parts.push(growth.join(' and ').replace(/^./, c => c.toUpperCase())
+          + ' a year on the accumulated balances, on top of what you save from take-home.');
+        parts.push('The business grows ' + signPct(gr) + ' a year after the ' + g + '×, starting from '
+          + money(st.price * g) + ' per share and ' + money(st.payout * g) + ' per share per month. '
+          + (st.bonus > 0 ? 'Share value, distributions and your bonus all move with it.' : 'Share value and distributions both move with it.'));
+        const savePct = pctR + pctS;
+        if (savePct > 0) {
+          const rShare = Math.round(pctR / savePct * 100);
+          parts.push('Saving starts at ' + savePct + '% of take-home — split ' + rShare + '/' + (100 - rShare) + ' retirement to savings.');
+        } else {
+          parts.push('No share of take-home is being set aside for retirement or savings yet — set those on the left.');
+        }
+        return parts.join(' ');
+      })(),
       stressRows,
       stressCaveat: m.nuluApplied
-        ? `Every row above assumes the NuLu exit still returns ${money(st.nuluGross)} gross around month ${st.nuluExitMonths} and goes to the loan. That is optimistic in the downside rows — a stalled real-estate market and a stalled business often show up in the same year. Turn the NuLu payoff off in the controls to see these rows without it.`
-        : 'No NuLu proceeds are applied to the loan in these rows — the HELOC is carried by distributions alone.',
+        ? `Every row above assumes the asset sale still returns ${money(st.nuluGross)} gross around month ${st.nuluExitMonths} and goes to the loan. That is optimistic in the downside rows — a stalled real-estate market and a stalled business often show up in the same year. Turn the asset-sale payoff off in the controls to see these rows without it.`
+        : 'No asset-sale proceeds are applied to the loan in these rows — the HELOC is carried by distributions alone.',
       payoffAssumption: (st.payoffShare >= 100
         ? 'You set this: every after-tax distribution dollar goes to principal, nothing to lifestyle.'
         : `You set this: ${st.payoffShare}% of net distributions go to principal after interest; the other ${100-st.payoffShare}% is spendable cash.`
-        ) + (m.nuluApplied ? ` Plus ${money(m.nuluNet)} of NuLu exit proceeds at month ${st.nuluExitMonths}.` : ''),
+        ) + (m.nuluApplied ? ` Plus ${money(m.nuluNet)} of asset sale proceeds at month ${st.nuluExitMonths}.` : ''),
       payoffLabel: m.heloc === 0 ? 'No HELOC'
         : m.months ? (m.months >= 12 ? Math.floor(m.months/12) + 'y ' + (m.months%12) + 'm' : m.months + ' mo')
         : m.stalled === 'choice' ? 'Interest only'
         : 'Never',
       payoffSub: m.heloc === 0 ? 'nothing borrowed in this mix'
-        : m.months ? `to clear ${money(m.heloc)} using distributions${m.nuluApplied ? ' plus the NuLu exit' : ' only'}`
+        : m.months ? `to clear ${money(m.heloc)} using distributions${m.nuluApplied ? ' plus the asset sale' : ' only'}`
         : m.stalled === 'choice' ? `balance stays at ${money(m.heloc)} — you are sending ${st.payoffShare}% to principal`
         : 'payout does not cover the interest at these assumptions',
       payoffBarStyle: `position:absolute;left:0;top:0;bottom:0;width:${(m.heloc===0 || !m.months) ? 0 : Math.min(100, (st.horizon/m.months)*100)}%;background:${m.stalled==='cashflow'?'#E07575':'#1D9E75'}`,
@@ -2863,16 +3335,16 @@ class Component extends DCLogic {
         { label:'Interest per month at start', value: money(m.helocInt) },
         { label:`Sent to principal (${st.payoffShare}% of net), today`, value: money(m.toPrincipalNow) },
         { label:'Kept as spendable cash, today', value: money(Math.max(m.now.net - m.toPrincipalNow, 0)) },
-        ...(m.nuluApplied ? [{ label:`NuLu proceeds at month ${st.nuluExitMonths}`, value:'−' + money(m.nuluNet) }] : []),
+        ...(m.nuluApplied ? [{ label:`Asset-sale proceeds at month ${st.nuluExitMonths}`, value:'−' + money(m.nuluNet) }] : []),
         { label:`Balance at month ${st.horizon}`, value: money(m.balAt24) },
         { label:`Principal paid in first ${st.horizon} mo`, value: money(Math.max(m.heloc - m.balAt24, 0)) }
       ].map((r,i) => ({ ...r, style: rowStyle(i) })),
       costRows: [
         { label:'Savings — ' + money(st.sel.tenths ? st.sel.tenths/10*st.price : srcAmount('savings', st)), cost:'Opportunity only', note:'No interest, no penalty. Cost is a thinner emergency cushion.' },
-        { label:'HELOC — ' + money(st.helocDraw), cost: money(m.heloc ? m.helocInt : SOURCES.heloc.amount*st.helocRate/100/12) + '/mo', note:'Cheapest cash mathematically, but the collateral is your home. Interest may be deductible as investment interest expense under tracing rules — CPA + Form 4952.' },
+        ...(!helocLive ? [] : [{ label:'HELOC — ' + money(st.helocDraw), cost: money(m.heloc ? m.helocInt : SOURCES.heloc.amount*st.helocRate/100/12) + '/mo', note:'Cheapest cash mathematically, but the collateral is your home. Interest may be deductible as investment interest expense under tracing rules — CPA + Form 4952.' }]),
         { label:`Retirement — ${money(srcAmount('retire', st))} net`, cost: money(st.penalty) + ', day one',
           note:`${money(st.retireGross)} gross becomes ${money(srcAmount('retire', st))}. A ${st.retireGross > 0 ? Math.round(st.penalty/st.retireGross*100) : 0}% haircut before the investment earns anything, and it never comes back.` },
-        { label:'NuLu — $50K invested 2023, left alone', cost:'Not funding shares', note:`Elevate at NuLu, 9% pref, ~5-year hold. Working exit ${money(st.nuluGross)} gross → ≈${money(m.nuluHeld ? m.nuluNet : st.nuluGross*(1-st.nuluReserve/100))} after a ${st.nuluReserve}% reserve for 1231/1250 recapture. It funds the HELOC payoff, not the share purchase.` }
+        { label:'the asset sale — $50K invested 2023, left alone', cost:'Not funding shares', note:`Elevate at the asset sale, 9% pref, ~5-year hold. Working exit ${money(st.nuluGross)} gross → ≈${money(m.nuluHeld ? m.nuluNet : st.nuluGross*(1-st.nuluReserve/100))} after a ${st.nuluReserve}% reserve for 1231/1250 recapture. It funds the HELOC payoff, not the share purchase.` }
       ].map(c => ({ ...c, style:'padding:11px 13px;background:var(--c-paperAlt);border-left:3px solid #E07B2A' })),
       compareHeads: PRESETS.map(p => ({ name: p.name, style:`padding:10px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;text-align:right;background:${st.preset===p.key?'#E07B2A':'var(--c-deep)'}` })),
       compareRows,
@@ -2884,18 +3356,18 @@ class Component extends DCLogic {
         'CPA confirms K-1 treatment, QBI/199A, PTET and the 30% reserve is enough.',
         'CPA reviews HELOC interest as investment interest expense (tracing, NII limit, Form 4952).',
         'Retirement cash-out tax + penalty quoted in writing before liquidating.',
-        'NuLu exit terms and depreciation recapture reviewed before touching it.',
+        'asset sale terms and depreciation recapture reviewed before touching it.',
         'Stress test: you can carry $817/mo of HELOC interest from W-2 alone if distributions pause.'
       ],
       notes: [
         { h:'Keep the money traceable', b:'Draw the HELOC into a separate account, wire straight to the share purchase, never mix with personal spending. Without that trail the investment-interest deduction argument is gone.' },
-        { h:'The step-up is the whole deduction', b:`Your 2025 K-1: $3,877 income + $5 interest against $3,816 of cash, cut to $3,295 taxable by a $587 Sec 743(b) adjustment. That comes from $8,805 of intangible step-up on your original purchase, amortising over 15 years — created by what you paid, so a bigger buy creates a bigger deduction. This scenario's ${money(m.capital)} adds roughly ${money(m.amortYr - 587)}/yr. Two things that only help at scale: the 20% QBI deduction nets against ${money(m.otherLoss)} of NuLu and consulting losses first — which is why 2025 gave you nothing and a full share gives you most of it — and Kentucky and Indiana tax is paid by the partnership and credited back, so the distributions carry federal tax only — your next dollar of Marathon income is taxed at ${m.baseYear.fedMarginal.toFixed(0)}%, and the bracket engine raises that on its own as the position grows. Both are in the model.` },
+        { h:'The step-up is the whole deduction', b:`Taxable partnership income normally runs slightly ahead of the cash distributed, and the §743(b) step-up is what pulls it back down. The step-up is created by what YOU paid for your interest, amortising over ${st.amortYears} years, so a bigger buy creates a bigger deduction — this scenario's ${money(m.capital)} adds roughly ${money(m.amortYr)}/yr of it${st.stepUpPct > 0 ? '' : ', and it is currently set to 0% so the model is ignoring it entirely'}. Two things that only help at scale: the 20% QBI deduction nets against ${money(m.otherLoss)} of other business losses first, so a small position can get nothing from it while a large one keeps most of it — and where the partnership pays state tax at the entity level and credits it back, the distributions carry federal tax only. Your next dollar of Marathon income is taxed at ${m.baseYear.fedMarginal.toFixed(0)}%, and the bracket engine raises that on its own as the position grows. Both are in the model.` },
         { h:'Concentration is the real risk', b:'At the full bet, your job, your bonus and the majority of your net worth all depend on one private business — and the loan against your house depends on it too.' },
         { h:'The penalty is the expensive part', b:`Retirement cash-out loses ${money(st.penalty)} immediately. At the current payout, roughly ${Math.max(1, Math.round(st.penalty / Math.max(srcAmount('retire',st)/st.price*st.payout*(1-m.totalReserveRate/100), 1)))} months of the incremental after-tax distributions go to replacing that money before you are ahead.` },
-        { h:'NuLu is the HELOC exit ramp', b: m.nuluHeld
-            ? `Left invested, Elevate at NuLu is modeled to return ${money(st.nuluGross)} gross around month ${st.nuluExitMonths} — roughly ${money(m.nuluNet)} after a ${st.nuluReserve}% reserve for unrecaptured 1250 and 1231 gain${m.nuluApplied ? `, applied straight to HELOC principal. That single event does more for the balance than ${Math.round(m.nuluNet / Math.max(m.toPrincipalNow,1))} months of distributions.` : '. Currently modeled as cash kept, not applied to the loan.'} A 2× exit is a scenario, not a promise.`
-            : 'You have NuLu switched on as a funding source, so its $50K is inside the share position and there is no later exit to lean on. That removes your cleanest way out of the HELOC.' },
-        { h:'A middle path exists', b:'Savings + HELOC deploys $190K with no penalty and keeps the retirement account intact; NuLu stays as the HELOC exit ramp. Compare it in the table — the income gap is smaller than the risk gap.' }
+        { h:'the asset sale is the HELOC exit ramp', b: m.nuluHeld
+            ? `Left invested, Elevate at the asset sale is modeled to return ${money(st.nuluGross)} gross around month ${st.nuluExitMonths} — roughly ${money(m.nuluNet)} after a ${st.nuluReserve}% reserve for unrecaptured 1250 and 1231 gain${m.nuluApplied ? `, applied straight to HELOC principal. That single event does more for the balance than ${Math.round(m.nuluNet / Math.max(m.toPrincipalNow,1))} months of distributions.` : '. Currently modeled as cash kept, not applied to the loan.'} A 2× exit is a scenario, not a promise.`
+            : 'You have the asset sale switched on as a funding source, so its $50K is inside the share position and there is no later exit to lean on. That removes your cleanest way out of the HELOC.' },
+        { h:'A middle path exists', b:'Savings + HELOC deploys $190K with no penalty and keeps the retirement account intact; the asset sale stays as the HELOC exit ramp. Compare it in the table — the income gap is smaller than the risk gap.' }
       ]
     };
   }
