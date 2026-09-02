@@ -9,389 +9,605 @@
   }
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Investing with Confidence — SMI Private Client</title>
+<title>MoneyGuide Video Course | SMI Private Client</title>
+<meta name="description" content="A short video course on using MoneyGuide, the financial planning tool SMI Private Client investors get access to. Watch at your own pace — your place is saved as you go.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=EB+Garamond:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#020E1B; --gold:#E07B2A; --gold-dark:#C96A1E; --steel:#3B9ED4;
-    --teal:#1D9E75; --light:#F4F4F4; --body:#333333; --line:#E6E9ED; --muted:#6E7A86;
+  :root { --navy:#020E1B; --orange:#E07B2A; --blue:#3B9ED4; --cream:#FAF7F2; --green:#1D9E75; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:Lato,"Helvetica Neue",Helvetica,Arial,sans-serif; color:#333; background:#fff; -webkit-font-smoothing:antialiased; }
+  a { color:var(--blue); text-decoration:none; }
+  a:hover { color:var(--navy); }
+  p { text-wrap:pretty; }
+  html { scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+  @keyframes mg-in { from { opacity:0; transform:translateY(16px);} to { opacity:1; transform:translateY(0);} }
+  @keyframes mg-pulse { 0%,100% { transform:scale(1); opacity:.34;} 50% { transform:scale(1.22); opacity:0;} }
+
+  /* ---------- header ---------- */
+  .mg-bar { background:var(--navy); position:sticky; top:0; z-index:200; }
+  .mg-bar-in { max-width:1234px; margin:0 auto; padding:0 54px 0 27px; display:flex; align-items:center; gap:0 20px; min-width:0; }
+  .mg-logo { flex:0 0 auto; display:block; transform:translate(-8px,-2px); }
+  .mg-logo img { height:54px; width:auto; display:block; }
+  .mg-nav { flex:0 1 auto; margin-left:auto; transform:translateX(10px); display:flex; align-items:center; gap:clamp(8px,2.4vw,44px); justify-content:flex-end; }
+  .mg-nav > a, .mg-nav .mg-drop > a { color:#fff; font-size:13.5px; letter-spacing:.03em; text-transform:uppercase; white-space:nowrap; padding:40.5px 0; display:inline-block; transition:color .2s ease; }
+  .mg-nav > a:hover, .mg-nav .mg-drop > a:hover { color:var(--orange); }
+  .mg-drop { position:relative; }
+  .mg-drop-menu { position:absolute; top:100%; left:-14px; min-width:214px; background:var(--navy); padding:6px 0; box-shadow:0 14px 30px rgba(0,0,0,.4); opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; z-index:30; }
+  .mg-drop:hover .mg-drop-menu { opacity:1; visibility:visible; transform:translateY(0); }
+  .mg-drop-menu a { display:block; padding:10px 14px; color:#fff; font-size:14px; letter-spacing:-.01em; text-transform:uppercase; transition:color .2s ease; }
+  .mg-drop-menu a:hover { color:var(--orange); }
+  .mg-drop-menu a.is-current { color:var(--orange); }
+  .mg-sep { color:#4a5766; font-size:14px; }
+  .mg-login { color:#fff; font-size:13.5px; letter-spacing:.06em; text-transform:uppercase; font-weight:700; padding:40.5px 0; display:inline-flex; align-items:center; gap:9px; white-space:nowrap; transition:color .2s ease; }
+  .mg-login:hover { color:var(--orange); }
+  .mg-mobile { display:none; align-items:center; gap:12px; margin-left:auto; }
+  .mg-burger { display:flex; align-items:center; justify-content:center; width:42px; height:36px; background:none; border:1px solid rgba(255,255,255,.85); border-radius:4px; color:#fff; cursor:pointer; }
+  .mg-mobile .mg-mlogin { background:var(--orange); color:#fff; font-size:13px; letter-spacing:.06em; padding:9px 20px; white-space:nowrap; }
+  .mg-menu { display:none; background:rgba(2,14,27,.96); border-top:1px solid rgba(255,255,255,.14); }
+  .mg-menu.open { display:block; }
+  .mg-menu-in { padding:6px 26px 20px; }
+  .mg-menu a, .mg-menu .mg-mlabel { display:block; padding:9px 0; color:#fff; font-size:13px; letter-spacing:.06em; text-transform:uppercase; }
+  .mg-menu .mg-mlabel { opacity:.75; }
+  .mg-menu a.sub { padding:7px 0 7px 16px; color:rgba(255,255,255,.78); font-size:12.5px; }
+  .mg-menu a.sub.is-current { color:var(--orange); }
+
+  /* ---------- hero ---------- */
+  .mg-hero { position:relative; background:var(--navy); overflow:hidden; }
+  .mg-hero-img { position:absolute; inset:0; opacity:.42; }
+  .mg-hero-img img { width:100%; height:100%; object-fit:cover; object-position:50% 42%; display:block; }
+  .mg-hero-scrim { position:absolute; inset:0; background:linear-gradient(180deg,rgba(2,14,27,.62) 0%,rgba(2,14,27,.78) 58%,var(--navy) 100%); }
+  .mg-hero-in { position:relative; max-width:1180px; margin:0 auto; padding:92px 44px 148px; text-align:center; }
+  .mg-eyebrow { display:inline-block; color:var(--orange); font-size:12px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; opacity:0; animation:mg-in .62s cubic-bezier(.22,.61,.36,1) 80ms forwards; }
+  .mg-h1 { margin:16px 0 0; font-size:52px; font-weight:400; line-height:1.1; letter-spacing:-.01em; color:#fff; opacity:0; animation:mg-in .7s cubic-bezier(.22,.61,.36,1) 200ms forwards; }
+  .mg-sub { max-width:640px; margin:22px auto 0; font-size:17px; line-height:1.7; color:rgba(255,255,255,.76); opacity:0; animation:mg-in .7s cubic-bezier(.22,.61,.36,1) 330ms forwards; }
+  .mg-meta { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px 20px; margin-top:28px; font-size:14px; color:rgba(255,255,255,.6); opacity:0; animation:mg-in .7s cubic-bezier(.22,.61,.36,1) 400ms forwards; }
+  .mg-dot { width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,.35); }
+  .mg-pct { color:var(--orange); font-weight:700; }
+  .mg-hero-cta { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:30px; opacity:0; animation:mg-in .7s cubic-bezier(.22,.61,.36,1) 470ms forwards; }
+  .mg-btn-fill { display:inline-flex; align-items:center; justify-content:center; gap:11px; border:0; background-color:var(--orange); background-image:linear-gradient(112deg,#fff 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-position:100% 0; background-repeat:no-repeat; color:#fff; font-family:inherit; font-size:16px; line-height:1.35; font-weight:700; padding:17px 26px; border-radius:999px; cursor:pointer; transition:background-position .24s linear,color .2s ease; }
+  .mg-btn-fill:hover { background-position:0 0; color:var(--navy); }
+  .mg-btn-ghost { border:1px solid rgba(255,255,255,.34); background:transparent; color:rgba(255,255,255,.86); font-family:inherit; font-size:15px; font-weight:700; padding:16px 26px; border-radius:999px; cursor:pointer; transition:border-color .2s ease,color .2s ease; }
+  .mg-btn-ghost:hover { border-color:var(--orange); color:var(--orange); }
+
+  /* ---------- card ---------- */
+  .mg-shell { position:relative; z-index:2; max-width:1234px; margin:-84px auto 0; padding:0 44px; }
+  .mg-card { background:#fff; border-radius:4px; box-shadow:0 24px 60px rgba(2,14,27,.16); display:grid; grid-template-columns:minmax(0,1fr) 396px; opacity:0; animation:mg-in .76s cubic-bezier(.22,.61,.36,1) 420ms forwards; }
+  .mg-main { min-width:0; padding:34px 40px 38px; }
+  .mg-now { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .mg-now span:first-child { width:7px; height:7px; border-radius:50%; background:var(--orange); }
+  .mg-now span:last-child { font-size:11.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#7d8792; }
+
+  .mg-thumb-btn { display:block; width:100%; padding:0; border:0; background:none; font-family:inherit; text-align:left; cursor:pointer; }
+  .mg-thumb { position:relative; width:100%; aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:var(--navy); box-shadow:0 6px 18px rgba(2,14,27,.08); transition:box-shadow .32s ease; }
+  .mg-thumb-btn:hover .mg-thumb { box-shadow:0 18px 38px rgba(2,14,27,.14); }
+  .mg-thumb > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .mg-scrim { position:absolute; inset:0; background:linear-gradient(180deg,rgba(2,14,27,.28) 0%,rgba(2,14,27,.34) 60%,rgba(2,14,27,.7) 100%); transition:opacity .28s ease; }
+  .mg-thumb-btn:hover .mg-scrim { opacity:.5; }
+  .mg-play-wrap { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .mg-play { position:relative; width:64px; height:64px; }
+  .mg-play-ring { position:absolute; inset:0; border-radius:50%; border:1px solid var(--orange); animation:mg-pulse 2.8s ease-out infinite; }
+  .mg-play-btn { position:absolute; inset:0; border-radius:50%; background-color:var(--orange); background-image:linear-gradient(112deg,#fff 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-position:100% 0; background-repeat:no-repeat; box-shadow:inset 0 0 0 0 rgba(224,123,42,0); display:flex; align-items:center; justify-content:center; transition:background-position .18s linear,box-shadow .12s ease; }
+  .mg-play-btn svg { width:26px; height:26px; display:block; margin-left:2px; fill:#fff; transition:fill 70ms ease 20ms; }
+  .mg-thumb-btn:hover .mg-play-btn { background-position:0 0; box-shadow:inset 0 0 0 2px var(--orange); }
+  .mg-thumb-btn:hover .mg-play-btn svg { fill:var(--orange); }
+  .mg-thumb-title { position:absolute; left:34px; right:34px; top:46px; }
+  .mg-thumb-title span { display:block; max-width:20ch; font-family:'EB Garamond',Georgia,serif; font-size:40px; line-height:1.12; color:#fff; letter-spacing:-.01em; text-shadow:0 2px 18px rgba(2,14,27,.6); }
+  .mg-thumb-foot { position:absolute; left:34px; right:34px; bottom:34px; display:flex; align-items:flex-end; justify-content:space-between; gap:22px; }
+  .mg-lesson-pill { display:inline-flex; align-items:center; gap:8px; }
+  .mg-lesson-pill i { width:6px; height:6px; border-radius:50%; background:var(--orange); }
+  .mg-lesson-pill span { font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#fff; }
+  .mg-thumb-meta { display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px; margin-top:10px; font-size:12.5px; color:rgba(255,255,255,.72); }
+  .mg-thumb-meta i { width:3px; height:3px; border-radius:50%; background:rgba(255,255,255,.4); }
+  .mg-badge { flex:none; padding:9px 16px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; background:var(--orange); color:#fff; transition:background .22s ease,color .22s ease,transform .26s cubic-bezier(.16,.84,.24,1),box-shadow .22s ease; }
+  .mg-badge.is-done { background:rgba(255,255,255,.16); }
+  .mg-thumb-btn:hover .mg-badge { background:#fff; color:var(--navy); transform:translateY(-2px); box-shadow:0 8px 20px rgba(2,14,27,.35); }
+
+  .mg-desc { margin:26px 0 0; max-width:62ch; font-size:17px; line-height:1.72; color:#4a5568; }
+  .mg-rule { display:flex; align-items:center; gap:14px; margin:32px 0 16px; }
+  .mg-rule span { font-size:11.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--orange); }
+  .mg-rule i { flex:1; height:1px; background:rgba(224,123,42,.34); }
+  .mg-points { display:grid; gap:11px; }
+  .mg-point { display:flex; gap:13px; align-items:flex-start; font-size:16px; line-height:1.6; color:#43505f; }
+  .mg-point i { flex:none; width:6px; height:6px; margin-top:8px; background:var(--blue); }
+
+  .mg-materials { margin-top:30px; background:var(--cream); border-left:3px solid var(--orange); border-radius:0 3px 3px 0; padding:20px 24px; display:flex; align-items:center; gap:18px; }
+  .mg-materials .icon { flex:none; width:44px; height:44px; background:var(--navy); display:flex; align-items:center; justify-content:center; }
+  .mg-materials .txt { flex:1; min-width:0; }
+  .mg-materials .t1 { font-size:16px; font-weight:700; color:var(--navy); }
+  .mg-materials .t2 { font-size:13.5px; color:#7d8792; margin-top:4px; }
+  .mg-materials a { flex:none; font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .mg-materials a:hover { color:var(--orange); }
+
+  .mg-foot-row { margin-top:28px; padding-top:24px; border-top:1px solid rgba(2,14,27,.12); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  .mg-upnext { font-size:13.5px; color:#7d8792; }
+  .mg-upnext strong { color:var(--navy); }
+
+  /* mark complete */
+  .mg-mark { display:inline-flex; align-items:center; gap:11px; font-family:inherit; font-size:14.5px; font-weight:700; border:0; outline:none; border-radius:999px; cursor:pointer; padding:14px 24px; min-width:214px; justify-content:flex-start; background-color:var(--orange); color:#fff; background-image:linear-gradient(112deg,var(--green) 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-repeat:no-repeat; background-position:100% 0; transition:background-position .24s linear,color .2s ease,box-shadow .2s ease; }
+  .mg-mark:hover { background-position:0 0; color:#fff; box-shadow:none; }
+  .mg-mark.is-done { background-color:#fff; color:var(--green); box-shadow:inset 0 0 0 1px rgba(2,14,27,.16); }
+  .mg-mark.is-done:hover { color:#fff; }
+  .mg-mark-box { flex:none; margin-left:10px; width:19px; height:19px; border-radius:4px; display:flex; align-items:center; justify-content:center; border:2px solid rgba(255,255,255,.9); background:transparent; transition:background .18s ease,border-color .18s ease; }
+  .mg-mark.is-done .mg-mark-box { background:var(--green); border-color:var(--green); }
+  .mg-mark:hover .mg-mark-box { border-color:#fff; }
+  .mg-mark-box svg { width:13px; height:13px; display:block; opacity:0; transform:scale(.6); transition:opacity .16s ease,transform .22s cubic-bezier(.16,.84,.24,1); }
+  .mg-mark.is-done .mg-mark-box svg { opacity:1; transform:scale(1); }
+  .mg-mark-label { flex:1; text-align:center; }
+  .mg-mark.is-done .mg-mark-label { text-align:left; padding-left:26px; }
+  .mg-mark .lbl-hover { display:none; }
+  .mg-mark.is-done:hover .lbl-idle { display:none; }
+  .mg-mark.is-done:hover .lbl-hover { display:inline; }
+
+  /* ---------- contents rail ---------- */
+  .mg-contents { min-width:0; border-left:1px solid rgba(2,14,27,.12); display:flex; flex-direction:column; }
+  .mg-contents-head { padding:30px 28px 24px; border-bottom:1px solid rgba(2,14,27,.12); display:flex; align-items:center; gap:18px; }
+  .mg-contents-head h3 { margin:0; font-family:'EB Garamond',Georgia,serif; font-size:25px; font-weight:400; color:var(--navy); }
+  .mg-remaining { font-size:13.5px; color:#7d8792; margin-top:6px; }
+  .mg-ring { position:relative; width:48px; height:48px; flex:none; }
+  .mg-ring svg { width:48px; height:48px; display:block; transform:rotate(-90deg); }
+  .mg-ring span { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:700; color:var(--navy); font-variant-numeric:tabular-nums; }
+  .mg-list { padding:10px 14px 24px; display:flex; flex-direction:column; gap:2px; }
+  .mg-row { display:flex; align-items:center; gap:14px; width:100%; padding:13px 14px; border:0; border-radius:3px; text-align:left; font-family:inherit; cursor:pointer; background:transparent; box-shadow:inset 0 0 0 transparent; transform:translateX(0); transition:background .18s ease,box-shadow .18s ease,transform .24s cubic-bezier(.16,.84,.24,1); }
+  .mg-row:hover { background:#F5F3EF; box-shadow:inset 3px 0 0 rgba(224,123,42,.42); transform:translateX(3px); }
+  .mg-row.is-current { background:var(--cream); box-shadow:inset 3px 0 0 var(--orange); transform:none; }
+  .mg-tile { flex:none; width:30px; height:30px; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#F1F0EC; border:1px solid transparent; color:var(--navy); transition:background .18s ease,color .18s ease; }
+  .mg-row.is-done .mg-tile { background:#fff; border-color:rgba(2,14,27,.14); }
+  .mg-row.is-locked .mg-tile { color:#A2ACB6; }
+  .mg-row:hover .mg-tile { background:var(--orange); border-color:transparent; color:#fff; }
+  .mg-row.is-current .mg-tile { background:var(--navy); border-color:transparent; color:#fff; }
+  .mg-row-txt { flex:1; min-width:0; }
+  .mg-row-title { display:block; font-size:14.5px; line-height:1.35; color:var(--navy); }
+  .mg-row.is-current .mg-row-title { font-weight:700; }
+  .mg-row.is-locked .mg-row-title { color:#A2ACB6; }
+  .mg-row-num { display:block; margin-top:4px; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#98A2AC; }
+  .mg-row-check { flex:none; width:22px; height:22px; border-radius:50%; background:var(--green); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .mg-row-dur { flex:none; font-size:13px; color:#7d8792; font-variant-numeric:tabular-nums; }
+
+  /* ---------- cta + disclaimer ---------- */
+  .mg-cta-wrap { max-width:1234px; margin:64px auto 0; padding:0 44px; }
+  .mg-cta { max-width:760px; margin:0 auto; background:var(--cream); border-radius:3px; padding:40px 44px; text-align:center; }
+  .mg-cta h2 { margin:0; font-family:'EB Garamond',Georgia,serif; font-size:27px; font-weight:400; line-height:1.35; color:var(--navy); }
+  .mg-cta p { margin:14px 0 26px; font-size:16px; line-height:1.7; color:#5a6570; }
+  .mg-cta-row { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+  .mg-cta-a { display:inline-flex; align-items:center; justify-content:center; background-color:var(--orange); background-image:linear-gradient(112deg,var(--navy) 0 50%,rgba(2,14,27,0) 50.1% 100%); background-size:260% 100%; background-position:100% 0; background-repeat:no-repeat; color:#fff; font-size:16px; font-weight:700; padding:17px 28px; border-radius:999px; transition:background-position .24s linear; }
+  .mg-cta-a:hover { background-position:0 0; color:#fff; }
+  .mg-cta-b { display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--navy); background-color:transparent; background-image:linear-gradient(112deg,var(--navy) 0 50%,rgba(2,14,27,0) 50.1% 100%); background-size:260% 100%; background-position:100% 0; background-repeat:no-repeat; color:var(--navy); font-size:16px; font-weight:700; padding:16px 28px; border-radius:999px; transition:background-position .24s linear,color .2s ease; }
+  .mg-cta-b:hover { background-position:0 0; color:#fff; }
+  .mg-disc-wrap { max-width:1234px; margin:46px auto 0; padding:0 44px 92px; }
+  .mg-disc { max-width:760px; margin:0 auto; border-top:1px solid rgba(2,14,27,.12); padding-top:18px; }
+  .mg-disc p { margin:0; font-size:12.5px; line-height:1.65; color:#8a939b; }
+
+  /* ---------- footer ---------- */
+  .mg-footer { background:var(--navy); position:relative; margin-top:30px; }
+  .mg-contactbar { max-width:1180px; margin:0 auto; position:relative; z-index:2; transform:translateY(-50%); background:var(--blue); border-radius:15px; box-shadow:0 10px 26px rgba(2,14,27,.35); padding:26px 56px; display:grid; grid-template-columns:auto minmax(0,1.35fr) auto auto; gap:44px; align-items:center; }
+  .mg-contactbar .lbl { font-size:30px; color:#fff; text-transform:uppercase; line-height:1; }
+  .mg-contactbar .txt { font-size:15px; line-height:1.5; color:#fff; text-align:center; }
+  .mg-contactbar a { color:#fff; white-space:nowrap; transition:color .2s ease; }
+  .mg-contactbar a:hover { color:var(--navy); }
+  .mg-contactbar .tel { font-size:20px; }
+  .mg-contactbar .eml { font-size:15px; }
+  .mg-foot-body { padding:60px 24px 30px; margin-top:-46px; }
+  .mg-foot-inner { max-width:940px; margin:0 auto; padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.32); }
+  .mg-footcols { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; }
+  .mg-footcols h4 { margin:0 0 34px; font-size:24px; letter-spacing:.05em; text-transform:uppercase; color:#fff; font-weight:400; }
+  .mg-contactlist { display:grid; gap:14px; font-size:15px; line-height:1.5; color:#fff; }
+  .mg-contactlist > div { display:flex; gap:14px; }
+  .mg-contactlist .ic { width:18px; flex:none; display:flex; justify-content:center; margin-top:3px; }
+  .mg-contactlist a { color:rgba(255,255,255,.9); transition:color .2s ease; }
+  .mg-contactlist a:hover { color:var(--blue); }
+  .mg-quick { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:14px 26px; }
+  .mg-quick a { color:rgba(255,255,255,.9); font-size:15px; line-height:1.5; white-space:nowrap; transition:color .2s ease; }
+  .mg-quick a:hover { color:var(--blue); }
+  .mg-footbottom { max-width:940px; margin:0 auto; padding-top:16px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:40px; align-items:center; }
+  .mg-footbottom div { font-size:12px; line-height:1.6; color:rgba(255,255,255,.6); }
+  .mg-footbottom img { height:62px; width:auto; display:block; }
+
+  /* ---------- video modal ---------- */
+  .mg-overlay { position:fixed; inset:0; z-index:400; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(2,14,27,.78); opacity:0; visibility:hidden; transition:opacity .26s ease,visibility .26s; }
+  .mg-overlay.open { opacity:1; visibility:visible; }
+  .mg-video { position:relative; width:100%; max-width:980px; border-radius:6px; overflow:hidden; background:var(--navy); box-shadow:0 30px 70px rgba(0,0,0,.5); transform:scale(.96); transition:transform .28s cubic-bezier(.22,.61,.36,1); }
+  .mg-overlay.open .mg-video { transform:scale(1); }
+  .mg-video-close { position:absolute; top:12px; right:12px; z-index:10; width:34px; height:34px; border:0; border-radius:50%; background:rgba(2,14,27,.7); color:#fff; font-size:19px; line-height:1; cursor:pointer; }
+  .mg-video-frame { position:relative; width:100%; aspect-ratio:16/9; background:#000; }
+  .mg-video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+  @media (max-width:1080px) { .mg-nav { display:none; } .mg-mobile { display:flex; } }
+  @media (max-width:1000px) {
+    .mg-card { grid-template-columns:1fr; }
+    .mg-contents { border-left:0; border-top:1px solid rgba(2,14,27,.12); }
+    .mg-footcols { grid-template-columns:1fr; gap:40px; }
+    .mg-contactbar { grid-template-columns:1fr; gap:16px; text-align:center; justify-items:center; padding:26px 30px; }
+    .mg-footbottom { grid-template-columns:1fr; justify-items:center; text-align:center; gap:24px; }
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:#FCFCFD;color:var(--body);font-family:"Open Sans",Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-  a{color:var(--steel);text-decoration:none}
-  a:hover{color:var(--gold)}
-  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400;margin:0}
-  button{font-family:inherit;cursor:pointer}
-  img{display:block;max-width:100%}
-
-  /* header */
-  .site-header{background:var(--navy);height:96px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;gap:32px}
-  .site-header .logo{height:43px;width:auto}
-  .site-nav{display:flex;align-items:center;gap:40px}
-  .site-nav a{color:#fff;font-size:15px;letter-spacing:.04em;text-transform:uppercase}
-  .site-nav .sep{width:1px;height:24px;background:rgba(255,255,255,.28)}
-  .site-nav .login{display:flex;align-items:center;gap:8px}
-
-  /* hero */
-  .hero{position:relative;background:var(--navy);padding:72px 56px 160px;overflow:hidden;text-align:center}
-  .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,14,27,.86),rgba(2,14,27,.78) 55%,rgba(2,14,27,.94));pointer-events:none}
-  .hero .inner{position:relative}
-  .eyebrow{font-size:15px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-  .hero h1{margin:20px auto 0;max-width:20ch;font-size:62px;line-height:1.08;color:#fff}
-  .hero p{margin:22px auto 0;max-width:62ch;font-size:18px;line-height:1.6;color:#C9D2DA;text-wrap:pretty}
-  .meta{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:22px;font-size:14px;color:#A9B4BF}
-  .meta .dot{width:4px;height:4px;border-radius:50%;background:#5A6772}
-  .meta .pct{color:var(--gold);font-weight:700}
-  .hero-actions{margin-top:30px;display:flex;justify-content:center;gap:12px}
-  .btn-gold{font-size:15px;font-weight:700;padding:15px 30px;border:none;background:var(--gold);color:#fff}
-  .btn-gold:hover{background:var(--gold-dark)}
-  .btn-ghost{font-size:15px;font-weight:600;padding:15px 26px;border:1px solid rgba(255,255,255,.32);background:none;color:#fff}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-
-  /* lesson card */
-  .card{margin:-110px auto 56px;max-width:1360px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 44px rgba(2,14,27,.10);display:flex;position:relative}
-  .card .main{flex:1;min-width:0;padding:28px 32px 32px}
-  .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-  .player{margin-top:16px;position:relative;width:100%;aspect-ratio:16/9;background:#1A2C3E;overflow:hidden}
-  .player>img,.player>video,.player>iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
-  .player .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-  .player .play span{width:72px;height:72px;border-radius:50%;background:rgba(224,123,42,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(2,14,27,.4)}
-  .player .scrub{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.24)}
-  .player .scrub i{display:block;height:100%;width:18%;background:var(--gold)}
-  .card h2{margin-top:24px;font-size:28px;line-height:1.22;color:var(--navy)}
-  .tabs{margin-top:18px;display:flex;gap:28px;border-bottom:1px solid var(--line)}
-  .tabs div{font-size:14px;color:var(--muted);padding-bottom:12px}
-  .tabs div.on{font-weight:700;color:var(--navy);border-bottom:2px solid var(--gold)}
-  .lead{margin:18px 0 0;font-size:15px;line-height:1.7;max-width:68ch;text-wrap:pretty}
-  .points{margin-top:22px;display:flex;flex-direction:column;gap:10px;list-style:none;padding:0}
-  .points li{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.55}
-  .points li::before{content:"";width:6px;height:6px;margin-top:8px;flex:none;background:var(--steel)}
-  .materials{margin-top:26px;background:var(--light);border-left:3px solid var(--gold);padding:18px 20px;display:flex;align-items:center;gap:16px}
-  .materials .ico{width:44px;height:44px;flex:none;background:var(--navy);display:flex;align-items:center;justify-content:center}
-  .materials strong{display:block;font-size:15px;color:var(--navy)}
-  .materials small{display:block;margin-top:3px;font-size:13px;color:var(--muted)}
-  .materials a{margin-left:auto;flex:none;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-  .card-foot{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .card-foot .up{font-size:13px;color:var(--muted)}
-  .card-foot .up b{color:var(--navy);font-weight:600}
-  #markBtn{font-size:14px;font-weight:700;padding:13px 24px;border:1px solid var(--gold);background:var(--gold);color:#fff}
-  #markBtn.done{background:#fff;color:#127A58;border-color:#C9D2DA}
-
-  /* contents list */
-  .contents{width:424px;flex:none;border-left:1px solid var(--line);display:flex;flex-direction:column}
-  .contents .head{padding:26px 26px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px}
-  .contents .head h3{font-size:19px;color:var(--navy)}
-  .contents .head small{display:block;margin-top:5px;font-size:13px;color:var(--muted)}
-  .ring{position:relative;width:44px;height:44px;flex:none}
-  .ring svg{transform:rotate(-90deg)}
-  .ring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
-  .contents .label{padding:18px 26px 8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  #lessonList{flex:1;padding:0 14px 22px;display:flex;flex-direction:column;gap:2px}
-  .row{display:flex;align-items:center;gap:14px;padding:13px 12px;cursor:pointer;background:none;border:0;text-align:left;width:100%}
-  .row:hover{background:var(--light)}
-  .row.current{background:var(--light)}
-  .row .tile{width:30px;height:30px;flex:none;border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--light);border:1px solid transparent}
-  .row.current .tile{background:var(--navy)}
-  .row.done .tile{background:#fff;border-color:#DDE1E6}
-  .row .txt{flex:1;min-width:0}
-  .row .t{font-size:14px;line-height:1.35;font-weight:500;color:var(--navy)}
-  .row.current .t{font-weight:700}
-  .row.locked .t{color:#A2ACB6}
-  .row .n{margin-top:3px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#98A2AC}
-  .row .dur{flex:none;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
-  .row .check{flex:none;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
-
-  /* footer */
-  .site-footer{background:var(--navy);padding:54px 56px 30px}
-  .site-footer .inner{max-width:1360px;margin:0 auto}
-  .fcols{display:flex;justify-content:space-between;gap:64px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
-  .fbrand{max-width:330px}
-  .fbrand img{height:40px;width:auto}
-  .fbrand p{margin:20px 0 0;font-size:14px;line-height:1.65;color:#8E9AA6;text-wrap:pretty}
-  .fbrand .contact{margin-top:20px;font-size:14px;line-height:1.7;color:#C9D2DA}
-  .flinks{display:flex;gap:72px}
-  .flinks section{display:flex;flex-direction:column;gap:12px}
-  .flinks h4{margin:0;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
-  .flinks a{font-size:14px;color:#C9D2DA}
-  .disclosure{margin:26px 0 0;font-size:12px;line-height:1.7;color:var(--muted);max-width:108ch;text-wrap:pretty}
-  .copyright{margin-top:18px;font-size:12px;color:#5A6772}
-
-  @media (max-width:1100px){
-    .card{flex-direction:column;margin:-80px 20px 40px}
-    .contents{width:auto;border-left:0;border-top:1px solid var(--line)}
-    .site-header{height:auto;padding:18px 24px;flex-wrap:wrap;gap:16px}
-    .site-nav{gap:22px;flex-wrap:wrap}
-    .hero{padding:56px 24px 130px}
-    .hero h1{font-size:40px}
-    .fcols{flex-direction:column;gap:36px}
-    .flinks{gap:40px;flex-wrap:wrap}
-    .site-footer{padding:40px 24px 24px}
+  @media (max-width:640px) {
+    .mg-h1 { font-size:36px; }
+    .mg-shell { padding-left:16px; padding-right:16px; }
+    .mg-main { padding:22px 20px 26px; }
+    .mg-thumb-title span { font-size:26px; }
+    .mg-thumb-title { top:24px; left:20px; right:20px; }
+    .mg-thumb-foot { left:20px; right:20px; bottom:20px; }
+    .mg-materials { flex-direction:column; align-items:flex-start; }
   }
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <img class="logo" src="assets/logo_white.png" alt="SMI Private Client">
-  <nav class="site-nav">
-    <a href="#">Benefits</a>
-    <a href="#">Sign Up</a>
-    <a href="#">Resources</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact Us</a>
-    <div class="sep"></div>
-    <a class="login" href="#">
-      <svg width="15" height="16" viewBox="0 0 15 16" aria-hidden="true"><circle cx="7.5" cy="4.5" r="3.4" fill="#3B9ED4"/><path d="M1 15.5c0-3.6 2.9-5.6 6.5-5.6s6.5 2 6.5 5.6z" fill="#3B9ED4"/></svg>
-      Login
-    </a>
-  </nav>
-</header>
-
-<section class="hero">
-  <img src="assets/course-hero.jpg" alt="">
-  <div class="scrim"></div>
-  <div class="inner">
-    <div class="eyebrow">Private Client video course</div>
-    <h1>Investing with Confidence</h1>
-    <p>Nine short lessons on how we build, manage, and steward your portfolio — taught by the team managing your money. Your place is saved as you go.</p>
-    <div class="meta">
-      <span>1 hr 18 min</span><span class="dot"></span>
-      <span>9 lessons</span><span class="dot"></span>
-      <span class="pct" id="heroPct">0% complete</span>
-    </div>
-    <div class="hero-actions">
-      <button class="btn-gold" id="resumeBtn">Resume course</button>
-      <button class="btn-ghost" id="resetBtn">Reset progress</button>
-    </div>
-  </div>
-</section>
-
-<div class="card">
-  <div class="main">
-    <div class="kicker" id="nowPlaying">Now playing · Lesson 01</div>
-
-    <div class="player">
-      <!-- swap for <video> or an embed iframe -->
-      <img id="poster" src="assets/lesson-01.jpg" alt="">
-      <div class="play"><span><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M2 2 L20 13 L2 24 Z" fill="#fff"/></svg></span></div>
-      <div class="scrub"><i></i></div>
-    </div>
-
-    <h2 id="lessonTitle">Welcome &amp; How This Course Works</h2>
-
-    <div class="tabs">
-      <div class="on">Description</div>
-      <div>Transcript</div>
-      <div>Ask a question</div>
-    </div>
-
-    <p class="lead" id="lessonDesc"></p>
-    <ul class="points" id="lessonPoints"></ul>
-
-    <div class="materials">
-      <div class="ico"><svg width="18" height="22" viewBox="0 0 18 22" aria-hidden="true"><path d="M2 1h9l5 5v15H2Z" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M11 1v5h5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></div>
-      <div>
-        <strong>Supporting materials</strong>
-        <small id="materialsNote">Worksheet and transcript — download before you watch</small>
-      </div>
-      <a href="#">Download</a>
-    </div>
-
-    <div class="card-foot">
-      <div class="up">Up next <b id="upNext"></b></div>
-      <button id="markBtn">Mark complete</button>
-    </div>
-  </div>
-
-  <aside class="contents">
-    <div class="head">
-      <div style="flex:1;min-width:0">
-        <h3>Course contents</h3>
-        <small id="remaining"></small>
-      </div>
-      <div class="ring">
-        <svg width="44" height="44" viewBox="0 0 44 44">
-          <circle cx="22" cy="22" r="15" fill="none" stroke="#E6E9ED" stroke-width="5"/>
-          <circle id="ringArc" cx="22" cy="22" r="15" fill="none" stroke="#1D9E75" stroke-width="5" stroke-linecap="round" stroke-dasharray="0 94.2"/>
-        </svg>
-        <span id="ringLabel">0/9</span>
-      </div>
-    </div>
-    <div class="label">All lessons</div>
-    <div id="lessonList"></div>
-  </aside>
-</div>
-
-<footer class="site-footer">
-  <div class="inner">
-    <div class="fcols">
-      <div class="fbrand">
-        <img src="assets/logo_white.png" alt="SMI Private Client">
-        <p>Biblically responsible wealth management for families who want their investments to reflect their convictions.</p>
-        <div class="contact">
-          <div>877.736.3764</div>
-          <a href="mailto:privateclient@smiadvisory.com">privateclient@smiadvisory.com</a>
+<!-- HEADER -->
+<div class="mg-bar">
+  <div class="mg-bar-in">
+    <a class="mg-logo" href="https://www.smiprivateclient.com/"><img src="assets/smipc-logo-white.png" alt="SMI Private Client"></a>
+    <div class="mg-nav">
+      <a href="https://www.smiprivateclient.com/#benefits">Benefits</a>
+      <a href="https://www.smiprivateclient.com/#signup">Sign Up</a>
+      <div class="mg-drop">
+        <a href="https://www.smiprivateclient.com/educational-articles">Resources</a>
+        <div class="mg-drop-menu">
+          <a href="https://www.smiprivateclient.com/educational-articles">Educational Articles</a>
+          <a href="https://www.smiprivateclient.com/sample-commentary">Sample Commentary</a>
+          <a class="is-current" href="https://www.smiprivateclient.com/moneyguide-course">MoneyGuide Course</a>
+          <a href="https://forms.smiprivateclient.com/risk-profile">Risk Profile</a>
         </div>
       </div>
-      <div class="flinks">
-        <section>
-          <h4>Private Client</h4>
-          <a href="#">Benefits</a><a href="#">Sign up</a><a href="#">About us</a><a href="#">Contact us</a>
-        </section>
-        <section>
-          <h4>Resources</h4>
-          <a href="#">Monthly strategy update</a><a href="#">Video courses</a><a href="#">Cashflow planning</a><a href="#">Client login</a>
-        </section>
-        <section>
-          <h4>Disclosures</h4>
-          <a href="#">Form ADV</a><a href="#">Form CRS</a><a href="#">Privacy policy</a><a href="#">Terms of use</a>
-        </section>
+      <div class="mg-drop">
+        <a href="https://www.smiprivateclient.com/about-us">About Us</a>
+        <div class="mg-drop-menu">
+          <a href="https://www.smiprivateclient.com/about-us">Our Story</a>
+          <a href="https://www.smiprivateclient.com/team">Our Team</a>
+          <a href="https://www.smiprivateclient.com/giving-projects">Our Giving Projects</a>
+        </div>
+      </div>
+      <a href="https://www.smiprivateclient.com/contact">Contact Us</a>
+      <span class="mg-sep">|</span>
+      <a class="mg-login" href="https://smiprivateclient.portal.tamaracinc.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="#3B9ED4"><circle cx="12" cy="7.6" r="4.1"></circle><path d="M12 13.4c-4.3 0-7.8 2.6-7.8 5.9 0 .6.5 1.1 1.1 1.1h13.4c.6 0 1.1-.5 1.1-1.1 0-3.3-3.5-5.9-7.8-5.9z"></path></svg>Login</a>
+    </div>
+    <div class="mg-mobile">
+      <button type="button" class="mg-burger" id="mgBurger" aria-label="Menu"><svg viewBox="0 0 20 20" width="15" height="15" fill="currentColor"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg></button>
+      <a class="mg-mlogin" href="https://smiprivateclient.portal.tamaracinc.com" target="_blank" rel="noopener">Login</a>
+    </div>
+  </div>
+  <div class="mg-menu" id="mgMenu">
+    <div class="mg-menu-in">
+      <a href="https://www.smiprivateclient.com/">Home</a>
+      <a href="https://www.smiprivateclient.com/#benefits">Benefits</a>
+      <a href="https://www.smiprivateclient.com/#signup">Sign Up</a>
+      <div class="mg-mlabel">Resources</div>
+      <a class="sub" href="https://www.smiprivateclient.com/sample-commentary">- Sample Commentary</a>
+      <a class="sub" href="https://www.smiprivateclient.com/educational-articles">- Educational Articles</a>
+      <a class="sub is-current" href="https://www.smiprivateclient.com/moneyguide-course">- MoneyGuide Course</a>
+      <a class="sub" href="https://forms.smiprivateclient.com/risk-profile">- Risk Profile</a>
+      <div class="mg-mlabel">About Us</div>
+      <a class="sub" href="https://www.smiprivateclient.com/about-us">- Our Story</a>
+      <a class="sub" href="https://www.smiprivateclient.com/team">- Our Team</a>
+      <a href="https://www.smiprivateclient.com/contact">Contact Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="mg-hero">
+  <div class="mg-hero-img"><img src="images/hero-advisors.jpg" alt=""></div>
+  <div class="mg-hero-scrim"></div>
+  <div class="mg-hero-in">
+    <span class="mg-eyebrow">Private Client Video Course</span>
+    <h1 class="mg-h1">Getting the Most from MoneyGuide</h1>
+    <p class="mg-sub">MoneyGuide is the planning tool every Private Client investor gets access to &mdash; where your goals, accounts, and what-if scenarios live in one place. Eight short lessons walk you through it. Your place is saved as you go.</p>
+    <div class="mg-meta">
+      <span id="mgTotalTime">—</span>
+      <span class="mg-dot"></span>
+      <span id="mgLessonCount">8 lessons</span>
+      <span class="mg-dot"></span>
+      <span class="mg-pct" id="mgPct">0% complete</span>
+    </div>
+    <div class="mg-hero-cta">
+      <button type="button" class="mg-btn-fill" id="mgResume">Start the course</button>
+      <button type="button" class="mg-btn-ghost" id="mgReset">Reset progress</button>
+    </div>
+  </div>
+</div>
+
+<!-- COURSE CARD -->
+<div class="mg-shell">
+  <div class="mg-card">
+    <div class="mg-main">
+      <div class="mg-now"><span></span><span id="mgNowPlaying">Now playing · Lesson 01</span></div>
+
+      <button type="button" class="mg-thumb-btn" id="mgThumbBtn">
+        <div class="mg-thumb">
+          <img src="images/mark-video-thumb.jpg" alt="">
+          <div class="mg-scrim"></div>
+          <div class="mg-play-wrap"><div class="mg-play">
+            <span class="mg-play-ring"></span>
+            <span class="mg-play-btn"><svg viewBox="0 0 24 24"><path d="M7 4.5l13 7.5-13 7.5z"></path></svg></span>
+          </div></div>
+          <div class="mg-thumb-title"><span id="mgThumbTitle">Welcome to MoneyGuide</span></div>
+          <div class="mg-thumb-foot">
+            <span>
+              <span class="mg-lesson-pill"><i></i><span id="mgThumbLesson">Lesson 01 of 08</span></span>
+              <span class="mg-thumb-meta">
+                <span id="mgThumbDur">3:40 watch</span><i></i>
+                <span id="mgThumbTopics">3 topics</span><i></i>
+                <span id="mgThumbStatus">Start here</span>
+              </span>
+            </span>
+            <span class="mg-badge" id="mgBadge">Play lesson</span>
+          </div>
+        </div>
+      </button>
+
+      <p class="mg-desc" id="mgDesc"></p>
+
+      <div class="mg-rule"><span>In this lesson</span><i></i></div>
+      <div class="mg-points" id="mgPoints"></div>
+
+      <div class="mg-materials">
+        <span class="icon"><svg viewBox="0 0 18 22" width="17"><path d="M2 1h9l5 5v15H2Z" fill="none" stroke="#fff" stroke-width="1.6"></path><path d="M11 1v5h5" fill="none" stroke="#fff" stroke-width="1.6"></path></svg></span>
+        <div class="txt">
+          <div class="t1">Worksheet &amp; quick-reference</div>
+          <div class="t2" id="mgMaterialsNote"></div>
+        </div>
+        <a href="#">Download</a>
+      </div>
+
+      <div class="mg-foot-row">
+        <div class="mg-upnext">Up next &nbsp;<strong id="mgUpNext"></strong></div>
+        <button type="button" class="mg-mark" id="mgMark">
+          <span class="mg-mark-box"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.4l3 3 6-6.4"></path></svg></span>
+          <span class="mg-mark-label"><span class="lbl-idle" id="mgMarkLabel">Mark Complete</span><span class="lbl-hover">Uncheck</span></span>
+        </button>
       </div>
     </div>
-    <p class="disclosure">SMI Advisory Services, LLC is an investment adviser registered with the U.S. Securities and Exchange Commission. Registration does not imply a certain level of skill or training. This course is educational and is not investment, tax, or legal advice. Past performance is not indicative of future results.</p>
-    <div class="copyright">© 2026 SMI Advisory Services, LLC. All rights reserved.</div>
+
+    <aside class="mg-contents">
+      <div class="mg-contents-head">
+        <div style="flex:1;min-width:0;">
+          <h3>Course contents</h3>
+          <div class="mg-remaining" id="mgRemaining"></div>
+        </div>
+        <div class="mg-ring">
+          <svg viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="17" fill="none" stroke="rgba(2,14,27,.12)" stroke-width="5"></circle>
+            <circle id="mgRingArc" cx="24" cy="24" r="17" fill="none" stroke="#E07B2A" stroke-width="5" stroke-linecap="round" stroke-dasharray="0 107"></circle>
+          </svg>
+          <span id="mgRingLabel">0/8</span>
+        </div>
+      </div>
+      <div class="mg-list" id="mgList"></div>
+    </aside>
   </div>
-</footer>
+</div>
+
+<!-- CTA -->
+<div class="mg-cta-wrap">
+  <div class="mg-cta">
+    <h2>Ready to open your own plan?</h2>
+    <p>MoneyGuide access comes with every Private Client relationship &mdash; built alongside your advisor, updated as life changes.</p>
+    <div class="mg-cta-row">
+      <a class="mg-cta-a" href="https://www.moneyguidepro.com/ifa/signin.aspx" target="_blank" rel="noopener">Log in to MoneyGuide</a>
+      <a class="mg-cta-b" href="https://smiprivateclient.youcanbook.me" target="_blank" rel="noopener">Talk to an Advisor</a>
+    </div>
+  </div>
+</div>
+
+<div class="mg-disc-wrap">
+  <div class="mg-disc"><p>MoneyGuide is a financial planning platform provided by Envestnet | MoneyGuide and is made available to SMI Private Client investors. This course is educational and is not investment, tax, or legal advice. Projections and scenarios generated in MoneyGuide are hypothetical, do not reflect actual investment results, and are not guarantees of future results.</p></div>
+</div>
+
+<!-- FOOTER -->
+<div class="mg-footer">
+  <div class="mg-contactbar">
+    <div class="lbl">Contact:</div>
+    <div class="txt">If you have questions or would like to speak to someone about SMI Private Client, reach out to us by phone or email.</div>
+    <a class="tel" href="tel:8007964975">800-796-4975</a>
+    <a class="eml" href="mailto:helpdesk@smiadvisory.com">helpdesk@smiadvisory.com</a>
+  </div>
+  <div class="mg-foot-body">
+    <div class="mg-foot-inner">
+      <div class="mg-footcols">
+        <div>
+          <h4>Contact Us</h4>
+          <div class="mg-contactlist">
+            <div><span class="ic"><svg viewBox="0 0 24 24" width="14" height="14" fill="#3B9ED4"><path d="M12 2.2c-3.9 0-7 3.1-7 7 0 5.2 7 12.6 7 12.6s7-7.4 7-12.6c0-3.9-3.1-7-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"></path></svg></span><span>4400 Ray Boll Blvd<br>Columbus, IN 47203</span></div>
+            <div><span class="ic"><svg viewBox="0 0 24 24" width="14" height="14" fill="#3B9ED4"><path d="M6.6 3.2c.7-.5 1.7-.4 2.2.4l1.7 2.4c.5.7.4 1.7-.3 2.2l-1 .8c-.3.2-.4.6-.2.9a13 13 0 0 0 4.5 4.5c.3.2.7.1.9-.2l.8-1c.5-.7 1.5-.8 2.2-.3l2.4 1.7c.8.5.9 1.5.4 2.2l-1 1.3c-.7.9-1.9 1.3-3 .9C11.6 17.5 6.5 12.4 4.4 6.5c-.4-1.1 0-2.3.9-3l1.3-.3z"></path></svg></span><a href="tel:8007964975">800-796-4975</a></div>
+            <div><span class="ic"><svg viewBox="0 0 24 24" width="14" height="14" fill="#3B9ED4"><path d="M2.6 5.4h18.8c.6 0 1.1.5 1.1 1.1v11c0 .6-.5 1.1-1.1 1.1H2.6c-.6 0-1.1-.5-1.1-1.1v-11c0-.6.5-1.1 1.1-1.1zm9.4 7.9l8-5.1H4l8 5.1z"></path></svg></span><a href="mailto:helpdesk@smiadvisory.com">helpdesk@smiadvisory.com</a></div>
+            <div><span class="ic"><svg viewBox="0 0 24 24" width="14" height="14" fill="#3B9ED4"><path d="M12 2.4A9.6 9.6 0 1 0 21.6 12 9.6 9.6 0 0 0 12 2.4zm.9 10.2H7.8v-1.8h3.3V6.6h1.8v6z"></path></svg></span><span>Mon - Fri: 9AM - 5PM</span></div>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="mg-quick">
+            <a href="https://www.smiprivateclient.com/">Home</a>
+            <a href="https://www.smiprivateclient.com/about-us">About Us</a>
+            <a href="https://forms.smiprivateclient.com/welcome">Sign Up</a>
+            <a href="https://www.smiprivateclient.com/educational-articles">Educational Articles</a>
+            <a href="https://forms.smiprivateclient.com/risk-profile">Risk Profile</a>
+            <a href="https://www.smiprivateclient.com/sample-commentary">Sample Commentary</a>
+            <a href="https://www.smiprivateclient.com/contact">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mg-footbottom">
+      <div>Accounts will be established at Charles Schwab Institutional and managed by SMI Advisory Services.<br>&copy; 2026 by SMI Private Client</div>
+      <img src="assets/smipc-logo-white.png" alt="SMI Private Client">
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="mg-overlay" id="mgOverlay">
+  <div class="mg-video">
+    <button type="button" class="mg-video-close" id="mgVideoClose" aria-label="Close video">&times;</button>
+    <div class="mg-video-frame"><iframe id="mgIframe" src="" title="MoneyGuide course lesson" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </div>
+</div>
 
 <script>
-/* ---------- lesson data ---------- */
-var LESSONS = [
-  {title:"Welcome & How This Course Works", dur:"4:12", poster:"assets/lesson-01.jpg",
-   desc:"A short orientation to the course: what we cover, why we sequenced it this way, and how to bring questions to your advisor as you go.",
-   points:["The nine lessons at a glance","How to use the worksheets","Where to send questions"]},
-  {title:"Your Financial Foundation", dur:"8:40", poster:"assets/lesson-02.jpg",
-   desc:"Before we talk allocation, we look at the foundation: an emergency reserve sized to your situation, debt handled deliberately, and the coverage that protects the plan.",
-   points:["Sizing your cash reserve","Which debts to retire first","Coverage gaps we check for"]},
-  {title:"Defining Your Goals & Time Horizon", dur:"7:05", poster:"assets/lesson-03.jpg",
-   desc:"Every dollar in your portfolio is working toward something. This lesson turns broad intentions into specific, dated goals — the input that drives every allocation decision that follows.",
-   points:["Naming and dating each goal","Matching horizon to asset mix","Revisiting goals as life changes"]},
-  {title:"Understanding Risk & Volatility", dur:"9:18", poster:"assets/lesson-04.jpg",
-   desc:"Risk is not one thing. We separate market volatility from the risks that actually threaten your plan, and show how we size exposure to what you can live with.",
-   points:["Volatility vs. permanent loss","Your risk capacity vs. tolerance","How drawdowns recover"]},
-  {title:"How We Build Portfolios", dur:"11:32", poster:"assets/lesson-05.jpg",
-   desc:"A look inside the construction process: the strategies we combine, the role each plays, and how we rebalance as markets move.",
-   points:["Core strategy mix","Rebalancing discipline","What triggers a change"]},
-  {title:"Faith-Aligned Investing in Practice", dur:"10:04", poster:"assets/lesson-06.jpg",
-   desc:"What faith-aligned investing means concretely: how screening is applied, what it excludes, and how we weigh alignment against diversification.",
-   points:["How screens are applied","Common trade-offs","Reviewing alignment annually"]},
-  {title:"Tax-Smart Strategies", dur:"8:57", poster:"assets/lesson-07.jpg",
-   desc:"Returns are what you keep. We cover asset location, loss harvesting, Roth conversion windows, and charitable giving strategies such as QCDs.",
-   points:["Asset location basics","Harvesting losses and gains","Giving with appreciated assets"]},
-  {title:"Retirement Income Planning", dur:"12:20", poster:"assets/lesson-08.jpg",
-   desc:"The shift from accumulation to distribution: withdrawal sequencing, Social Security timing, and building a paycheck that holds up through market cycles.",
-   points:["Withdrawal sequencing","Social Security timing","Stress-testing the plan"]},
-  {title:"Working With Your Advisor", dur:"5:48", poster:"assets/lesson-09.jpg",
-   desc:"How the relationship runs day to day: our review cadence, what your reporting shows, and the moments worth a call.",
-   points:["Annual review rhythm","Reading your reports","When to reach out"]}
-];
+(function () {
+  var KEY = "smipc_mg_course_progress";
 
-/* ---------- cookie-backed progress ---------- */
-var COOKIE = "smipc_course_progress", TOTAL = LESSONS.length, C = 2 * Math.PI * 15;
-var state = {done:[], current:1};
+  var LESSONS = [
+    { title: "Welcome to MoneyGuide", dur: "3:40", vimeo: "1152687590",
+      desc: "A short orientation: what MoneyGuide is, how it fits alongside your Tamarac portfolio reporting, and how you and your advisor work in it together.",
+      points: ["What MoneyGuide does — and what it doesn't", "How it differs from your performance reports", "Setting up your login and two-factor"] },
+    { title: "Your Home Page Tour", dur: "5:15", vimeo: "1152687590",
+      desc: "The home page is your plan at a glance. We walk through each card so you know what you're looking at before you start changing anything.",
+      points: ["Reading your Probability of Success score", "Net worth, goals, and account cards", "Where to find your advisor's notes"] },
+    { title: "Connecting Accounts & Net Worth", dur: "7:05", vimeo: "1152687590",
+      desc: "The plan is only as good as what's in it. Here's how to link outside accounts, add assets we don't manage, and keep the numbers current.",
+      points: ["Linking held-away accounts securely", "Adding real estate, businesses, and other assets", "Refreshing balances before a review"] },
+    { title: "Setting Goals", dur: "8:20", vimeo: "1152687590",
+      desc: "Retirement, college, a second home, giving. This lesson turns broad intentions into dated, dollar-figure goals — the input that drives everything else.",
+      points: ["Needs, Wants, and Wishes explained", "Assigning target dates and amounts", "Prioritizing when you can't fund it all"] },
+    { title: "Income & Retirement Timing", dur: "6:50", vimeo: "1152687590",
+      desc: "Where the money comes from once paychecks stop: Social Security, pensions, part-time work, and portfolio withdrawals — and how timing changes the picture.",
+      points: ["Entering Social Security estimates", "Modeling a phased retirement", "Pension and annuity income options"] },
+    { title: "What-If Scenarios & Play Zone", dur: "9:10", vimeo: "1152687590",
+      desc: "The most useful part of the tool. Play Zone lets you move the levers — retire earlier, spend more, save less — and see the effect immediately.",
+      points: ["Building side-by-side what-if scenarios", "Trade-offs the sliders reveal", "Saving a scenario for your advisor to review"] },
+    { title: "Stress Tests & Estate Snapshot", dur: "6:35", vimeo: "1152687590",
+      desc: "How your plan holds up when things go wrong: a bad market at the wrong time, a long-term care event, an early death. Plus a look at the estate view.",
+      points: ["Reading Monte Carlo results honestly", "Modeling a care event or disability", "What the estate snapshot shows"] },
+    { title: "Documents, Vault & Working With Us", dur: "4:45", vimeo: "1152687590",
+      desc: "Where to store what matters, how to share it securely, and the rhythm of keeping your plan current between annual reviews.",
+      points: ["Uploading to the secure Vault", "What to bring to your annual review", "When to reach out mid-year"] }
+  ];
 
-function readCookie(){
-  var m = document.cookie.match(new RegExp("(?:^|;\\s*)" + COOKIE + "=([^;]*)"));
-  var raw = m ? decodeURIComponent(m[1]) : null;
-  if(!raw){ try{ raw = localStorage.getItem(COOKIE); }catch(e){} }   // file:// fallback
-  if(!raw) return null;
-  try{
-    var v = JSON.parse(raw);
-    if(!v || !Array.isArray(v.done)) return null;
-    return {done:v.done.filter(function(n){return n>=1 && n<=TOTAL;}), current:v.current || 1};
-  }catch(e){ return null; }
-}
-function writeCookie(){
-  var raw = JSON.stringify(state);
-  document.cookie = COOKIE + "=" + encodeURIComponent(raw) + ";path=/;max-age=31536000;samesite=lax";
-  try{ localStorage.setItem(COOKIE, raw); }catch(e){}
-}
+  var TOTAL = LESSONS.length;
+  var C = 2 * Math.PI * 17;
+  var state = { done: [], current: 1 };
 
-function isDone(id){ return state.done.indexOf(id) !== -1; }
-function select(id){ state.current = id; writeCookie(); render(); }
-function toggle(id){
-  if(isDone(id)){
-    state.done = state.done.filter(function(d){ return d !== id; });
-    state.current = id;
-  }else{
-    state.done.push(id);
-    state.current = Math.min(id + 1, TOTAL);
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) {
+      var v = JSON.parse(raw);
+      if (v && Object.prototype.toString.call(v.done) === "[object Array]") {
+        state.done = v.done.filter(function (n) { return n >= 1 && n <= TOTAL; });
+        state.current = Math.min(Math.max(v.current || 1, 1), TOTAL);
+      }
+    }
+  } catch (e) {}
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+  function isDone(id) { return state.done.indexOf(id) !== -1; }
+  function $(id) { return document.getElementById(id); }
+
+  var totalMin = LESSONS.reduce(function (a, l) { var p = l.dur.split(":"); return a + Number(p[0]) + Number(p[1]) / 60; }, 0);
+  var hrs = Math.floor(totalMin / 60), mins = Math.round(totalMin % 60);
+  $("mgTotalTime").textContent = (hrs ? hrs + " hr " : "") + mins + " min";
+  $("mgLessonCount").textContent = TOTAL + " lessons";
+
+  function render() {
+    var id = Math.min(Math.max(state.current, 1), TOTAL);
+    var cur = LESSONS[id - 1];
+    var doneCount = state.done.length;
+    var pct = Math.round(doneCount / TOTAL * 100);
+    var highest = doneCount ? Math.max.apply(null, state.done) : 0;
+    var unlockedThrough = Math.max(highest + 1, id);
+
+    $("mgPct").textContent = pct + "% complete";
+    $("mgNowPlaying").textContent = "Now playing · Lesson " + pad(id);
+    $("mgThumbTitle").textContent = cur.title;
+    $("mgThumbLesson").textContent = "Lesson " + pad(id) + " of " + pad(TOTAL);
+    $("mgThumbDur").textContent = cur.dur + " watch";
+    $("mgThumbTopics").textContent = cur.points.length + " topics";
+    $("mgThumbStatus").textContent = isDone(id) ? "Completed" : (id <= highest ? "Revisiting" : (doneCount === 0 && id === 1 ? "Start here" : "Not yet watched"));
+
+    var badge = $("mgBadge");
+    badge.textContent = isDone(id) ? "Watch again" : "Play lesson";
+    badge.className = "mg-badge" + (isDone(id) ? " is-done" : "");
+
+    $("mgDesc").textContent = cur.desc;
+
+    var pts = $("mgPoints");
+    pts.innerHTML = "";
+    cur.points.forEach(function (p) {
+      var row = document.createElement("div");
+      row.className = "mg-point";
+      var dot = document.createElement("i");
+      var txt = document.createElement("span");
+      txt.textContent = p;
+      row.appendChild(dot); row.appendChild(txt);
+      pts.appendChild(row);
+    });
+
+    $("mgMaterialsNote").textContent = "Lesson " + pad(id) + " worksheet — open it alongside the video";
+    $("mgUpNext").textContent = id === TOTAL ? "Final lesson" : LESSONS[id].title;
+
+    var mark = $("mgMark");
+    mark.className = "mg-mark" + (isDone(id) ? " is-done" : "");
+    $("mgMarkLabel").textContent = isDone(id) ? "Completed" : "Mark Complete";
+
+    $("mgRemaining").textContent = doneCount >= TOTAL ? "Course complete — well done." : (TOTAL - doneCount) + " of " + TOTAL + " lessons remaining";
+    $("mgRingLabel").textContent = doneCount + "/" + TOTAL;
+    $("mgRingArc").setAttribute("stroke-dasharray", (C * pct / 100).toFixed(1) + " " + C.toFixed(1));
+
+    $("mgResume").textContent = doneCount === 0 ? "Start the course" : (doneCount >= TOTAL ? "Rewatch from the start" : "Resume course");
+
+    var list = $("mgList");
+    list.innerHTML = "";
+    LESSONS.forEach(function (l, i) {
+      var n = i + 1, d = isDone(n), current = n === id;
+      var locked = !d && !current && n > unlockedThrough;
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "mg-row" + (current ? " is-current" : "") + (d ? " is-done" : "") + (locked ? " is-locked" : "");
+      btn.innerHTML =
+        '<span class="mg-tile">' +
+          (locked
+            ? '<svg viewBox="0 0 12 14" width="12" height="14"><path d="M3 6V4a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5"></path><rect x="1.5" y="6" width="9" height="7" rx="1.5" fill="currentColor"></rect></svg>'
+            : '<svg viewBox="0 0 11 13" width="11" height="13"><path d="M1.5 1 L10 6.5 L1.5 12 Z" fill="currentColor"></path></svg>') +
+        '</span>' +
+        '<span class="mg-row-txt"><span class="mg-row-title"></span><span class="mg-row-num">Lesson ' + pad(n) + '</span></span>' +
+        (d ? '<span class="mg-row-check">&#10003;</span>' : '<span class="mg-row-dur">' + l.dur + '</span>');
+      btn.querySelector(".mg-row-title").textContent = l.title;
+      btn.addEventListener("click", function () { state.current = n; save(); render(); });
+      list.appendChild(btn);
+    });
   }
-  writeCookie(); render();
-}
-function pad(n){ return n < 10 ? "0" + n : String(n); }
-function el(tag, cls, txt){ var e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; }
 
-var PLAY = '<svg width="11" height="13" viewBox="0 0 11 13"><path d="M1.5 1 L10 6.5 L1.5 12 Z" fill="currentColor"/></svg>';
-var LOCK = '<svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 6V4a3 3 0 0 1 6 0v2" fill="none" stroke="#A2ACB6" stroke-width="1.5"/><rect x="1.5" y="6" width="9" height="7" rx="1.5" fill="#A2ACB6"/></svg>';
-
-function render(){
-  var doneCount = state.done.length,
-      pct = Math.round(doneCount / TOTAL * 100),
-      highest = doneCount ? Math.max.apply(null, state.done) : 0,
-      unlockedThrough = Math.max(highest + 1, state.current),
-      curId = Math.min(Math.max(state.current, 1), TOTAL),
-      cur = LESSONS[curId - 1];
-
-  document.getElementById("heroPct").textContent = pct + "% complete";
-  document.getElementById("nowPlaying").textContent = "Now playing · Lesson " + pad(curId);
-  document.getElementById("poster").src = cur.poster;
-  document.getElementById("lessonTitle").textContent = cur.title;
-  document.getElementById("lessonDesc").textContent = cur.desc;
-  document.getElementById("materialsNote").textContent =
-    "Worksheet and transcript for lesson " + pad(curId) + " — download before you watch";
-  document.getElementById("upNext").textContent =
-    curId === TOTAL ? "Final lesson" : LESSONS[curId].title;
-  document.getElementById("remaining").textContent =
-    doneCount >= TOTAL ? "Course complete — well done." : (TOTAL - doneCount) + " lessons remaining";
-  document.getElementById("ringLabel").textContent = doneCount + "/" + TOTAL;
-  document.getElementById("ringArc").setAttribute("stroke-dasharray", (C * pct / 100).toFixed(1) + " " + C.toFixed(1));
-
-  var pts = document.getElementById("lessonPoints");
-  pts.innerHTML = "";
-  cur.points.forEach(function(p){ pts.appendChild(el("li", null, p)); });
-
-  var mark = document.getElementById("markBtn");
-  mark.textContent = isDone(curId) ? "✓ Completed" : "Mark complete";
-  mark.className = isDone(curId) ? "done" : "";
-  mark.onclick = function(){ toggle(curId); };
-
-  var list = document.getElementById("lessonList");
-  list.innerHTML = "";
-  LESSONS.forEach(function(l, i){
-    var id = i + 1,
-        done = isDone(id),
-        current = id === curId,
-        locked = !done && !current && id > unlockedThrough;
-
-    var row = el("button", "row" + (current ? " current" : "") + (done ? " done" : "") + (locked ? " locked" : ""));
-    row.type = "button";
-    row.onclick = function(){ select(id); };
-
-    var tile = el("div", "tile");
-    tile.style.color = current ? "#FFFFFF" : (locked ? "#A2ACB6" : "#020E1B");
-    tile.innerHTML = locked ? LOCK : PLAY;
-    row.appendChild(tile);
-
-    var txt = el("div", "txt");
-    txt.appendChild(el("div", "t", l.title));
-    txt.appendChild(el("div", "n", "Lesson " + pad(id)));
-    row.appendChild(txt);
-
-    if(done){ row.appendChild(el("div", "check", "✓")); }
-    else{ row.appendChild(el("div", "dur", l.dur)); }
-
-    list.appendChild(row);
+  $("mgMark").addEventListener("click", function () {
+    var id = state.current;
+    state.done = isDone(id) ? state.done.filter(function (d) { return d !== id; }) : state.done.concat([id]);
+    save(); render();
   });
-}
 
-document.getElementById("resumeBtn").onclick = function(){ select(Math.min(state.current + 1, TOTAL)); };
-document.getElementById("resetBtn").onclick  = function(){ state = {done:[], current:1}; writeCookie(); render(); };
+  $("mgReset").addEventListener("click", function () {
+    state = { done: [], current: 1 };
+    save(); render();
+  });
 
-var saved = readCookie();
-if(saved) state = saved;
-render();
+  var overlay = $("mgOverlay"), iframe = $("mgIframe");
+  function openVideo() {
+    var cur = LESSONS[state.current - 1];
+    iframe.src = "https://player.vimeo.com/video/" + cur.vimeo + "?title=0&byline=0&portrait=0&dnt=1";
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeVideo() {
+    overlay.classList.remove("open");
+    iframe.src = "";
+    document.body.style.overflow = "";
+  }
+  $("mgThumbBtn").addEventListener("click", openVideo);
+  $("mgVideoClose").addEventListener("click", closeVideo);
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeVideo(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeVideo(); });
+
+  $("mgResume").addEventListener("click", function () {
+    var doneCount = state.done.length;
+    var highest = doneCount ? Math.max.apply(null, state.done) : 0;
+    state.current = doneCount >= TOTAL ? 1 : Math.min(highest + 1, TOTAL);
+    save(); render(); openVideo();
+  });
+
+  $("mgBurger").addEventListener("click", function () { $("mgMenu").classList.toggle("open"); });
+
+  render();
+})();
 </script>
 </body>
 </html>
