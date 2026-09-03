@@ -35,7 +35,7 @@
   .mg-nav > a, .mg-nav .mg-drop > a { color:#fff; font-size:13.5px; letter-spacing:.03em; text-transform:uppercase; white-space:nowrap; padding:40.5px 0; display:inline-block; transition:color .2s ease; }
   .mg-nav > a:hover, .mg-nav .mg-drop > a:hover { color:var(--orange); }
   .mg-drop { position:relative; }
-  .mg-drop-menu { position:absolute; top:100%; left:-14px; min-width:214px; background:var(--navy); padding:6px 0; box-shadow:0 14px 30px rgba(0,0,0,.4); opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; z-index:30; }
+  .mg-drop-menu { position:absolute; top:100%; left:-14px;  background:var(--navy); padding:6px 0; box-shadow:0 14px 30px rgba(0,0,0,.4); opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; z-index:30; }
   .mg-drop:hover .mg-drop-menu { opacity:1; visibility:visible; transform:translateY(0); }
   .mg-drop-menu a { display:block; padding:10px 14px; color:#fff; font-size:14px; letter-spacing:-.01em; text-transform:uppercase; transition:color .2s ease; }
   .mg-drop-menu a:hover { color:var(--orange); }
@@ -127,7 +127,7 @@
   .mg-upnext-link:hover { color:var(--orange); }
 
   /* mark complete */
-  .mg-mark { display:inline-flex; align-items:center; gap:11px; font-family:inherit; font-size:14.5px; font-weight:700; border:0; outline:none; border-radius:999px; cursor:pointer; padding:14px 24px; min-width:214px; justify-content:flex-start; background-color:var(--orange); color:#fff; background-image:linear-gradient(112deg,var(--green) 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-repeat:no-repeat; background-position:100% 0; transition:background-position .24s linear,color .2s ease,box-shadow .2s ease; }
+  .mg-mark { display:inline-flex; align-items:center; gap:11px; font-family:inherit; font-size:14.5px; font-weight:700; border:0; outline:none; border-radius:999px; cursor:pointer; padding:14px 24px;  justify-content:center; background-color:var(--orange); color:#fff; background-image:linear-gradient(112deg,var(--green) 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-repeat:no-repeat; background-position:100% 0; transition:background-position .24s linear,color .2s ease,box-shadow .2s ease; }
   .mg-mark:hover { background-position:0 0; color:#fff; box-shadow:none; }
   .mg-mark.is-done { background-color:#fff; color:var(--green); box-shadow:inset 0 0 0 1px rgba(2,14,27,.16); }
   .mg-mark.is-done:hover { color:#fff; }
