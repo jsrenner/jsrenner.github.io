@@ -78,27 +78,27 @@
   .mg-main { min-width:0; padding:34px 40px 38px; }
   .mg-now { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
   .mg-now span:first-child { width:7px; height:7px; border-radius:50%; background:var(--orange); }
-  .mg-now span:last-child { font-size:11.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#7d8792; }
+  .mg-now span:last-child { font-size:12.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#7d8792; }
 
   .mg-thumb-btn { display:block; width:100%; padding:0; border:0; background:none; font-family:inherit; text-align:left; cursor:pointer; }
   .mg-thumb { position:relative; width:100%; aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:var(--navy); box-shadow:0 6px 18px rgba(2,14,27,.08); transition:box-shadow .32s ease; }
   .mg-thumb-btn:hover .mg-thumb { box-shadow:0 18px 38px rgba(2,14,27,.14); }
   .mg-thumb > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-  .mg-scrim { position:absolute; inset:0; background:linear-gradient(180deg,rgba(2,14,27,.28) 0%,rgba(2,14,27,.34) 60%,rgba(2,14,27,.7) 100%); transition:opacity .28s ease; }
+  .mg-scrim { position:absolute; inset:0; background:linear-gradient(180deg,rgba(2,14,27,.1) 0%,rgba(2,14,27,.18) 60%,rgba(2,14,27,.5) 100%); transition:opacity .28s ease; }
   .mg-thumb-btn:hover .mg-scrim { opacity:.5; }
   .mg-play-wrap { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
   .mg-play { position:relative; width:64px; height:64px; }
   .mg-play-ring { position:absolute; inset:0; border-radius:50%; border:1px solid var(--orange); animation:mg-pulse 2.8s ease-out infinite; }
   .mg-play-btn { position:absolute; inset:0; border-radius:50%; background-color:var(--orange); background-image:linear-gradient(112deg,#fff 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-position:100% 0; background-repeat:no-repeat; box-shadow:inset 0 0 0 0 rgba(224,123,42,0); display:flex; align-items:center; justify-content:center; transition:background-position .18s linear,box-shadow .12s ease; }
-  .mg-play-btn svg { width:26px; height:26px; display:block; margin-left:2px; fill:#fff; transition:fill 70ms ease 20ms; }
+  .mg-play-btn svg { width:26px; height:26px; display:block; margin-left:1px; fill:#fff; transition:fill 70ms ease 20ms; }
   .mg-thumb-btn:hover .mg-play-btn { background-position:0 0; box-shadow:inset 0 0 0 2px var(--orange); }
   .mg-thumb-btn:hover .mg-play-btn svg { fill:var(--orange); }
-  .mg-thumb-title { position:absolute; left:34px; right:34px; top:46px; }
+  .mg-thumb-title { position:absolute; left:34px; right:34px; top:36px; }
   .mg-thumb-title span { display:block; max-width:20ch; font-family:'EB Garamond',Georgia,serif; font-size:40px; line-height:1.12; color:#fff; letter-spacing:-.01em; text-shadow:0 2px 18px rgba(2,14,27,.6); }
   .mg-thumb-foot { position:absolute; left:34px; right:34px; bottom:34px; display:flex; align-items:flex-end; justify-content:space-between; gap:22px; }
   .mg-lesson-pill { display:inline-flex; align-items:center; gap:8px; }
-  .mg-lesson-pill i { width:6px; height:6px; border-radius:50%; background:var(--orange); }
-  .mg-lesson-pill span { font-size:10.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#fff; }
+  .mg-lesson-pill i { width:7px; height:7px; border-radius:50%; background:var(--orange); }
+  .mg-lesson-pill span { font-size:13.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#fff; }
   .mg-thumb-meta { display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px; margin-top:10px; font-size:12.5px; color:rgba(255,255,255,.72); }
   .mg-thumb-meta i { width:3px; height:3px; border-radius:50%; background:rgba(255,255,255,.4); }
   .mg-badge { flex:none; padding:9px 16px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; background:var(--orange); color:#fff; transition:background .22s ease,color .22s ease,transform .26s cubic-bezier(.16,.84,.24,1),box-shadow .22s ease; }
@@ -123,20 +123,21 @@
 
   .mg-foot-row { margin-top:28px; padding-top:24px; border-top:1px solid rgba(2,14,27,.12); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
   .mg-upnext { font-size:13.5px; color:#7d8792; }
-  .mg-upnext strong { color:var(--navy); }
+  .mg-upnext-link { border:0; background:none; padding:0; font-family:inherit; font-size:13.5px; font-weight:700; color:var(--navy); cursor:pointer; text-decoration:none; transition:color .18s ease; }
+  .mg-upnext-link:hover { color:var(--orange); }
 
   /* mark complete */
   .mg-mark { display:inline-flex; align-items:center; gap:11px; font-family:inherit; font-size:14.5px; font-weight:700; border:0; outline:none; border-radius:999px; cursor:pointer; padding:14px 24px; min-width:214px; justify-content:flex-start; background-color:var(--orange); color:#fff; background-image:linear-gradient(112deg,var(--green) 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-repeat:no-repeat; background-position:100% 0; transition:background-position .24s linear,color .2s ease,box-shadow .2s ease; }
   .mg-mark:hover { background-position:0 0; color:#fff; box-shadow:none; }
   .mg-mark.is-done { background-color:#fff; color:var(--green); box-shadow:inset 0 0 0 1px rgba(2,14,27,.16); }
   .mg-mark.is-done:hover { color:#fff; }
-  .mg-mark-box { flex:none; margin-left:10px; width:19px; height:19px; border-radius:4px; display:flex; align-items:center; justify-content:center; border:2px solid rgba(255,255,255,.9); background:transparent; transition:background .18s ease,border-color .18s ease; }
+  .mg-mark-box { flex:none; width:19px; height:19px; border-radius:4px; display:flex; align-items:center; justify-content:center; border:2px solid rgba(255,255,255,.9); background:transparent; transition:background .18s ease,border-color .18s ease; }
   .mg-mark.is-done .mg-mark-box { background:var(--green); border-color:var(--green); }
   .mg-mark:hover .mg-mark-box { border-color:#fff; }
   .mg-mark-box svg { width:13px; height:13px; display:block; opacity:0; transform:scale(.6); transition:opacity .16s ease,transform .22s cubic-bezier(.16,.84,.24,1); }
   .mg-mark.is-done .mg-mark-box svg { opacity:1; transform:scale(1); }
-  .mg-mark-label { flex:1; text-align:center; }
-  .mg-mark.is-done .mg-mark-label { text-align:left; padding-left:26px; }
+  .mg-mark-label { position:relative; width:106px; text-align:left; }
+  .mg-mark.is-done .mg-mark-label { padding-left:15px; }
   .mg-mark .lbl-hover { display:none; }
   .mg-mark.is-done:hover .lbl-idle { display:none; }
   .mg-mark.is-done:hover .lbl-hover { display:inline; }
@@ -146,9 +147,9 @@
   .mg-contents-head { padding:30px 28px 24px; border-bottom:1px solid rgba(2,14,27,.12); display:flex; align-items:center; gap:18px; }
   .mg-contents-head h3 { margin:0; font-family:'EB Garamond',Georgia,serif; font-size:25px; font-weight:400; color:var(--navy); }
   .mg-remaining { font-size:13.5px; color:#7d8792; margin-top:6px; }
-  .mg-ring { position:relative; width:48px; height:48px; flex:none; }
-  .mg-ring svg { width:48px; height:48px; display:block; transform:rotate(-90deg); }
-  .mg-ring span { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:700; color:var(--navy); font-variant-numeric:tabular-nums; }
+  .mg-ring { position:relative; width:58px; height:58px; flex:none; }
+  .mg-ring svg { width:58px; height:58px; display:block; transform:rotate(-90deg); }
+  .mg-ring span { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:13.5px; font-weight:700; color:var(--navy); font-variant-numeric:tabular-nums; }
   .mg-list { padding:10px 14px 24px; display:flex; flex-direction:column; gap:2px; }
   .mg-row { display:flex; align-items:center; gap:14px; width:100%; padding:13px 14px; border:0; border-radius:3px; text-align:left; font-family:inherit; cursor:pointer; background:transparent; box-shadow:inset 0 0 0 transparent; transform:translateX(0); transition:background .18s ease,box-shadow .18s ease,transform .24s cubic-bezier(.16,.84,.24,1); }
   .mg-row:hover { background:#F5F3EF; box-shadow:inset 3px 0 0 rgba(224,123,42,.42); transform:translateX(3px); }
@@ -165,6 +166,20 @@
   .mg-row-num { display:block; margin-top:4px; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#98A2AC; }
   .mg-row-check { flex:none; width:22px; height:22px; border-radius:50%; background:var(--green); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; }
   .mg-row-dur { flex:none; font-size:13px; color:#7d8792; font-variant-numeric:tabular-nums; }
+  .mg-tile .ico-circle { display:none; }
+  .mg-row.is-locked .mg-tile .ico-circle { display:block; }
+  .mg-row.is-locked .mg-tile .ico-play { display:none; }
+  .mg-row.is-locked:hover .mg-tile .ico-circle { display:none; }
+  .mg-row.is-locked:hover .mg-tile .ico-play { display:block; }
+  .mg-rail-foot { margin:auto 28px 0; padding:16px 0 22px; border-top:1px solid rgba(2,14,27,.1); display:flex; justify-content:flex-end; }
+  .mg-reset-link { border:0; background:none; padding:0; font-family:inherit; font-size:13.5px; color:#98A2AC; cursor:pointer; display:inline-flex; align-items:center; gap:7px; transition:color .18s ease; }
+  .mg-reset-link:hover { color:var(--orange); }
+  .mg-reset-link svg { width:13px; height:13px; display:block; transition:transform .62s cubic-bezier(.32,.72,.28,1); }
+  .mg-reset-link:hover svg { transform:rotate(360deg); }
+  .mg-materials a { display:inline-flex; align-items:center; gap:7px; }
+  .mg-materials a svg { width:13px; height:13px; display:block; overflow:visible; }
+  .mg-materials a svg g { transform:translateY(-2px); transition:transform .22s cubic-bezier(.32,.72,.28,1); }
+  .mg-materials a:hover svg g { transform:translateY(-.5px); }
 
   /* ---------- cta + disclaimer ---------- */
   .mg-cta-wrap { max-width:1234px; margin:64px auto 0; padding:0 44px; }
@@ -303,26 +318,25 @@
     </div>
     <div class="mg-hero-cta">
       <button type="button" class="mg-btn-fill" id="mgResume">Start the course</button>
-      <button type="button" class="mg-btn-ghost" id="mgReset">Reset progress</button>
     </div>
   </div>
 </div>
 
 <!-- COURSE CARD -->
 <div class="mg-shell">
-  <div class="mg-card">
+  <div class="mg-card" id="mgCard">
     <div class="mg-main">
       <div class="mg-now"><span></span><span id="mgNowPlaying">Now playing · Lesson 01</span></div>
 
       <button type="button" class="mg-thumb-btn" id="mgThumbBtn">
         <div class="mg-thumb">
-          <img src="images/mark-video-thumb.jpg" alt="">
+          <img src="images/moneyguide-thumb.jpg" alt="">
           <div class="mg-scrim"></div>
           <div class="mg-play-wrap"><div class="mg-play">
             <span class="mg-play-ring"></span>
             <span class="mg-play-btn"><svg viewBox="0 0 24 24"><path d="M7 4.5l13 7.5-13 7.5z"></path></svg></span>
           </div></div>
-          <div class="mg-thumb-title"><span id="mgThumbTitle">Welcome to MoneyGuide</span></div>
+          <div class="mg-thumb-title"><span id="mgThumbTitle">MoneyGuide Overview &amp; First Steps</span></div>
           <div class="mg-thumb-foot">
             <span>
               <span class="mg-lesson-pill"><i></i><span id="mgThumbLesson">Lesson 01 of 08</span></span>
@@ -348,11 +362,11 @@
           <div class="t1">Worksheet &amp; quick-reference</div>
           <div class="t2" id="mgMaterialsNote"></div>
         </div>
-        <a href="#">Download</a>
+        <a href="#"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><g><path d="M7 1.6v8"></path><path d="M3.6 6.4L7 9.8l3.4-3.4"></path></g><path d="M1.8 12.4h10.4"></path></svg>Download</a>
       </div>
 
       <div class="mg-foot-row">
-        <div class="mg-upnext">Up next &nbsp;<strong id="mgUpNext"></strong></div>
+        <div class="mg-upnext">Up next &nbsp;<button type="button" id="mgUpNext" class="mg-upnext-link"></button></div>
         <button type="button" class="mg-mark" id="mgMark">
           <span class="mg-mark-box"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.4l3 3 6-6.4"></path></svg></span>
           <span class="mg-mark-label"><span class="lbl-idle" id="mgMarkLabel">Mark Complete</span><span class="lbl-hover">Uncheck</span></span>
@@ -375,6 +389,9 @@
         </div>
       </div>
       <div class="mg-list" id="mgList"></div>
+      <div class="mg-rail-foot">
+        <button type="button" class="mg-reset-link" id="mgReset"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 8a5.4 5.4 0 1 1-1.9-4.1"></path><path d="M13.6 1.9v3.3h-3.3"></path></svg>Reset course progress</button>
+      </div>
     </aside>
   </div>
 </div>
@@ -449,7 +466,7 @@
   var KEY = "smipc_mg_course_progress";
 
   var LESSONS = [
-    { title: "Welcome to MoneyGuide", dur: "3:40", vimeo: "1152687590",
+    { title: "MoneyGuide Overview & First Steps", dur: "3:40", vimeo: "1221653468", hash: "5599dae84c",
       desc: "A short orientation: what MoneyGuide is, how it fits alongside your Tamarac portfolio reporting, and how you and your advisor work in it together.",
       points: ["What MoneyGuide does — and what it doesn't", "How it differs from your performance reports", "Setting up your login and two-factor"] },
     { title: "Your Home Page Tour", dur: "5:15", vimeo: "1152687590",
@@ -536,6 +553,7 @@
 
     $("mgMaterialsNote").textContent = "Lesson " + pad(id) + " worksheet — open it alongside the video";
     $("mgUpNext").textContent = id === TOTAL ? "Final lesson" : LESSONS[id].title;
+    $("mgUpNext").disabled = id === TOTAL;
 
     var mark = $("mgMark");
     mark.className = "mg-mark" + (isDone(id) ? " is-done" : "");
@@ -557,9 +575,8 @@
       btn.className = "mg-row" + (current ? " is-current" : "") + (d ? " is-done" : "") + (locked ? " is-locked" : "");
       btn.innerHTML =
         '<span class="mg-tile">' +
-          (locked
-            ? '<svg viewBox="0 0 12 14" width="12" height="14"><path d="M3 6V4a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5"></path><rect x="1.5" y="6" width="9" height="7" rx="1.5" fill="currentColor"></rect></svg>'
-            : '<svg viewBox="0 0 11 13" width="11" height="13"><path d="M1.5 1 L10 6.5 L1.5 12 Z" fill="currentColor"></path></svg>') +
+          '<svg class="ico-circle" viewBox="0 0 14 14" width="12" height="12"><circle cx="7" cy="7" r="5.25" fill="none" stroke="currentColor" stroke-width="1.5"></circle></svg>' +
+          '<svg class="ico-play" viewBox="0 0 11 13" width="11" height="13" style="transform:translateX(1px)"><path d="M1.5 1 L10 6.5 L1.5 12 Z" fill="currentColor"></path></svg>' +
         '</span>' +
         '<span class="mg-row-txt"><span class="mg-row-title"></span><span class="mg-row-num">Lesson ' + pad(n) + '</span></span>' +
         (d ? '<span class="mg-row-check">&#10003;</span>' : '<span class="mg-row-dur">' + l.dur + '</span>');
@@ -575,6 +592,14 @@
     save(); render();
   });
 
+  $("mgUpNext").addEventListener("click", function () {
+    if (state.current >= TOTAL) return;
+    state.current = state.current + 1;
+    save(); render();
+    var el = document.getElementById("mgCard");
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 78, behavior: "smooth" });
+  });
+
   $("mgReset").addEventListener("click", function () {
     state = { done: [], current: 1 };
     save(); render();
@@ -583,7 +608,7 @@
   var overlay = $("mgOverlay"), iframe = $("mgIframe");
   function openVideo() {
     var cur = LESSONS[state.current - 1];
-    iframe.src = "https://player.vimeo.com/video/" + cur.vimeo + "?title=0&byline=0&portrait=0&dnt=1";
+    iframe.src = "https://player.vimeo.com/video/" + cur.vimeo + "?title=0&byline=0&portrait=0&dnt=1" + (cur.hash ? "&h=" + cur.hash : "");
     overlay.classList.add("open");
     document.body.style.overflow = "hidden";
   }
@@ -601,7 +626,9 @@
     var doneCount = state.done.length;
     var highest = doneCount ? Math.max.apply(null, state.done) : 0;
     state.current = doneCount >= TOTAL ? 1 : Math.min(highest + 1, TOTAL);
-    save(); render(); openVideo();
+    save(); render();
+    var el = document.getElementById("mgCard");
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 78, behavior: "smooth" });
   });
 
   $("mgBurger").addEventListener("click", function () { $("mgMenu").classList.toggle("open"); });
