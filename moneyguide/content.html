@@ -35,9 +35,9 @@
   .mg-nav > a, .mg-nav .mg-drop > a { color:#fff; font-size:13.5px; letter-spacing:.03em; text-transform:uppercase; white-space:nowrap; padding:40.5px 0; display:inline-block; transition:color .2s ease; }
   .mg-nav > a:hover, .mg-nav .mg-drop > a:hover { color:var(--orange); }
   .mg-drop { position:relative; }
-  .mg-drop-menu { position:absolute; top:100%; left:-14px;  background:var(--navy); padding:6px 0; box-shadow:0 14px 30px rgba(0,0,0,.4); opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; z-index:30; }
+  .mg-drop-menu { position:absolute; top:100%; left:-14px; min-width:214px; background:var(--navy); padding:6px 0; box-shadow:0 14px 30px rgba(0,0,0,.4); opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .18s ease, transform .18s ease, visibility .18s; z-index:30; }
   .mg-drop:hover .mg-drop-menu { opacity:1; visibility:visible; transform:translateY(0); }
-  .mg-drop-menu a { display:block; padding:10px 14px; color:#fff; font-size:14px; letter-spacing:-.01em; text-transform:uppercase; transition:color .2s ease; }
+  .mg-drop-menu a { display:block; white-space:nowrap; padding:10px 14px; color:#fff; font-size:14px; letter-spacing:-.01em; text-transform:uppercase; transition:color .2s ease; }
   .mg-drop-menu a:hover { color:var(--orange); }
   .mg-drop-menu a.is-current { color:var(--orange); }
   .mg-sep { color:#4a5766; font-size:14px; }
@@ -69,6 +69,13 @@
   .mg-hero-cta { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:30px; opacity:0; animation:mg-in .7s cubic-bezier(.22,.61,.36,1) 470ms forwards; }
   .mg-btn-fill { display:inline-flex; align-items:center; justify-content:center; gap:11px; border:0; background-color:var(--orange); background-image:linear-gradient(112deg,#fff 0 50%,rgba(255,255,255,0) 50.1% 100%); background-size:260% 100%; background-position:100% 0; background-repeat:no-repeat; color:#fff; font-family:inherit; font-size:16px; line-height:1.35; font-weight:700; padding:17px 26px; border-radius:999px; cursor:pointer; transition:background-position .24s linear,color .2s ease; }
   .mg-btn-fill:hover { background-position:0 0; color:var(--navy); }
+  .mg-btn-fill .ar { font-size:15px; -webkit-text-stroke:.6px currentColor; width:14px; flex:none; text-align:center; display:inline-block; transition:opacity .28s ease, transform .42s cubic-bezier(.16,.84,.24,1); }
+  .mg-btn-fill .lbl { display:inline-block; transform:translateX(-12.5px); transition:transform .42s cubic-bezier(.16,.84,.24,1); }
+  .mg-btn-fill .ar-l { opacity:0; transform:scale(.5); }
+  .mg-btn-fill .ar-r { opacity:1; transform:translateX(-12.5px) scale(1); }
+  .mg-btn-fill:hover .lbl { transform:translateX(5.5px); }
+  .mg-btn-fill:hover .ar-l { opacity:1; transform:translateX(5.5px) scale(1); }
+  .mg-btn-fill:hover .ar-r { opacity:0; transform:scale(.5); }
   .mg-btn-ghost { border:1px solid rgba(255,255,255,.34); background:transparent; color:rgba(255,255,255,.86); font-family:inherit; font-size:15px; font-weight:700; padding:16px 26px; border-radius:999px; cursor:pointer; transition:border-color .2s ease,color .2s ease; }
   .mg-btn-ghost:hover { border-color:var(--orange); color:var(--orange); }
 
@@ -317,7 +324,7 @@
       <span class="mg-pct" id="mgPct">0% complete</span>
     </div>
     <div class="mg-hero-cta">
-      <button type="button" class="mg-btn-fill" id="mgResume">Start the course</button>
+      <button type="button" class="mg-btn-fill" id="mgResume"><span class="ar ar-l">&#8594;</span><span class="lbl" id="mgResumeLabel">Start the course</span><span class="ar ar-r">&#8599;&#xFE0E;</span></button>
     </div>
   </div>
 </div>
@@ -563,7 +570,7 @@
     $("mgRingLabel").textContent = doneCount + "/" + TOTAL;
     $("mgRingArc").setAttribute("stroke-dasharray", (C * pct / 100).toFixed(1) + " " + C.toFixed(1));
 
-    $("mgResume").textContent = doneCount === 0 ? "Start the course" : (doneCount >= TOTAL ? "Rewatch from the start" : "Resume course");
+    $("mgResumeLabel").textContent = doneCount === 0 ? "Start the course" : (doneCount >= TOTAL ? "Rewatch from the start" : "Resume course");
 
     var list = $("mgList");
     list.innerHTML = "";
