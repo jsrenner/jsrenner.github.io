@@ -101,7 +101,7 @@
   .mg-thumb-btn:hover .mg-play-btn { background-position:0 0; box-shadow:inset 0 0 0 2px var(--orange); }
   .mg-thumb-btn:hover .mg-play-btn svg { fill:var(--orange); }
   .mg-thumb-title { position:absolute; left:34px; right:34px; top:36px; }
-  .mg-thumb-title span { display:block; max-width:20ch; font-family:'EB Garamond',Georgia,serif; font-size:40px; line-height:1.12; color:#fff; letter-spacing:-.01em; text-shadow:0 2px 18px rgba(2,14,27,.6); }
+  .mg-thumb-title span { display:block; max-width:17ch; font-family:'EB Garamond',Georgia,serif; font-size:40px; line-height:1.12; color:#fff; letter-spacing:-.01em; text-shadow:0 2px 18px rgba(2,14,27,.6); }
   .mg-thumb-foot { position:absolute; left:34px; right:34px; bottom:34px; display:flex; align-items:flex-end; justify-content:space-between; gap:22px; }
   .mg-lesson-pill { display:inline-flex; align-items:center; gap:8px; }
   .mg-lesson-pill i { width:7px; height:7px; border-radius:50%; background:var(--orange); }
@@ -128,8 +128,19 @@
   .mg-materials a { flex:none; font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
   .mg-materials a:hover { color:var(--orange); }
 
-  .mg-foot-row { margin-top:28px; padding-top:24px; border-top:1px solid rgba(2,14,27,.12); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
-  .mg-upnext { font-size:13.5px; color:#7d8792; }
+  .mg-foot-row { margin-top:28px; padding-top:24px; border-top:1px solid rgba(2,14,27,.12); display:grid; align-items:center; grid-template-columns:minmax(0,1fr) auto minmax(0,0fr); transition:grid-template-columns .46s cubic-bezier(.22,.61,.36,1); }
+  .mg-foot-row.is-done { grid-template-columns:minmax(0,0fr) auto minmax(0,1fr); }
+  .mg-next-cell { display:flex; justify-content:flex-end; white-space:nowrap; overflow:visible; opacity:0; transition:opacity .09s ease; }
+  .mg-foot-row.is-done .mg-next-cell { opacity:1; transition:opacity .62s ease .26s; }
+  .mg-foot-row.is-last .mg-next-cell { opacity:0; }
+  .mg-nextlink { display:inline-flex; align-items:center; gap:9px; border:0; background:none; padding:0; margin-left:18px; margin-right:-11px; font-family:inherit; font-size:14.5px; font-weight:700; color:var(--navy); cursor:pointer; pointer-events:none; transition:color .18s ease; }
+  .mg-foot-row.is-done:not(.is-last) .mg-nextlink { pointer-events:auto; }
+  .mg-nextlink:hover { color:var(--orange); }
+  .mg-nextlink .kicker { font-size:13px; font-weight:700; letter-spacing:.01em; color:#98A2AC; transform:translate(3px,1px); }
+  .mg-nextlink svg { width:15px; height:12px; display:block; transition:transform .24s cubic-bezier(.32,.72,.28,1); }
+  .mg-nextlink:hover svg { transform:translateX(4px); }
+  .mg-upnext { font-size:13.5px; color:#7d8792; white-space:nowrap; overflow:hidden; padding-right:16px; opacity:1; transition:opacity .24s ease; }
+  .mg-foot-row.is-done .mg-upnext { opacity:0; }
   .mg-upnext-link { border:0; background:none; padding:0; font-family:inherit; font-size:13.5px; font-weight:700; color:var(--navy); cursor:pointer; text-decoration:none; transition:color .18s ease; }
   .mg-upnext-link:hover { color:var(--orange); }
 
@@ -237,6 +248,9 @@
   .mg-video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
 
   @media (max-width:1080px) { .mg-nav { display:none; } .mg-mobile { display:flex; } }
+  @media (max-width:1180px) {
+    .mg-thumb-title span { font-size:30px; max-width:13ch; }
+  }
   @media (max-width:1000px) {
     .mg-card { grid-template-columns:1fr; }
     .mg-contents { border-left:0; border-top:1px solid rgba(2,14,27,.12); }
@@ -248,10 +262,20 @@
     .mg-h1 { font-size:36px; }
     .mg-shell { padding-left:16px; padding-right:16px; }
     .mg-main { padding:22px 20px 26px; }
-    .mg-thumb-title span { font-size:26px; }
-    .mg-thumb-title { top:24px; left:20px; right:20px; }
-    .mg-thumb-foot { left:20px; right:20px; bottom:20px; }
+    .mg-thumb-title { top:18px; left:20px; right:20px; }
+    .mg-thumb-title span { font-size:20px; max-width:13ch; line-height:1.18; }
+    .mg-thumb-foot { left:20px; right:20px; bottom:14px; align-items:center; }
+    .mg-lesson-pill span { font-size:10.5px; letter-spacing:.12em; }
+    .mg-thumb-meta { display:none; }
+    .mg-badge { display:none; }
+    .mg-play { width:46px; height:46px; }
+    .mg-play-btn svg { width:19px; height:19px; }
     .mg-materials { flex-direction:column; align-items:flex-start; }
+    .mg-foot-row { grid-template-columns:1fr !important; row-gap:14px; justify-items:start; }
+    .mg-foot-row > div:last-child { justify-content:flex-start; }
+    .mg-foot-row.is-done > div:first-child { display:none; }
+    .mg-foot-row:not(.is-done) > div:last-child { display:none; }
+    .mg-nextlink { margin:0 !important; }
   }
 </style>
 </head>
@@ -373,11 +397,12 @@
       </div>
 
       <div class="mg-foot-row">
-        <div class="mg-upnext">Up next &nbsp;<button type="button" id="mgUpNext" class="mg-upnext-link"></button></div>
+        <div class="mg-upnext">Up next: &nbsp;<button type="button" id="mgUpNext" class="mg-upnext-link"></button></div>
         <button type="button" class="mg-mark" id="mgMark">
           <span class="mg-mark-box"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.4l3 3 6-6.4"></path></svg></span>
           <span class="mg-mark-label"><span class="lbl-idle" id="mgMarkLabel">Mark Complete</span><span class="lbl-hover">Uncheck</span></span>
         </button>
+        <div class="mg-next-cell"><button type="button" class="mg-nextlink" id="mgNextLink"><span class="kicker">Up next:</span><span id="mgNextTitle"></span><svg viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13"></path><path d="M9.6 1.6L14 6l-4.4 4.4"></path></svg></button></div>
       </div>
     </div>
 
@@ -562,6 +587,10 @@
     $("mgUpNext").textContent = id === TOTAL ? "Final lesson" : LESSONS[id].title;
     $("mgUpNext").disabled = id === TOTAL;
 
+    var footRow = document.querySelector(".mg-foot-row");
+    footRow.className = "mg-foot-row" + (isDone(id) ? " is-done" : "") + (id === TOTAL ? " is-last" : "");
+    $("mgNextTitle").textContent = id === TOTAL ? "" : LESSONS[id].title;
+
     var mark = $("mgMark");
     mark.className = "mg-mark" + (isDone(id) ? " is-done" : "");
     $("mgMarkLabel").textContent = isDone(id) ? "Completed" : "Mark Complete";
@@ -597,6 +626,14 @@
     var id = state.current;
     state.done = isDone(id) ? state.done.filter(function (d) { return d !== id; }) : state.done.concat([id]);
     save(); render();
+  });
+
+  $("mgNextLink").addEventListener("click", function () {
+    if (state.current >= TOTAL) return;
+    state.current = state.current + 1;
+    save(); render();
+    var el = document.getElementById("mgCard");
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 78, behavior: "smooth" });
   });
 
   $("mgUpNext").addEventListener("click", function () {
