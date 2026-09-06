@@ -394,7 +394,7 @@
                   </sc-if>
                 </div>
               </sc-for>
-              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted2);font-weight:700;margin-top:6px">Income</div>
+              <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink);font-weight:700;margin-top:14px;padding:7px 10px;background:var(--c-chip);border:1px solid var(--c-chipb);border-left:3px solid #31A6E6">Income</div>
               <div style="display:grid;gap:6px">
                 <button onClick="{{ toggleSpouse }}" style="{{ spouseStyle }}">
                   <span>{{ spouseLabel }}</span>
@@ -419,7 +419,7 @@
                   </sc-if>
                 </div>
               </sc-for>
-              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted2);font-weight:700;margin-top:6px">NuLu syndication</div>
+              <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink);font-weight:700;margin-top:14px;padding:7px 10px;background:var(--c-chip);border:1px solid var(--c-chipb);border-left:3px solid #31A6E6">NuLu syndication</div>
               <sc-for list="{{ nuluSliders }}" as="k" hint-placeholder-count="3">
                 <div style="border-top:1px solid var(--c-border);padding-top:9px">
                   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 8px;font-size:12px;color:var(--c-text2);line-height:1.3;margin-bottom:7px">
@@ -439,7 +439,7 @@
                 <button onClick="{{ toggleNuluToShares }}" style="{{ nuluToSharesStyle }}">{{ nuluToSharesLabel }}</button>
               </sc-if>
               <div style="font-size:12px;color:var(--c-muted2);line-height:1.55;text-wrap:pretty">{{ nuluNote }}</div>
-              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-muted2);font-weight:700;margin-top:6px">Emergency fund &amp; IRA</div>
+              <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink);font-weight:700;margin-top:14px;padding:7px 10px;background:var(--c-chip);border:1px solid var(--c-chipb);border-left:3px solid #31A6E6">Emergency fund &amp; IRA</div>
               <div style="font-size:12px;color:var(--c-muted2);line-height:1.55;text-wrap:pretty">{{ bucketsNote }}</div>
               <sc-for list="{{ bucketSliders }}" as="k" hint-placeholder-count="6">
                 <div style="border-top:1px solid var(--c-border);padding-top:9px">
@@ -1129,7 +1129,7 @@ const presetCapital = (p, st) => p.dollar
   ? (Math.max(st.customCashT,0) + Math.max(st.customHelocT,0)) / 10 * st.price
   : p.tenths ? p.tenths / 10 * st.price
   : p.set.reduce((a,k) => a + srcAmount(k, st), 0);
-const BASE = { price:206000, payout:3700, growth:2, taxRate:16, helocRate:7, salary:97000, bonus:30000, horizon:24,
+const BASE = { price:206000, payout:3700, growth:2, stepMonth:12, taxRate:16, helocRate:7, salary:97000, bonus:30000, horizon:24,
   // Aug 2026 paystub: $4,032.60 gross semi-monthly ($96,782/yr) less $728.45 of withholding
   // (occupational, federal, SS, Medicare, KY) = 18.06% all-in, less $99.12 of Roth 401(k),
   // nets $3,205.03 a check — $6,410/mo deposited. The Roth line is savings, not tax.
@@ -1509,12 +1509,15 @@ class Component extends DCLogic {
     const now = at(1), later = at(g);
 
     // payoff simulation
+    const stepMo = Math.max(0, Math.round(st.stepMonth ?? 12));
     let bal = heloc, months = null, balAt24 = heloc, stalled = false, intToHorizon = 0, intTotal = 0;
     const sched = [heloc], intAt = [0];
     const snap = (mo) => { sched[mo] = Math.max(bal, 0); intAt[mo] = intTotal; };
     if (heloc > 0) {
       for (let mo = 1; mo <= 480; mo++) {
-        const gross = mo > st.horizon ? later.gross : now.gross;
+        // Earnings step up at the month you set (default 12 — the start of year 2), so that
+        // year's distributions service the loan at the higher level from then on.
+        const gross = mo > stepMo ? later.gross : now.gross;
         const i = bal * r / 12 * (1 - ded);
         intTotal += i;
         if (mo <= st.horizon) intToHorizon += i;
@@ -2067,9 +2070,10 @@ class Component extends DCLogic {
       const lumpLeft = lumpHere ? Math.max(m.nuluNet - m.balAtMonth(st.nuluExitMonths - 1), 0) : 0;
       // The draft that applies DURING this card's year, even if the loan clears part-way through.
       const drIntGross = m.ded > 0 ? Math.max(s.helocInt, 0) / (1 - m.ded) : Math.max(s.helocInt, 0);
-      // Inside the horizon the schedule runs on TODAY's distributions - the doubled payout does
-      // not arrive until after the horizon, so the draft must not use s.gross inside it.
-      const drGross = hw1 <= st.horizon ? m.now.gross : s.gross;
+      // The draft runs on whichever payout is in force for most of this card's year.
+      const drGross = s.mult === 1
+        ? ((st.stepMonth ?? 12) <= 6 ? s.gross : m.now.gross)
+        : ((st.stepMonth ?? 12) <= 18 ? s.gross : m.now.gross);
       const drPrin = Math.max((drGross * (1 - m.distTaxRate) - Math.max(s.helocInt, 0)) * m.share, 0);
       const openInWin = hbOpen > 0;
       const drMo = loanOpenAt(s) ? helocCashOutOf(s) : (openInWin ? drIntGross + drPrin : 0);
@@ -2102,7 +2106,8 @@ class Component extends DCLogic {
                 + (drEnds ? 'It runs through month ' + m.months + ', when the balance clears, and then stops. ' : '')
                 + 'The least you could draft and still clear by month ' + autopayDraft.N + ' is ' + money(autopayDraft.level) + '/mo'
                 + (autopayDraft.L > 0 && autopayDraft.N >= autopayDraft.E ? ', with the ' + money(autopayDraft.L) + ' NuLu exit sent separately as a one-off principal payment at month ' + autopayDraft.E : '')
-                + '; drafting this larger figure pulls the payoff earlier.') }] : []),
+                + '; drafting this larger figure pulls the payoff earlier.'
+                + (drGross !== s.gross ? ' Note the draft is sized on TODAY\u2019s ' + money(m.now.gross) + '/mo of distributions, not the ' + money(s.gross) + '/mo this card shows: the doubled payout is not modeled to arrive until after month ' + st.horizon + ', and the loan is gone by then. At ' + st.payoffShare + '% of the doubled payout the draft would be ' + money(drIntGross + Math.max((s.gross * (1 - m.distTaxRate) - Math.max(s.helocInt, 0)) * m.share, 0)) + '/mo.' : '')) }] : []),
           { k:'avgint', label:'HELOC interest charged, average month in year ' + yrN,
             val: money(s.mult === 1 ? m.avgInt1 : m.avgInt2) + '/mo net', color:'#E07575',
             note:'The balance falls every month, so the interest does with it. This card charges the true average of the months in year ' + yrN
@@ -2550,7 +2555,11 @@ class Component extends DCLogic {
         note:'Everything you buy stacks on top of this. The comparison lines below measure the change against these shares alone, so the model never credits a purchase with income you already have.' },
       { key:'payout', label:'Payout per share / month', min:1500, max:8000, step:100, display: money(st.payout), num:true },
       { key:'growth', label:'Year-2 growth multiple', min:0.5, max:3, step:0.1, display: st.growth.toFixed(1) + '×' },
-      { key:'horizon', label:'Months until doubling', min:12, max:60, step:3, display: st.horizon + ' mo' },
+      { key:'stepMonth', label:'Month the payout steps up', min:0, max:48, step:1,
+        display: st.stepMonth === 0 ? 'immediately' : 'month ' + st.stepMonth + ' · ' + (st.stepMonth / 12).toFixed(1) + ' yr from today',
+        note:'When the ' + st.growth.toFixed(1) + '× earnings arrive. Default is month 12 — the start of year 2. The HELOC payoff schedule runs on today’s payout up to this month and the higher one after it.' },
+      { key:'horizon', label:'Near-term window measured', min:12, max:60, step:3, display: st.horizon + ' mo',
+        note:'Only sets how far the near-term balance and interest figures are measured — it does not control when earnings step up.' },
       { key:'valWindow', label:'Years in the price formula', min:1, max:6, step:1, display: st.valWindow + ' yr · yr-2 ' + money(st.price * m.later.priceMult) + ' vs ' + money(st.price * g) },
       ...(st.ptetOn ? [{ key:'stateRate', label:'State points the partnership already paid', min:0, max:8, step:0.1, display: st.stateRate + '% credited back on Form PTET-CR',
         note:'Marathon\u2019s share of SMI\u2019s Kentucky and Indiana income is taxed at the entity level and credited back to you, so the distributions carry no personal state tax.' }] : []),
@@ -2749,7 +2758,7 @@ class Component extends DCLogic {
       openLong: st.open.longterm, tLong: this.tog('longterm'), hdrLong: hdr(st.open.longterm), chevLong: chev(st.open.longterm),
       sumLong: `${money(st.roth401Yr)} yours · ${st.k401Pct.toFixed(2)}% match · into the ${money(Math.max(st.retireGross,0))} balance`,
       longNote: `Two contribution streams, one balance. Your ${money(st.roth401Yr/24)} a check comes out of take-home; the ${money(matchYr)}/yr match does not. Both compound into the ${money(Math.max(st.retireGross, 0))} retirement balance in Funding sources — your 401(k) and rollover IRA combined.`,
-      shareSliders: sliderDefs.filter(s => ['ownedShares','price','payout','growth','horizon','valWindow'].includes(s.key)),
+      shareSliders: sliderDefs.filter(s => ['ownedShares','price','payout','growth','stepMonth','horizon','valWindow'].includes(s.key)),
       debtSliders: sliderDefs.filter(s => ['currentAge','medExp','charity','mortInt','propTax','saltCap','kyRate','localRate','kids','fedWhRate','qbiOtherLoss','stepUpPct','amortYears','existingPaid','stateRate'].includes(s.key)),
       taxViews: [
         { key:'k1', name:'Off my 2025 K-1', sub:'743(b) step-up · QBI net of NuLu and consulting losses',
