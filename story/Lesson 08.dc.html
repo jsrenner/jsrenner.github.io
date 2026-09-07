@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<script>
+  if (sessionStorage.getItem("__story_authed") !== "1") {
+    window.location.replace("./index.html");
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Libre+Franklin:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./glossary-term.js"></script>
+<script src="./scripture-ref.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #14130f; }
+  * { box-sizing: border-box; }
+  a { color: oklch(0.78 0.12 72); text-decoration: none; }
+  a:hover { color: oklch(0.88 0.10 72); }
+  ::selection { background: oklch(0.74 0.12 72 / 0.3); }
+  summary { cursor: pointer; }
+  summary::marker { content: ""; }
+  image-slot#l08-hero::part(empty) { justify-content: flex-start; padding-top: 22px; opacity: 0.28; }
+</style>
+</helmet>
+
+<div style="background:#14130f;color:#ece7db;font-family:'Libre Franklin',system-ui,sans-serif;font-weight:300;min-height:100vh;">
+
+  <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:28px;padding:14px 40px;background:rgba(20,19,15,0.88);backdrop-filter:blur(14px);border-bottom:1px solid #2b2921;">
+    <a href="Lesson 01.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#ece7db;">THE CHRISTIAN STORY</a>
+    <div style="flex:1;display:flex;align-items:center;gap:14px;">
+      <div style="flex:1;height:2px;background:#2b2921;position:relative;">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:22.2%;background:oklch(0.74 0.12 72);"></div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9c9689;">08 / 36</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <div onClick="{{ toggleMenu }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#c4bdae;padding:7px 13px;border:1px solid #34322a;cursor:pointer;user-select:none;white-space:nowrap;" style-hover="color:#ece7db;border-color:#948D7F;">ALL LESSONS {{ menuSign }}</div>
+      <a href="Lesson 07.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">← 07</a>
+      <a href="Lesson 09.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">09 →</a>
+      <a href="Timeline.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">TIMELINE</a>
+      <a href="Lesson Slides.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#14130f;background:oklch(0.74 0.12 72);padding:7px 14px;border:1px solid oklch(0.74 0.12 72);" style-hover="background:oklch(0.82 0.12 72);border-color:oklch(0.82 0.12 72);">SLIDES ↓</a>
+    </div>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;top:53px;z-index:49;background:rgba(20,19,15,0.97);backdrop-filter:blur(16px);border-bottom:1px solid #34322a;max-height:calc(100vh - 60px);overflow-y:auto;">
+      <div style="max-width:1440px;margin:0 auto;padding:18px 40px 22px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#D89D4D;">THE CHRISTIAN STORY · 36 LESSONS</div>
+          <div onClick="{{ toggleMenu }}" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#6b665a;cursor:pointer;" style-hover="color:#ece7db;">CLOSE ✕</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <sc-for list="{{ menuParts }}" as="p" hint-placeholder-count="6">
+            <div style="background:#171610;padding:13px 13px 15px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.16em;color:#6b665a;margin-bottom:3px;">{{ p.roman }}</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.12em;color:#948D7F;margin-bottom:9px;">{{ p.name }}</div>
+              <div style="display:grid;gap:1px;">
+                <sc-for list="{{ p.items }}" as="l" hint-placeholder-count="6">
+                  <a href="{{ l.href }}" style="display:grid;grid-template-columns:19px minmax(0,1fr);gap:7px;align-items:baseline;padding:2px 0;color:{{ l.color }};text-decoration:none;pointer-events:{{ l.pointer }};" style-hover="color:#ece7db;">
+                    <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:{{ l.numColor }};">{{ l.n }}</span>
+                    <span style="font-family:'Libre Franklin',sans-serif;font-size:11.5px;line-height:1.35;padding:3px 7px;box-shadow:{{ l.rule }};" style-hover="background:#241f18;box-shadow:inset 2px 0 0 oklch(0.74 0.12 72);">{{ l.title }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:13px;">
+          <a href="Timeline.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #34322a;padding:8px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">MASTER TIMELINE →</a>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#8b8377;border:1px solid #3a372e;padding:8px 12px;">DIMMED LESSONS NOT YET BUILT</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:relative;display:flex;align-items:flex-end;min-height:66vh;overflow:hidden;border-bottom:1px solid #2b2921;">
+    <svg width="100%" height="100%" style="position:absolute;inset:0;">
+      <defs><pattern id="h8stripe" width="12" height="12" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="12" stroke="#2e2b22" stroke-width="5"></line></pattern></defs>
+      <rect width="100%" height="100%" fill="#1a1914"></rect>
+      <rect width="100%" height="100%" fill="url(#h8stripe)"></rect>
+    </svg>
+    <div style="position:absolute;inset:0;opacity:{{ heroImageOpacity }};">
+      <image-slot id="l08-hero" shape="rect" fit="cover" placeholder="Drop hero image — mud bricks stacked in hard light / monumental Egyptian stonework from below"></image-slot>
+    </div>
+    <svg width="100%" height="100%" style="position:absolute;inset:0;pointer-events:none;opacity:{{ heroStripeOpacity }};" aria-hidden="true">
+      <defs><pattern id="h8stripe-top" width="14" height="14" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="14" stroke="#6d6552" stroke-width="6"></line></pattern></defs>
+      <rect width="100%" height="100%" fill="url(#h8stripe-top)"></rect>
+    </svg>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top, #14130f 4%, rgba(20,19,15,0.55) 55%, rgba(20,19,15,0.2) 100%);opacity:{{ heroScrimOpacity }};"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:{{ heroOverlayColor }};opacity:{{ heroOverlayOpacity }};mix-blend-mode:{{ heroOverlayBlend }};"></div>
+    <div style="position:relative;width:100%;padding:96px 40px;max-width:1180px;margin:0 auto;pointer-events:none;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.24em;color:oklch(0.74 0.12 72);">LESSON 08</span>
+        <span style="width:34px;height:1px;background:#4a463b;"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#9c9689;">CRY · HEARING · LIBERATION · FORMATION</span>
+      </div>
+      <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(48px,7vw,104px);line-height:0.95;letter-spacing:-0.02em;margin:0 0 22px;max-width:16ch;">Exodus: The God Who Takes Sides</h1>
+      <p style="font-size:20px;line-height:1.55;color:#c4bdae;max-width:60ch;margin:0 0 16px;text-wrap:pretty;">A family has become a slave population. Pharaoh turns fear into policy. The enslaved cry out — and the biblical story says God hears them.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.35;color:#ece7db;max-width:70ch;margin:0 0 14px;">What kind of God notices suffering from below rather than simply protecting power from above?</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:#948D7F;margin:0;">EXODUS BEGINS WITH A CRY, NOT A CREED.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #2b2921;">
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">BIBLICAL</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Exodus 1–15</div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">WHEN</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;"><g-term term-key="exodus-tradition">Exodus Tradition</g-term></div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">WHERE</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Egypt · Wilderness · Sea</div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">CONSCIOUSNESS</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Slavery → Liberation → Trust</div>
+    </div>
+    <div style="padding:22px 28px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">VOICES OF THE TRADITION</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;"><g-term term-key="gregory-nyssa" align="right">Gregory of Nyssa</g-term> · <g-term term-key="augustine" align="right">Augustine</g-term> · <g-term term-key="mlk" align="right">King</g-term></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0;max-width:1440px;margin:0 auto;">
+
+    <div style="padding:0 clamp(24px,5vw,88px);border-right:1px solid #2b2921;">
+
+      <div style="padding:72px 0 0;">
+        <div id="the-story" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">01</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE STORY</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Genesis ends with Joseph saving Egypt from famine. Exodus opens with one sentence that undoes all of it.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin:0 0 30px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,42px);line-height:1.22;color:#ece7db;margin:0 0 14px;max-width:26ch;">“A new king arose over Egypt who did not know Joseph.”</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#9c9689;"><s-ref ref-key="ex-1-8-14">EXODUS 1:8</s-ref></div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;"><g-term term-key="pharaoh">Pharaoh</g-term> looks at an immigrant population and sees a threat. What follows is not an outburst. It is a sequence.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#c4bdae;">Fear becomes policy.</div>
+          <div style="background:#1a1914;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#c4bdae;">Policy becomes forced labor.</div>
+          <div style="background:#1a1914;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">Forced labor becomes population control.</div>
+          <div style="background:#1c1b16;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#ece7db;">Population control becomes <s-ref ref-key="ex-1-15-22">the killing of children</s-ref>.</div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,44px);line-height:1.2;color:#ece7db;margin:0 0 26px;max-width:24ch;">Pharaoh turns fear into a system.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:30px;">
+          <div style="background:#171610;padding:24px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:10px;">LESSON 06 · BABEL</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#9c9689;">fear organizing civilization</div>
+          </div>
+          <div style="background:#171610;padding:24px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:10px;">LESSON 08 · EGYPT</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">fear organizing empire</div>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">The Israelites cry out under slavery. Exodus does not say they first become morally worthy. It says <s-ref ref-key="ex-2-23-25">God heard.</s-ref></p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 30px;max-width:28ch;">The rescue begins because suffering is heard.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">God calls Moses. Pharaoh refuses. Plagues dismantle Egypt's security. <s-ref ref-key="ex-12">Passover</s-ref> marks the night of departure. <s-ref ref-key="ex-14-21-31">The sea opens.</s-ref> The enslaved walk out.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.2vw,58px);line-height:1.14;color:#ece7db;margin:0;max-width:18ch;">Liberation comes before legislation.</p>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-world" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">02</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE WORLD</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.76 0.10 235);border:1px solid oklch(0.50 0.07 235);padding:4px 9px;margin-bottom:20px;">HISTORICAL FACT</div>
+        </sc-if>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,36px);line-height:1.26;color:#ece7db;margin:0 0 22px;max-width:30ch;">In the ancient world, kings were the guarantors of order.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">A DIVINE KING</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Pharaoh was understood as divine or semi-divine, personally responsible for upholding <g-term term-key="maat">ma'at</g-term> — right order in society and cosmos. To resist him was, in Egyptian terms, to side with chaos.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">BRICKS AND MONUMENTS</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Egyptian building ran on organized labor at enormous scale — mud brick with straw, quotas, overseers, tallies. Exodus 5 reads like an administrative dispute because that is what it is.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">THE THREAT NARRATIVE</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">“They may join our enemies” is one of the oldest political arguments there is. Exodus records it in Pharaoh's own mouth, which is why the story keeps sounding contemporary.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">WHAT THE RECORD SHOWS</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Semitic populations in Egypt, forced labor and vast state building projects are all well attested. The <g-term term-key="exodus-tradition">Exodus event itself</g-term> is debated in date and scale — Egyptian monuments recorded victories, not departures.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">Exodus tells the story from the opposite direction: what looks like order from the palace can feel like oppression from the brick pits.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0;max-width:22ch;">Every empire tells a story about order. Exodus asks who is paying for it.</p>
+        </div>
+        <div style="position:relative;height:300px;overflow:hidden;margin-bottom:16px;border:1px solid #2b2921;">
+          <svg width="100%" height="100%" style="position:absolute;inset:0;">
+            <defs><pattern id="m8stripe" width="10" height="10" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="10" stroke="#2b2921" stroke-width="4"></line></pattern></defs>
+            <rect width="100%" height="100%" fill="#171610"></rect><rect width="100%" height="100%" fill="url(#m8stripe)"></rect>
+          </svg>
+          <div style="position:absolute;inset:0;">
+            <image-slot id="l08-map" shape="rect" fit="cover" placeholder="Drop image — Egyptian tomb painting of brickmaking (Rekhmire), or a map of the Delta, Sinai and the wilderness route"></image-slot>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">THIS QUESTION RETURNS AT ROME, AT CONSTANTINE, AND EVERY TIME THE CHURCH HOLDS POWER</div>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <div id="the-movement" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">◆</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE MOVEMENT</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">PHARAOH FEARS ISRAEL</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">“they are becoming too numerous”</div></div>
+          <div style="background:#1a1914;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">FORCED LABOR</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">bricks, quotas, bitterness</div></div>
+          <div style="background:#1a1914;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">CHILDREN TARGETED</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">and two midwives refuse</div></div>
+          <div style="background:#1c1b16;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);">THE PEOPLE CRY OUT</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">no creed, no petition — a groan</div></div>
+          <div style="background:#1a1914;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">MOSES CALLED</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">a fugitive, at a bush, arguing</div></div>
+          <div style="background:#1a1914;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">PLAGUES</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">Egypt's securities dismantled one by one</div></div>
+          <div style="background:#1a1914;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">PASSOVER</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">a meal eaten ready to leave</div></div>
+          <div style="background:#1c1b16;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);">SEA · LIBERATION</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">the water that should have drowned them becomes the road</div></div>
+          <div style="background:#1a1914;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">WILDERNESS</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">free, and <s-ref ref-key="num-11-4-6">longing for Egypt</s-ref></div></div>
+          <div style="background:#171610;padding:18px 26px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#6b665a;">NEXT → SINAI</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#9c9689;">and only now, a law</div></div>
+        </div>
+        <a href="Timeline.dc.html#era-1200bc" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#948D7F;border:1px solid #34322a;padding:8px 12px;display:inline-block;" style-hover="color:#ece7db;border-color:#948D7F;">VIEW IN “EVERYTHING, HAPPENING AT ONCE” →</a>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <h3 id="pharaoh" style="scroll-margin-top:80px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;line-height:1.15;color:#ece7db;margin:0 0 20px;">Pharaoh: when fear becomes policy</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">HE DOES NOT BEGIN WITH</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#9c9689;margin:0;">“I hate these people.”</p>
+          </div>
+          <div style="background:#1c1b16;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:14px;">HE BEGINS WITH</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#ece7db;margin:0;">“They are becoming too numerous.”</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Fear produces a logic, and the logic sounds reasonable from inside.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#171610;padding:16px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">There may not be enough.</div>
+          <div style="background:#171610;padding:16px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">They may become too powerful.</div>
+          <div style="background:#171610;padding:16px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">They may join our enemies.</div>
+          <div style="background:#171610;padding:16px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">We must control them before they threaten us.</div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0 0 26px;max-width:22ch;">Scarcity + fear + power = domination.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">Lesson 05 introduced the suspicion that there may not be enough and that trust is dangerous. Exodus shows that consciousness scaled into government.</p>
+        <p style="font-size:19px;line-height:1.72;color:#9c9689;max-width:66ch;margin:0;text-wrap:pretty;">Which is why Pharaoh is more than one bad ruler. He becomes the Bible's standing symbol of what happens when fear and power reinforce each other — and the text pointedly never gives him a name.</p>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <h3 id="god-hears" style="scroll-margin-top:80px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;line-height:1.15;color:#ece7db;margin:0 0 20px;">God hears the cry</h3>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">The rescue does not begin with Israel solving its own oppression. It begins with <s-ref ref-key="ex-2-23-25">four verbs</s-ref>.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1c1b16;padding:30px 22px;font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,34px);color:#ece7db;">heard</div>
+          <div style="background:#1c1b16;padding:30px 22px;font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,34px);color:#ece7db;">remembered</div>
+          <div style="background:#1c1b16;padding:30px 22px;font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,34px);color:#ece7db;">saw</div>
+          <div style="background:#1c1b16;padding:30px 22px;font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,34px);color:#ece7db;">knew</div>
+        </div>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);line-height:1.24;color:#ece7db;margin:0 0 14px;max-width:30ch;">“I have seen the affliction of my people… I know their sorrows. I have come down to deliver them.”</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#9c9689;"><s-ref ref-key="ex-3-7-8">EXODUS 3:7–8</s-ref></div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,48px);line-height:1.18;color:#ece7db;margin:0 0 22px;max-width:20ch;">Salvation begins with being seen.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0;text-wrap:pretty;">This becomes one of the Bible's most enduring claims about God: <span style="color:#ece7db;">suffering matters to God.</span> Not eventually, and not as a lesson — it registers, and it moves him.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-text" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">03</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">WORDS THAT MATTER</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">יְהוָה</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">YHWH — THE DIVINE NAME</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">Moses asks for a name. The answer is bound up with the Hebrew verb <em style="font-style:italic;">to be</em>.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 10px;"><em style="font-style:italic;">Ehyeh asher ehyeh</em> has been translated several ways — I AM WHO I AM · I WILL BE WHAT I WILL BE · some mixture of both. Hebrew tense does not map cleanly onto English.</p>
+              <p style="font-size:14px;line-height:1.7;color:#c4bdae;margin:0 0 10px;">So the point should not be reduced to one English philosophical definition. Read it in context: two verses earlier God has already said <span style="color:#ece7db;">“I will be with you.”</span></p>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;">READ <s-ref ref-key="ex-3-13-15">EXODUS 3:13–15</s-ref></div>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">פֶּסַח</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">PESACH — PASSOVER</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">The central Jewish festival remembering liberation from slavery in Egypt.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 10px;">Christian interpretation later connects <g-term term-key="passover">Passover</g-term> with Jesus' death. But the feast first belongs to Israel's story of liberation — and that order matters, because it decides what the cross is understood to free people from.</p>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;">READ <s-ref ref-key="ex-12">EXODUS 12</s-ref></div>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">גָּאַל</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">GA'AL — REDEEM</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">To reclaim, rescue, release, or act on behalf of someone trapped in loss or bondage.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 10px;">Biblical <g-term term-key="redemption">redemption</g-term> language is concrete before it becomes abstract. A <em style="font-style:italic;">go'el</em> was the relative obligated to buy back a family member's land or freedom.</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.3;color:#ece7db;margin:0;">Redemption begins as liberation language.</p>
+            </div>
+          </details>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;">
+          <span>ALSO IN THIS LESSON</span>
+          <span style="color:#c4bdae;letter-spacing:0;font-family:'Libre Franklin',sans-serif;font-size:13px;"><g-term term-key="pharaoh">Pharaoh</g-term> · <g-term term-key="passover">Passover</g-term> · <g-term term-key="redemption">redemption</g-term> · <g-term term-key="plague">plague</g-term> · <g-term term-key="hardening">hardening of heart</g-term> · <g-term term-key="covenant">covenant</g-term> · <g-term term-key="liberation-theology">liberation theology</g-term></span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="ex-1-8-14">Exodus 1:8–14</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="ex-2-23-25">Exodus 2:23–25</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="ex-3-7-8">Exodus 3:7–8</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="ex-12">Exodus 12</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="ex-14-21-31">Exodus 14</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="ex-20-2">Exodus 20:2</s-ref></span>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-consciousness-shift" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">04</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE CONSCIOUSNESS SHIFT</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;border:1px solid #2b2921;background:#1a1914;margin-bottom:26px;">
+          <div style="padding:24px 26px;border-right:1px solid #2b2921;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:8px;">FROM</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#9c9689;">Power determines worth</div>
+          </div>
+          <div style="padding:24px 26px;border-right:1px solid #2b2921;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:8px;">THROUGH</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#c4bdae;">The cry of the powerless matters</div>
+          </div>
+          <div style="padding:24px 26px;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:8px;">TOWARD</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#ece7db;">Liberation creates a people</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:16px;">EGYPT'S HIERARCHY SAYS</div>
+            <div style="display:grid;gap:8px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#9c9689;">
+              <div>Pharaoh matters.</div>
+              <div>Slaves serve.</div>
+              <div>Power flows downward.</div>
+            </div>
+          </div>
+          <div style="background:#1c1b16;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:16px;">EXODUS SAYS</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;">The suffering of slaves reaches God — and God comes down.</div>
+          </div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0 0 26px;max-width:22ch;">The God of Exodus is encountered from below.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 14px;text-wrap:pretty;">And immediately, a qualification worth keeping: that does not mean God simply belongs to whichever group claims victimhood. It means biblical power is now being judged <span style="color:#ece7db;">by what it does to the vulnerable.</span></p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">A STANDARD, NOT AN ALLIANCE · <s-ref ref-key="mic-6-8">MICAH 6:8</s-ref></div>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="border:1px solid #45412f;background:#1c1a13;padding:30px 32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:oklch(0.74 0.12 72);margin-bottom:16px;">RESCUED BEFORE THEY ARE INSTRUCTED</div>
+          <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:62ch;margin:0 0 22px;text-wrap:pretty;">Israel does not receive the Ten Commandments in Egypt and then earn release by keeping them. The order is the opposite — and Exodus 20 says so in its own first line, before a single command: <s-ref ref-key="ex-20-2">“I am the LORD your God, who brought you out.”</s-ref></p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:22px;">
+            <div style="background:#171610;padding:22px 18px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;color:#6b665a;margin-bottom:8px;">01</div><div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#9c9689;">Slavery</div></div>
+            <div style="background:#171610;padding:22px 18px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;color:#6b665a;margin-bottom:8px;">02</div><div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#c4bdae;">God hears</div></div>
+            <div style="background:#171610;padding:22px 18px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;color:#6b665a;margin-bottom:8px;">03</div><div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">Rescue</div></div>
+            <div style="background:#171610;padding:22px 18px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;color:#6b665a;margin-bottom:8px;">04</div><div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">Covenant</div></div>
+            <div style="background:#171610;padding:22px 18px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;color:oklch(0.74 0.12 72);margin-bottom:8px;">05</div><div style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">Torah</div></div>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.8vw,50px);line-height:1.16;color:#ece7db;margin:0 0 20px;max-width:16ch;">Rescue first. Formation second.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);line-height:1.24;color:oklch(0.84 0.10 72);margin:0 0 18px;max-width:28ch;">I don't have to do to get. I already have it, so I get to do.</p>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 12px;text-wrap:pretty;">Israel does not obey in order to become rescued. Israel is rescued, and then learns how rescued people are meant to live. Torah will be given <em style="font-style:italic;">to free people</em>.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#8a8070;">THIS IS THE BRIDGE INTO LESSON 09</div>
+        </div>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="border:1px solid #34322a;background:#1a1914;padding:28px 30px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">FREEDOM IS NOT THE SAME AS MATURITY</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,40px);line-height:1.22;color:#ece7db;margin:0 0 20px;max-width:26ch;">Leaving Egypt removes Pharaoh. It does not instantly remove Egypt from the people.</p>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 18px;text-wrap:pretty;">A newly freed slave population still has to learn trust, shared identity, limits, justice, responsibility — and how not to reproduce Pharaoh.</p>
+          <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:20px;">
+            <div style="background:#171610;padding:20px 24px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D99E4D;">MEET US WHERE WE ARE</div><div style="font-size:16px;line-height:1.65;color:#c4bdae;">God enters the world people already understand.</div></div>
+            <div style="background:#171610;padding:20px 24px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D99E4D;">GIVE US STRUCTURE</div><div style="font-size:16px;line-height:1.65;color:#c4bdae;">Covenant, law, ritual and boundaries form a people.</div></div>
+            <div style="background:#1c1b16;padding:20px 24px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;align-items:baseline;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:oklch(0.74 0.12 72);">LEAD US BEYOND IT</div><div style="font-size:16px;line-height:1.65;color:#ded7c8;">External rules are meant to become internalized justice, wisdom and love.</div></div>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);line-height:1.24;color:#ece7db;margin:0 0 10px;max-width:32ch;">The structure is not always the destination. Sometimes it is the container that makes the next stage possible.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;">LESSON 09 ASKS WHETHER TORAH CAN BE READ THIS WAY</div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-plagues" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">05</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE PLAGUES</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">The <g-term term-key="plague">plagues</g-term> are traditionally read as acts of judgment against Pharaoh and Egypt's oppression. They also create a difficult moral problem, and pretending otherwise would be dishonest.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#171610;padding:16px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Egyptian civilians suffer.</div>
+          <div style="background:#171610;padding:16px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Animals suffer.</div>
+          <div style="background:#171610;padding:16px 24px;font-size:17px;line-height:1.6;color:#ece7db;">The final plague includes the death of firstborn children.</div>
+        </div>
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.78 0.11 320);border:1px solid oklch(0.48 0.08 320);padding:4px 9px;margin-bottom:20px;">INTERPRETATION · GENUINELY UNRESOLVED</div>
+        </sc-if>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 30px;max-width:32ch;">How do we read liberation texts in which the oppressor's defeat includes catastrophic suffering?</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">DIVINE JUDGMENT</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">God decisively confronts an empire built on oppression and infanticide. Judgment on such a system is not an embarrassment; a God indifferent to it would be.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">LITERARY REVERSAL</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Pharaoh orders Hebrew sons killed; the story culminates in the death of Egypt's firstborn. The narrative is working measure-for-measure, which is how ancient storytelling signals justice.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.78 0.11 320);margin-bottom:14px;">THE CHRIST-CENTERED QUESTION</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Christians eventually have to ask how these images relate to Jesus, who confronts enemies by a very different method — and who never gets the outcome by their destruction.</p>
+          </div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);line-height:1.26;color:#ece7db;margin:0;max-width:26ch;">Do not erase the tension. A group that leaves comfortable here has not read the chapter.</p>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="border:1px solid #34322a;background:#171610;padding:28px 30px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">HARDENING PHARAOH'S HEART</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:20px;">
+            <div style="background:#1a1914;padding:22px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.3;color:#c4bdae;">“Pharaoh hardened his heart.”</div>
+            <div style="background:#1a1914;padding:22px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.3;color:#c4bdae;">“God hardened Pharaoh's heart.”</div>
+          </div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">Exodus says both, in different places, and never reconciles them. So the question is genuinely open: is <g-term term-key="hardening">hardening</g-term> something imposed from outside — or the solidifying of a path repeatedly chosen?</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);line-height:1.24;color:#ece7db;margin:0 0 12px;max-width:30ch;">Repeated refusal can become character. What we keep choosing can become what we are.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;">IN HEBREW IDIOM THE HEART IS WILL AND THOUGHT, NOT FEELING</div>
+        </div>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="display:flex;gap:0;border:1px solid oklch(0.42 0.07 320);background:#16121a;">
+          <div style="width:6px;background:oklch(0.62 0.13 320);flex:none;"></div>
+          <div style="padding:26px 30px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.78 0.11 320);line-height:1;">◇</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:oklch(0.78 0.11 320);">THE PROJECTION QUESTION · RETURNS</span>
+            </div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.24;color:#ece7db;margin:0 0 22px;max-width:34ch;">When oppressed people experience liberation, how easily can “God heard us” become “God hates them”?</p>
+            <p style="font-size:18px;line-height:1.72;color:#ded7c8;max-width:60ch;margin:0 0 20px;text-wrap:pretty;">Exodus makes a real claim: oppression matters to God. But the biblical story will have to keep developing beyond <em style="font-style:italic;">our people / their people</em> toward justice for the vulnerable whoever they are.</p>
+            <p style="font-size:18px;line-height:1.72;color:#ded7c8;max-width:60ch;margin:0 0 22px;text-wrap:pretty;">Israel itself will later become capable of behaving like Egypt — and the prophets will judge Israel by exactly the standard Exodus established.</p>
+            <div style="border-left:4px solid oklch(0.62 0.13 320);padding:6px 0 6px 20px;margin-bottom:20px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,36px);line-height:1.24;color:#ece7db;margin:0;max-width:30ch;">Being rescued from Pharaoh does not guarantee we will never become Pharaoh.</p>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;color:#8d7f95;line-height:1.7;max-width:80ch;">A RECURRING COURSE PHRASE. IT WILL COST SOMETHING WHEN WE REACH CONSTANTINE.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="passover" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">06</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">PASSOVER</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Passover is not originally a Christian symbol. It is Israel's annual remembrance: <span style="color:#ece7db;">we were slaves, and we were brought out.</span></p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">And that memory is supposed to shape ethics. Torah keeps giving the same reason for protecting the vulnerable: <s-ref ref-key="deut-24-17-22">remember that you were slaves in Egypt.</s-ref></p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0;max-width:20ch;">Memory becomes moral formation.</p>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 14px;text-wrap:pretty;">Christian tradition later reads Jesus' death through Passover imagery. That connection becomes richer — not poorer — if we remember what Passover already means.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">LIBERATION FROM BONDAGE · <s-ref ref-key="ex-12">EXODUS 12</s-ref></div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-christ-connection" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">07</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE CHRIST CONNECTION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;line-height:1.15;color:#ece7db;margin:0 0 16px;">Exodus as salvation pattern</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:22px;">
+          <div style="background:#1a1914;padding:22px 20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#c4bdae;">bondage</div>
+          <div style="background:#1a1914;padding:22px 20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#c4bdae;">deliverance</div>
+          <div style="background:#1a1914;padding:22px 20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#c4bdae;">wilderness</div>
+          <div style="background:#1c1b16;padding:22px 20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">new identity</div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 34px;text-wrap:pretty;">Later prophets use Exodus language for the return from exile. The New Testament reaches for it around Jesus. It becomes the shape salvation has in Scripture.</p>
+
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;line-height:1.15;color:#ece7db;margin:0 0 16px;">Jesus and Passover</h3>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">Jesus' final meal and death are narrated in the context of Passover, and early Christians interpret him through liberation and lamb imagery. The temptation is to reduce that immediately to <span style="color:#9c9689;">“God needed blood.”</span></p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Passover instead gives the cross a <span style="color:#ece7db;">liberation framework</span> — which turns the question into a better one: <em style="font-style:italic;">what power are people being freed from?</em></p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;border:1px solid #34322a;padding:8px 15px;">sin</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;border:1px solid #34322a;padding:8px 15px;">death</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;border:1px solid #34322a;padding:8px 15px;">violence</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;border:1px solid #34322a;padding:8px 15px;">accusation</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;border:1px solid #34322a;padding:8px 15px;">fear</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;border:1px solid #34322a;padding:8px 15px;">empire</span>
+        </div>
+
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:32px;line-height:1.15;color:#ece7db;margin:0 0 16px;">Jesus and the oppressor</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:22px;">
+          <div style="background:#1a1914;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">EXODUS</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.3;color:#9c9689;margin:0;">Defeats Pharaoh through plagues and sea.</p>
+          </div>
+          <div style="background:#1c1b16;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:14px;">JESUS</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.3;color:#ece7db;margin:0;">Confronts domination through truth, solidarity with victims, enemy-love, self-giving, resurrection.</p>
+          </div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 12px;max-width:34ch;">Does Christ reject the Exodus concern for liberation — or deepen the way liberation is achieved?</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">CARRY THIS FORWARD · IT IS NOT A RHETORICAL QUESTION</div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-tension" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">08</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE TENSION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,48px);line-height:1.18;color:#ece7db;margin:0 0 30px;max-width:20ch;font-weight:400;">Does God take sides?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">YES · GOD HEARS THE OPPRESSED</div>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0 0 12px;">Exodus refuses the idea of a neutral God who is equally comfortable with slave and slaveholder.</p>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0;">Oppression is not morally neutral, and a God who treated it as neutral would not be good.</p>
+          </div>
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">BUT · NOT A TRIBAL POSSESSION</div>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0 0 12px;">The danger is turning that into <em style="font-style:italic;">God is on our side because we are us.</em></p>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0;">Later Scripture repeatedly judges Israel when Israel becomes unjust — using the same criteria.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:24px 0 0;text-wrap:pretty;">So God's “side” may be better understood as <span style="color:#ece7db;">justice, mercy and the protection of the vulnerable</span> — not permanent allegiance to one tribe. That is a claim worth arguing about in the room rather than accepting from a page.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="think-deeper" style="scroll-margin-top:80px;border:1px solid oklch(0.48 0.08 320);background:#191518;">
+          <div onClick="{{ toggleDeeper }}" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 30px;cursor:pointer;" style-hover="background:#1e191d;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.78 0.11 320);margin-bottom:10px;">THEOLOGICAL / PSYCHOLOGICAL INTERPRETATION</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#ece7db;line-height:1.15;">Think Deeper: Can you leave Egypt before Egypt leaves you?</div>
+              <div style="font-size:14px;line-height:1.6;color:#9c9689;margin-top:10px;font-style:italic;max-width:52ch;">An interpretation worth taking seriously — not a settled conclusion.</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:oklch(0.78 0.11 320);line-height:1;">{{ deeperSign }}</div>
+          </div>
+          <sc-if value="{{ deeperOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 30px 30px;border-top:1px solid #2e2630;">
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:26px 0 18px;text-wrap:pretty;">Israel leaves slavery quickly. Learning freedom takes much longer.</p>
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:0 0 22px;text-wrap:pretty;">In the wilderness the people <s-ref ref-key="num-11-4-6">repeatedly long for Egypt</s-ref> — and remember it as a place of free food. Oppressive systems shape the imagination of the oppressed as well as the oppressor.</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 22px;max-width:38ch;">What happens when the structures that imprisoned us have also taught us how to think?</p>
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:0 0 18px;text-wrap:pretty;">Freedom may therefore require more than a change of location.</p>
+              <div style="display:grid;gap:1px;background:#2a2130;border:1px solid #2a2130;margin-bottom:22px;">
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ded7c8;">new habits</div>
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ded7c8;">new identity</div>
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ded7c8;">new memory</div>
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ded7c8;">new imagination</div>
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">new ways of relating to power</div>
+              </div>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,44px);line-height:1.2;color:#ece7db;margin:0 0 16px;max-width:20ch;">Liberation is an event. Becoming free is a process.</p>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9c9689;">WHICH IS EXACTLY WHY THE NEXT LESSON IS ABOUT A LAW</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="church-history" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">09</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">VOICES OF THE TRADITION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:#9c9689;max-width:64ch;margin:0 0 26px;font-style:italic;">Two ancient readers who took Egypt as an image of inner bondage — and one modern one who insisted it was also still literal.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Gregory of Nyssa</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">c. AD 390 · THE LIFE OF MOSES</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Reads Exodus as more than ancient history: Egypt becomes an image of bondage, and Moses' journey a pattern of continual movement toward God.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:34ch;">Liberation is not the end of growth. It is where growth becomes possible.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;"><g-term term-key="gregory-nyssa">Gregory</g-term> takes Moses' ascent as the shape of a whole life — always further in, never arriving, because God is infinite. Which fits this lesson exactly: crossing the sea is chapter one.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Augustine</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">c. AD 400 · HIPPO</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Reads Exodus toward inner liberation — bondage to disordered desire, from which no political rescue alone can free a person.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:34ch;">External freedom does not automatically create internal freedom.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;"><g-term term-key="augustine">Augustine</g-term> knew this from his own life before he wrote it as theology. The risk in his reading is spiritualizing Egypt until Pharaoh stops being a real ruler with real bricks — which is precisely what King refused to allow.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Martin Luther King Jr.</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">1929–1968 · MONTGOMERY, BIRMINGHAM, MEMPHIS</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Exodus became a central biblical grammar for Black Christian liberation — Egypt, wilderness, promised land — while he insisted liberation must not reproduce hatred.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:36ch;">The two halves of this lesson held together: God hears the cry, and the rescued must not become Pharaoh.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;"><g-term term-key="mlk">King</g-term> belongs in a course on Christian history partly because he demonstrates something the whole course argues: a biblical story can still be forming consciousness three thousand years after it was told. <g-term term-key="liberation-theology">Liberation theology</g-term> makes the same move, with the same risk attached.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="discussion" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">10</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">DISCUSSION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:grid;gap:1px;background:#2b2921;border-top:1px solid #2b2921;border-bottom:1px solid #2b2921;">
+          <sc-for list="{{ questions }}" as="q" hint-placeholder-count="9">
+            <div style="background:#14130f;padding:22px 4px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:baseline;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:oklch(0.74 0.12 72);">{{ q.n }}</span>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.4;color:#ded7c8;margin:0;max-width:52ch;">{{ q.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size:15px;line-height:1.7;color:#9c9689;max-width:62ch;margin:22px 0 0;font-style:italic;">Question 06 will make the room uncomfortable. That is the correct outcome — do not rescue them from it with an answer.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="experience" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">11</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">EXPERIENCE</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="border:1px solid #34322a;background:#1a1914;padding:34px 32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">GROUP EXERCISE · 15 MIN · EIGHT CARDS, SHUFFLED</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#ece7db;line-height:1.15;margin-bottom:18px;">Build the order</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 22px;text-wrap:pretty;">Hand these out face up and out of order. Ask the group to arrange the story. Say nothing about what the exercise is for.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">TORAH</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">SLAVERY</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">COVENANT</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">CRY</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">PASSOVER</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">LIBERATION</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">SINAI</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #34322a;padding:10px 18px;">GOD HEARS</span>
+          </div>
+          <details style="background:#171610;border:1px solid #2b2921;margin-bottom:22px;">
+            <summary style="display:block;padding:22px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;line-height:1.25;margin-bottom:10px;">The order the text gives — and the question to ask once the cards are down</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 24px;">
+              <div style="border:1px solid #45412f;background:#1c1a13;padding:22px;margin-bottom:18px;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:oklch(0.80 0.11 72);line-height:2;">SLAVERY → CRY → GOD HEARS → PASSOVER → LIBERATION → COVENANT → SINAI → TORAH</div>
+              </div>
+              <p style="font-size:16px;line-height:1.7;color:#c4bdae;margin:0 0 14px;">Then ask: <span style="color:#ece7db;">where does obedience appear — before rescue, or after?</span> Let them find it on the table rather than telling them.</p>
+              <div style="border:1px solid #45412f;background:#1c1a13;padding:24px;text-align:center;margin-bottom:16px;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.6vw,30px);color:oklch(0.82 0.10 72);line-height:1.3;">“I don't have to do to get. I already have it, so I get to do.”</div>
+              </div>
+              <p style="font-size:16px;line-height:1.7;color:#c4bdae;margin:0 0 12px;">Ask how Exodus changes the way they hear that sentence. Then one more question, and stop there:</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.3;color:#ece7db;margin:0;max-width:36ch;">What might happen if Israel forgets that the law came after the liberation?</p>
+            </div>
+          </details>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <a href="Lesson 08 Song Ideas.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9c9689;border:1px solid #34322a;padding:7px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">SONG IDEAS ↓</a>
+            <a href="Timeline.dc.html#era-1200bc" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9c9689;border:1px solid #34322a;padding:7px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">SEE WHAT ELSE WAS HAPPENING →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:72px 0 0;">
+        <div id="takeaway" style="scroll-margin-top:80px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.24em;color:oklch(0.74 0.12 72);margin-bottom:22px;">TAKEAWAY</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4.6vw,64px);line-height:1.14;color:#ece7db;margin:0 0 24px;max-width:24ch;font-weight:500;letter-spacing:-0.01em;">Exodus begins with a God who hears the cry of the oppressed and acts before they have earned anything.</p>
+        <p style="font-size:19px;line-height:1.72;color:#c4bdae;max-width:60ch;margin:0 0 20px;text-wrap:pretty;">Rescue comes first. Formation comes next.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1.24;color:#ece7db;margin:0;max-width:30ch;">Israel does not obey to become free. Israel must now learn how free people live.</p>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <div style="border:1px solid #2b2921;background:#171610;padding:30px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">WHERE THIS GOES NEXT</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">Pharaoh is gone. But a people formed by slavery now has to become a society — and freedom needs shape, justice needs boundaries, community needs practices.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,42px);line-height:1.18;color:#ece7db;margin:0 0 22px;max-width:26ch;">What happens when liberation receives a law?</p>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;border-bottom:1px solid #26241e;padding-bottom:3px;">NEXT → LESSON 09: SINAI, CONQUEST, JUDGES — COVENANT AND VIOLENCE</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin:56px 0 88px;">
+        <a href="Lesson 07.dc.html" style="background:#1a1914;padding:28px;display:block;" style-hover="background:#211f18;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:10px;">← LESSON 07</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;overflow-wrap:anywhere;color:#ece7db;">Abraham: A Promise to a Nobody</div>
+        </a>
+        <a href="Lesson 09.dc.html" style="background:#1a1914;padding:28px;display:block;text-align:right;" style-hover="background:#211f18;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:10px;">LESSON 09 →</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;overflow-wrap:anywhere;color:#ece7db;">Sinai, Conquest, Judges: Covenant and Violence</div>
+        </a>
+      </div>
+    </div>
+
+    <div style="padding:72px 28px 88px;">
+      <div style="position:sticky;top:76px;display:grid;gap:32px;max-height:calc(100vh - 96px);overflow-y:auto;overscroll-behavior:contain;padding-right:10px;padding-bottom:8px;">
+        <sc-if value="{{ showSlideDownload }}" hint-placeholder-val="{{ true }}">
+          <div style="border:1px solid oklch(0.50 0.08 72);background:#1c1a13;padding:22px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">LESSON 08 RESOURCES</div>
+            <div style="display:grid;gap:7px;margin-bottom:18px;">
+              <a href="Lesson Slides.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#14130f;background:oklch(0.74 0.12 72);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;" style-hover="background:oklch(0.83 0.12 72);"><span>SLIDES</span><span style="opacity:0.7;">→</span></a>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>POWERPOINT</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>LESSON GUIDE</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>HANDOUTS</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>LESSON PDF</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <a href="Lesson 08 Song Ideas.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #45412f;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;" style-hover="color:#ece7db;border-color:#948D7F;"><span>SONG IDEAS</span><span style="opacity:0.7;">→</span></a>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#6b665a;line-height:1.7;">SPEAKER NOTES INCLUDED<br>UPDATED SEP 2026</div>
+          </div>
+        </sc-if>
+
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:14px;">IN THIS LESSON</div>
+          <div style="display:grid;gap:0;border-top:1px solid #2b2921;">
+            <sc-for list="{{ toc }}" as="t" hint-placeholder-count="15">
+              <a href="{{ t.href }}" style="display:grid;grid-template-columns:3px 26px minmax(0,1fr);gap:8px;padding:11px 0;border-bottom:1px solid #221f19;font-family:'Libre Franklin',sans-serif;font-size:13px;color:{{ t.color }};background:{{ t.bg }};" style-hover="color:#ece7db;">
+                <span style="background:{{ t.bar }};"></span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:{{ t.numColor }};">{{ t.n }}</span>
+                <span>{{ t.label }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="border:1px solid #2b2921;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">WHERE WE ARE</div>
+          <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 14px;">The <g-term term-key="exodus-tradition">Exodus tradition</g-term> is usually placed in the thirteenth century BC, though date and scale are debated. Egypt was then at the height of its imperial power.</p>
+          <a href="Timeline.dc.html#era-1200bc" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #34322a;padding:9px 12px;display:block;text-align:center;" style-hover="color:#ece7db;border-color:#948D7F;">VIEW IN THE FULL TIMELINE →</a>
+        </div>
+
+        <div style="border:1px solid #2b2921;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">THREADS THIS LESSON OPENS</div>
+          <div style="display:grid;gap:10px;font-size:13px;line-height:1.6;color:#9c9689;">
+            <div><span style="color:#D89D4D;">RESCUE BEFORE REQUIREMENT</span> — the clearest grace-before-performance text so far.</div>
+            <div><span style="color:#D89D4D;">I DON'T HAVE TO DO TO GET</span> — Israel is liberated before Torah is given.</div>
+            <div><span style="color:#D89D4D;">LIBERATION IS AN EVENT; FREEDOM IS A PROCESS</span> — rescue does not create maturity.</div>
+            <div><span style="color:#D89D4D;">THE STRUCTURE COMES AFTER THE GIFT</span> — Torah as formation, not entrance exam.</div>
+            <div><span style="color:#D89D4D;">FEAR CAN BECOME EMPIRE</span> — Pharaoh scales scarcity into public policy.</div>
+            <div><span style="color:#D89D4D;">RESCUED FROM PHARAOH, CAPABLE OF BECOMING PHARAOH</span> — Israel and the church both.</div>
+            <div><span style="color:#D89D4D;">GOD HEARS FROM BELOW</span> — power gets evaluated by what it costs the vulnerable.</div>
+            <div><span style="color:#D89D4D;">PASSOVER IS FIRST ABOUT LIBERATION</span> — keep that under later atonement imagery.</div>
+            <div><span style="color:#D89D4D;">THE EXODUS PATTERN RECURS</span> — bondage → liberation → wilderness → new identity.</div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #26241e;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">DEVELOPMENT IS NOT LINEAR</div>
+          <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0;">The freed people spend the next forty years wanting to go back. Stages coexist; a new vision does not erase an old one — three steps forward, two steps back.</p>
+        </div>
+
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:14px;">HOW TO READ THE TAGS</div>
+            <div style="display:grid;gap:9px;">
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.76 0.10 235);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">HISTORICAL FACT</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.70 0.09 165);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">STRONG INFERENCE</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.74 0.12 72);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">DOCTRINAL CLAIM</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.78 0.11 320);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">INTERPRETATION / SPECULATION</span></div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showClaimTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;showSlideDownload&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;deeperDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;heroOverlayColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#14130f&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero overlay&quot;,&quot;options&quot;:[&quot;#14130f&quot;,&quot;#1d2a30&quot;,&quot;#3a2618&quot;,&quot;#101c16&quot;,&quot;#241a2b&quot;]},&quot;heroOverlayOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.15,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroOverlayBlend&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;normal&quot;,&quot;options&quot;:[&quot;normal&quot;,&quot;multiply&quot;,&quot;soft-light&quot;,&quot;overlay&quot;,&quot;color&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroStripeOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.3,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroImageOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroScrimOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;}}">
+const LESSON_PARTS = [
+  { roman: "I–II", name: "ORIENTATION · BEFORE ISRAEL", items: [
+    [1, "What Kind of Book Is the Bible?"], [2, "Before Israel: The Ancient Religious World"],
+    [3, "Genesis: Creation Is Gift"], [4, "Christ Before Jesus: Logos and Creation"],
+    [5, "The Fall: Where Evil Comes From"], [6, "Flood and Babel: The Unraveling"] ] },
+  { roman: "III", name: "ISRAEL'S STORY", items: [
+    [7, "Abraham: A Promise to a Nobody"], [8, "Exodus: The God Who Takes Sides"],
+    [9, "Sinai, Conquest, Judges"], [10, "Kings: David and the Cost of a Crown"],
+    [11, "The Prophets: Justice Before Sacrifice"], [12, "Exile: Losing Everything, Finding God"],
+    [13, "The Axial Age: The World Starts Asking"], [14, "Between the Testaments: Greek Everywhere"] ] },
+  { roman: "IV", name: "JESUS", items: [
+    [15, "The World Jesus Was Born Into"], [16, "Jesus: The Kingdom of God"],
+    [17, "Jesus: Parables, Sermon, Table"], [18, "The Cross: Why Did Jesus Die?"],
+    [19, "Resurrection: The Claim That Started Everything"] ] },
+  { roman: "V", name: "THE FIRST CHURCH", items: [
+    [20, "Pentecost: The First Community"], [21, "Paul: Apostle to the Nations"],
+    [22, "Jerusalem Council: Who Belongs?"], [23, "Four Gospels: Why Not One?"],
+    [24, "The Canon: How the Bible Got Its List"] ] },
+  { roman: "VI", name: "UNDER PRESSURE", items: [
+    [25, "After the Apostles: Faith Under Pressure"], [26, "Martyrs: The Blood That Was Seed"],
+    [27, "Apologists: Arguing in Greek"], [28, "Origen and Alexandria: Reading in Layers"] ] },
+  { roman: "VII", name: "CHRISTENDOM AND AFTER", items: [
+    [29, "Constantine: The Church Gets Power"], [30, "Nicaea: Working Out Who Jesus Is"],
+    [31, "Augustine: The Inner Life and the Fall of Rome"], [32, "Justinian, Islam, and a Shrinking Christendom"],
+    [33, "Two Christendoms: East and West Divide"], [34, "Scholastics, Crusaders, Mystics"],
+    [35, "Renaissance and the Cracks"], [36, "Reformation and After"] ] }
+];
+const BUILT = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const THIS_LESSON = 8;
+
+class Component extends DCLogic {
+  state = { deeperOpen: false, menuOpen: false, activeId: "the-story" };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const ids = this.sectionIds || [];
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 160) current = id;
+      }
+      if (current && current !== this.state.activeId) this.setState({ activeId: current });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+  }
+
+  renderVals() {
+    const deeperOpen = this.state.deeperOpen || (this.props.deeperDefaultOpen ?? false);
+    const questions = [
+      "Why does Exodus emphasize that God hears the cry of enslaved people?",
+      "What does Pharaoh fear, and how does that fear become public policy?",
+      "Why does it matter that Israel is rescued before receiving Torah?",
+      "What is the difference between being liberated and learning how to live freely?",
+      "Does “God takes sides” mean God permanently favors particular groups? Why or why not?",
+      "How should Christians wrestle with the suffering caused by the plagues, especially the final one?",
+      "What might it mean for Pharaoh to harden his own heart and for God to harden it?",
+      "Where do individuals or societies escape oppressive systems but continue reproducing their habits?",
+      "How does Passover change if we begin with liberation rather than sacrifice?"
+    ].map((text, i) => ({ n: String(i + 1).padStart(2, "0"), text }));
+    const labels = ["The Story","The World","The Movement","Pharaoh","God Hears the Cry","Words That Matter","The Consciousness Shift","Rescue Before Instruction","The Plagues","The Projection Question","Passover","The Christ Connection","The Tension","Think Deeper","Voices of the Tradition","Discussion","Experience","Takeaway"];
+    const ids = ["the-story","the-world","the-movement","pharaoh","god-hears","the-text","the-consciousness-shift","the-consciousness-shift","the-plagues","the-plagues","passover","the-christ-connection","the-tension","think-deeper","church-history","discussion","experience","takeaway"];
+    this.sectionIds = ids;
+    const active = this.state.activeId;
+    const toc = labels.map((label, i) => {
+      const on = ids[i] === active;
+      return {
+        n: String(i + 1).padStart(2, "0"), label, href: "#" + ids[i],
+        color: on ? "#ece7db" : "#9c9689",
+        bg: on ? "#1c1b16" : "transparent",
+        bar: on ? "oklch(0.74 0.12 72)" : "transparent",
+        numColor: on ? "oklch(0.74 0.12 72)" : "#4a463b"
+      };
+    });
+    const menuParts = LESSON_PARTS.map(p => ({
+      roman: p.roman, name: p.name,
+      items: p.items.map(([n, title]) => {
+        const built = BUILT.includes(n);
+        const here = n === THIS_LESSON;
+        return {
+          n: String(n).padStart(2, "0"), title,
+          href: built ? "Lesson " + String(n).padStart(2, "0") + ".dc.html" : "#",
+          color: here ? "oklch(0.82 0.12 72)" : built ? "#ded7c8" : "#8b8377",
+          numColor: here ? "oklch(0.82 0.12 72)" : built ? "#D89D4D" : "#6b6456",
+          rule: here ? "inset 2px 0 0 oklch(0.74 0.12 72)" : "none",
+          pointer: built ? "auto" : "none"
+        };
+      })
+    }));
+    return {
+      menuOpen: this.state.menuOpen,
+      menuSign: this.state.menuOpen ? "▴" : "▾",
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      menuParts,
+      heroOverlayColor: this.props.heroOverlayColor ?? "#14130f",
+      heroOverlayOpacity: this.props.heroOverlayOpacity ?? 0.15,
+      heroOverlayBlend: this.props.heroOverlayBlend ?? "normal",
+      heroImageOpacity: this.props.heroImageOpacity ?? 1,
+      heroStripeOpacity: this.props.heroStripeOpacity ?? 0.3,
+      heroScrimOpacity: this.props.heroScrimOpacity ?? 1,
+      showClaimTags: this.props.showClaimTags ?? true,
+      showSlideDownload: this.props.showSlideDownload ?? true,
+      deeperOpen,
+      deeperSign: deeperOpen ? "−" : "+",
+      toggleDeeper: () => this.setState(s => ({ deeperOpen: !s.deeperOpen })),
+      questions, toc
+    };
+  }
+}
+</script>
+</body>
+</html>

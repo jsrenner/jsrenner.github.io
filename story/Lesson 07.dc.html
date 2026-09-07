@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<script>
+  if (sessionStorage.getItem("__story_authed") !== "1") {
+    window.location.replace("./index.html");
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Libre+Franklin:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./glossary-term.js"></script>
+<script src="./scripture-ref.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #14130f; }
+  * { box-sizing: border-box; }
+  a { color: oklch(0.78 0.12 72); text-decoration: none; }
+  a:hover { color: oklch(0.88 0.10 72); }
+  ::selection { background: oklch(0.74 0.12 72 / 0.3); }
+  summary { cursor: pointer; }
+  summary::marker { content: ""; }
+  image-slot#l07-hero::part(empty) { justify-content: flex-start; padding-top: 22px; opacity: 0.28; }
+</style>
+</helmet>
+
+<div style="background:#14130f;color:#ece7db;font-family:'Libre Franklin',system-ui,sans-serif;font-weight:300;min-height:100vh;">
+
+  <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:28px;padding:14px 40px;background:rgba(20,19,15,0.88);backdrop-filter:blur(14px);border-bottom:1px solid #2b2921;">
+    <a href="Lesson 01.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#ece7db;">THE CHRISTIAN STORY</a>
+    <div style="flex:1;display:flex;align-items:center;gap:14px;">
+      <div style="flex:1;height:2px;background:#2b2921;position:relative;">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:19.4%;background:oklch(0.74 0.12 72);"></div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9c9689;">07 / 36</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <div onClick="{{ toggleMenu }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#c4bdae;padding:7px 13px;border:1px solid #34322a;cursor:pointer;user-select:none;white-space:nowrap;" style-hover="color:#ece7db;border-color:#948D7F;">ALL LESSONS {{ menuSign }}</div>
+      <a href="Lesson 06.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">← 06</a>
+      <a href="Lesson 08.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">08 →</a>
+      <a href="Timeline.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">TIMELINE</a>
+      <a href="Lesson Slides.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#14130f;background:oklch(0.74 0.12 72);padding:7px 14px;border:1px solid oklch(0.74 0.12 72);" style-hover="background:oklch(0.82 0.12 72);border-color:oklch(0.82 0.12 72);">SLIDES ↓</a>
+    </div>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;top:53px;z-index:49;background:rgba(20,19,15,0.97);backdrop-filter:blur(16px);border-bottom:1px solid #34322a;max-height:calc(100vh - 60px);overflow-y:auto;">
+      <div style="max-width:1440px;margin:0 auto;padding:18px 40px 22px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#D89D4D;">THE CHRISTIAN STORY · 36 LESSONS</div>
+          <div onClick="{{ toggleMenu }}" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#6b665a;cursor:pointer;" style-hover="color:#ece7db;">CLOSE ✕</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <sc-for list="{{ menuParts }}" as="p" hint-placeholder-count="6">
+            <div style="background:#171610;padding:13px 13px 15px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.16em;color:#6b665a;margin-bottom:3px;">{{ p.roman }}</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.12em;color:#948D7F;margin-bottom:9px;">{{ p.name }}</div>
+              <div style="display:grid;gap:1px;">
+                <sc-for list="{{ p.items }}" as="l" hint-placeholder-count="6">
+                  <a href="{{ l.href }}" style="display:grid;grid-template-columns:19px minmax(0,1fr);gap:7px;align-items:baseline;padding:2px 0;color:{{ l.color }};text-decoration:none;pointer-events:{{ l.pointer }};" style-hover="color:#ece7db;">
+                    <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:{{ l.numColor }};">{{ l.n }}</span>
+                    <span style="font-family:'Libre Franklin',sans-serif;font-size:11.5px;line-height:1.35;padding:3px 7px;background:{{ l.bg }};box-shadow:{{ l.rule }};" style-hover="background:{{ l.hoverBg }};box-shadow:inset 2px 0 0 oklch(0.74 0.12 72);">{{ l.title }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:13px;">
+          <a href="Timeline.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #34322a;padding:8px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">MASTER TIMELINE →</a>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#8b8377;border:1px solid #3a372e;padding:8px 12px;">DIMMED LESSONS NOT YET BUILT</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:relative;display:flex;align-items:flex-end;min-height:66vh;overflow:hidden;border-bottom:1px solid #2b2921;">
+    <svg width="100%" height="100%" style="position:absolute;inset:0;">
+      <defs><pattern id="h7stripe" width="12" height="12" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="12" stroke="#2e2b22" stroke-width="5"></line></pattern></defs>
+      <rect width="100%" height="100%" fill="#1a1914"></rect>
+      <rect width="100%" height="100%" fill="url(#h7stripe)"></rect>
+    </svg>
+    <div style="position:absolute;inset:0;opacity:{{ heroImageOpacity }};">
+      <image-slot id="l07-hero" shape="rect" fit="cover" placeholder="Drop hero image — night sky over open desert / a single tent on an empty horizon"></image-slot>
+    </div>
+    <svg width="100%" height="100%" style="position:absolute;inset:0;pointer-events:none;opacity:{{ heroStripeOpacity }};" aria-hidden="true">
+      <defs><pattern id="h7stripe-top" width="14" height="14" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="14" stroke="#6d6552" stroke-width="6"></line></pattern></defs>
+      <rect width="100%" height="100%" fill="url(#h7stripe-top)"></rect>
+    </svg>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top, #14130f 4%, rgba(20,19,15,0.55) 55%, rgba(20,19,15,0.2) 100%);opacity:{{ heroScrimOpacity }};"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:{{ heroOverlayColor }};opacity:{{ heroOverlayOpacity }};mix-blend-mode:{{ heroOverlayBlend }};"></div>
+    <div style="position:relative;width:100%;padding:96px 40px;max-width:1180px;margin:0 auto;pointer-events:none;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.24em;color:oklch(0.74 0.12 72);">LESSON 07</span>
+        <span style="width:34px;height:1px;background:#4a463b;"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#9c9689;">PROMISE · TRUST · BLESSING</span>
+      </div>
+      <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(48px,7vw,104px);line-height:0.95;letter-spacing:-0.02em;margin:0 0 22px;max-width:16ch;">Abraham: A Promise to a Nobody</h1>
+      <p style="font-size:20px;line-height:1.55;color:#c4bdae;max-width:60ch;margin:0 0 16px;text-wrap:pretty;">After Babel, the biblical story suddenly narrows from nations and empires to one wandering family. God's answer to a fractured world begins not with power, but with a promise.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.35;color:#ece7db;max-width:70ch;margin:0;">What if being chosen was never mainly about being favored over everyone else — but being blessed for everyone else?</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #2b2921;">
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">BIBLICAL</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Genesis 12–22</div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">WHEN</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;"><g-term term-key="patriarchal-narrative">Patriarchal Narrative</g-term></div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">WHERE</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;"><g-term term-key="mesopotamia">Mesopotamia</g-term> · <g-term term-key="canaan">Canaan</g-term> · Egypt</div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">CONSCIOUSNESS</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Security → Trust → Blessing</div>
+    </div>
+    <div style="padding:22px 28px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">VOICES OF THE TRADITION</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Paul · <g-term term-key="irenaeus" align="right">Irenaeus</g-term> · <g-term term-key="kierkegaard" align="right">Kierkegaard</g-term></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0;max-width:1440px;margin:0 auto;">
+
+    <div style="padding:0 clamp(24px,5vw,88px);border-right:1px solid #2b2921;">
+
+      <div style="padding:72px 0 0;">
+        <div id="the-story" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">01</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE STORY</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;"><s-ref ref-key="gen-11-1-9">GENESIS 11:4</s-ref></div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#9c9689;margin:0;">“Let us make a name for ourselves.”</p>
+          </div>
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:14px;"><s-ref ref-key="gen-12-2">GENESIS 12:2</s-ref></div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0;">“I will make your name great.”</p>
+          </div>
+        </div>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin:0 0 30px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.8vw,50px);line-height:1.18;color:#ece7db;margin:0;max-width:20ch;">Babel grasps for a name. Abraham receives one as gift.</p>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Abram is not introduced as a king, a warrior, a priest, a philosopher or a moral hero. He is simply called.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:30px;">
+          <div style="background:#1a1914;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">Leave your land.</div>
+          <div style="background:#1a1914;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">Leave your kin.</div>
+          <div style="background:#1a1914;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">Go somewhere I will show you.</div>
+          <div style="background:#1c1b16;padding:19px 26px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#ece7db;">Trust a promise whose fulfillment you cannot yet see.</div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">The promise contains three major elements — and then a fourth phrase that turns out to be the key.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:26px 22px;font-family:'Cormorant Garamond',serif;font-size:26px;color:#c4bdae;">Land</div>
+          <div style="background:#1a1914;padding:26px 22px;font-family:'Cormorant Garamond',serif;font-size:26px;color:#c4bdae;">Descendants</div>
+          <div style="background:#1a1914;padding:26px 22px;font-family:'Cormorant Garamond',serif;font-size:26px;color:#c4bdae;">Blessing</div>
+        </div>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);line-height:1.24;color:#ece7db;margin:0 0 14px;max-width:28ch;">“In you all the families of the earth shall be blessed.”</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#9c9689;"><s-ref ref-key="gen-12-1-3">GENESIS 12:3</s-ref></div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">The biblical story narrows to one family <span style="color:#ece7db;">so that blessing can eventually widen again to all families.</span></p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,44px);line-height:1.2;color:#ece7db;margin:0;max-width:26ch;">Election begins with purpose, not privilege.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-world" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">02</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE WORLD</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.76 0.10 235);border:1px solid oklch(0.50 0.07 235);padding:4px 9px;margin-bottom:20px;">HISTORICAL FACT</div>
+        </sc-if>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,36px);line-height:1.26;color:#ece7db;margin:0 0 22px;max-width:30ch;">Abraham is not a modern monotheist dropped into the ancient world.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">He enters the biblical story from <g-term term-key="mesopotamia">Mesopotamia</g-term>, and Israel's own Scripture later remembers his ancestors as <s-ref ref-key="josh-24-2">serving other gods</s-ref>.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 30px;text-wrap:pretty;">Which means Abraham's journey is not simply geographical. It may also represent <span style="color:#ece7db;">a developing understanding of who God is.</span></p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">HOUSEHOLD RELIGION</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Families kept their own gods — small figures, household shrines, ancestral obligations. Religion was inherited property as much as belief.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">LAND AND DEITY</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Gods were widely understood to belong to territories. Leaving your land could mean leaving your god's jurisdiction — which makes this call stranger than it sounds to us.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">CLAN AND INHERITANCE</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Identity, protection, legal standing and old age all ran through kin. A childless man outside his clan had no future and no defense.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">COVENANT, SACRIFICE, HOSPITALITY</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Treaties cut with animals, offerings to secure favor, obligations to strangers at the tent — the practices in these chapters were ordinary regional life.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">So leaving land and kin was not merely changing addresses. In the ancient world, land, family, identity, protection, inheritance and religion were tangled into a single thing.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 30px;max-width:32ch;">What does it mean to trust a God who asks you to leave the structures that previously made you feel secure?</p>
+        <div style="position:relative;height:300px;overflow:hidden;margin-bottom:16px;border:1px solid #2b2921;">
+          <svg width="100%" height="100%" style="position:absolute;inset:0;">
+            <defs><pattern id="m7stripe" width="10" height="10" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="10" stroke="#2b2921" stroke-width="4"></line></pattern></defs>
+            <rect width="100%" height="100%" fill="#171610"></rect><rect width="100%" height="100%" fill="url(#m7stripe)"></rect>
+          </svg>
+          <div style="position:absolute;inset:0;">
+            <image-slot id="l07-map" shape="rect" fit="cover" placeholder="Drop map — Ur · Haran · Canaan · Egypt, the arc of Abraham's migration"></image-slot>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <div id="the-journey" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">◆</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE JOURNEY</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:#9c9689;max-width:60ch;margin:0 0 26px;font-style:italic;">A movement, not a set of dates. Read it downward.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">UR / MESOPOTAMIA</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">the ancestral world he starts inside</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">THE CALL</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">“Go… to the land I will show you”</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">CANAAN</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">promise of land — held, not owned</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">EGYPT</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">famine, fear, and self-protection</div>
+          </div>
+          <div style="background:#1c1b16;padding:20px 26px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);">COVENANT</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ece7db;">the promise deepens — and only God passes between the pieces</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">ISAAC</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">the impossible promise becomes a child</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">MORIAH · GENESIS 22</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">the promise itself appears threatened</div>
+          </div>
+        </div>
+        <a href="Timeline.dc.html#era-2000bc" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#948D7F;border:1px solid #34322a;padding:8px 12px;display:inline-block;" style-hover="color:#ece7db;border-color:#948D7F;">VIEW IN “EVERYTHING, HAPPENING AT ONCE” →</a>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <h3 id="not-a-hero" style="scroll-margin-top:80px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;line-height:1.15;color:#ece7db;margin:0 0 20px;">Abraham is not a perfect hero</h3>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">The Bible does not present Abraham as someone who immediately masters trust. He is called to trust — and repeatedly struggles to do it.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:22px 26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#c4bdae;">God promises protection…</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#9c9689;">…and Abraham <s-ref ref-key="gen-12-10-20">lies about Sarah in Egypt</s-ref>.</div>
+          </div>
+          <div style="background:#1a1914;padding:22px 26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#c4bdae;">God promises descendants…</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#9c9689;">…and they try to secure the promise <s-ref ref-key="gen-16">through Hagar</s-ref>.</div>
+          </div>
+          <div style="background:#1a1914;padding:22px 26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#c4bdae;">God promises blessing…</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#9c9689;">…and Abraham sometimes acts from fear.</div>
+          </div>
+        </div>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:22px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,44px);line-height:1.2;color:#ece7db;margin:0;max-width:24ch;">Faith does not mean Abraham never doubts or controls. Faith means he keeps returning to the promise.</p>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#9c9689;max-width:66ch;margin:0;text-wrap:pretty;">Which matters, because we should not turn biblical faith into psychological certainty. And it matters that the text reports the damage: Hagar pays for someone else's impatience, and Genesis gives her the only scene in the book where a person names God.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-text" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">03</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">WORDS THAT MATTER</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:#9c9689;max-width:60ch;margin:0 0 26px;font-style:italic;">Three Hebrew words the rest of the Bible is built on.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">אֱמוּנָה</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">EMUNAH — FAITHFULNESS / TRUST</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">Firmness, reliability, faithfulness, trust. Biblical <g-term term-key="faith-emunah">faith</g-term> is not merely agreeing that something is true.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 12px;">It is leaning one's life onto what one believes is trustworthy. The same word can describe God's reliability as easily as a person's trust — which tells you the relationship runs both ways.</p>
+              <p style="font-size:14px;line-height:1.7;color:#c4bdae;margin:0;">Abraham's faith arrives long before creeds, doctrinal systems, or Israel.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">בְּרִית</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">BERIT — COVENANT</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">One of the central biblical forms of relationship: God binds divine promise to human history. In Abraham's story, <g-term term-key="covenant">covenant</g-term> is initiated by God.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 12px;">Watch the ceremony in <s-ref ref-key="gen-15">Genesis 15</s-ref>. Animals are divided and the parties walk between the pieces — and only God passes through. The obligation runs one direction.</p>
+              <p style="font-size:14px;line-height:1.7;color:#c4bdae;margin:0;">Grace before performance, embedded in a ritual older than Israel. <g-term term-key="circumcision">Circumcision</g-term> arrives later, as a sign of something already given.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">בְּרָכָה</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">BERAKHAH — BLESSING</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">Life, fertility, flourishing, protection, abundance — and vocation. Concrete, not sentimental.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 14px;">Note the grammar of the promise carefully.</p>
+              <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+                <div style="background:#171610;padding:14px 18px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#9c9689;">Abraham is blessed.</div>
+                <div style="background:#1c1b16;padding:14px 18px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Abraham is called to <em style="font-style:italic;">be</em> a blessing.</div>
+              </div>
+            </div>
+          </details>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;">
+          <span>ALSO IN THIS LESSON</span>
+          <span style="color:#c4bdae;letter-spacing:0;font-family:'Libre Franklin',sans-serif;font-size:13px;"><g-term term-key="patriarch">patriarch</g-term> · <g-term term-key="election">election</g-term> · <g-term term-key="circumcision">circumcision</g-term> · <g-term term-key="monotheism">monotheism</g-term> · <g-term term-key="typology">typology</g-term> · <g-term term-key="faith-emunah">faith</g-term></span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-12-1-3">Genesis 12:1–3</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-15">Genesis 15</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-16">Genesis 16</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-22">Genesis 22</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="rom-4">Romans 4</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="heb-11-8">Hebrews 11:8</s-ref></span>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="faith-as-trust" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">04</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">FAITH AS TRUST</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">Modern Christians often hear the word <em style="font-style:italic;">faith</em> and think: believing the right statements. But Abraham's faith begins before creeds, doctrinal systems, or even Israel.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:28px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">WHAT WE OFTEN MEAN</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#9c9689;margin:0;">I am sure of the following propositions.</p>
+          </div>
+          <div style="background:#1c1b16;padding:28px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:14px;">WHAT ABRAHAM DOES</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#ece7db;margin:0;">Trust enough to move.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">He does not know how the promise will happen. He does not always understand what God is doing. He does not behave with perfect consistency. But he gradually learns to entrust his future to something beyond his ability to control.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0;max-width:32ch;">Certainty tries to eliminate vulnerability. Trust accepts it, and stays anchored anyway.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-consciousness-shift" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">05</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE CONSCIOUSNESS SHIFT</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;border:1px solid #2b2921;background:#1a1914;margin-bottom:26px;">
+          <div style="padding:24px 26px;border-right:1px solid #2b2921;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:8px;">FROM</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#9c9689;">Security through what I can control</div>
+          </div>
+          <div style="padding:24px 26px;border-right:1px solid #2b2921;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:8px;">THROUGH</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#c4bdae;">Trust in a promise I cannot yet see</div>
+          </div>
+          <div style="padding:24px 26px;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:8px;">TOWARD</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#ece7db;">Blessing received and given away</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:16px;">BABEL WANTS PERMANENCE</div>
+            <div style="display:grid;gap:8px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#9c9689;">
+              <div>a city</div>
+              <div>a tower</div>
+              <div>a name</div>
+            </div>
+          </div>
+          <div style="background:#1c1b16;padding:26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:16px;">ABRAHAM RECEIVES THE OPPOSITE INVITATION</div>
+            <div style="display:grid;gap:8px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#ece7db;">
+              <div>leave</div>
+              <div>go</div>
+              <div>trust</div>
+              <div>wait</div>
+            </div>
+          </div>
+        </div>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.8vw,52px);line-height:1.18;color:#ece7db;margin:0;max-width:20ch;">Babel builds security. Abraham walks without it.</p>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0;text-wrap:pretty;">That does not make Abraham fearless. Much of his story is the tension between trusting the promise and trying to control the outcome — which is most of what any of us are doing.</p>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="border:1px solid #45412f;background:#1c1a13;padding:30px 32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:oklch(0.74 0.12 72);margin-bottom:16px;">THE PROMISE COMES FIRST</div>
+          <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:62ch;margin:0 0 20px;text-wrap:pretty;">Before Abraham builds a nation. Before Torah. Before circumcision. Before Israel exists. <span style="color:#ece7db;">God promises blessing.</span></p>
+          <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:22px;">
+            <div style="background:#171610;padding:20px 24px;display:grid;grid-template-columns:130px minmax(0,1fr);gap:18px;align-items:baseline;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);">THE BIBLE'S ORDER</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#ece7db;">gift → belonging → response</div>
+            </div>
+            <div style="background:#171610;padding:20px 24px;display:grid;grid-template-columns:130px minmax(0,1fr);gap:18px;align-items:baseline;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;">NOT</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#9c9689;">performance → reward → belonging</div>
+            </div>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,40px);line-height:1.22;color:#ece7db;margin:0 0 18px;max-width:26ch;">I don't have to do to get. I already have it, so I get to do.</p>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 12px;text-wrap:pretty;">Abraham does respond. He leaves. He trusts. He obeys. But every one of those responses happens inside a promise already given.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#8a8070;">THIS BECOMES DECISIVE AT EXODUS, AT SINAI, IN JESUS, AND IN PAUL · <s-ref ref-key="rom-4">ROMANS 4</s-ref></div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="election" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">06</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">ELECTION: CHOSEN FOR WHAT?</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">“Chosen people” can easily be heard as <span style="color:#9c9689;">God likes us more than everyone else.</span> But Genesis 12 points in another direction, and it does so in the same sentence: Abraham is chosen <em style="font-style:italic;">so that all the families of the earth may be blessed.</em></p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">CHOSEN INSTEAD OF</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#9c9689;margin:0;">A boundary drawn around a favored group.</p>
+          </div>
+          <div style="background:#1c1b16;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:14px;">CHOSEN FOR</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#ece7db;margin:0;">A vocation carried on behalf of everyone else.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 14px;text-wrap:pretty;">Biblical <g-term term-key="election">election</g-term> can therefore be understood as vocation. And Paul reads it exactly that way — <s-ref ref-key="gal-3-8">“in you all the nations will be blessed”</s-ref> is, for him, the point of the whole thing.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">A THREAD RUNNING THROUGH ISRAEL, THE PROPHETS, JESUS, PAUL — AND THE CHURCH'S OWN TEMPTATIONS</div>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="display:flex;gap:0;border:1px solid oklch(0.42 0.07 320);background:#16121a;">
+          <div style="width:6px;background:oklch(0.62 0.13 320);flex:none;"></div>
+          <div style="padding:26px 30px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.78 0.11 320);line-height:1;">◇</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:oklch(0.78 0.11 320);">THE PROJECTION QUESTION · RETURNS</span>
+            </div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.24;color:#ece7db;margin:0 0 22px;max-width:34ch;">When Abraham hears God, how much is revelation — and how much is Abraham still interpreting God through the religious world he knows?</p>
+            <p style="font-size:18px;line-height:1.72;color:#ded7c8;max-width:60ch;margin:0 0 20px;text-wrap:pretty;">Abraham does not leave the ancient world and instantly acquire twenty-first-century theology. He encounters God while still carrying assumptions about sacrifice, family, patriarchy, inheritance, violence and divine testing.</p>
+            <p style="font-size:18px;line-height:1.72;color:#ded7c8;max-width:60ch;margin:0 0 22px;text-wrap:pretty;">If revelation unfolds historically, then genuine encounter and limited understanding can coexist.</p>
+            <div style="border-left:4px solid oklch(0.62 0.13 320);padding:6px 0 6px 20px;margin-bottom:20px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);line-height:1.26;color:#ece7db;margin:0;max-width:32ch;">God may really speak while humans still hear through the categories available to them.</p>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;color:#8d7f95;line-height:1.7;max-width:80ch;">THIS IS THE FRAME WE NEED IN PLACE BEFORE GENESIS 22.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="genesis-22" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">07</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">GENESIS 22 · ABRAHAM AND ISAAC</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;"><s-ref ref-key="gen-22">Genesis 22</s-ref> is one of the most disturbing and influential stories in Scripture. Abraham is told to offer Isaac — the child through whom the promise is supposed to continue.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">In Abraham's ancient world, the idea that gods might demand something costly was not unimaginable. Child sacrifice existed in parts of the ancient Near Eastern religious world, though its extent and specific contexts are debated.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 30px;max-width:30ch;">What does Abraham think God is like at this point in the story?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.76 0.10 235);margin-bottom:16px;">WHAT THE STORY SAYS</div>
+            <div style="display:grid;gap:10px;font-size:16px;line-height:1.65;color:#c4bdae;">
+              <div>God tests Abraham.</div>
+              <div>Abraham prepares to sacrifice Isaac.</div>
+              <div>The act is stopped.</div>
+              <div>A ram is provided.</div>
+              <div style="color:#ece7db;">The promise continues.</div>
+            </div>
+          </div>
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.78 0.11 320);margin-bottom:16px;">THE THEOLOGICAL QUESTION</div>
+            <div style="display:grid;gap:12px;font-size:16px;line-height:1.65;color:#c4bdae;">
+              <div>Is God demonstrating that human sacrifice is never ultimately what God wants?</div>
+              <div>Is Abraham being led through a religious assumption he already understands, toward a different understanding of God?</div>
+              <div>Or is the story fundamentally about radical obedience and trust?</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#9c9689;max-width:66ch;margin:0;text-wrap:pretty;">Christians have read Genesis 22 in all of these ways, and more. We are not collapsing them into one answer tonight.</p>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="border:1px solid #34322a;background:#1a1914;padding:28px 30px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#D89D4D;line-height:1;">△</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#D89D4D;">SACRIFICE · THE QUESTION CONTINUES</span>
+          </div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 20px;text-wrap:pretty;">Lesson 02 asked whether God requires sacrifice — or meets people inside an inherited sacrificial world and gradually transforms what sacrifice means. Genesis 22 is the first major biblical test case.</p>
+          <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:20px;">
+            <div style="background:#171610;padding:18px 24px;display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#6b665a;">ANCIENT ASSUMPTION</span><span style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#9c9689;">the gods may demand what is precious</span></div>
+            <div style="background:#171610;padding:18px 24px;display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D99E4D;">GENESIS 22</span><span style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#ded7c8;">Isaac is spared; provision is given</span></div>
+            <div style="background:#171610;padding:18px 24px;display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D99E4D;">LATER PROPHETS</span><span style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#ded7c8;"><s-ref ref-key="hos-6-6">mercy and justice matter more than sacrifice</s-ref></span></div>
+            <div style="background:#171610;padding:18px 24px;display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D99E4D;">JESUS</span><span style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#ded7c8;"><s-ref ref-key="matt-9-13">“I desire mercy, not sacrifice”</s-ref></span></div>
+            <div style="background:#1c1b16;padding:18px 24px;display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:oklch(0.74 0.12 72);">THE CROSS</span><span style="font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">the question becomes deeper still</span></div>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,32px);line-height:1.26;color:#ece7db;margin:0;max-width:30ch;">We are not resolving the sacrifice question here. We are watching it develop.</p>
+        </div>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="border:1px solid #2b2921;background:#171610;padding:28px 30px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">REVELATION DOES NOT ERASE DEVELOPMENT</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 20px;text-wrap:pretty;">Abraham can genuinely encounter God without immediately understanding everything about God. A new revelation does not instantly erase every inherited assumption — and that turns out to be a recurring biblical pattern.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 15px;">encounter</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b665a;">→</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 15px;">structure</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b665a;">→</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 15px;">partial understanding</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b665a;">→</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 15px;">growth</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b665a;">→</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 15px;">correction</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b665a;">→</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;border:1px solid #45412f;padding:9px 15px;">deeper understanding</span>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,32px);line-height:1.26;color:#ece7db;margin:0;max-width:30ch;">A new vision does not instantly erase an old one.</p>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-christ-connection" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">08</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE CHRIST CONNECTION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:34px;line-height:1.15;color:#ece7db;margin:0 0 18px;">Blessing to the nations</h3>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Paul reads the promise to Abraham as anticipating the inclusion of the nations. The story that begins with one family eventually opens outward again.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:34px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0 0 12px;max-width:22ch;">The narrowing was always meant for widening.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#9c9689;"><s-ref ref-key="gal-3-8">GALATIANS 3:8</s-ref></div>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:34px;line-height:1.15;color:#ece7db;margin:0 0 18px;">Trust and self-giving</h3>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Abraham is asked to trust a promise he cannot control. Jesus lives that trust completely: in <s-ref ref-key="luke-22-42">Gethsemane</s-ref> and on the cross he asks for the outcome to change — and still does not seize it.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:28px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">ABRAHAM</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#9c9689;margin:0;">begins the journey of trust</p>
+          </div>
+          <div style="background:#1c1b16;padding:28px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:14px;">CHRIST</div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.28;color:#ece7db;margin:0;">embodies it fully</p>
+          </div>
+        </div>
+        <details style="background:#1a1914;border:1px solid #2b2921;">
+          <summary style="display:block;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;line-height:1.25;margin-bottom:10px;">On reading Isaac as a figure of Christ — and the discipline it requires</div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+          </summary>
+          <div style="padding:0 28px 26px;">
+            <p style="font-size:15px;line-height:1.7;color:#c4bdae;margin:0 0 12px;">Christians have long heard resonances between Genesis 22 and Golgotha: a beloved son, wood carried up a hill, a father who does not withhold, provision at the last moment.</p>
+            <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0 0 12px;">But <g-term term-key="typology">typological</g-term> resonance is a later reading looking back. It does not mean Genesis 22's original meaning was simply a prediction of Jesus. The chapter meant something to its first readers long before anyone connected it to a Roman execution.</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.3;color:#ece7db;margin:0;max-width:38ch;">And notice the asymmetry that makes the comparison uncomfortable: on Moriah, the son is spared.</p>
+          </div>
+        </details>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-tension" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">09</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE TENSION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.3;color:#ece7db;margin:0 0 30px;max-width:34ch;font-weight:400;">Is Abraham chosen because he is special — or does being chosen make him responsible?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">PRIVILEGE</div>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0;">Election can be read as divine favor directed toward a particular people — a status held, defended, and inherited.</p>
+          </div>
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">VOCATION</div>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0;">Genesis 12 immediately connects election to blessing for others — a task carried, not a rank achieved.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:24px 0 22px;text-wrap:pretty;">The biblical story will struggle with both possibilities for centuries. Israel can understand chosenness as responsibility, or as superiority — and so can the church.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0 0 12px;max-width:24ch;">Chosenness can become vocation — or tribalism.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;">CHRISTIANITY'S OWN RECURRING TEMPTATION IS TO TURN GRACE INTO SUPERIORITY</div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="think-deeper" style="scroll-margin-top:80px;border:1px solid oklch(0.48 0.08 320);background:#191518;">
+          <div onClick="{{ toggleDeeper }}" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 30px;cursor:pointer;" style-hover="background:#1e191d;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.78 0.11 320);margin-bottom:10px;">THEOLOGICAL / EXISTENTIAL INTERPRETATION</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#ece7db;line-height:1.15;">Think Deeper: Is faith the opposite of certainty?</div>
+              <div style="font-size:14px;line-height:1.6;color:#9c9689;margin-top:10px;font-style:italic;max-width:52ch;">An interpretation worth taking seriously — not a settled conclusion.</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:oklch(0.78 0.11 320);line-height:1;">{{ deeperSign }}</div>
+          </div>
+          <sc-if value="{{ deeperOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 30px 30px;border-top:1px solid #2e2630;">
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:26px 0 18px;text-wrap:pretty;">Abraham is remembered as a person of faith. Yet his story contains uncertainty, fear, mistakes, delay, and repeated attempts to control outcomes.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2a2130;border:1px solid #2a2130;margin-bottom:22px;">
+                <div style="background:#1a151f;padding:24px;">
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#8d7f95;margin-bottom:12px;">PERHAPS FAITH IS NOT</div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.28;color:#9c9689;">I know exactly what will happen.</div>
+                </div>
+                <div style="background:#1a151f;padding:24px;">
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:oklch(0.78 0.11 320);margin-bottom:12px;">BUT</div>
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.28;color:#ece7db;">I trust enough to keep walking when I do not know.</div>
+                </div>
+              </div>
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:0 0 18px;text-wrap:pretty;">Certainty often tries to eliminate vulnerability. Trust accepts vulnerability while remaining relationally anchored — which is a harder thing, and a different thing.</p>
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:0 0 22px;text-wrap:pretty;">Much of Abraham's story asks whether reality can be trusted when the promise cannot yet be seen. That is the same question Genesis 3 put in the serpent's mouth, asked now from the other side.</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,44px);line-height:1.2;color:#ece7db;margin:0 0 16px;max-width:24ch;">Faith may not mean possessing the future. It may mean receiving the future without controlling it.</p>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9c9689;">A PROJECT-WIDE IDEA · <s-ref ref-key="heb-11-8">HEBREWS 11:8</s-ref></div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="church-history" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">10</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">VOICES OF THE TRADITION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:#9c9689;max-width:64ch;margin:0 0 26px;font-style:italic;">One apostle, one <g-term term-key="church-father">church father</g-term>, and one nineteenth-century Dane who refuses to make Genesis 22 comfortable.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Paul</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">c. AD 55 · ROMANS &amp; GALATIANS</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Reads Abraham as evidence that trust and promise precede Torah — which becomes crucial to his argument about grace and the inclusion of Gentiles.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:36ch;">Abraham was counted righteous four hundred and thirty years before the law, and while still uncircumcised.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0 0 12px;">Paul is not being clever with dates. He is arguing from the sequence of Genesis itself: promise, then response, then sign. If Abraham belongs to God on those terms, then so can the nations.</p>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;">He is included here rather than a later father because Abraham is load-bearing for his whole theology · <s-ref ref-key="rom-4">ROMANS 4</s-ref> · <s-ref ref-key="gal-3-8">GALATIANS 3</s-ref></div>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Irenaeus</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">c. AD 180 · LYONS</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Sees God's history with humanity as developmental. Abraham belongs to a long process through which humanity is gradually prepared for Christ.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:36ch;">God accommodates human capacity while leading humanity toward maturity.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;">The same instinct we met in Lesson 05: created good does not mean created finished. Applied to revelation, it means God can meet people where they are without leaving them there — which is the frame this lesson needs for Genesis 22.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Søren Kierkegaard</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">1843 · COPENHAGEN · FEAR AND TREMBLING</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Uses Abraham to explore the terrifying relationship between faith, ethics, trust and obedience.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:36ch;">He does not resolve Genesis 22. He makes the tension sharper.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;"><g-term term-key="kierkegaard">Kierkegaard</g-term> circles the story from several angles and refuses every comfortable exit — including the pious one. His point is that if we find Abraham admirable without finding him frightening, we have not read the chapter. He is here to keep us honest, not to give us an answer.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="discussion" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">11</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">DISCUSSION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:grid;gap:1px;background:#2b2921;border-top:1px solid #2b2921;border-bottom:1px solid #2b2921;">
+          <sc-for list="{{ questions }}" as="q" hint-placeholder-count="9">
+            <div style="background:#14130f;padding:22px 4px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:baseline;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:oklch(0.74 0.12 72);">{{ q.n }}</span>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.4;color:#ded7c8;margin:0;max-width:52ch;">{{ q.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size:15px;line-height:1.7;color:#9c9689;max-width:62ch;margin:22px 0 0;font-style:italic;">Question 09 is the one that costs something. Leave time for it, and let the room answer about itself rather than about other churches.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="experience" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">12</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">EXPERIENCE</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="border:1px solid #34322a;background:#1a1914;padding:34px 32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">GROUP EXERCISE · 20 MIN · CARDS + A LONG LINE ON THE FLOOR OR WALL</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#ece7db;line-height:1.15;margin-bottom:18px;">Control or trust?</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 22px;text-wrap:pretty;">Give the group these moments from Abraham's story and ask them to place each one on a spectrum.</p>
+          <div style="display:flex;align-items:center;gap:14px;border:1px solid #45412f;background:#1c1a13;padding:20px 26px;margin-bottom:24px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.24em;color:oklch(0.74 0.12 72);">TRUST</span>
+            <span style="flex:1;height:1px;background:#45412f;"></span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.24em;color:#9c9689;">CONTROL</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Leave your land</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Famine in Canaan</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Sarah in Egypt</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">No child arrives</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Hagar and Ishmael</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Covenant</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Birth of Isaac</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Genesis 22</div>
+          </div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">Then ask: <span style="color:#ece7db;">does Abraham move cleanly in one direction?</span></p>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 22px;text-wrap:pretty;">He does not. The line zig-zags, and the zig-zag is the point — three steps forward, two steps back. Growth is rarely linear, and a group that sees that in Abraham may allow it in themselves.</p>
+          <details style="background:#171610;border:1px solid #2b2921;">
+            <summary style="display:block;padding:22px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;line-height:1.25;margin-bottom:10px;">Then lay one more card across the whole line</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 24px;">
+              <div style="border:1px solid #45412f;background:#1c1a13;padding:26px;text-align:center;margin-bottom:16px;">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.6vw,30px);color:oklch(0.82 0.10 72);line-height:1.3;">“In you all the families of the earth shall be blessed.”</div>
+              </div>
+              <p style="font-size:15px;line-height:1.7;color:#c4bdae;margin:0 0 12px;">Then ask the second question: which moments in Abraham's story <em style="font-style:italic;">expand</em> that blessing — and which contract back into fear and self-protection?</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.3;color:#ece7db;margin:0;max-width:36ch;">Egypt and Hagar are the hard ones. Both are moments where the blessing narrows to protect itself, and someone else pays.</p>
+            </div>
+          </details>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;">
+            <a href="Lesson 07 Song Ideas.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9c9689;border:1px solid #34322a;padding:7px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">SONG IDEAS ↓</a>
+            <a href="Timeline.dc.html#era-2000bc" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9c9689;border:1px solid #34322a;padding:7px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">SEE WHAT ELSE WAS HAPPENING →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:72px 0 0;">
+        <div id="takeaway" style="scroll-margin-top:80px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.24em;color:oklch(0.74 0.12 72);margin-bottom:22px;">TAKEAWAY</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4.6vw,64px);line-height:1.14;color:#ece7db;margin:0 0 24px;max-width:24ch;font-weight:500;letter-spacing:-0.01em;">God's answer to a scattered world begins with one person learning to trust a promise.</p>
+        <p style="font-size:19px;line-height:1.72;color:#c4bdae;max-width:60ch;margin:0 0 20px;text-wrap:pretty;">Abraham is blessed not simply to possess blessing, but to become a blessing.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1.2;color:#ece7db;margin:0;">The promise comes before the performance.</p>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <div style="border:1px solid #2b2921;background:#171610;padding:30px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">WHERE THIS GOES NEXT</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">The promise passes from Abraham to Isaac to Jacob. The family grows. Then the family becomes enslaved.</p>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">And the next major movement in the biblical story is not humanity climbing toward God. It is God hearing the cry of oppressed people.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,42px);line-height:1.18;color:#ece7db;margin:0 0 22px;max-width:26ch;">What does God do when the descendants of the promise become slaves?</p>
+          <a href="Lesson 08.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#D89D4D;text-decoration:none;border-bottom:1px solid #45412f;padding-bottom:3px;" style-hover="color:#ece7db;">NEXT → LESSON 08: EXODUS — THE GOD WHO TAKES SIDES</a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin:56px 0 88px;">
+        <a href="Lesson 06.dc.html" style="background:#1a1914;padding:28px;display:block;" style-hover="background:#211f18;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:10px;">← LESSON 06</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;overflow-wrap:anywhere;color:#ece7db;">Flood and Babel: The Unraveling</div>
+        </a>
+        <a href="Lesson 08.dc.html" style="background:#1a1914;padding:28px;display:block;text-align:right;" style-hover="background:#211f18;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:10px;">LESSON 08 →</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;overflow-wrap:anywhere;color:#ece7db;">Exodus: The God Who Takes Sides</div>
+        </a>
+      </div>
+    </div>
+
+    <div style="padding:72px 28px 88px;">
+      <div style="position:sticky;top:76px;display:grid;gap:32px;max-height:calc(100vh - 96px);overflow-y:auto;overscroll-behavior:contain;padding-right:10px;padding-bottom:8px;">
+        <sc-if value="{{ showSlideDownload }}" hint-placeholder-val="{{ true }}">
+          <div style="border:1px solid oklch(0.50 0.08 72);background:#1c1a13;padding:22px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">LESSON 07 RESOURCES</div>
+            <div style="display:grid;gap:7px;margin-bottom:18px;">
+              <a href="Lesson Slides.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#14130f;background:oklch(0.74 0.12 72);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;" style-hover="background:oklch(0.83 0.12 72);"><span>SLIDES</span><span style="opacity:0.7;">→</span></a>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>POWERPOINT</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>LESSON GUIDE</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>HANDOUTS</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>LESSON PDF</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <a href="Lesson 07 Song Ideas.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #45412f;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;" style-hover="color:#ece7db;border-color:#948D7F;"><span>SONG IDEAS</span><span style="opacity:0.7;">→</span></a>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#6b665a;line-height:1.7;">SPEAKER NOTES INCLUDED<br>UPDATED SEP 2026</div>
+          </div>
+        </sc-if>
+
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:14px;">IN THIS LESSON</div>
+          <div style="display:grid;gap:0;border-top:1px solid #2b2921;">
+            <sc-for list="{{ toc }}" as="t" hint-placeholder-count="14">
+              <a href="{{ t.href }}" style="display:grid;grid-template-columns:3px 26px minmax(0,1fr);gap:8px;padding:11px 0;border-bottom:1px solid #221f19;font-family:'Libre Franklin',sans-serif;font-size:13px;color:{{ t.color }};background:{{ t.bg }};" style-hover="color:#ece7db;">
+                <span style="background:{{ t.bar }};"></span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:{{ t.numColor }};">{{ t.n }}</span>
+                <span>{{ t.label }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="border:1px solid #2b2921;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">WHERE WE ARE</div>
+          <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 14px;">Genesis 12 is where the <g-term term-key="primeval-story">primeval story</g-term> ends and something more like ordinary ancient history begins. The <g-term term-key="patriarchal-narrative">dating of the patriarchs</g-term> is genuinely debated; the world they move through is well attested.</p>
+          <a href="Timeline.dc.html#era-2000bc" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #34322a;padding:9px 12px;display:block;text-align:center;" style-hover="color:#ece7db;border-color:#948D7F;">VIEW IN THE FULL TIMELINE →</a>
+        </div>
+
+        <div style="border:1px solid #2b2921;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">THREADS THIS LESSON OPENS</div>
+          <div style="display:grid;gap:10px;font-size:13px;line-height:1.6;color:#9c9689;">
+            <div><span style="color:#D89D4D;">PROMISE BEFORE PERFORMANCE</span> — gift precedes response.</div>
+            <div><span style="color:#D89D4D;">I DON'T HAVE TO DO TO GET</span> — Abraham responds inside a promise already given.</div>
+            <div><span style="color:#D89D4D;">ELECTION AS VOCATION</span> — chosen for the sake of others, not merely over others.</div>
+            <div><span style="color:#D89D4D;">THE NARROWING IS FOR THE WIDENING</span> — one family, so that all families can be blessed.</div>
+            <div><span style="color:#D89D4D;">FAITH AS TRUST, NOT CERTAINTY</span> — he keeps walking without controlling the outcome.</div>
+            <div><span style="color:#D89D4D;">REVELATION IS DEVELOPMENTAL</span> — genuine encounter and incomplete understanding coexist.</div>
+            <div><span style="color:#D89D4D;">SACRIFICE REMAINS OPEN</span> — Genesis 22 is the first major test case.</div>
+            <div><span style="color:#D89D4D;">CHOSENNESS CUTS BOTH WAYS</span> — vocation, or tribalism.</div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #26241e;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">DEVELOPMENT IS NOT LINEAR</div>
+          <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0;">Abraham trusts, then grasps, then trusts again. A new vision does not instantly erase an old one — three steps forward, two steps back.</p>
+        </div>
+
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:14px;">HOW TO READ THE TAGS</div>
+            <div style="display:grid;gap:9px;">
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.76 0.10 235);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">HISTORICAL FACT</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.70 0.09 165);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">STRONG INFERENCE</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.74 0.12 72);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">DOCTRINAL CLAIM</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.78 0.11 320);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">INTERPRETATION / SPECULATION</span></div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showClaimTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;showSlideDownload&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;deeperDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;heroOverlayColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#14130f&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero overlay&quot;,&quot;options&quot;:[&quot;#14130f&quot;,&quot;#1d2a30&quot;,&quot;#3a2618&quot;,&quot;#101c16&quot;,&quot;#241a2b&quot;]},&quot;heroOverlayOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.15,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroOverlayBlend&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;normal&quot;,&quot;options&quot;:[&quot;normal&quot;,&quot;multiply&quot;,&quot;soft-light&quot;,&quot;overlay&quot;,&quot;color&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroStripeOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.3,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroImageOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroScrimOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;}}">
+const LESSON_PARTS = [
+  { roman: "I–II", name: "ORIENTATION · BEFORE ISRAEL", items: [
+    [1, "What Kind of Book Is the Bible?"], [2, "Before Israel: The Ancient Religious World"],
+    [3, "Genesis: Creation Is Gift"], [4, "Christ Before Jesus: Logos and Creation"],
+    [5, "The Fall: Where Evil Comes From"], [6, "Flood and Babel: The Unraveling"] ] },
+  { roman: "III", name: "ISRAEL'S STORY", items: [
+    [7, "Abraham: A Promise to a Nobody"], [8, "Exodus: The God Who Takes Sides"],
+    [9, "Sinai, Conquest, Judges"], [10, "Kings: David and the Cost of a Crown"],
+    [11, "The Prophets: Justice Before Sacrifice"], [12, "Exile: Losing Everything, Finding God"],
+    [13, "The Axial Age: The World Starts Asking"], [14, "Between the Testaments: Greek Everywhere"] ] },
+  { roman: "IV", name: "JESUS", items: [
+    [15, "The World Jesus Was Born Into"], [16, "Jesus: The Kingdom of God"],
+    [17, "Jesus: Parables, Sermon, Table"], [18, "The Cross: Why Did Jesus Die?"],
+    [19, "Resurrection: The Claim That Started Everything"] ] },
+  { roman: "V", name: "THE FIRST CHURCH", items: [
+    [20, "Pentecost: The First Community"], [21, "Paul: Apostle to the Nations"],
+    [22, "Jerusalem Council: Who Belongs?"], [23, "Four Gospels: Why Not One?"],
+    [24, "The Canon: How the Bible Got Its List"] ] },
+  { roman: "VI", name: "UNDER PRESSURE", items: [
+    [25, "After the Apostles: Faith Under Pressure"], [26, "Martyrs: The Blood That Was Seed"],
+    [27, "Apologists: Arguing in Greek"], [28, "Origen and Alexandria: Reading in Layers"] ] },
+  { roman: "VII", name: "CHRISTENDOM AND AFTER", items: [
+    [29, "Constantine: The Church Gets Power"], [30, "Nicaea: Working Out Who Jesus Is"],
+    [31, "Augustine: The Inner Life and the Fall of Rome"], [32, "Justinian, Islam, and a Shrinking Christendom"],
+    [33, "Two Christendoms: East and West Divide"], [34, "Scholastics, Crusaders, Mystics"],
+    [35, "Renaissance and the Cracks"], [36, "Reformation and After"] ] }
+];
+const BUILT = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const THIS_LESSON = 7;
+
+class Component extends DCLogic {
+  state = { deeperOpen: false, menuOpen: false, activeId: "the-story" };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const ids = this.sectionIds || [];
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 160) current = id;
+      }
+      if (current && current !== this.state.activeId) this.setState({ activeId: current });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+  }
+
+  renderVals() {
+    const deeperOpen = this.state.deeperOpen || (this.props.deeperDefaultOpen ?? false);
+    const questions = [
+      "Why do you think the biblical story moves from all humanity to one family after Babel?",
+      "What is the difference between being chosen for privilege and being chosen for a purpose?",
+      "Where do you see Abraham trusting — and where do you see him trying to control the promise?",
+      "Does faith require certainty?",
+      "What does Abraham's story suggest about whether revelation happens all at once or gradually?",
+      "How does the cultural world of sacrifice affect the way you read Genesis 22?",
+      "What might it mean to say that God really speaks while humans still hear through inherited cultural categories?",
+      "How can chosenness become tribalism?",
+      "What would it mean for Christians to see themselves as blessed for the sake of others rather than favored over others?"
+    ].map((text, i) => ({ n: String(i + 1).padStart(2, "0"), text }));
+    const labels = ["The Story","The World","The Journey","Not a Perfect Hero","Words That Matter","Faith as Trust","The Consciousness Shift","Election","Genesis 22","The Christ Connection","The Tension","Think Deeper","Voices of the Tradition","Discussion","Experience","Takeaway"];
+    const ids = ["the-story","the-world","the-journey","not-a-hero","the-text","faith-as-trust","the-consciousness-shift","election","genesis-22","the-christ-connection","the-tension","think-deeper","church-history","discussion","experience","takeaway"];
+    this.sectionIds = ids;
+    const active = this.state.activeId;
+    const toc = labels.map((label, i) => {
+      const on = ids[i] === active;
+      return {
+        n: String(i + 1).padStart(2, "0"), label, href: "#" + ids[i],
+        color: on ? "#ece7db" : "#9c9689",
+        bg: on ? "#1c1b16" : "transparent",
+        bar: on ? "oklch(0.74 0.12 72)" : "transparent",
+        numColor: on ? "oklch(0.74 0.12 72)" : "#4a463b"
+      };
+    });
+    const menuParts = LESSON_PARTS.map(p => ({
+      roman: p.roman, name: p.name,
+      items: p.items.map(([n, title]) => {
+        const built = BUILT.includes(n);
+        const here = n === THIS_LESSON;
+        return {
+          n: String(n).padStart(2, "0"), title,
+          href: built ? "Lesson " + String(n).padStart(2, "0") + ".dc.html" : "#",
+          color: here ? "oklch(0.82 0.12 72)" : built ? "#ded7c8" : "#8b8377",
+          bg: "transparent",
+          hoverBg: "#241f18",
+          rule: here ? "inset 2px 0 0 oklch(0.74 0.12 72)" : "none",
+          numColor: here ? "oklch(0.82 0.12 72)" : built ? "#D89D4D" : "#6b6456",
+          pointer: built ? "auto" : "none"
+        };
+      })
+    }));
+    return {
+      menuOpen: this.state.menuOpen,
+      menuSign: this.state.menuOpen ? "▴" : "▾",
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      menuParts,
+      heroOverlayColor: this.props.heroOverlayColor ?? "#14130f",
+      heroOverlayOpacity: this.props.heroOverlayOpacity ?? 0.15,
+      heroOverlayBlend: this.props.heroOverlayBlend ?? "normal",
+      heroImageOpacity: this.props.heroImageOpacity ?? 1,
+      heroStripeOpacity: this.props.heroStripeOpacity ?? 0.3,
+      heroScrimOpacity: this.props.heroScrimOpacity ?? 1,
+      showClaimTags: this.props.showClaimTags ?? true,
+      showSlideDownload: this.props.showSlideDownload ?? true,
+      deeperOpen,
+      deeperSign: deeperOpen ? "−" : "+",
+      toggleDeeper: () => this.setState(s => ({ deeperOpen: !s.deeperOpen })),
+      questions, toc
+    };
+  }
+}
+</script>
+</body>
+</html>

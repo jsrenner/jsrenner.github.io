@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<script>
+  if (sessionStorage.getItem("__story_authed") !== "1") {
+    window.location.replace("./index.html");
+  }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Libre+Franklin:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./glossary-term.js"></script>
+<script src="./scripture-ref.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #14130f; }
+  * { box-sizing: border-box; }
+  a { color: oklch(0.78 0.12 72); text-decoration: none; }
+  a:hover { color: oklch(0.88 0.10 72); }
+  ::selection { background: oklch(0.74 0.12 72 / 0.3); }
+  summary { cursor: pointer; }
+  summary::marker { content: ""; }
+  image-slot#l06-hero::part(empty) { justify-content: flex-start; padding-top: 22px; opacity: 0.28; }
+</style>
+</helmet>
+
+<div style="background:#14130f;color:#ece7db;font-family:'Libre Franklin',system-ui,sans-serif;font-weight:300;min-height:100vh;">
+
+  <div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:28px;padding:14px 40px;background:rgba(20,19,15,0.88);backdrop-filter:blur(14px);border-bottom:1px solid #2b2921;">
+    <a href="Lesson 01.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#ece7db;">THE CHRISTIAN STORY</a>
+    <div style="flex:1;display:flex;align-items:center;gap:14px;">
+      <div style="flex:1;height:2px;background:#2b2921;position:relative;">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:16.7%;background:oklch(0.74 0.12 72);"></div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9c9689;">06 / 36</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <div onClick="{{ toggleMenu }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#c4bdae;padding:7px 13px;border:1px solid #34322a;cursor:pointer;user-select:none;white-space:nowrap;" style-hover="color:#ece7db;border-color:#948D7F;">ALL LESSONS {{ menuSign }}</div>
+      <a href="Lesson 05.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">← 05</a>
+      <a href="Lesson 07.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">07 →</a>
+      <a href="Timeline.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;padding:7px 14px;border:1px solid #34322a;" style-hover="color:#ece7db;border-color:#948D7F;">TIMELINE</a>
+      <a href="Lesson Slides.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#14130f;background:oklch(0.74 0.12 72);padding:7px 14px;border:1px solid oklch(0.74 0.12 72);" style-hover="background:oklch(0.82 0.12 72);border-color:oklch(0.82 0.12 72);">SLIDES ↓</a>
+    </div>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;top:53px;z-index:49;background:rgba(20,19,15,0.97);backdrop-filter:blur(16px);border-bottom:1px solid #34322a;max-height:calc(100vh - 60px);overflow-y:auto;">
+      <div style="max-width:1440px;margin:0 auto;padding:18px 40px 22px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#D89D4D;">THE CHRISTIAN STORY · 36 LESSONS</div>
+          <div onClick="{{ toggleMenu }}" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#6b665a;cursor:pointer;" style-hover="color:#ece7db;">CLOSE ✕</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <sc-for list="{{ menuParts }}" as="p" hint-placeholder-count="6">
+            <div style="background:#171610;padding:13px 13px 15px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.16em;color:#6b665a;margin-bottom:3px;">{{ p.roman }}</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.12em;color:#948D7F;margin-bottom:9px;">{{ p.name }}</div>
+              <div style="display:grid;gap:1px;">
+                <sc-for list="{{ p.items }}" as="l" hint-placeholder-count="6">
+                  <a href="{{ l.href }}" style="display:grid;grid-template-columns:19px minmax(0,1fr);gap:7px;align-items:baseline;padding:2px 0;color:{{ l.color }};text-decoration:none;pointer-events:{{ l.pointer }};" style-hover="color:#ece7db;">
+                    <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:{{ l.numColor }};">{{ l.n }}</span>
+                    <span style="font-family:'Libre Franklin',sans-serif;font-size:11.5px;line-height:1.35;padding:3px 7px;background:{{ l.bg }};box-shadow:{{ l.rule }};" style-hover="background:{{ l.hoverBg }};box-shadow:inset 2px 0 0 oklch(0.74 0.12 72);">{{ l.title }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:13px;">
+          <a href="Timeline.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #34322a;padding:8px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">MASTER TIMELINE →</a>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#8b8377;border:1px solid #3a372e;padding:8px 12px;">DIMMED LESSONS NOT YET BUILT</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:relative;display:flex;align-items:flex-end;min-height:66vh;overflow:hidden;border-bottom:1px solid #2b2921;">
+    <svg width="100%" height="100%" style="position:absolute;inset:0;">
+      <defs><pattern id="h6stripe" width="12" height="12" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="12" stroke="#2e2b22" stroke-width="5"></line></pattern></defs>
+      <rect width="100%" height="100%" fill="#1a1914"></rect>
+      <rect width="100%" height="100%" fill="url(#h6stripe)"></rect>
+    </svg>
+    <div style="position:absolute;inset:0;opacity:{{ heroImageOpacity }};">
+      <image-slot id="l06-hero" shape="rect" fit="cover" placeholder="Drop hero image — eroded mud-brick ziggurat against heavy sky / floodwater at dusk"></image-slot>
+    </div>
+    <svg width="100%" height="100%" style="position:absolute;inset:0;pointer-events:none;opacity:{{ heroStripeOpacity }};" aria-hidden="true">
+      <defs><pattern id="h6stripe-top" width="14" height="14" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="14" stroke="#6d6552" stroke-width="6"></line></pattern></defs>
+      <rect width="100%" height="100%" fill="url(#h6stripe-top)"></rect>
+    </svg>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top, #14130f 4%, rgba(20,19,15,0.55) 55%, rgba(20,19,15,0.2) 100%);opacity:{{ heroScrimOpacity }};"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:{{ heroOverlayColor }};opacity:{{ heroOverlayOpacity }};mix-blend-mode:{{ heroOverlayBlend }};"></div>
+    <div style="position:relative;width:100%;padding:96px 40px;max-width:1180px;margin:0 auto;pointer-events:none;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.24em;color:oklch(0.74 0.12 72);">LESSON 06</span>
+        <span style="width:34px;height:1px;background:#4a463b;"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.18em;color:#9c9689;">RIVALRY · VIOLENCE · REVENGE · CONTROL</span>
+      </div>
+      <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(48px,7vw,104px);line-height:0.95;letter-spacing:-0.02em;margin:0 0 22px;max-width:16ch;">Flood and Babel: The Unraveling</h1>
+      <p style="font-size:20px;line-height:1.55;color:#c4bdae;max-width:60ch;margin:0 0 16px;text-wrap:pretty;">After Eden, the fracture spreads. A brother is murdered, revenge multiplies, violence fills the earth, and humanity builds upward in search of security and a name. Genesis 4–11 is the story of what fear becomes when it scales.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.35;color:#ece7db;max-width:70ch;margin:0;">The problem is no longer one forbidden tree. It is a whole human world learning violence.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #2b2921;">
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">BIBLICAL</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Genesis 4–11</div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">WHEN</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;"><g-term term-key="primeval-story">Primeval Story</g-term></div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">WHERE</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Eden's East · Flood World · Babel</div>
+    </div>
+    <div style="padding:22px 28px;border-right:1px solid #2b2921;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">CONSCIOUSNESS</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Rivalry · Violence · Control</div>
+    </div>
+    <div style="padding:22px 28px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:9px;">VOICES OF THE TRADITION</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;"><g-term term-key="origen" align="right">Origen</g-term> · <g-term term-key="augustine" align="right">Augustine</g-term> · <g-term term-key="ephrem" align="right">Ephrem</g-term></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0;max-width:1440px;margin:0 auto;">
+
+    <div style="padding:0 clamp(24px,5vw,88px);border-right:1px solid #2b2921;">
+
+      <div style="padding:72px 0 0;">
+        <div id="the-story" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">01</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE STORY</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,42px);line-height:1.22;color:#ece7db;margin:0 0 26px;max-width:26ch;">Genesis 3 ends with humans outside the garden. Genesis 4 begins with brothers.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;"><s-ref ref-key="gen-4-1-16">Cain and Abel</s-ref> bring offerings. Cain becomes angry. God warns him that <s-ref ref-key="gen-4-7">sin is crouching at the door</s-ref> — and that he can still rule over it.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 30px;text-wrap:pretty;">Cain kills his brother anyway.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin:0 0 30px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.8vw,50px);line-height:1.18;color:#ece7db;margin:0;max-width:22ch;">The first death in the Bible is not natural. It is murder.</p>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">But the story does not stop with one act of violence. Cain fears revenge, and God <s-ref ref-key="gen-4-10-15">marks him so that no one will strike him</s-ref>. Then, a few generations later, <s-ref ref-key="gen-4-23-24">Lamech sings</s-ref>: if Cain is avenged sevenfold, he will be avenged seventy-sevenfold.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 30px;max-width:30ch;">Violence has become more than an act. It has become a culture.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">By Genesis 6, the text says the earth is <s-ref ref-key="gen-6-11-13">filled with violence</s-ref>. Then comes the flood. After the flood, God makes <s-ref ref-key="gen-9-8-17">covenant not merely with Noah, but with every living creature</s-ref>. And after <s-ref ref-key="gen-11-1-9">Babel</s-ref>, humanity is scattered rather than destroyed.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <div style="background:#171610;padding:22px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:10px;">WHAT KIND OF STORY THIS IS</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#9c9689;">Genesis 4–11 is an escalation story.</div>
+          </div>
+          <div style="background:#1c1b16;padding:22px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:10px;">AND ITS QUESTION</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#ece7db;">Will violence be answered by more violence — or interrupted?</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-escalation" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">◆</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE ESCALATION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:#9c9689;max-width:60ch;margin:0 0 26px;font-style:italic;">Not a timeline of dates — a timeline of a movement. Read it downward.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">CAIN</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">brother kills brother</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">LAMECH</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">revenge becomes boastful and multiplied</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">GENESIS 6</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">the earth is filled with violence</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">FLOOD</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">judgment — and preservation</div>
+          </div>
+          <div style="background:#1c1b16;padding:20px 26px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);">COVENANT</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ece7db;">restraint, promise, preservation of creation</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">BABEL</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">humanity centralizes power and seeks security through its own name</div>
+          </div>
+          <div style="background:#1a1914;padding:20px 26px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;align-items:baseline;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#D99E4D;">SCATTERING</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ded7c8;">concentration is broken apart</div>
+          </div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);line-height:1.24;color:#ece7db;margin:0 0 22px;max-width:26ch;">Violence grows by escalation. God repeatedly introduces limits.</p>
+        <a href="Timeline.dc.html#era-primeval" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#948D7F;border:1px solid #34322a;padding:8px 12px;display:inline-block;" style-hover="color:#ece7db;border-color:#948D7F;">SEE THIS ERA IN “EVERYTHING, HAPPENING AT ONCE” →</a>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-world" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">02</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE WORLD</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.76 0.10 235);border:1px solid oklch(0.50 0.07 235);padding:4px 9px;margin-bottom:20px;">HISTORICAL FACT</div>
+        </sc-if>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,36px);line-height:1.26;color:#ece7db;margin:0 0 22px;max-width:30ch;">Genesis 4–11 uses story forms its first audience would have recognized instantly.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">FLOOD TRADITIONS</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;"><g-term term-key="atrahasis">Atrahasis</g-term> and the <g-term term-key="gilgamesh">Epic of Gilgamesh</g-term> preserve flood traditions older than the biblical text in written form. Flood, boat, survivor, sacrifice — the shape was already known.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">CITY-BUILDING</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Mesopotamian literature celebrates the founding of cities as a gift of the gods. Genesis 4 attaches the first city to Cain's line — a quiet, deliberate judgment.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">ZIGGURATS</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Mesopotamian cities built monumental temple towers — <g-term term-key="ziggurat">ziggurats</g-term> — meant to connect divine and human realms. <g-term term-key="babel">Babel</g-term> belongs to a real ancient cultural landscape.</p>
+          </div>
+          <div style="background:#1a1914;padding:28px 24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">GENEALOGIES &amp; BOUNDARIES</div>
+            <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0;">Long genealogies and stories about the divine-human boundary being crossed are standard features of the region's literature. Genesis uses both, briskly, and never for its own sake.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">So we ask the question Lesson 03 taught us to ask: <span style="color:#ece7db;">what does Genesis do differently with familiar ancient story forms?</span></p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#171610;padding:28px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:16px;">FOR THE FLOOD</div>
+            <div style="display:grid;gap:12px;font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.3;color:#ded7c8;">
+              <div>Why does violence matter so much?</div>
+              <div>Why does covenant follow?</div>
+              <div>Why does the story end with a promise of restraint?</div>
+            </div>
+          </div>
+          <div style="background:#171610;padding:28px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:16px;">FOR BABEL</div>
+            <div style="display:grid;gap:12px;font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.3;color:#ded7c8;">
+              <div>Why is the desire to “make a name for ourselves” portrayed as dangerous?</div>
+              <div>Why is scattering the response rather than destruction?</div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative;height:300px;overflow:hidden;margin-bottom:16px;border:1px solid #2b2921;">
+          <svg width="100%" height="100%" style="position:absolute;inset:0;">
+            <defs><pattern id="m6stripe" width="10" height="10" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="10" stroke="#2b2921" stroke-width="4"></line></pattern></defs>
+            <rect width="100%" height="100%" fill="#171610"></rect><rect width="100%" height="100%" fill="url(#m6stripe)"></rect>
+          </svg>
+          <div style="position:absolute;inset:0;">
+            <image-slot id="l06-ziggurat" shape="rect" fit="cover" placeholder="Drop image — Ziggurat of Ur, or the Gilgamesh flood tablet (Tablet XI, British Museum)"></image-slot>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <h3 id="cain" style="scroll-margin-top:80px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;line-height:1.15;color:#ece7db;margin:0 0 20px;">Cain, and the birth of rivalry</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:24px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:10px;">GENESIS 3</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#9c9689;">mistrust between humanity and God</div>
+          </div>
+          <div style="background:#1c1b16;padding:24px 26px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:10px;">GENESIS 4</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:25px;color:#ece7db;">rivalry between humans</div>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">Cain's problem is not simply that Abel exists. Cain experiences <span style="color:#ece7db;">Abel's acceptance as a threat to himself.</span></p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);line-height:1.22;color:#ece7db;margin:0;max-width:28ch;">What happens when another person's good begins to feel like my loss?</p>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Rivalry creates a world of comparison.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#171610;padding:17px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">His blessing means my rejection.</div>
+          <div style="background:#171610;padding:17px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">His success means my failure.</div>
+          <div style="background:#171610;padding:17px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">His existence threatens my worth.</div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 14px;text-wrap:pretty;">Violence then becomes one way of trying to solve that problem — by removing the rival.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">THIS OPENS A THREAD WE DEVELOP LATER · <g-term term-key="scapegoat">SCAPEGOATING</g-term> AND THE CROSS</div>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <h3 id="lamech" style="scroll-margin-top:80px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;line-height:1.15;color:#ece7db;margin:0 0 20px;">Lamech: when violence becomes identity</h3>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">Cain commits violence and fears its consequences. Lamech <em style="font-style:italic;">boasts</em> about violence — in what may be the oldest poem in Genesis.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:26px;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#6b665a;margin-bottom:12px;">CAIN</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,46px);color:#9c9689;line-height:1;">sevenfold</div>
+          </div>
+          <div style="background:#1c1b16;padding:26px;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:12px;">LAMECH</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,46px);color:#ece7db;line-height:1;">seventy-sevenfold</div>
+          </div>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 26px;max-width:30ch;">Violence is no longer merely something humans do. It has become something humans admire.</p>
+        <div style="border:1px solid #34322a;background:#1a1914;padding:26px 28px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">HOLD THIS NUMBER · WE COME BACK TO IT</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 14px;text-wrap:pretty;">Much later, Peter will ask Jesus whether forgiveness should extend seven times. Jesus answers: <s-ref ref-key="matt-18-21-22">seventy-seven times</s-ref>.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0;max-width:34ch;">What if Jesus is deliberately reversing Lamech?</p>
+        </div>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <h3 id="the-flood" style="scroll-margin-top:80px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;line-height:1.15;color:#ece7db;margin:0 0 20px;">The flood</h3>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);line-height:1.24;color:#ece7db;margin:0 0 14px;max-width:26ch;">“The earth was filled with violence.”</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#9c9689;"><s-ref ref-key="gen-6-11-13">GENESIS 6:11</s-ref></div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">The flood is presented as <g-term term-key="divine-judgment">divine judgment</g-term> on a world consumed by corruption and violence. But morally the story creates one of the hardest questions in Scripture.</p>
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.78 0.11 320);border:1px solid oklch(0.48 0.08 320);padding:4px 9px;margin-bottom:20px;">INTERPRETATION · GENUINELY UNRESOLVED</div>
+        </sc-if>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.26;color:#ece7db;margin:0 0 30px;max-width:32ch;">If violence is the problem, what do we do with a story in which God responds with catastrophic destruction?</p>
+        <p style="font-size:19px;line-height:1.72;color:#9c9689;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">We should not resolve that quickly, and this course will not pretend to. But notice where the narrative immediately goes.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">covenant</div>
+          <div style="background:#1a1914;padding:20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">limits</div>
+          <div style="background:#1a1914;padding:20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">preservation</div>
+          <div style="background:#1a1914;padding:20px;font-family:'Cormorant Garamond',serif;font-size:23px;color:#ece7db;">promise</div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">And notice the reach of it. <s-ref ref-key="gen-9-8-17">God's covenant is made not only with Noah</s-ref>, but with <span style="color:#ece7db;">“every living creature.”</span> That universality matters — nothing is required of the animals, and nothing is required of humanity for the promise to hold.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);line-height:1.28;color:#ece7db;margin:0 0 14px;max-width:36ch;">The rainbow becomes a sign not of humanity promising never to fail again, but of God promising restraint.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">A THEOLOGICAL READING · THE SIGN IS A WEAPON, HUNG UP · <g-term term-key="noahic-covenant">THE COVENANT WITH NOAH</g-term></div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-text" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">03</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">WORDS THAT MATTER</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:#9c9689;max-width:60ch;margin:0 0 26px;font-style:italic;">Three Hebrew words that carry the lesson.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">חָמָס</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">HAMAS — VIOLENCE</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">Violence, wrongdoing, violent injustice. Genesis 6:11 says the earth was filled with <em style="font-style:italic;">hamas</em>.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 12px;">This matters because Genesis identifies violence — not merely abstract rule-breaking — as the central symptom of humanity's unraveling.</p>
+              <p style="font-size:14px;line-height:1.7;color:#c4bdae;margin:0;">The word carries a social edge: it is the violence the strong do to the weak, the kind prophets later denounce in courts and marketplaces.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">בְּרִית</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">BERIT — COVENANT</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">A binding relationship established through promises and obligations. After the flood, <g-term term-key="covenant">God's covenant</g-term> extends beyond one family to every living creature.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 12px;">Covenant becomes one of the Bible's central ways of imagining a God who binds himself to creation and to people.</p>
+              <p style="font-size:14px;line-height:1.7;color:#c4bdae;margin:0;">Watch how the terms change across the story. This one asks nothing in return. Sinai will.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:block;padding:28px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#ece7db;line-height:1;margin-bottom:10px;overflow-wrap:anywhere;">בָּבֶל</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">BABEL / BABYLON</div>
+              <div style="font-size:15px;line-height:1.65;color:#c4bdae;margin-bottom:16px;">Babel is the Hebrew form of <g-term term-key="babylon">Babylon</g-term>. Genesis plays on a Hebrew verb meaning <em style="font-style:italic;">to confuse</em>.</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 28px;">
+              <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 12px;">Babylonian tradition connected the city's name with <em style="font-style:italic;">bab-ilu</em>, “gate of god.” Genesis hears something closer to babble.</p>
+              <p style="font-size:14px;line-height:1.7;color:#c4bdae;margin:0;">The story therefore works simultaneously as a narrative about language and as a critique of imperial human ambition. The greatest city in the world, renamed a stammer.</p>
+            </div>
+          </details>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;">
+          <span>ALSO IN THIS LESSON</span>
+          <span style="color:#c4bdae;letter-spacing:0;font-family:'Libre Franklin',sans-serif;font-size:13px;"><g-term term-key="ziggurat">ziggurat</g-term> · <g-term term-key="scapegoat">scapegoat</g-term> · <g-term term-key="covenant">covenant</g-term> · <g-term term-key="noahic-covenant">the covenant with Noah</g-term> · <g-term term-key="empire">empire</g-term> · <g-term term-key="divine-judgment">divine judgment</g-term></span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-4-1-16">Genesis 4:1–16</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-4-23-24">Genesis 4:23–24</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-6-11-13">Genesis 6:11–13</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-9-8-17">Genesis 9:8–17</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="gen-11-1-9">Genesis 11:1–9</s-ref></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#c4bdae;border:1px solid #34322a;padding:8px 13px;"><s-ref ref-key="matt-18-21-22">Matthew 18:21–22</s-ref></span>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-consciousness-shift" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">04</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE CONSCIOUSNESS SHIFT</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;border:1px solid #2b2921;background:#1a1914;margin-bottom:26px;">
+          <div style="padding:24px 26px;border-right:1px solid #2b2921;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:8px;">FROM</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#9c9689;">Violence answers violence</div>
+          </div>
+          <div style="padding:24px 26px;border-right:1px solid #2b2921;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6b665a;margin-bottom:8px;">THROUGH</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#c4bdae;">Violence must be limited</div>
+          </div>
+          <div style="padding:24px 26px;flex:1;min-width:200px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:8px;">TOWARD</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;color:#ece7db;">Covenant and restraint</div>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Human beings instinctively escalate. Cain kills. Lamech multiplies vengeance. Society fills with violence. Babel centralizes human power.</p>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">And Genesis repeatedly introduces boundaries.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:30px;">
+          <div style="background:#171610;padding:17px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Cain is marked — and protected from revenge.</div>
+          <div style="background:#171610;padding:17px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">The flood is followed by covenant.</div>
+          <div style="background:#171610;padding:17px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Human violence is given limits.</div>
+          <div style="background:#171610;padding:17px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Babel is scattered rather than annihilated.</div>
+        </div>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:26px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0;max-width:24ch;">A limit on violence is not yet enemy-love. But it may be a step toward it.</p>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 20px;text-wrap:pretty;">The Bible does not jump from Lamech directly to Jesus. It moves through stages — restraint, law, justice, mercy, forgiveness, and finally <s-ref ref-key="matt-5-38-44">enemy-love</s-ref>.</p>
+        <p style="font-size:19px;line-height:1.72;color:#9c9689;max-width:66ch;margin:0 0 14px;text-wrap:pretty;">And not smoothly. This is another case of three steps forward, two steps back. Human consciousness learns restraint long before it learns reconciliation — which is why <s-ref ref-key="ex-21-23-25">“eye for eye”</s-ref> can be read as a ceiling on revenge rather than a demand to maximize punishment.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">STAGES COEXIST · A NEW VISION DOES NOT ERASE AN OLD ONE</div>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="border:1px solid #34322a;background:#1a1914;padding:28px 30px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">FIRST, STOP THE ESCALATION</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">A child who lashes out does not begin with a lecture on universal compassion. First, the violence has to stop. Boundaries come before internalization.</p>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 20px;text-wrap:pretty;">That may help us understand some of the Bible's moral development. Before <em style="font-style:italic;">love your enemies</em>, there may need to be:</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:20px;">
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;">do not murder</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;">limit retaliation</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;">establish justice</div>
+            <div style="background:#171610;padding:18px 20px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;">protect the vulnerable</div>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,34px);line-height:1.26;color:#ece7db;margin:0 0 10px;max-width:32ch;">Restraint is not the destination. It can be the scaffolding that makes a deeper morality possible.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;">PLANTED HERE · DEVELOPED FULLY AT SINAI AND IN TORAH</div>
+        </div>
+      </div>
+
+      <div style="padding:48px 0 0;">
+        <div style="display:flex;gap:0;border:1px solid oklch(0.42 0.07 320);background:#16121a;">
+          <div style="width:6px;background:oklch(0.62 0.13 320);flex:none;"></div>
+          <div style="padding:26px 30px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.78 0.11 320);line-height:1;">◇</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;color:oklch(0.78 0.11 320);">THE PROJECTION QUESTION · RETURNS</span>
+            </div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.24;color:#ece7db;margin:0 0 22px;max-width:34ch;">When humans believe violence solves problems, do we imagine God solving problems the same way?</p>
+            <p style="font-size:18px;line-height:1.72;color:#ded7c8;max-width:60ch;margin:0 0 20px;text-wrap:pretty;">Genesis 6–9 places us inside one of the hardest versions of the question. Human civilization has become violent. The story depicts God responding with catastrophic judgment.</p>
+            <div style="display:grid;gap:1px;background:#2a2130;border:1px solid #2a2130;margin-bottom:22px;">
+              <div style="background:#1a151f;padding:18px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Is this a clear revelation of divine violence?</div>
+              <div style="background:#1a151f;padding:18px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Is it an ancient human way of interpreting catastrophic judgment?</div>
+              <div style="background:#1a151f;padding:18px 24px;font-size:17px;line-height:1.6;color:#ded7c8;">Or is the story preserving an ancient judgment framework <em style="font-style:italic;">while beginning to move</em> toward covenant and restraint?</div>
+            </div>
+            <p style="font-size:18px;line-height:1.72;color:#ded7c8;max-width:60ch;margin:0 0 20px;text-wrap:pretty;">We should not answer faster than the text allows. This question stays open, and it gets harder — at conquest, at judgment, at atonement, at hell, and at the cross.</p>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;color:#8d7f95;line-height:1.7;max-width:80ch;">NOTICE WHAT WE ARE NOT DOING: DECIDING IN ADVANCE THAT EVERY DIFFICULT TEXT IS PROJECTION.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-christ-connection" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">05</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE CHRIST CONNECTION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 26px;text-wrap:pretty;">Genesis gives us a numerical image of escalating revenge. Lamech boasts: <em style="font-style:italic;">seventy-sevenfold.</em> In Matthew 18, Peter asks how many times he must forgive — and Jesus answers with the same arithmetic.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;"><s-ref ref-key="gen-4-23-24">GENESIS 4:24</s-ref></div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.25;color:#9c9689;margin:0;">Lamech multiplies revenge.</p>
+          </div>
+          <div style="background:#1c1b16;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:oklch(0.74 0.12 72);margin-bottom:14px;"><s-ref ref-key="matt-18-21-22">MATTHEW 18:22</s-ref></div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.25;color:#ece7db;margin:0;">Jesus multiplies forgiveness.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#9c9689;max-width:66ch;margin:0 0 34px;text-wrap:pretty;">One of the clearest developmental reversals in the whole course — and Jesus does it with a number, not an argument.</p>
+
+        <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:36px;line-height:1.15;color:#ece7db;margin:0 0 20px;">And Babel meets Pentecost</h3>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:0 0 22px;text-wrap:pretty;">Babel produces scattering and confused speech. <s-ref ref-key="acts-2-1-12">Pentecost</s-ref> will later give us another multilingual scene — but Pentecost does not erase difference. People remain Parthians, Medes, Elamites, Judeans, Arabs. What changes is understanding.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;margin-bottom:20px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.2vw,42px);line-height:1.22;color:#ece7db;margin:0;max-width:26ch;">Babel is not reversed by making everyone the same. Pentecost creates communion without erasing difference.</p>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#948D7F;">CARRIES FORWARD INTO CHURCH, INCLUSION AND UNITY</div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="the-tension" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">06</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">THE TENSION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.3;color:#ece7db;margin:0 0 30px;max-width:34ch;font-weight:400;">A flood that destroys nearly everything: how is this a story moving toward mercy?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">DIVINE JUDGMENT</div>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0 0 12px;">The traditional reading sees the flood as a unique act of judgment on a world whose violence and corruption had become total.</p>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0;">God preserves Noah and creation, then establishes covenant. Judgment is real, and it is not the last word.</p>
+          </div>
+          <div style="background:#1a1914;padding:30px 28px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#D99E4D;margin-bottom:14px;">AN ANCIENT STORY BEING TRANSFORMED</div>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0 0 12px;">Another reading emphasizes that Genesis retells a flood tradition already known across the region. The important question is therefore what Genesis <em style="font-style:italic;">changes</em>.</p>
+            <p style="font-size:16px;line-height:1.75;color:#c4bdae;margin:0;">Violence becomes central to the diagnosis. Humanity is preserved. Covenant follows. Divine restraint becomes part of the conclusion.</p>
+          </div>
+        </div>
+        <p style="font-size:19px;line-height:1.72;color:#ded7c8;max-width:66ch;margin:24px 0 22px;text-wrap:pretty;">Neither reading fully removes the moral tension. Both are held by serious Christians.</p>
+        <div style="border-left:2px solid oklch(0.74 0.12 72);padding:8px 0 8px 32px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.6vw,46px);line-height:1.2;color:#ece7db;margin:0 0 12px;max-width:22ch;">The flood should remain difficult.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#9c9689;">INTELLECTUAL HONESTY MATTERS MORE HERE THAN RESOLUTION</div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="think-deeper" style="scroll-margin-top:80px;border:1px solid oklch(0.48 0.08 320);background:#191518;">
+          <div onClick="{{ toggleDeeper }}" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 30px;cursor:pointer;" style-hover="background:#1e191d;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:oklch(0.78 0.11 320);margin-bottom:10px;">THEOLOGICAL / PSYCHOLOGICAL INTERPRETATION</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:#ece7db;line-height:1.15;">Think Deeper: Is civilization sometimes organized fear?</div>
+              <div style="font-size:14px;line-height:1.6;color:#9c9689;margin-top:10px;font-style:italic;max-width:52ch;">An interpretation worth taking seriously — not a settled conclusion.</div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:oklch(0.78 0.11 320);line-height:1;">{{ deeperSign }}</div>
+          </div>
+          <sc-if value="{{ deeperOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 30px 30px;border-top:1px solid #2e2630;">
+              <div style="display:grid;gap:1px;background:#2a2130;border:1px solid #2a2130;margin:26px 0 22px;">
+                <div style="background:#1a151f;padding:16px 24px;display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:oklch(0.78 0.11 320);">GENESIS 3</span><span style="font-size:17px;color:#ded7c8;">introduces fear</span></div>
+                <div style="background:#1a151f;padding:16px 24px;display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:oklch(0.78 0.11 320);">GENESIS 4</span><span style="font-size:17px;color:#ded7c8;">introduces rivalry</span></div>
+                <div style="background:#1a151f;padding:16px 24px;display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:oklch(0.78 0.11 320);">GENESIS 6</span><span style="font-size:17px;color:#ded7c8;">shows widespread violence</span></div>
+                <div style="background:#1a151f;padding:16px 24px;display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:oklch(0.78 0.11 320);">GENESIS 11</span><span style="font-size:17px;color:#ece7db;">“let us make a name for ourselves, and not be scattered”</span></div>
+              </div>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 18px;max-width:40ch;">What if Babel is not mainly a story about architecture — but about the human desire to manufacture security, permanence, identity and control?</p>
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:0 0 18px;text-wrap:pretty;">Fear can organize more than individuals. It can organize families, tribes, cities, economies, governments, empires — and religions.</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 22px;max-width:40ch;">What happens when “I must make myself safe” becomes “we must make ourselves untouchable”?</p>
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:0 0 18px;text-wrap:pretty;">Babel may represent the opposite of trust. Humanity builds upward because it cannot trust belonging, provision, or vulnerability. Listen to what the city says:</p>
+              <div style="display:grid;gap:1px;background:#2a2130;border:1px solid #2a2130;margin-bottom:22px;">
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">We will secure ourselves.</div>
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">We will make our own name.</div>
+                <div style="background:#1a151f;padding:15px 24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#ded7c8;">We will not be scattered.</div>
+              </div>
+              <p style="font-size:18px;line-height:1.75;color:#ded7c8;max-width:64ch;margin:0 0 22px;text-wrap:pretty;">That impulse is ancient. It is also modern.</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,44px);line-height:1.2;color:#ece7db;margin:0 0 16px;max-width:24ch;">Fear does not only build walls around individuals. Fear can build civilizations.</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);line-height:1.24;color:oklch(0.84 0.10 72);margin:0 0 18px;max-width:26ch;">But fear cannot finally make a safe universe.</p>
+              <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">Cain's violence solves the immediate problem of Abel. Lamech's vengeance may genuinely intimidate his enemies. Babel's centralization may genuinely produce security. Each of these can appear to work — for a while.</p>
+              <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:18px;">
+                <div style="background:#171610;padding:14px 22px;display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:14px;align-items:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#9c9689;">violence</div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6b665a;">→</div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;">more violence</div></div>
+                <div style="background:#171610;padding:14px 22px;display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:14px;align-items:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#9c9689;">revenge</div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6b665a;">→</div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#c4bdae;">escalation</div></div>
+                <div style="background:#171610;padding:14px 22px;display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:14px;align-items:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#9c9689;">control</div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#6b665a;">→</div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#ece7db;">a greater need for control</div></div>
+              </div>
+              <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">Reality eventually exposes what violence and domination promised but could never deliver. Which is not a claim that every empire falls promptly, or that suffering people brought it on themselves — history is far crueler and slower than that.</p>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9c9689;">RETURNS AT EMPIRE, ROME, CONSTANTINE, THE CRUSADES AND NATIONALISM</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="church-history" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">07</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">VOICES OF THE TRADITION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:#9c9689;max-width:64ch;margin:0 0 26px;font-style:italic;">Three <g-term term-key="church-father">voices</g-term> on violent texts, violent cities, and how to read both.</p>
+        <div style="display:grid;gap:1px;background:#2b2921;border:1px solid #2b2921;">
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Origen</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">c. AD 240 · ALEXANDRIA &amp; CAESAREA</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Often resisted stopping at the violent literal surface of a biblical text, and looked for a spiritual reading in which the enemies destroyed are the vices within us.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:36ch;">What do Christians do when a literal reading seems unlike the God revealed in Christ?</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;">His answer — read deeper rather than discard — is one of the oldest Christian strategies for difficult texts. It has an obvious risk: allegory can be used to dissolve anything inconvenient. <g-term term-key="origen">Origen</g-term> is worth knowing precisely because both the strength and the risk are visible in him.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Augustine</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">c. AD 420 · HIPPO · CITY OF GOD</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Understands human societies as shaped by different loves. The earthly city is marked by self-love, domination and the desire for glory.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:34ch;">Two cities, two loves. Ask what a society loves and you will know what it is.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;">He wrote it as Rome was being sacked, which is part of why it reads as it does. And it gives Babel a striking later parallel: <em style="font-style:italic;">let us make a name for ourselves.</em> Augustine's <g-term term-key="empire">earthly city</g-term> is Babel's grandchild.</p>
+            </div>
+          </details>
+          <details style="background:#1a1914;">
+            <summary style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start;padding:24px 28px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;">Ephrem the Syrian</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#948D7F;margin-top:5px;">c. AD 360 · NISIBIS &amp; EDESSA</div>
+              </div>
+              <div>
+                <p style="font-size:16px;line-height:1.72;color:#c4bdae;margin:0 0 14px;">Did his theology in hymns. A voice for poetic, symbolic reading that holds mystery rather than flattening a story into one literal dimension.</p>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">SOURCE · CLICK TO LEARN MORE →</div>
+              </div>
+            </summary>
+            <div style="padding:0 28px 24px;">
+              <p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.3;color:#ece7db;margin:0 0 12px;max-width:36ch;">A story can carry several true meanings at once without any of them cancelling the others.</p>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0;"><g-term term-key="ephrem">Ephrem</g-term> wrote in Syriac, close to the Aramaic Jesus spoke, and taught choirs of women to sing his hymns. He is here partly to keep our range wide: not all serious Christian thought happened in Greek or Latin, and not all of it happened in prose.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="discussion" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">08</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">DISCUSSION</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="display:grid;gap:1px;background:#2b2921;border-top:1px solid #2b2921;border-bottom:1px solid #2b2921;">
+          <sc-for list="{{ questions }}" as="q" hint-placeholder-count="9">
+            <div style="background:#14130f;padding:22px 4px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:baseline;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:oklch(0.74 0.12 72);">{{ q.n }}</span>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.4;color:#ded7c8;margin:0;max-width:52ch;">{{ q.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size:15px;line-height:1.7;color:#9c9689;max-width:62ch;margin:22px 0 0;font-style:italic;">Question 09 is the projection question in plain clothes. Groups often answer it more honestly here, about Genesis, than they can later about their own church.</p>
+      </div>
+
+      <div style="padding:64px 0 0;">
+        <div id="experience" style="scroll-margin-top:80px;display:flex;align-items:center;gap:14px;margin-bottom:26px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:oklch(0.74 0.12 72);">09</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.24em;color:#ece7db;">EXPERIENCE</span>
+          <span style="flex:1;height:1px;background:#D89D4D;"></span>
+        </div>
+        <div style="border:1px solid #34322a;background:#1a1914;padding:34px 32px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#9c9689;margin-bottom:14px;">GROUP EXERCISE · 25 MIN · TWO SETS OF CARDS + TABLE</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#ece7db;line-height:1.15;margin-bottom:18px;">Trace the escalation</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 22px;text-wrap:pretty;">Hand out the first set face up and out of order. Ask the group to arrange them in sequence.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:#2b2921;border:1px solid #2b2921;margin-bottom:26px;">
+            <div style="background:#171610;padding:18px 20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;margin-bottom:7px;">GENESIS 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">mistrust / hiding</div></div>
+            <div style="background:#171610;padding:18px 20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;margin-bottom:7px;">GENESIS 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Cain kills Abel</div></div>
+            <div style="background:#171610;padding:18px 20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;margin-bottom:7px;">GENESIS 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Cain fears revenge</div></div>
+            <div style="background:#171610;padding:18px 20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;margin-bottom:7px;">GENESIS 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Lamech boasts of multiplied vengeance</div></div>
+            <div style="background:#171610;padding:18px 20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;margin-bottom:7px;">GENESIS 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">earth filled with violence</div></div>
+            <div style="background:#171610;padding:18px 20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;margin-bottom:7px;">GENESIS 9</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">covenant / limits</div></div>
+            <div style="background:#171610;padding:18px 20px;"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b665a;margin-bottom:7px;">GENESIS 11</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#ece7db;">Babel / centralized security</div></div>
+          </div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 20px;text-wrap:pretty;">Then add the second set and ask them to match the psychological movement to the biblical stories.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 16px;">fear</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 16px;">rivalry</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 16px;">resentment</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 16px;">violence</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 16px;">retaliation</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 16px;">escalation</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#c4bdae;border:1px solid #34322a;padding:9px 16px;">domination</span>
+          </div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">Then ask: <span style="color:#ece7db;">where do you see the same pattern in modern life?</span> Offer a few arenas if the room is slow to start — family conflict, politics, war, social media, ethnic conflict, religious conflict.</p>
+          <details style="background:#171610;border:1px solid #2b2921;">
+            <summary style="display:block;padding:22px 24px;list-style:none;color:#948D7F;" style-hover="color:#D89D4D;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#ece7db;line-height:1.25;margin-bottom:10px;">Then add one final card — and say nothing</div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;">CLICK TO LEARN MORE →</span>
+            </summary>
+            <div style="padding:0 24px 24px;">
+              <div style="border:1px solid #45412f;background:#1c1a13;padding:26px;text-align:center;margin-bottom:16px;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.3em;color:oklch(0.74 0.12 72);">FORGIVE SEVENTY-SEVEN TIMES</div>
+              </div>
+              <p style="font-size:15px;line-height:1.7;color:#9c9689;margin:0 0 12px;">Place it on the table beside Lamech's card. Do not explain it.</p>
+              <p style="font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.3;color:#ece7db;margin:0;max-width:34ch;">Let the visual reversal speak for itself. Someone in the room will say it out loud.</p>
+            </div>
+          </details>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;">
+            <a href="Lesson 06 Song Ideas.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9c9689;border:1px solid #34322a;padding:7px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">SONG IDEAS ↓</a>
+            <a href="Timeline.dc.html#era-primeval" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#9c9689;border:1px solid #34322a;padding:7px 12px;" style-hover="color:#ece7db;border-color:#948D7F;">SEE WHAT ELSE WAS HAPPENING →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:72px 0 0;">
+        <div id="takeaway" style="scroll-margin-top:80px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.24em;color:oklch(0.74 0.12 72);margin-bottom:22px;">TAKEAWAY</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.4vw,60px);line-height:1.14;color:#ece7db;margin:0 0 24px;max-width:26ch;font-weight:500;letter-spacing:-0.01em;">What begins as mistrust in Eden becomes violence between brothers, vengeance between families, and fear organized into civilization.</p>
+        <p style="font-size:19px;line-height:1.72;color:#c4bdae;max-width:60ch;margin:0 0 20px;text-wrap:pretty;">The biblical story will increasingly ask how escalation is interrupted.</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1.2;color:#ece7db;margin:0;">Lamech multiplies revenge. Jesus will multiply forgiveness.</p>
+      </div>
+
+      <div style="padding:56px 0 0;">
+        <div style="border:1px solid #2b2921;background:#171610;padding:30px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D89D4D;margin-bottom:14px;">WHERE THIS GOES NEXT</div>
+          <p style="font-size:17px;line-height:1.75;color:#c4bdae;max-width:62ch;margin:0 0 16px;text-wrap:pretty;">Genesis 1–11 begins with the whole human family. By the end, humanity is scattered. Then the biblical camera suddenly narrows — from all nations, to one family.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.4vw,42px);line-height:1.18;color:#ece7db;margin:0 0 22px;max-width:26ch;">What if God's answer to a fractured world begins with one ordinary person asked to trust a promise?</p>
+          <a href="Lesson 07.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#D89D4D;text-decoration:none;border-bottom:1px solid #45412f;padding-bottom:3px;" style-hover="color:#ece7db;">NEXT → LESSON 07: ABRAHAM — A PROMISE TO A NOBODY</a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2b2921;border:1px solid #2b2921;margin:56px 0 88px;">
+        <a href="Lesson 05.dc.html" style="background:#1a1914;padding:28px;display:block;" style-hover="background:#211f18;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:10px;">← LESSON 05</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;overflow-wrap:anywhere;color:#ece7db;">The Fall: Where Evil Comes From</div>
+        </a>
+        <a href="Lesson 07.dc.html" style="background:#1a1914;padding:28px;display:block;text-align:right;" style-hover="background:#211f18;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:10px;">LESSON 07 →</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;overflow-wrap:anywhere;color:#ece7db;">Abraham: A Promise to a Nobody</div>
+        </a>
+      </div>
+    </div>
+
+    <div style="padding:72px 28px 88px;">
+      <div style="position:sticky;top:76px;display:grid;gap:32px;max-height:calc(100vh - 96px);overflow-y:auto;overscroll-behavior:contain;padding-right:10px;padding-bottom:8px;">
+        <sc-if value="{{ showSlideDownload }}" hint-placeholder-val="{{ true }}">
+          <div style="border:1px solid oklch(0.50 0.08 72);background:#1c1a13;padding:22px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.18em;color:oklch(0.74 0.12 72);margin-bottom:14px;">LESSON 06 RESOURCES</div>
+            <div style="display:grid;gap:7px;margin-bottom:18px;">
+              <a href="Lesson Slides.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#14130f;background:oklch(0.74 0.12 72);padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;" style-hover="background:oklch(0.83 0.12 72);"><span>SLIDES</span><span style="opacity:0.7;">→</span></a>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>POWERPOINT</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>LESSON GUIDE</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>HANDOUTS</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#4a4740;border:1px solid #26241e;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span>LESSON PDF</span><span style="font-size:9px;letter-spacing:0.12em;color:#3f3c34;">NOT YET</span></div>
+              <a href="Lesson 06 Song Ideas.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #45412f;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;" style-hover="color:#ece7db;border-color:#948D7F;"><span>SONG IDEAS</span><span style="opacity:0.7;">→</span></a>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#6b665a;line-height:1.7;">SPEAKER NOTES INCLUDED<br>UPDATED SEP 2026</div>
+          </div>
+        </sc-if>
+
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:14px;">IN THIS LESSON</div>
+          <div style="display:grid;gap:0;border-top:1px solid #2b2921;">
+            <sc-for list="{{ toc }}" as="t" hint-placeholder-count="13">
+              <a href="{{ t.href }}" style="display:grid;grid-template-columns:3px 26px minmax(0,1fr);gap:8px;padding:11px 0;border-bottom:1px solid #221f19;font-family:'Libre Franklin',sans-serif;font-size:13px;color:{{ t.color }};background:{{ t.bg }};" style-hover="color:#ece7db;">
+                <span style="background:{{ t.bar }};"></span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:{{ t.numColor }};">{{ t.n }}</span>
+                <span>{{ t.label }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="border:1px solid #2b2921;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">WHERE WE ARE</div>
+          <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0 0 14px;">Still inside the <g-term term-key="primeval-story">primeval story</g-term>. The flood and Babel traditions have ancient parallels in <g-term term-key="mesopotamia">Mesopotamian</g-term> literature that were being copied for centuries before Israel existed.</p>
+          <a href="Timeline.dc.html#era-primeval" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#c4bdae;border:1px solid #34322a;padding:9px 12px;display:block;text-align:center;" style-hover="color:#ece7db;border-color:#948D7F;">VIEW IN THE FULL TIMELINE →</a>
+        </div>
+
+        <div style="border:1px solid #2b2921;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">THREADS THIS LESSON OPENS</div>
+          <div style="display:grid;gap:10px;font-size:13px;line-height:1.6;color:#9c9689;">
+            <div><span style="color:#D89D4D;">FEAR SCALES</span> — what begins inside individuals becomes culture, institutions and empire.</div>
+            <div><span style="color:#D89D4D;">VIOLENCE ESCALATES</span> — Cain becomes Lamech; retaliation multiplies itself.</div>
+            <div><span style="color:#D89D4D;">RESTRAINT AS DEVELOPMENTAL GRACE</span> — limiting violence is not the destination, but it is a step.</div>
+            <div><span style="color:#D89D4D;">STRUCTURE PREPARES THE VALUE</span> — external limits scaffold the later internalizing of mercy.</div>
+            <div><span style="color:#D89D4D;">THE PROJECTION QUESTION GETS HARDER</span> — violent humans may imagine divine problem-solving through violence.</div>
+            <div><span style="color:#D89D4D;">COVENANT MOVES TOWARD PRESERVATION</span> — after judgment, God binds himself to the living world.</div>
+            <div><span style="color:#D89D4D;">BABEL AS ORGANIZED FEAR</span> — the search for safety and a name becomes civilization and empire.</div>
+            <div><span style="color:#D89D4D;">JESUS REVERSES LAMECH</span> — seventy-sevenfold vengeance becomes seventy-sevenfold forgiveness.</div>
+            <div><span style="color:#D89D4D;">PENTECOST TRANSFORMS BABEL</span> — unity does not require sameness.</div>
+          </div>
+        </div>
+
+        <div style="border:1px solid #26241e;background:#171610;padding:20px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:12px;">DEVELOPMENT IS NOT LINEAR</div>
+          <p style="font-size:14px;line-height:1.7;color:#9c9689;margin:0;">Restraint, law, justice, mercy, forgiveness, enemy-love — the stages coexist rather than replacing each other. Three steps forward, two steps back.</p>
+        </div>
+
+        <sc-if value="{{ showClaimTags }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#948D7F;margin-bottom:14px;">HOW TO READ THE TAGS</div>
+            <div style="display:grid;gap:9px;">
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.76 0.10 235);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">HISTORICAL FACT</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.70 0.09 165);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">STRONG INFERENCE</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.74 0.12 72);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">DOCTRINAL CLAIM</span></div>
+              <div style="display:flex;gap:9px;align-items:center;"><span style="width:9px;height:9px;background:oklch(0.78 0.11 320);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;color:#9c9689;">INTERPRETATION / SPECULATION</span></div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showClaimTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;showSlideDownload&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;deeperDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Lesson page&quot;},&quot;heroOverlayColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#14130f&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero overlay&quot;,&quot;options&quot;:[&quot;#14130f&quot;,&quot;#1d2a30&quot;,&quot;#3a2618&quot;,&quot;#101c16&quot;,&quot;#241a2b&quot;]},&quot;heroOverlayOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.15,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroOverlayBlend&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;normal&quot;,&quot;options&quot;:[&quot;normal&quot;,&quot;multiply&quot;,&quot;soft-light&quot;,&quot;overlay&quot;,&quot;color&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroStripeOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.3,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroImageOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;},&quot;heroScrimOpacity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero overlay&quot;}}">
+const LESSON_PARTS = [
+  { roman: "I–II", name: "ORIENTATION · BEFORE ISRAEL", items: [
+    [1, "What Kind of Book Is the Bible?"], [2, "Before Israel: The Ancient Religious World"],
+    [3, "Genesis: Creation Is Gift"], [4, "Christ Before Jesus: Logos and Creation"],
+    [5, "The Fall: Where Evil Comes From"], [6, "Flood and Babel: The Unraveling"] ] },
+  { roman: "III", name: "ISRAEL'S STORY", items: [
+    [7, "Abraham: A Promise to a Nobody"], [8, "Exodus: The God Who Takes Sides"],
+    [9, "Sinai, Conquest, Judges"], [10, "Kings: David and the Cost of a Crown"],
+    [11, "The Prophets: Justice Before Sacrifice"], [12, "Exile: Losing Everything, Finding God"],
+    [13, "The Axial Age: The World Starts Asking"], [14, "Between the Testaments: Greek Everywhere"] ] },
+  { roman: "IV", name: "JESUS", items: [
+    [15, "The World Jesus Was Born Into"], [16, "Jesus: The Kingdom of God"],
+    [17, "Jesus: Parables, Sermon, Table"], [18, "The Cross: Why Did Jesus Die?"],
+    [19, "Resurrection: The Claim That Started Everything"] ] },
+  { roman: "V", name: "THE FIRST CHURCH", items: [
+    [20, "Pentecost: The First Community"], [21, "Paul: Apostle to the Nations"],
+    [22, "Jerusalem Council: Who Belongs?"], [23, "Four Gospels: Why Not One?"],
+    [24, "The Canon: How the Bible Got Its List"] ] },
+  { roman: "VI", name: "UNDER PRESSURE", items: [
+    [25, "After the Apostles: Faith Under Pressure"], [26, "Martyrs: The Blood That Was Seed"],
+    [27, "Apologists: Arguing in Greek"], [28, "Origen and Alexandria: Reading in Layers"] ] },
+  { roman: "VII", name: "CHRISTENDOM AND AFTER", items: [
+    [29, "Constantine: The Church Gets Power"], [30, "Nicaea: Working Out Who Jesus Is"],
+    [31, "Augustine: The Inner Life and the Fall of Rome"], [32, "Justinian, Islam, and a Shrinking Christendom"],
+    [33, "Two Christendoms: East and West Divide"], [34, "Scholastics, Crusaders, Mystics"],
+    [35, "Renaissance and the Cracks"], [36, "Reformation and After"] ] }
+];
+const BUILT = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const THIS_LESSON = 6;
+
+class Component extends DCLogic {
+  state = { deeperOpen: false, menuOpen: false, activeId: "the-story" };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const ids = this.sectionIds || [];
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 160) current = id;
+      }
+      if (current && current !== this.state.activeId) this.setState({ activeId: current });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+  }
+
+  renderVals() {
+    const deeperOpen = this.state.deeperOpen || (this.props.deeperDefaultOpen ?? false);
+    const questions = [
+      "What changes between Cain and Lamech? What does that tell us about how violence becomes cultural?",
+      "Why does another person's blessing sometimes feel like our loss?",
+      "Is limiting revenge morally different from forgiving an enemy? Why might one come before the other?",
+      "What do you think Jesus is doing when he answers Peter with “seventy-seven times”?",
+      "Why do you think Genesis says the earth was “filled with violence” rather than simply “filled with sin”?",
+      "Does the covenant after the flood change how you read the flood itself?",
+      "What fears seem to drive Babel?",
+      "What modern institutions or societies are built partly around the promise: “We can make ourselves safe”?",
+      "If humans repeatedly solve problems through violence, how might that shape the kind of God humans imagine?"
+    ].map((text, i) => ({ n: String(i + 1).padStart(2, "0"), text }));
+    const labels = ["The Story","The Escalation","The World","Cain and Rivalry","Lamech","The Flood","Words That Matter","The Consciousness Shift","The Christ Connection","The Tension","Think Deeper","Voices of the Tradition","Discussion","Experience","Takeaway"];
+    const ids = ["the-story","the-escalation","the-world","cain","lamech","the-flood","the-text","the-consciousness-shift","the-christ-connection","the-tension","think-deeper","church-history","discussion","experience","takeaway"];
+    this.sectionIds = ids;
+    const active = this.state.activeId;
+    const toc = labels.map((label, i) => {
+      const on = ids.indexOf(active) === i;
+      return {
+        n: String(i + 1).padStart(2, "0"), label, href: "#" + ids[i],
+        color: on ? "#ece7db" : "#9c9689",
+        bg: on ? "#1c1b16" : "transparent",
+        bar: on ? "oklch(0.74 0.12 72)" : "transparent",
+        numColor: on ? "oklch(0.74 0.12 72)" : "#4a463b"
+      };
+    });
+    const menuParts = LESSON_PARTS.map(p => ({
+      roman: p.roman, name: p.name,
+      items: p.items.map(([n, title]) => {
+        const built = BUILT.includes(n);
+        const here = n === THIS_LESSON;
+        return {
+          n: String(n).padStart(2, "0"), title,
+          href: built ? "Lesson " + String(n).padStart(2, "0") + ".dc.html" : "#",
+          color: here ? "oklch(0.82 0.12 72)" : built ? "#ded7c8" : "#8b8377",
+          bg: "transparent",
+          hoverBg: "#241f18",
+          rule: here ? "inset 2px 0 0 oklch(0.74 0.12 72)" : "none",
+          numColor: here ? "oklch(0.82 0.12 72)" : built ? "#D89D4D" : "#6b6456",
+          pointer: built ? "auto" : "none"
+        };
+      })
+    }));
+    return {
+      heroOverlayColor: this.props.heroOverlayColor ?? "#14130f",
+      heroOverlayOpacity: this.props.heroOverlayOpacity ?? 0.15,
+      heroOverlayBlend: this.props.heroOverlayBlend ?? "normal",
+      heroImageOpacity: this.props.heroImageOpacity ?? 1,
+      heroStripeOpacity: this.props.heroStripeOpacity ?? 0.3,
+      heroScrimOpacity: this.props.heroScrimOpacity ?? 1,
+      showClaimTags: this.props.showClaimTags ?? true,
+      showSlideDownload: this.props.showSlideDownload ?? true,
+      deeperOpen,
+      deeperSign: deeperOpen ? "−" : "+",
+      toggleDeeper: () => this.setState(s => ({ deeperOpen: !s.deeperOpen })),
+      menuOpen: this.state.menuOpen,
+      menuSign: this.state.menuOpen ? "▴" : "▾",
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      menuParts,
+      questions, toc
+    };
+  }
+}
+</script>
+</body>
+</html>

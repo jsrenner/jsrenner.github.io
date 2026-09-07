@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Christian Story</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: #14130f;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 20px;
+  }
+  #__pw_box {
+    background: #211f19; border: 1px solid #3a362c; border-radius: 10px;
+    padding: 32px 28px; width: 320px; max-width: 100%;
+  }
+  #__pw_box h1 {
+    font-size: 15px; margin: 0 0 4px; color: #e0a94f; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+  #__pw_box p { font-size: 13px; color: #c4bdae; margin: 0 0 18px; }
+  #__pw_box input {
+    width: 100%; padding: 11px 10px; margin-bottom: 10px;
+    border: 1px solid #3a362c; border-radius: 6px; font-size: 16px;
+    background: #14130f; color: #f0ece3;
+  }
+  #__pw_box button {
+    width: 100%; padding: 12px; background: #e0a94f; color: #14130f; border: none;
+    border-radius: 6px; font-size: 15px; font-weight: 700; cursor: pointer;
+  }
+  #__pw_box button:hover { background: #cf9a42; }
+  #__pw_error { color: #d97a6c; font-size: 13px; margin-top: 8px; min-height: 16px; }
+</style>
+</head>
+<body>
+  <div id="__pw_box">
+    <h1>The Christian Story</h1>
+    <p>This page is private. Sign in to continue.</p>
+    <form id="__pw_form" autocomplete="off">
+      <input type="text" id="__pw_user" placeholder="Username" autocomplete="off" autocapitalize="none" spellcheck="false">
+      <input type="password" id="__pw_pass" placeholder="Password" autocomplete="off">
+      <button type="submit">Enter</button>
+      <div id="__pw_error"></div>
+    </form>
+  </div>
+  <script>
+    (function() {
+      var EXPECTED_HASH = "7c47369709c885f6fc812fb2e78027401d75f04f0d236b8b6db55ebcecae7267";
+      var SESSION_KEY = "__story_authed";
+      var LANDING = "Lesson%2001.dc.html";
+
+      if (sessionStorage.getItem(SESSION_KEY) === "1") {
+        window.location.replace(LANDING);
+      }
+
+      function sha256Hex(str) {
+        var enc = new TextEncoder().encode(str);
+        return crypto.subtle.digest("SHA-256", enc).then(function(buf) {
+          var arr = Array.from(new Uint8Array(buf));
+          return arr.map(function(b) { return b.toString(16).padStart(2, "0"); }).join("");
+        });
+      }
+
+      document.getElementById("__pw_form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        var user = document.getElementById("__pw_user").value.trim();
+        var pass = document.getElementById("__pw_pass").value;
+        sha256Hex(user + ":" + pass).then(function(hash) {
+          if (hash === EXPECTED_HASH) {
+            sessionStorage.setItem(SESSION_KEY, "1");
+            window.location.replace(LANDING);
+          } else {
+            document.getElementById("__pw_error").textContent = "Incorrect username or password.";
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
