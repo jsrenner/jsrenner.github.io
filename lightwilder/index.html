@@ -22,7 +22,7 @@
   <nav style="position:absolute;top:0;bottom:0;left:0;z-index:21;width:{{ navW }};box-sizing:border-box;padding:{{ navPad }};display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(40px,9vh,96px);transform:translateX({{ menuX }});opacity:{{ navOp }};transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .5s ease,width .6s cubic-bezier(.2,.7,.2,1);pointer-events:{{ navPE }}">
     <div style="display:flex;flex-direction:column;gap:6px">
       <sc-for list="{{ menuItems }}" as="m" hint-placeholder-count="5">
-        <a href="{{ m.href }}" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:18px;padding:6px 0;color:{{ m.color }};font-family:'Instrument Serif',serif;font-size:clamp(26px,2.8vw,40px);line-height:1.05;white-space:nowrap;transition:color .25s ease,transform .25s ease" style-hover="color:#f28a72;transform:translateX(6px)"><span style="font-family:'Lato',sans-serif;font-size:11px;line-height:1;color:#f28a72;width:22px;flex-shrink:0">{{ m.num }}</span>{{ m.label }}</a>
+        <a href="{{ m.href }}" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:18px;padding:6px 0;color:{{ m.color }};font-family:'Instrument Serif',serif;font-size:clamp(26px,2.8vw,40px);line-height:1.05;white-space:nowrap;transition:color .45s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1)" style-hover="color:#f28a72;transform:translateX(6px)"><span style="font-family:'Lato',sans-serif;font-size:11px;line-height:1;color:#f28a72;width:22px;flex-shrink:0">{{ m.num }}</span>{{ m.label }}</a>
       </sc-for>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;width:310px;max-width:calc(100vw - 96px)">
@@ -109,12 +109,13 @@
 
   <div style="position:absolute;top:0;left:0;right:0;height:260px;pointer-events:none;background:linear-gradient(180deg,rgba(8,16,20,1) 0%,rgba(14,30,36,.75) 35%,rgba(22,44,51,0) 100%)"></div>
   <div style="position:relative;z-index:22;pointer-events:none;display:grid;grid-template-columns:{{ headCols }};align-items:center;gap:{{ headGap }}">
-    <span onClick="{{ menuToggle }}" style="pointer-events:auto;justify-self:start;display:flex;align-items:center;gap:14px;cursor:pointer;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#efe4d2;padding:8px 0" style-hover="color:#f28a72;transform:translateX(3px)">
-      <span style="position:relative;width:30px;height:14px;display:block">
+    <span onClick="{{ menuToggle }}" style="pointer-events:auto;justify-self:start;display:flex;align-items:center;gap:14px;cursor:pointer;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#efe4d2;padding:8px 0;transition:color .45s cubic-bezier(.2,.7,.2,1),transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="color:#f28a72;transform:translateX(3px)">
+      <span style="position:relative;width:30px;height:14px;display:block;top:{{ burgerY }};opacity:{{ burgerOp }}">
         <span style="position:absolute;left:0;right:0;top:{{ barTop }}px;height:1.5px;background:currentColor;transform:rotate({{ barRot1 }}deg);transition:transform .35s ease,top .35s ease"></span>
+        <span style="position:absolute;left:0;right:0;top:6px;height:1.5px;background:currentColor;opacity:{{ barMidOp }};transition:opacity .2s ease"></span>
         <span style="position:absolute;left:0;top:{{ barBot }}px;width:{{ barW }};height:1.5px;background:currentColor;transform:rotate({{ barRot2 }}deg);transition:transform .35s ease,top .35s ease,width .35s ease"></span>
       </span>
-      {{ menuLabel }}
+      <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}">{{ menuLabel }}</sc-if>
     </span>
     <div style="display:flex;flex-direction:column;align-items:center;justify-self:center;gap:14px;margin-top:{{ logoMT }}">
       <a href="#" onClick="{{ goHome }}" style="pointer-events:auto;display:block;line-height:0"><img src="img/logo.png" alt="Light Wilder" style="width:{{ logoW }}"></a>
@@ -462,11 +463,12 @@ But on this solid rock I stand`
       albSwOp: this.state.albOut ? 0 : 1, albSwScale: this.state.albOut ? .96 : 1, albSwBlur: this.state.albOut ? '6px' : '0px', albSwY: this.state.albOut ? '6px' : '0px', albSwLyY: this.state.albOut ? '-10px' : '0px',
       goHome: e => { e.preventDefault(); this.setState({ menuOpen: false, page: null }); },
       lyMask: mob ? 'none' : 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.35) 12%,#000 26%,#000 55%,rgba(0,0,0,.35) 80%,transparent 100%)',
+      burgerY: mob ? '21px' : '0px', burgerOp: mob && !mo ? .7 : 1,
       isMobile: mob, isDesk: !mob, lyGrid: mob || (this.state.vw || window.innerWidth) < 1100 ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
       rootH: mob ? 'auto' : '100vh', rootMinH: mob ? '100svh' : '760px',
       rootPad: mob ? '20px 20px 32px' : '36px clamp(72px,12vw,220px) 32px',
       headCols: mob ? 'minmax(0,1fr)' : 'minmax(0,1fr) auto minmax(0,1fr)', headGap: mob ? '4px' : '24px',
-      logoW: mob ? '170px' : 'min(240px,20vw)', logoMT: mob ? '4px' : '24px',
+      logoW: mob ? '170px' : 'min(240px,20vw)', logoMT: mob ? '-6px' : '24px',
       mainDir: mob ? 'column' : 'row', mainAlign: mob ? 'center' : 'center',
       lyFlex: mob ? '0 0 auto' : '1', lySelf: mob ? 'stretch' : 'flex-start', lyMT: mob ? '36px' : 'calc(clamp(80px,15.5vh,185px) - 9px)',
       albPad: mob ? '18px' : '24px', albMT: mob ? '0' : '1px',
@@ -479,7 +481,7 @@ But on this solid rock I stand`
       pageBack: () => this.setState({ page: null }),
       menuOp: mo ? 1 : 0, menuPE: mo ? 'auto' : 'none', menuX: mo ? '0' : '-40px',
       menuLabel: mo ? 'Close' : 'Menu',
-      barTop: mo ? 6 : 2, barBot: mo ? 6 : 10, barRot1: mo ? 45 : 0, barRot2: mo ? -45 : 0, barW: mo ? '100%' : '65%',
+      barTop: mo ? 6 : (mob ? 0 : 2), barBot: mo ? 6 : (mob ? 12 : 10), barMidOp: mob && !mo ? 1 : 0, barRot1: mo ? 45 : 0, barRot2: mo ? -45 : 0, barW: mo || mob ? '100%' : '65%',
       menuToggle: () => this.setState(s => s.menuOpen ? { menuOpen: false, page: null } : { menuOpen: true }),
       menuClose: () => this.setState({ menuOpen: false, page: null }),
       menuItems: [['Music', 'music'], ['Lyrics', 'lyrics'], ['Story', 'story'], ['Dawn of Ages', 'ages'], ['Contact', 'contact']].map((m, i) => ({ label: m[0], href: '#' + m[1], num: String(i + 1).padStart(2, '0'), color: pg === m[1] ? '#f28a72' : '#efe4d2', go: e => { e.preventDefault(); this.setState({ page: m[1], menuOpen: true }); } })),
