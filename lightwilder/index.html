@@ -9,12 +9,12 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>html,body{margin:0;background:#0a1116;-webkit-font-smoothing:antialiased}a{color:#f28a72;text-decoration:none}a:hover{color:#ffb59f}</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lato:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#0a1116;-webkit-font-smoothing:antialiased}a{color:#f28a72;text-decoration:none}a:hover{color:#ffb59f}@keyframes lwBreath{0%,100%{opacity:0;letter-spacing:.18em}50%{opacity:.6;letter-spacing:.3em}}</style>
 </helmet>
-<div data-screen-label="Home hero" style="position:relative;width:100%;height:{{ rootH }};min-height:{{ rootMinH }};overflow:hidden;background:#0a1116;color:#efe4d2;font-family:'Instrument Sans',sans-serif;display:flex;flex-direction:column;box-sizing:border-box;padding:{{ rootPad }}">
-  <div style="position:absolute;inset:0;background:url(img/ocean.jpg) 50% 21.8%/cover"></div>
-  <video ref="{{ filmRef }}" onTimeUpdate="{{ filmTime }}" src="img/ocean.mp4" poster="img/ocean.jpg" autoplay="" muted="" loop="" playsinline="" preload="auto" onPlaying="{{ filmReady }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 21.8%;opacity:{{ filmOp }};transition:opacity 1.2s ease"></video>
+<div data-screen-label="Home hero" style="position:relative;width:100%;height:{{ rootH }};min-height:{{ rootMinH }};overflow:hidden;background:#0a1116;color:#efe4d2;font-family:'Lato',sans-serif;display:flex;flex-direction:column;box-sizing:border-box;padding:{{ rootPad }}">
+  <div style="position:absolute;inset:0;background-image:url({{ filmPoster }});background-size:cover;background-position:{{ filmPos }}"></div>
+  <video ref="{{ filmRef }}" onTimeUpdate="{{ filmTime }}" key="{{ filmSrc }}" poster="{{ filmPoster }}" autoplay="" muted="" loop="" playsinline="" preload="auto" onPlaying="{{ filmReady }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ filmPos }};opacity:{{ filmOp }};transition:opacity 1.2s ease"><sc-if value="{{ filmWebm }}" hint-placeholder-val="{{ false }}"><source src="{{ filmWebm }}" type="video/webm"></source></sc-if><source src="{{ filmSrc }}" type="video/mp4"></source></video>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,13,17,.6) 0%,rgba(8,13,17,0) 45%,rgba(8,13,17,0) 70%,rgba(8,13,17,.35) 100%),linear-gradient(180deg,rgba(8,13,17,.4) 0%,rgba(8,13,17,0) 20%,rgba(8,13,17,0) 70%,rgba(8,13,17,.75) 100%)"></div>
   <div style="position:absolute;inset:0;background:#080d11;opacity:{{ shade }}"></div>
 
@@ -22,7 +22,7 @@
   <nav style="position:absolute;top:0;bottom:0;left:0;z-index:21;width:{{ navW }};box-sizing:border-box;padding:{{ navPad }};display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(40px,9vh,96px);transform:translateX({{ menuX }});opacity:{{ navOp }};transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .5s ease,width .6s cubic-bezier(.2,.7,.2,1);pointer-events:{{ navPE }}">
     <div style="display:flex;flex-direction:column;gap:6px">
       <sc-for list="{{ menuItems }}" as="m" hint-placeholder-count="5">
-        <a href="{{ m.href }}" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:18px;padding:6px 0;color:{{ m.color }};font-family:'Instrument Serif',serif;font-size:clamp(26px,2.8vw,40px);line-height:1.05;white-space:nowrap;transition:color .25s ease,transform .25s ease" style-hover="color:#f28a72;transform:translateX(6px)"><span style="font-family:'Instrument Sans',sans-serif;font-size:11px;line-height:1;color:#f28a72;width:22px;flex-shrink:0">{{ m.num }}</span>{{ m.label }}</a>
+        <a href="{{ m.href }}" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:18px;padding:6px 0;color:{{ m.color }};font-family:'Instrument Serif',serif;font-size:clamp(26px,2.8vw,40px);line-height:1.05;white-space:nowrap;transition:color .25s ease,transform .25s ease" style-hover="color:#f28a72;transform:translateX(6px)"><span style="font-family:'Lato',sans-serif;font-size:11px;line-height:1;color:#f28a72;width:22px;flex-shrink:0">{{ m.num }}</span>{{ m.label }}</a>
       </sc-for>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;width:310px;max-width:calc(100vw - 96px)">
@@ -39,7 +39,7 @@
       <sc-if value="{{ isMusic }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;align-items:{{ pgAlign }};gap:28px;width:100%">
           <span style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4.4vw,68px);line-height:1.02;text-wrap:balance">Dawn,<br style="display:{{ brDisp }}"><span style="display:{{ spDisp }}"> </span>the album so far</span>
-          <span style="font-family:'Instrument Sans',sans-serif;font-size:15px;line-height:1.7;color:#c9c1b2;max-width:560px;text-align:{{ pgText }};align-self:stretch">Two songs so far, with more to be released as the Dawn of Ages study continues to take shape. Acoustic guitars, banjo, organic percussion and layered communal harmonies.</span>
+          <span style="font-family:'Lato',sans-serif;font-size:17px;line-height:1.7;color:#c9c1b2;max-width:560px;text-align:{{ pgText }};align-self:stretch">Two songs so far, with more to be released as the Dawn of Ages study continues to take shape. Acoustic guitars, banjo, organic percussion and layered communal harmonies.</span>
           <div style="display:flex;flex-direction:column;width:100%;text-align:{{ pgText }};border-top:1px solid rgba(239,228,210,.22)">
             <sc-for list="{{ albTracks }}" as="t" hint-placeholder-count="2">
               <div style="display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:24px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(239,228,210,.22)">
@@ -56,11 +56,11 @@
         <div style="display:flex;flex-direction:column;align-items:{{ pgAlign }};gap:28px;width:100%">
           <div style="display:flex;gap:10px;justify-content:{{ pgJust }}">
             <sc-for list="{{ lyricTabs }}" as="c">
-              <span onClick="{{ c.select }}" style="cursor:pointer;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:16px;border:1px solid {{ c.border }};color:{{ c.color }}">{{ c.label }}</span>
+              <span onClick="{{ c.select }}" style="cursor:pointer;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:16px;border:1px solid {{ c.border }};color:{{ c.color }};background:transparent;transition:color .2s ease,border-color .2s ease,background .2s ease" style-hover="color:#f28a72;border-color:#f28a72;background:rgba(242,138,114,.1)">{{ c.label }}</span>
             </sc-for>
           </div>
-          <div style="display:flex;align-items:center;gap:18px"><span style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4.4vw,68px);line-height:1.02;text-wrap:balance">{{ lyricPageTitle }}</span><a href="Light Wilder Lyrics.pdf" download="Light Wilder Lyrics.pdf" style="display:flex;align-items:center;gap:10px;color:#efe4d2;font-size:10px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3" style-hover="color:#f28a72"><span style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;flex:none;border-radius:50%;background:rgba(242,138,114,.14);color:#f28a72"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"></path></svg></span><span style="display:flex;flex-direction:column"><span>Lyrics</span><span style="color:#a9a195">PDF</span></span></a></div>
-          <div style="width:100%;display:flex;flex-direction:column;gap:26px">
+          <div style="display:flex;align-items:baseline;gap:18px;opacity:{{ lyTabOp }};transform:translateY({{ lyTabY }});filter:blur({{ lyTabBlur }});transition:opacity .35s ease,transform .45s cubic-bezier(.2,.7,.2,1),filter .35s ease"><span style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4.4vw,68px);line-height:1.02;text-wrap:balance">{{ lyricPageTitle }}</span><a href="{{ lyPdf }}" download="{{ lyPdf }}" style="align-self:baseline;display:flex;align-items:flex-end;font-size:clamp(40px,4.4vw,68px);color:#f28a72" style-hover="color:#f28a72"><span style="display:flex;align-items:center;gap:14px;height:calc(.72em - 10px);margin-bottom:calc((1.2em - .72em) / 2)"><span style="align-self:stretch;width:1px;margin-left:-3px;margin-right:3px;background:#efe4d2;opacity:.35;flex:none"></span><span style="display:flex;flex-direction:column;gap:2px;position:relative;top:1px;color:#efe4d2;transform:scale(1);transform-origin:center;backface-visibility:hidden;transition:transform .2s ease,color .2s ease;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;line-height:1" style-hover="transform:translateX(3px);color:#f28a72"><span style="color:#f28a72">Download</span><span style="display:flex;align-items:center;gap:7px">Lyrics<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none;margin-top:0;margin-left:-3px"><path d="M12 3v13M6.5 10.5l5.5 5.5 5.5-5.5M5 21h14"></path></svg></span></span></span></a></div>
+          <div style="width:100%;display:flex;flex-direction:column;gap:26px;opacity:{{ lyTabOp }};transform:translateY({{ lyTabY2 }});filter:blur({{ lyTabBlur }});transition:opacity .4s ease .06s,transform .55s cubic-bezier(.2,.7,.2,1) .06s,filter .4s ease .06s">
             <sc-for list="{{ lyricRows }}" as="r" hint-placeholder-count="3">
               <div style="display:grid;grid-template-columns:{{ lyGrid }};column-gap:48px;row-gap:26px;border-top:{{ r.bt }};padding-top:{{ r.pt }}">
                 <sc-for list="{{ r.stanzas }}" as="s">
@@ -77,8 +77,8 @@
       <sc-if value="{{ isStory }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;align-items:{{ pgAlign }};gap:24px;width:100%">
           <span style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4.4vw,68px);line-height:1.02;text-wrap:balance">Between certainty<br style="display:{{ brDisp }}"><span style="display:{{ spDisp }}"> </span>and mystery</span>
-          <div style="max-width:800px"><p style="margin:0 0 1.1em;break-inside:avoid-column;text-align:{{ pgText }};font-family:'Instrument Sans',sans-serif;font-size:19px;line-height:1.6;color:#efe4d2;text-wrap:pretty">Light Wilder makes earthy folk music born from years of wrestling with Scripture, history, humanity, and the mystery of God. Rooted in the Christian story but unafraid of questions, the songs explore the places where faith becomes less about having everything figured out and more about learning to trust what cannot be fully contained.</p>
-          <p style="margin:0 0 1.1em;break-inside:avoid-column;text-align:{{ pgText }};font-family:'Instrument Sans',sans-serif;font-size:15px;line-height:1.75;color:#c9c1b2;text-wrap:pretty">They follow the traces of light scattered through Scripture and history—the stones we build, the stories we inherit, the things we hold onto, and the moments when greater light asks us to see them differently. With acoustic guitars, banjo, organic percussion, and layered communal harmonies, Light Wilder creates music for the space between certainty and mystery: something solid enough to stand on, alive enough to keep moving, and wild enough to keep drawing us further.</p></div>
+          <div style="max-width:800px"><p style="margin:0 0 1.1em;break-inside:avoid-column;text-align:{{ pgText }};font-family:'Lato',sans-serif;font-size:19px;line-height:1.6;color:#efe4d2;text-wrap:pretty">Light Wilder makes earthy folk music born from years of wrestling with Scripture, history, humanity, and the mystery of God. Rooted in the Christian story but unafraid of questions, the songs explore the places where faith becomes less about having everything figured out and more about learning to trust what cannot be fully contained.</p>
+          <p style="margin:0 0 1.1em;break-inside:avoid-column;text-align:{{ pgText }};font-family:'Lato',sans-serif;font-size:17px;line-height:1.75;color:#c9c1b2;text-wrap:pretty">They follow the traces of light scattered through Scripture and history—the stones we build, the stories we inherit, the things we hold onto, and the moments when greater light asks us to see them differently. With acoustic guitars, banjo, organic percussion, and layered communal harmonies, Light Wilder creates music for the space between certainty and mystery: something solid enough to stand on, alive enough to keep moving, and wild enough to keep drawing us further.</p></div>
         </div>
       </sc-if>
 
@@ -87,7 +87,7 @@
           <span style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4.4vw,68px);line-height:1.02;text-wrap:balance">Dawn<br style="display:{{ brDisp }}"><span style="display:{{ spDisp }}"> </span>of Ages</span>
           <span style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a9a195">Scripture · History · Humanity · The Mystery of God</span>
           <div style="display:flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;border:1px solid rgba(242,138,114,.5);border-radius:20px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#efe4d2"><span style="width:6px;height:6px;border-radius:50%;background:#f28a72;flex:none"></span>Interactive study · Coming soon</div>
-          <p style="margin:0;max-width:800px;text-align:{{ pgText }};font-family:'Instrument Sans',sans-serif;font-size:19px;line-height:1.6;color:#efe4d2;text-wrap:pretty">Dawn of Ages is the project underneath the songs: an interactive study of the long human journey of encountering God, understanding God, and discovering that the mystery is always greater than the names and boundaries we give it.</p>
+          <p style="margin:0;max-width:800px;text-align:{{ pgText }};font-family:'Lato',sans-serif;font-size:19px;line-height:1.6;color:#efe4d2;text-wrap:pretty">Dawn of Ages is the project underneath the songs: an interactive study of the long human journey of encountering God, understanding God, and discovering that the mystery is always greater than the names and boundaries we give it.</p>
           <p style="margin:0;text-align:{{ pgText }};font-family:'Instrument Serif',serif;font-style:italic;font-size:28px;line-height:1.3;color:#f28a72">The light meets us where we are. It doesn’t always leave us there.</p>
         </div>
       </sc-if>
@@ -95,11 +95,11 @@
       <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;align-items:{{ pgAlign }};gap:24px;width:100%">
           <span style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4.4vw,68px);line-height:1.02;text-wrap:balance">Say<br style="display:{{ brDisp }}"><span style="display:{{ spDisp }}"> </span>hello</span>
-          <span style="font-family:'Instrument Sans',sans-serif;font-size:15px;line-height:1.7;color:#c9c1b2">For bookings, press and everything else.</span>
+          <span style="font-family:'Lato',sans-serif;font-size:17px;line-height:1.7;color:#c9c1b2">For bookings, press and everything else.</span>
           <div style="display:flex;flex-direction:column;gap:14px;width:min(520px,100%)">
-            <input placeholder="Name" style="background:transparent;border:0;border-bottom:1px solid rgba(239,228,210,.3);padding:12px 0;color:#efe4d2;font-family:'Instrument Sans',sans-serif;font-size:13px;outline:none;text-align:{{ pgText }}">
-            <input placeholder="Email" style="background:transparent;border:0;border-bottom:1px solid rgba(239,228,210,.3);padding:12px 0;color:#efe4d2;font-family:'Instrument Sans',sans-serif;font-size:13px;outline:none;text-align:{{ pgText }}">
-            <textarea placeholder="Message" rows="4" style="background:transparent;border:0;border-bottom:1px solid rgba(239,228,210,.3);padding:12px 0;color:#efe4d2;font-family:'Instrument Sans',sans-serif;font-size:13px;outline:none;resize:none;text-align:{{ pgText }}"></textarea>
+            <input placeholder="Name" style="background:transparent;border:0;border-bottom:1px solid rgba(239,228,210,.3);padding:12px 0;color:#efe4d2;font-family:'Lato',sans-serif;font-size:13px;outline:none;text-align:{{ pgText }}">
+            <input placeholder="Email" style="background:transparent;border:0;border-bottom:1px solid rgba(239,228,210,.3);padding:12px 0;color:#efe4d2;font-family:'Lato',sans-serif;font-size:13px;outline:none;text-align:{{ pgText }}">
+            <textarea placeholder="Message" rows="4" style="background:transparent;border:0;border-bottom:1px solid rgba(239,228,210,.3);padding:12px 0;color:#efe4d2;font-family:'Lato',sans-serif;font-size:13px;outline:none;resize:none;text-align:{{ pgText }}"></textarea>
             <span style="align-self:flex-start;margin-top:10px;background:#f28a72;color:#10202a;padding:12px 22px;border-radius:22px;font-size:12px;cursor:pointer">Send message</span>
           </div>
         </div>
@@ -109,7 +109,7 @@
 
   <div style="position:absolute;top:0;left:0;right:0;height:260px;pointer-events:none;background:linear-gradient(180deg,rgba(8,16,20,1) 0%,rgba(14,30,36,.75) 35%,rgba(22,44,51,0) 100%)"></div>
   <div style="position:relative;z-index:22;pointer-events:none;display:grid;grid-template-columns:{{ headCols }};align-items:center;gap:{{ headGap }}">
-    <span onClick="{{ menuToggle }}" style="pointer-events:auto;justify-self:start;display:flex;align-items:center;gap:14px;cursor:pointer;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#efe4d2;padding:8px 0" style-hover="color:#f28a72">
+    <span onClick="{{ menuToggle }}" style="pointer-events:auto;justify-self:start;display:flex;align-items:center;gap:14px;cursor:pointer;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#efe4d2;padding:8px 0" style-hover="color:#f28a72;transform:translateX(3px)">
       <span style="position:relative;width:30px;height:14px;display:block">
         <span style="position:absolute;left:0;right:0;top:{{ barTop }}px;height:1.5px;background:currentColor;transform:rotate({{ barRot1 }}deg);transition:transform .35s ease,top .35s ease"></span>
         <span style="position:absolute;left:0;top:{{ barBot }}px;width:{{ barW }};height:1.5px;background:currentColor;transform:rotate({{ barRot2 }}deg);transition:transform .35s ease,top .35s ease,width .35s ease"></span>
@@ -117,7 +117,7 @@
       {{ menuLabel }}
     </span>
     <div style="display:flex;flex-direction:column;align-items:center;justify-self:center;gap:14px;margin-top:{{ logoMT }}">
-      <img src="img/logo.png" alt="Light Wilder" style="pointer-events:auto;width:{{ logoW }}">
+      <a href="#" onClick="{{ goHome }}" style="pointer-events:auto;display:block;line-height:0;transition:opacity .2s ease" style-hover="opacity:.85"><img src="img/logo.png" alt="Light Wilder" style="width:{{ logoW }}"></a>
       <div style="display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#e6dccb">
         <span style="width:28px;height:1px;background:rgba(242,138,114,.7)"></span>
         <span>New music out now</span>
@@ -134,15 +134,15 @@
 
   <div style="position:relative;flex:1;min-height:0;display:flex;flex-direction:{{ mainDir }};justify-content:space-between;align-items:{{ mainAlign }};gap:40px;padding:16px 0">
     <div style="display:flex;flex-direction:column;align-items:{{ lyItems }};text-align:{{ lyAlign }};gap:40px;min-width:min(280px,100%);flex:{{ lyFlex }};align-self:{{ lySelf }};margin-top:{{ lyMT }}">
-      <div style="position:relative;width:min(760px,100%);margin:{{ lyBoxM }};container-type:inline-size">
-        <div onWheel="{{ lyWheel }}" onMouseEnter="{{ lyEnter }}" onMouseLeave="{{ lyLeave }}" style="font-size:clamp(19px,8.4cqi,98px);height:3.64em;position:relative;overflow:hidden;cursor:ns-resize;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 60%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 60%,transparent 100%)">
+      <div style="position:relative;width:min(760px,100%);margin:{{ lyBoxM }};container-type:inline-size;opacity:{{ albSwOp }};filter:blur({{ albSwBlur }});transform:translateY({{ albSwLyY }});transition:opacity .3s ease,filter .3s ease,transform .45s cubic-bezier(.2,.7,.2,1)">
+        <div onWheel="{{ lyWheel }}" onPointerEnter="{{ lyEnter }}" onPointerLeave="{{ lyLeave }}" style="font-size:clamp(19px,8.4cqi,98px);height:3.64em;position:relative;overflow:hidden;cursor:ns-resize;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 60%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 40%,#000 60%,transparent 100%)">
           <sc-for list="{{ lyrics }}" as="l" hint-placeholder-count="3">
             <span style="position:absolute;left:0;right:0;top:0;font-family:'Instrument Serif',serif;font-size:{{ l.fs }}em;line-height:1.05;white-space:nowrap;text-align:{{ l.ta }};color:{{ l.color }};opacity:{{ l.op }};transform:translateY({{ l.y }}em);will-change:transform;transition:color .8s ease,opacity .5s ease">{{ l.text }}</span>
           </sc-for>
         </div>
       <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;flex-direction:row;align-items:center;justify-content:{{ lyItems }};gap:14px;margin-top:40px">
-          <span style="font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:0;line-height:1;color:#d6e0dd;opacity:.75">{{ albTitle }}</span>
+          <span onClick="{{ albToggle }}" style="width:32px;height:32px;flex-shrink:0;border-radius:8px;background:rgba(242,138,114,.7);color:#10202a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease" style-hover="transform:scale(1.08);background:#ff9d85;color:#efe4d2;box-shadow:0 0 22px rgba(242,138,114,.55)" style-active="transform:scale(.96)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span><span style="font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:0;line-height:1;color:#d6e0dd;opacity:.75">{{ albTitle }}</span>
           <span style="width:1px;height:28px;background:rgba(239,228,210,.35);flex:none"></span>
           <div style="display:flex;flex-direction:column;gap:3px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;line-height:1.2"><span style="color:#f28a72">Lyrics by</span><span style="color:#c9c1b2">Light Wilder</span></div>
         </div>
@@ -151,21 +151,22 @@
     </div>
     <sc-if value="{{ isVinyl }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-direction:column;gap:12px;align-items:{{ pgAlign }};padding:{{ albPad }};margin-right:0;position:relative;top:{{ albMT }};border-radius:15px;background:rgba(14,18,20,.32);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(239,228,210,.1)">
-        <div style="position:relative;width:{{ albW }};aspect-ratio:1">
+        <div onMouseEnter="{{ covOn }}" onMouseLeave="{{ covOff }}" onClick="{{ covClick }}" style="position:relative;width:{{ albW }};aspect-ratio:1;cursor:pointer">
           
-          <div style="position:absolute;left:0;top:0;height:100%;aspect-ratio:1;background:url({{ albCover }}) center/cover;box-shadow:0 24px 50px rgba(0,0,0,.55)"></div>
+          <div style="position:absolute;left:0;top:0;height:100%;aspect-ratio:1;background:url({{ albCover }}) center/cover;box-shadow:0 24px 50px rgba(0,0,0,.55);opacity:{{ albSwOp }};transform:scale({{ albSwScale }});filter:blur({{ albSwBlur }});transition:opacity .35s ease,transform .5s cubic-bezier(.2,.7,.2,1),filter .35s ease"></div>
+          <div style="position:absolute;left:0;top:0;height:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;pointer-events:none">{{ covHint }}<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,13,17,.35);opacity:{{ covOp }};transition:opacity .3s ease"><span style="width:60px;height:60px;border-radius:14px;background:rgba(242,138,114,.7);box-shadow:0 0 28px rgba(242,138,114,.3);display:flex;align-items:center;justify-content:center;transform:scale({{ covScale }});transition:transform .3s cubic-bezier(.2,.7,.2,1)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="#efe4d2"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="#efe4d2" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span></div></div>
         </div>
         <div style="position:relative;z-index:2;display:flex;align-items:center;gap:14px;width:{{ albW }};padding:0 10px 0 0;margin-top:4px;box-sizing:border-box">
-          <span onClick="{{ albToggle }}" style="width:38px;height:38px;flex-shrink:0;border-radius:9px;background:#f28a72;color:#10202a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease" style-hover="transform:scale(1.08);background:#ff9d85;box-shadow:0 0 22px rgba(242,138,114,.55)" style-active="transform:scale(.96)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="#10202a"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="#10202a" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span>
-          <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1;white-space:nowrap">{{ albTitle }}</span></div>
+          <span onClick="{{ albToggle }}" style="width:38px;height:38px;flex-shrink:0;border-radius:9px;background:#f28a72;color:#10202a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease" style-hover="transform:scale(1.08);background:#ff9d85;color:#efe4d2;box-shadow:0 0 22px rgba(242,138,114,.55)" style-active="transform:scale(.96)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span><div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1;white-space:nowrap;opacity:{{ albSwOp }};transform:translateY({{ albSwY }});transition:opacity .3s ease .05s,transform .45s cubic-bezier(.2,.7,.2,1) .05s">{{ albTitle }}</span></div>
+          
           <div onClick="{{ albSeek }}" style="flex:0 1 110px;margin-left:auto;min-width:36px;display:flex;justify-content:space-between;align-items:center;height:22px;cursor:pointer">
             <sc-for list="{{ albBars }}" as="b" hint-placeholder-count="56"><div style="width:1.5px;flex:none;border-radius:1px;height:{{ b.h }}%;background:{{ b.c }}"></div></sc-for>
           </div>
         </div>
         <div style="position:relative;z-index:2;display:flex;flex-direction:column;width:{{ albW }};border-top:1px solid rgba(239,228,210,.22)">
           <sc-for list="{{ albTracks }}" as="t" hint-placeholder-count="2">
-            <div onClick="{{ t.select }}" style="display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 8px;margin:0 -6px;border-radius:8px;border-bottom:1px solid rgba(239,228,210,.22);transition:background .25s ease,transform .25s ease;cursor:pointer" style-hover="background:rgba(239,228,210,.07);transform:translateX(4px)">
-              <span style="font-size:11px;color:{{ t.numColor }}">{{ t.num }}</span>
+            <div onClick="{{ t.rowClick }}" onMouseEnter="{{ t.hOn }}" onMouseLeave="{{ t.hOff }}" style="display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 8px;margin:0 -6px;border-radius:8px;border-bottom:1px solid rgba(239,228,210,.22);transition:background .25s ease,transform .25s ease;cursor:pointer" style-hover="background:rgba(239,228,210,.07);transform:translateX(4px)">
+              <span style="width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;color:{{ t.numColor }}"><sc-if value="{{ t.showNum }}" hint-placeholder-val="{{ true }}">{{ t.num }}</sc-if><sc-if value="{{ t.showPlay }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="#f28a72"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if><sc-if value="{{ t.showPause }}" hint-placeholder-val="{{ false }}"><svg width="11" height="11" viewBox="0 0 24 24" fill="#f28a72"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if></span>
               <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
                 <span style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1;white-space:nowrap;color:{{ t.rowColor }}">{{ t.title }}</span>
                 </div>
@@ -374,6 +375,18 @@ But on this solid rock I stand`
     clearTimeout(this.lyT);
     this.lyT = setTimeout(() => requestAnimationFrame(() => this.setState({ lyIn: true })), 60);
   }
+  switchAlb(i) {
+    if ((this.state.albT || 0) === i || this.state.albOut) return;
+    this.setState({ albOut: true });
+    clearTimeout(this.albSwT);
+    this.albSwT = setTimeout(() => this.setState({ albT: i, albS: 0, albP: true, albOut: false }), 260);
+  }
+  switchLyTab(i) {
+    if ((this.state.lyTab || 0) === i || this.state.lyOut) return;
+    this.setState({ lyOut: true });
+    clearTimeout(this.tabT);
+    this.tabT = setTimeout(() => { this.setState({ lyTab: i, lyOut: false }); }, 280);
+  }
   componentDidMount() {
     this.onRz = () => this.setState({ vw: window.innerWidth }); window.addEventListener('resize', this.onRz); this.onRz();
     const start = () => { const v = this.filmRef.current; if (!v) return; v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true; if (v.paused && !this.state.filmPaused) v.play().catch(() => {}); };
@@ -428,12 +441,13 @@ But on this solid rock I stand`
     const lyIn = !!this.state.lyIn, cur = this.state.lyP || 0;
     const all = (this.lyricText[at] || '').split('\n').map(x => x.trim()).filter(x => x && x !== '~');
     this.lyCount = all.length;
+    const lyBase = 0.6;
     const lyrics = all.map((text, i) => {
       const k = i - cur;
       const fs = Math.min(1, 28 / text.length);
       const ak = Math.abs(k);
-      const op = !lyIn ? 0 : ak < 1 ? .8 - ak * .3 : ak < 2 ? .5 - (ak - 1) * .3 : Math.max(0, .2 - (ak - 2) * .2);
-      return { text, ta: (this.state.vw || window.innerWidth) < 1024 ? 'center' : 'left', fs: fs.toFixed(3), y: (((lyIn ? Math.max(-2.5, Math.min(3, k)) : 0) * 1.04 + 1.3 + (1 - fs) * 0.52) / fs).toFixed(3), op: op.toFixed(3), color: Math.abs(k) < .5 ? '#f28a72' : '#efe4d2' };
+      const tm = (this.state.vw || window.innerWidth) < 1024; const op = !lyIn ? 0 : tm ? (ak < 1 ? 1 - ak * .3 : ak < 2 ? .7 - (ak - 1) * .35 : Math.max(0, .35 - (ak - 2) * .35)) : (ak < 1 ? .8 - ak * .3 : ak < 2 ? .5 - (ak - 1) * .3 : Math.max(0, .2 - (ak - 2) * .2));
+      return { text, ta: (this.state.vw || window.innerWidth) < 1024 ? 'center' : 'left', fs: fs.toFixed(3), y: (((lyIn ? Math.max(-2.5, Math.min(3, k)) : 0) * 1.04 + lyBase + (1 - fs) * 0.52) / fs).toFixed(3), op: op.toFixed(3), color: Math.abs(k) < .5 ? '#f28a72' : '#efe4d2' };
     });
     const mo = !!this.state.menuOpen, pg = this.state.page || null;
     const mob = (this.state.vw || window.innerWidth) < 1024;
@@ -442,6 +456,10 @@ But on this solid rock I stand`
       lyItems: mob ? 'center' : 'flex-start', lyAlign: mob ? 'center' : 'left', lyBoxM: mob ? '0 auto' : '0',
       pgAlign: mob ? 'center' : 'flex-start', pgText: mob ? 'center' : 'left', pgJust: mob ? 'center' : 'flex-start',
       brDisp: mob ? 'none' : 'inline', spDisp: mob ? 'inline' : 'none',
+      filmSrc: mob ? 'img/ocean.mp4' : 'img/ocean-wide.mp4', filmWebm: mob ? '' : 'img/ocean-wide.webm', filmPoster: mob ? 'img/ocean.jpg' : 'img/ocean-wide.jpg', filmPos: mob ? '50% 21.8%' : '50% 0%',
+      lyTabOp: this.state.lyOut ? 0 : 1, lyTabY: this.state.lyOut ? '-8px' : '0px', lyTabY2: this.state.lyOut ? '14px' : '0px', lyTabBlur: this.state.lyOut ? '4px' : '0px',
+      albSwOp: this.state.albOut ? 0 : 1, albSwScale: this.state.albOut ? .96 : 1, albSwBlur: this.state.albOut ? '6px' : '0px', albSwY: this.state.albOut ? '6px' : '0px', albSwLyY: this.state.albOut ? '-10px' : '0px',
+      goHome: e => { e.preventDefault(); this.setState({ menuOpen: false, page: null }); },
       isMobile: mob, isDesk: !mob, lyGrid: mob || (this.state.vw || window.innerWidth) < 1100 ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
       rootH: mob ? 'auto' : '100vh', rootMinH: mob ? '100svh' : '760px',
       rootPad: mob ? '20px 20px 32px' : '36px clamp(72px,12vw,220px) 32px',
@@ -467,11 +485,12 @@ But on this solid rock I stand`
       pageOp: pg ? 1 : 0, pagePE: pg ? 'auto' : 'none', pageY: pg ? '0' : '16px',
       pageKicker: ({ music: 'Music', lyrics: 'Lyrics', story: 'Story', ages: 'Dawn of Ages', contact: 'Contact' })[pg] || '',
       isMusic: pg === 'music', isLyrics: pg === 'lyrics', isStory: pg === 'story', isAges: pg === 'ages', isContact: pg === 'contact',
-      lyricTabs: T.map((t, i) => ({ label: t.title, border: (this.state.lyTab || 0) === i ? '#f28a72' : 'rgba(239,228,210,.3)', color: (this.state.lyTab || 0) === i ? '#f28a72' : '#c9c1b2', select: () => this.setState({ lyTab: i }) })),
+      lyricTabs: T.map((t, i) => ({ label: t.title, border: (this.state.lyTab || 0) === i ? '#f28a72' : 'rgba(239,228,210,.3)', color: (this.state.lyTab || 0) === i ? '#f28a72' : '#c9c1b2', select: () => this.switchLyTab(i) })),
       lyricPageTitle: T[this.state.lyTab || 0].title,
+      lyPdf: 'Light Wilder - ' + T[this.state.lyTab || 0].title + ' Lyrics.pdf',
       lyricRows: (() => { const one = mob || (this.state.vw || window.innerWidth) < 1100, per = one ? 1 : 2; const st = (this.lyricText[this.state.lyTab || 0] || '').split(/\n\s*\n/).filter(s => !(one && s.trim() === '~')).map(s => ({ lines: s.trim() === '~' ? [] : s.split('\n').map(x => x.trim()).filter(Boolean) })); const rows = []; for (let i = 0; i < st.length; i += per) rows.push({ stanzas: st.slice(i, i + per), bt: i ? '1px solid rgba(239,228,210,.16)' : 'none', pt: i ? '26px' : '0' }); return rows; })(),
       lyrics, lyRef: this.lyRef,
-      lyEnter: () => { this._hover = true; },
+      lyEnter: e => { if (e.pointerType === 'mouse') this._hover = true; },
       lyLeave: () => { this._hover = false; },
       lyWheel: e => { const n = this.lyCount || 1; this.lyP = Math.max(0, Math.min(n - 1, this.lyP + e.deltaY / 160)); this.setState({ lyP: this.lyP }); },
       isCard: ps === 'Glass card', isVinyl: ps === 'Vinyl sleeve', isStrip: ps === 'Track strips',
@@ -480,9 +499,9 @@ But on this solid rock I stand`
       line1: hl[0], line2: hl[1],
       showLabels: this.props.showLabels ?? true,
       showFilmBar: this.props.showFilmBar ?? false,
-      shade: this.props.shade ?? 0.5,
+      shade: 0.2,
       albCover: T[at].cover, albTitle: T[at].title,
-      albTracks: T.map((t, i) => ({ num: String(i + 1).padStart(2, '0'), title: t.title, len: mmss(t.dur), bg: i === at ? 'rgba(255,255,255,.14)' : 'transparent', numColor: i === at ? '#f28a72' : '#c9c1b2', select: () => this.setState({ albT: i, albS: 0, albP: true }),
+      albTracks: T.map((t, i) => ({ num: String(i + 1).padStart(2, '0'), title: t.title, len: mmss(t.dur), bg: i === at ? 'rgba(255,255,255,.14)' : 'transparent', numColor: i === at ? '#f28a72' : '#c9c1b2', select: () => this.switchAlb(i),
         cover: t.cover,
         roman: ['i.', 'ii.', 'iii.', 'iv.'][i],
         rowColor: i === at ? '#efe4d2' : 'rgba(239,228,210,.6)',
@@ -492,13 +511,16 @@ But on this solid rock I stand`
         stripBg: i === at ? 'rgba(40,52,60,.55)' : 'rgba(40,52,60,.28)',
         stripBorder: i === at ? 'rgba(242,138,114,.5)' : 'rgba(255,255,255,.14)',
         btnBg: i === at ? '#f28a72' : '#efe4d2',
-        icon: i === at && ap ? '❚❚' : '▶', playing: i === at && !!ap, paused: !(i === at && ap),
-        play: e => { e.stopPropagation(); this.setState(s => (s.albT || 0) === i ? { albP: !s.albP } : { albT: i, albS: 0, albP: true }); } })),
+        icon: i === at && ap ? '❚❚' : '▶', isCur: i === at, showNum: this.state.rowH !== i, showPlay: this.state.rowH === i && !(i === at && ap), showPause: this.state.rowH === i && i === at && !!ap, hOn: () => this.setState({ rowH: i }), hOff: () => this.setState(s => s.rowH === i ? { rowH: null } : null), rowClick: () => { if (i === at) this.setState(s => ({ albP: !s.albP })); else this.switchAlb(i); }, playing: i === at && !!ap, paused: !(i === at && ap), pBg: i === at && ap ? '#f28a72' : 'rgba(239,228,210,.14)', pFg: i === at && ap ? '#10202a' : 'rgba(239,228,210,.55)',
+        play: e => { e.stopPropagation(); if ((this.state.albT || 0) === i) this.setState(s => ({ albP: !s.albP })); else this.switchAlb(i); } })),
       albSeek: e => { const a = this.audio; if (!a || !a.duration) return; const r = e.currentTarget.getBoundingClientRect(); a.currentTime = (e.clientX - r.left) / r.width * a.duration; },
       albBars: bars(at * 2.1 + 1, Math.max(.02, as / T[at].dur), true, 32),
       albPct: Math.round(as / T[at].dur * 100), albNow: mmss(as), albLen: mmss(T[at].dur),
       albIcon: ap ? '❚❚' : '▶', albPlaying: ap, albPaused: !ap,
-      albToggle: () => this.setState(s => ({ albP: !s.albP })),
+      albToggle: () => this.setState(s => ({ albP: !s.albP, played: true })),
+      covClick: () => this.setState(s => ({ albP: !s.albP, played: true })),
+      covOn: () => this.setState({ covH: true }), covOff: () => this.setState({ covH: false }), covOp: this.state.covH ? 1 : 0, covScale: this.state.covH ? 1 : .85,
+      covHint: this.state.played || this.state.albP || this.state.covH ? null : React.createElement('span', { key: 'hint', style: { position: 'absolute', left: 0, right: 0, top: 'calc(17% - 10px)', textAlign: 'center', fontFamily: "'Lato',sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: '.24em', textTransform: 'uppercase', color: '#efe4d2', textShadow: '0 2px 14px rgba(0,0,0,.7)', animation: 'lwBreath 5s ease-in-out infinite' } }, 'Click to listen'),
       albPrev: () => this.setState(s => ({ albT: ((s.albT || 0) + T.length - 1) % T.length, albS: 0 })),
       albNext: () => this.setState(s => ({ albT: ((s.albT || 0) + 1) % T.length, albS: 0 })),
       filmRef: this.filmRef,

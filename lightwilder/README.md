@@ -10,7 +10,7 @@ Static site. No build step. Push this folder's contents to the root of your repo
 - `lyrics-print.html` + `doc-page.js` — printable lyrics sheet (source for the PDF)
 
 ## Before going live
-1. **Lyrics PDF** — open `lyrics-print.html` in Chrome → Print → Save as PDF → name it `Light Wilder Lyrics.pdf` → add it to this folder (root, next to index.html).
+1. **Lyrics PDFs** — included: `Light Wilder - Dawn Lyrics.pdf` and `Light Wilder - Stone by Stone Lyrics.pdf`. Keep them at the root next to index.html; the Download Lyrics button picks the one for the selected song.
 2. **Platform links** — every Spotify / Apple Music / YouTube / Bandcamp / Amazon / Instagram link is `href="#"`. Search index.html for `href="#"` and paste real URLs.
 3. **Contact form** — not wired to anything yet. Use Formspree, Netlify Forms, or similar.
 
