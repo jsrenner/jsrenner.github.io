@@ -137,7 +137,7 @@
       <div style="position:relative;width:min(760px,100%);margin:{{ lyBoxM }};container-type:inline-size;opacity:{{ albSwOp }};filter:blur({{ albSwBlur }});transform:translateY({{ albSwLyY }});transition:opacity .3s ease,filter .3s ease,transform .45s cubic-bezier(.2,.7,.2,1)">
         <div onWheel="{{ lyWheel }}" onPointerEnter="{{ lyEnter }}" onPointerLeave="{{ lyLeave }}" style="font-size:clamp(19px,8.4cqi,98px);height:3.64em;position:relative;overflow:hidden;cursor:ns-resize;-webkit-mask-image:{{ lyMask }};mask-image:{{ lyMask }}">
           <sc-for list="{{ lyrics }}" as="l" hint-placeholder-count="3">
-            <span style="position:absolute;left:0;right:0;top:0;font-family:'Instrument Serif',serif;font-size:{{ l.fs }}em;line-height:1.05;white-space:nowrap;text-align:{{ l.ta }};color:{{ l.color }};opacity:{{ l.op }};transform:translate3d(0,{{ l.y }}em,0);-webkit-transform:translate3d(0,{{ l.y }}em,0);transition:color .8s ease,opacity .5s ease">{{ l.text }}</span>
+            <span style="position:absolute;left:0;right:0;top:0;font-family:'Instrument Serif',serif;font-size:{{ l.fs }}em;line-height:1.05;white-space:nowrap;text-align:{{ l.ta }};color:{{ l.color }};opacity:{{ l.op }};transform:translate3d(0,{{ l.y }}em,0);-webkit-transform:translate3d(0,{{ l.y }}em,0);transition:color .8s ease">{{ l.text }}</span>
           </sc-for>
         </div>
       <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}">
