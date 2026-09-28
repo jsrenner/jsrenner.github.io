@@ -109,11 +109,11 @@
 
   <div style="position:absolute;top:0;left:0;right:0;height:260px;pointer-events:none;background:linear-gradient(180deg,rgba(8,16,20,1) 0%,rgba(14,30,36,.75) 35%,rgba(22,44,51,0) 100%)"></div>
   <div style="position:relative;z-index:22;pointer-events:none;display:grid;grid-template-columns:{{ headCols }};align-items:center;gap:{{ headGap }}">
-    <span onClick="{{ menuToggle }}" style="pointer-events:auto;justify-self:start;display:flex;align-items:center;gap:14px;cursor:pointer;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#efe4d2;padding:8px 0;transition:color .45s cubic-bezier(.2,.7,.2,1),transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="color:#f28a72;transform:translateX(3px)">
+    <span onClick="{{ menuToggle }}" onPointerEnter="{{ burgerOn }}" onPointerLeave="{{ burgerOff }}" style="pointer-events:auto;justify-self:start;display:flex;align-items:center;gap:14px;cursor:pointer;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:{{ burgerColor }};transform:{{ burgerT }};padding:8px 0;-webkit-tap-highlight-color:transparent;transition:color .45s cubic-bezier(.2,.7,.2,1),transform .45s cubic-bezier(.2,.7,.2,1)">
       <span style="position:relative;width:30px;height:14px;display:block;top:{{ burgerY }};opacity:{{ burgerOp }}">
-        <span style="position:absolute;left:0;right:0;top:{{ barTop }}px;height:1.5px;background:currentColor;transform:rotate({{ barRot1 }}deg);transition:transform .35s ease,top .35s ease"></span>
-        <span style="position:absolute;left:0;right:0;top:6px;height:1.5px;background:currentColor;opacity:{{ barMidOp }};transition:opacity .2s ease"></span>
-        <span style="position:absolute;left:0;top:{{ barBot }}px;width:{{ barW }};height:1.5px;background:currentColor;transform:rotate({{ barRot2 }}deg);transition:transform .35s ease,top .35s ease,width .35s ease"></span>
+        <span style="position:absolute;left:0;right:0;top:{{ barTop }}px;height:{{ barH }};border-radius:1px;background:currentColor;transform-origin:50% 50%;transform:{{ barT1 }};-webkit-transform:{{ barT1 }};transition:transform .4s cubic-bezier(.2,.7,.2,1);will-change:transform"></span>
+        <span style="position:absolute;left:0;right:0;top:6px;height:{{ barH }};border-radius:1px;background:currentColor;opacity:{{ barMidOp }};transform:scaleX({{ barMidS }});transition:opacity .25s ease,transform .3s ease"></span>
+        <span style="position:absolute;left:0;top:{{ barBot }}px;width:{{ barW }};height:{{ barH }};border-radius:1px;background:currentColor;transform-origin:50% 50%;transform:{{ barT2 }};-webkit-transform:{{ barT2 }};transition:transform .4s cubic-bezier(.2,.7,.2,1),width .4s ease;will-change:transform"></span>
       </span>
       <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ true }}">{{ menuLabel }}</sc-if>
     </span>
@@ -136,13 +136,13 @@
   <div style="position:relative;flex:1;min-height:0;display:flex;flex-direction:{{ mainDir }};justify-content:space-between;align-items:{{ mainAlign }};gap:40px;padding:16px 0">
     <div style="display:flex;flex-direction:column;align-items:{{ lyItems }};text-align:{{ lyAlign }};gap:40px;min-width:min(280px,100%);flex:{{ lyFlex }};align-self:{{ lySelf }};margin-top:{{ lyMT }}">
       <div style="position:relative;width:min(760px,100%);margin:{{ lyBoxM }};container-type:inline-size;opacity:{{ albSwOp }};filter:blur({{ albSwBlur }});transform:translateY({{ albSwLyY }});transition:opacity .3s ease,filter .3s ease,transform .45s cubic-bezier(.2,.7,.2,1)">
-        <div onWheel="{{ lyWheel }}" onPointerEnter="{{ lyEnter }}" onPointerLeave="{{ lyLeave }}" style="font-size:clamp(19px,8.4cqi,98px);height:3.64em;position:relative;overflow:hidden;cursor:ns-resize;-webkit-mask-image:{{ lyMask }};mask-image:{{ lyMask }}">
+        <div ref="{{ lyBoxRef }}" onWheel="{{ lyWheel }}" onPointerEnter="{{ lyEnter }}" onPointerLeave="{{ lyLeave }}" style="font-size:clamp(19px,8.4cqi,98px);height:3.64em;position:relative;overflow:hidden;cursor:ns-resize;-webkit-mask-image:{{ lyMask }};mask-image:{{ lyMask }}">
           <sc-for list="{{ lyrics }}" as="l" hint-placeholder-count="3">
-            <span style="position:absolute;left:0;right:0;top:0;font-family:'Instrument Serif',serif;font-size:{{ l.fs }}em;line-height:1.05;white-space:nowrap;text-align:{{ l.ta }};color:{{ l.color }};opacity:{{ l.op }};transform:translate3d(0,{{ l.y }}em,0);-webkit-transform:translate3d(0,{{ l.y }}em,0);transition:color .8s ease">{{ l.text }}</span>
+            <span style="position:absolute;left:0;right:0;top:0;font-family:'Instrument Serif',serif;font-size:{{ l.fs }}em;line-height:1.05;white-space:nowrap;text-align:{{ l.ta }};color:{{ l.color }};opacity:{{ l.op }};transform:translate3d(0,{{ l.y }}em,0);-webkit-transform:translate3d(0,{{ l.y }}em,0);will-change:transform,opacity;transition:color .6s ease">{{ l.text }}</span>
           </sc-for>
         </div>
       <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-direction:row;align-items:center;justify-content:{{ lyItems }};gap:14px;margin-top:40px">
+        <div style="display:flex;flex-direction:row;align-items:center;justify-content:{{ lyItems }};gap:14px;margin-top:{{ lyLabelMT }}">
           <span onClick="{{ albToggle }}" style="width:32px;height:32px;flex-shrink:0;border-radius:8px;background:rgba(242,138,114,.7);color:#10202a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease" style-hover="transform:scale(1.08);background:#ff9d85;color:#efe4d2;box-shadow:0 0 22px rgba(242,138,114,.55)" style-active="transform:scale(.96)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span><span style="font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:0;line-height:1;color:#d6e0dd;opacity:.75">{{ albTitle }}</span>
           <span style="width:1px;height:28px;background:rgba(239,228,210,.35);flex:none"></span>
           <div style="display:flex;flex-direction:column;gap:3px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;line-height:1.2"><span style="color:#f28a72">Lyrics by</span><span style="color:#c9c1b2">Light Wilder</span></div>
@@ -157,11 +157,11 @@
           <div style="position:absolute;left:0;top:0;height:100%;aspect-ratio:1;background:url({{ albCover }}) center/cover;box-shadow:0 24px 50px rgba(0,0,0,.55);opacity:{{ albSwOp }};transform:scale({{ albSwScale }});filter:blur({{ albSwBlur }});transition:opacity .35s ease,transform .5s cubic-bezier(.2,.7,.2,1),filter .35s ease"></div>
           <div style="position:absolute;left:0;top:0;height:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;pointer-events:none">{{ covHint }}<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,13,17,.35);opacity:{{ covOp }};transition:opacity .3s ease"><span style="width:60px;height:60px;border-radius:14px;background:rgba(242,138,114,.7);box-shadow:0 0 28px rgba(242,138,114,.3);display:flex;align-items:center;justify-content:center;transform:scale({{ covScale }});transition:transform .3s cubic-bezier(.2,.7,.2,1)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="#efe4d2"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="#efe4d2" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span></div></div>
         </div>
-        <div style="position:relative;z-index:2;display:flex;align-items:center;gap:14px;width:{{ albW }};padding:0 10px 0 0;margin-top:4px;box-sizing:border-box">
-          <span onClick="{{ albToggle }}" style="width:38px;height:38px;flex-shrink:0;border-radius:9px;background:#f28a72;color:#10202a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease" style-hover="transform:scale(1.08);background:#ff9d85;color:#efe4d2;box-shadow:0 0 22px rgba(242,138,114,.55)" style-active="transform:scale(.96)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span><div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1;white-space:nowrap;opacity:{{ albSwOp }};transform:translateY({{ albSwY }});transition:opacity .3s ease .05s,transform .45s cubic-bezier(.2,.7,.2,1) .05s">{{ albTitle }}</span></div>
+        <div style="position:relative;z-index:2;display:flex;align-items:center;gap:14px;width:{{ albW }};padding:0 10px 0 0;margin-top:7px;box-sizing:border-box">
+          <span onClick="{{ albToggle }}" style="width:38px;height:38px;flex-shrink:0;border-radius:9px;background:#f28a72;color:#10202a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease" style-hover="transform:scale(1.08);background:#ff9d85;color:#efe4d2;box-shadow:0 0 22px rgba(242,138,114,.55)" style-active="transform:scale(.96)"><sc-if value="{{ albPlaying }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if><sc-if value="{{ albPaused }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-left:-1px"><path d="M7 4.5v15a1 1 0 001.5.86l12-7.5a1 1 0 000-1.72l-12-7.5A1 1 0 007 4.5z"></path></svg></sc-if></span><div style="display:flex;flex-direction:column;gap:4px;flex:none"><span style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1.1;white-space:nowrap;opacity:{{ albSwOp }};transform:translateY({{ albSwY }});transition:opacity .3s ease .05s,transform .45s cubic-bezier(.2,.7,.2,1) .05s">{{ albTitle }}</span></div>
           
-          <div onClick="{{ albSeek }}" style="flex:0 1 110px;margin-left:auto;min-width:36px;display:flex;justify-content:space-between;align-items:center;height:22px;cursor:pointer">
-            <sc-for list="{{ albBars }}" as="b" hint-placeholder-count="56"><div style="width:1.5px;flex:none;border-radius:1px;height:{{ b.h }}%;background:{{ b.c }}"></div></sc-for>
+          <div onClick="{{ albSeek }}" style="flex:1 1 0;max-width:110px;margin-left:auto;min-width:0;display:flex;justify-content:space-between;align-items:center;height:22px;cursor:pointer;overflow:hidden">
+            <sc-for list="{{ albBars }}" as="b" hint-placeholder-count="56"><div style="width:1.5px;flex:0 1 1.5px;min-width:.75px;border-radius:1px;height:{{ b.h }}%;background:{{ b.c }}"></div></sc-for>
           </div>
         </div>
         <div style="position:relative;z-index:2;display:flex;flex-direction:column;width:{{ albW }};border-top:1px solid rgba(239,228,210,.22)">
@@ -218,7 +218,7 @@
     </sc-if>
   </div>
 
-  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;row-gap:12px;align-items:center;width:100%;margin-top:28px;flex-shrink:0;padding-bottom:28px"><span style="flex-basis:100%;text-align:center;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,228,210,.75);white-space:nowrap">Listen to Light Wilder on</span><a href="#" title="Spotify" style="box-sizing:border-box;flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(239,228,210,.5);display:flex;align-items:center;justify-content:center;color:#efe4d2;transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease" style-hover="color:#f28a72;border-color:#f28a72;background:rgba(242,138,114,.12);transform:scale(1.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M7 9.5c3.5-1 7.5-.6 10.5 1"></path><path d="M7.6 12.6c2.9-.8 6-.4 8.4.9"></path><path d="M8.2 15.5c2.3-.6 4.6-.3 6.5.7"></path></svg></a>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="position:relative;z-index:22;pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;row-gap:12px;align-items:center;width:100%;margin-top:28px"><span style="flex-basis:100%;text-align:center;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,228,210,.75);white-space:nowrap">Listen to Light Wilder on</span><a href="#" title="Spotify" style="box-sizing:border-box;flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(239,228,210,.5);display:flex;align-items:center;justify-content:center;color:#efe4d2;transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease" style-hover="color:#f28a72;border-color:#f28a72;background:rgba(242,138,114,.12);transform:scale(1.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M7 9.5c3.5-1 7.5-.6 10.5 1"></path><path d="M7.6 12.6c2.9-.8 6-.4 8.4.9"></path><path d="M8.2 15.5c2.3-.6 4.6-.3 6.5.7"></path></svg></a>
           <a href="#" title="Apple Music" style="box-sizing:border-box;flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(239,228,210,.5);display:flex;align-items:center;justify-content:center;color:#efe4d2;transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease" style-hover="color:#f28a72;border-color:#f28a72;background:rgba(242,138,114,.12);transform:scale(1.12)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M9 18V6l11-2v12"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="17.5" cy="16" r="2.5"></circle></svg></a>
           <a href="#" title="YouTube" style="box-sizing:border-box;flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(239,228,210,.5);display:flex;align-items:center;justify-content:center;color:#efe4d2;transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease" style-hover="color:#f28a72;border-color:#f28a72;background:rgba(242,138,114,.12);transform:scale(1.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"></path></svg></a>
           <a href="#" title="Bandcamp" style="box-sizing:border-box;flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(239,228,210,.5);display:flex;align-items:center;justify-content:center;color:#efe4d2;transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease" style-hover="color:#f28a72;border-color:#f28a72;background:rgba(242,138,114,.12);transform:scale(1.12)"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 7h14l-6 10H2z" fill="currentColor"></path></svg></a>
@@ -231,6 +231,21 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;playerStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Glass card&quot;,&quot;Vinyl sleeve&quot;,&quot;Track strips&quot;],&quot;default&quot;:&quot;Vinyl sleeve&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Player&quot;},&quot;showLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;shade&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:0.7,&quot;step&quot;:0.05,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Video&quot;}}">
 class Component extends DCLogic {
   state = {};
+  lyBoxRef = React.createRef();
+  lyLine(i, text, cur, lyIn, vw) {
+    const lyBase = vw >= 1024 ? 0.95 : 0.6, tm = vw < 1024;
+    const k = i - cur, ak = Math.abs(k), fs = Math.min(1, 28 / text.length);
+    const kk = lyIn ? Math.max(-2.5, Math.min(3, k)) : 0, pos = kk * 1.04 + lyBase;
+    const edge = tm ? Math.max(0, Math.min(1, (3.64 - (pos + 1.05)) / 0.9, (pos + 0.5) / 0.5)) : 1;
+    const op = !lyIn ? 0 : edge * (tm ? 1 : .9) * (k < 0 ? Math.max(0, 1 - (-k) * .9) : (ak < 1 ? 1 - ak * .15 : ak < 2 ? .85 - (ak - 1) * .3 : Math.max(0, .55 - (ak - 2) * .4)));
+    return { fs: fs.toFixed(3), y: ((pos + (1 - fs) * 0.52) / fs).toFixed(4), op: op.toFixed(3), color: ak < .5 ? '#f28a72' : '#efe4d2' };
+  }
+  paintLyrics() {
+    const box = this.lyBoxRef.current; if (!box) return;
+    const vw = this.state.vw || window.innerWidth, lyIn = !!this.state.lyIn, spans = box.querySelectorAll(':scope > span');
+    const all = this._lyAll || [];
+    spans.forEach((s, i) => { if (all[i] == null) return; const L = this.lyLine(i, all[i], this.lyP || 0, lyIn, vw); s.style.opacity = L.op; s.style.transform = 'translate3d(0,' + L.y + 'em,0)'; s.style.webkitTransform = s.style.transform; s.style.color = L.color; });
+  }
   seekTo(e) { const el = this.filmRef.current; if (!el || !el.duration) return; const r = e.currentTarget.getBoundingClientRect(); const p = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)); el.currentTime = p * el.duration; this.setState({ filmPct: Math.round(p * 1000) / 10 }); }
   tracks = [{ title: 'Dawn', dur: 243, cover: 'img/cover-art.jpg', src: 'audio/dawn.mp3' }, { title: 'Stone by Stone', dur: 277, cover: 'img/stone-cover.jpg', src: 'audio/stone-by-stone.mp3' }];
   filmRef = React.createRef();
@@ -372,15 +387,16 @@ But on this solid rock I stand`
     const child = el.children[i]; if (child) el.scrollTo({ top: child.offsetTop, behavior: 'smooth' });
   }
   revealLyrics() {
-    this.lyP = 0; this.setState({ lyIn: false, lyIdx: 0, lyP: 0 }); this._lastIdx = -1; if (this.lyRef.current) this.lyRef.current.scrollTop = 0;
+    this.lyP = 0; this.lyV = 0; this._glide = false; this.setState({ lyIn: false, lyIdx: 0, lyP: 0 }); this._lastIdx = -1; if (this.lyRef.current) this.lyRef.current.scrollTop = 0;
     clearTimeout(this.lyT);
     this.lyT = setTimeout(() => requestAnimationFrame(() => this.setState({ lyIn: true })), 60);
   }
+  notePlay() { if (this.state.albP) return; this._glide = true; this.lyV = 0; }
   switchAlb(i) {
     if ((this.state.albT || 0) === i || this.state.albOut) return;
     this.setState({ albOut: true });
     clearTimeout(this.albSwT);
-    this.albSwT = setTimeout(() => this.setState({ albT: i, albS: 0, albP: true, albOut: false }), 260);
+    this.albSwT = setTimeout(() => { this.lyP = 0; this.lyV = 0; this.setState({ albT: i, albS: 0, albP: true, albOut: false }); }, 260);
   }
   switchLyTab(i) {
     if ((this.state.lyTab || 0) === i || this.state.lyOut) return;
@@ -398,19 +414,28 @@ But on this solid rock I stand`
     a.addEventListener('ended', () => { const n = (this.state.albT || 0) + 1; if (n < this.tracks.length) this.setState({ albT: n, albS: 0, albP: true }); else this.setState({ albT: 0, albS: 0, albP: false }); });
     this._lastT = 0;
     this.lyP = 0; let last = performance.now();
+    this.lyV = 0; this._at = 0; this._atWall = 0;
     const loop = now => {
       this.raf = requestAnimationFrame(loop);
-      const dt = Math.min(.1, (now - last) / 1000); last = now;
-      const n = this.lyCount || 1, a = this.audio;
+      const dt = Math.min(.05, (now - last) / 1000); last = now;
+      const n = this.lyCount || 1, a = this.audio, playing = this.state.albP && a && a.duration;
       if (!this._hover && n > 1) {
-        let target;
-        if (this.state.albP && a && a.duration) target = a.currentTime / a.duration * n;
-        else target = this.lyP + dt / 2.4;
-        this.lyP += (target - this.lyP) * Math.min(1, dt * 3) + (this.state.albP ? 0 : 0);
-        if (!this.state.albP) this.lyP = Math.max(this.lyP, target - 0.001);
-        if (this.lyP > n - 0.4 && !this.state.albP) { this.revealLyrics(); return; }
-      }
-      if (Math.abs((this.state.lyP || 0) - this.lyP) > .002) this.setState({ lyP: this.lyP });
+        let t = 0;
+        if (playing) { if (a.currentTime !== this._at || a.paused) { this._at = a.currentTime; this._atWall = now; } t = this._at + (a.paused ? 0 : Math.min(.35, (now - this._atWall) / 1000)); }
+        const win = (this.state.albT || 0) === 0 ? 16.5 : 14;
+        if (playing && t >= win) {
+          const stretch = (this.state.albT || 0) === 1 ? 1.06 : .94, target = (t - win) / Math.max(1, a.duration * stretch - win) * n, w = 3.2;
+          this.lyV += ((target - this.lyP) * w * w - this.lyV * 2 * w) * dt;
+          this.lyP += this.lyV * dt;
+        } else if (this._glide) {
+          const w = 3.4; this.lyV += ((0 - this.lyP) * w * w - this.lyV * 2 * w) * dt; this.lyP += this.lyV * dt;
+          if (Math.abs(this.lyP) < .01 && Math.abs(this.lyV) < .05) { this.lyP = 0; this.lyV = 0; this._glide = false; }
+        } else {
+          const sp = playing ? ((this.state.albT || 0) === 1 ? 3.6 : 3.4) : 3.8; this.lyV = 1 / sp; this.lyP += dt / sp;
+          if (this.lyP > n - 0.4 && !this.state.albP) { this.revealLyrics(); return; }
+        }
+      } else this.lyV = 0;
+      this.paintLyrics();
     };
     this.raf = requestAnimationFrame(loop);
     this.syncAudio();
@@ -439,18 +464,14 @@ But on this solid rock I stand`
     const v = () => this.filmRef.current;
     const ps = this.props.playerStyle || 'Vinyl sleeve';
     const bars = (seed, fill, on, n = 40) => Array.from({ length: n }, (_, i) => ({ h: Math.min(100, Math.round(22 + Math.abs(Math.sin(i * .37 + seed) * 48 + Math.sin(i * 1.3 + seed * 2) * 24))), c: on && i / n < fill ? '#e0674f' : (on ? '#efe4d2' : 'rgba(239,228,210,.3)') }));
-    const lyIn = !!this.state.lyIn, cur = this.state.lyP || 0;
+    const lyIn = !!this.state.lyIn, cur = this.lyP || 0;
     const all = (this.lyricText[at] || '').split('\n').map(x => x.trim()).filter(x => x && x !== '~');
     this.lyCount = all.length;
     const lyDesk = (this.state.vw || window.innerWidth) >= 1024;
     const lyBase = lyDesk ? 0.95 : 0.6;
-    const lyrics = all.map((text, i) => {
-      const k = i - cur;
-      const fs = Math.min(1, 28 / text.length);
-      const ak = Math.abs(k);
-      const tm = (this.state.vw || window.innerWidth) < 1024; const pos = (lyIn ? Math.max(-2.5, Math.min(3, k)) : 0) * 1.04 + lyBase; const edge = tm ? Math.max(0, Math.min(1, (3.64 - (pos + 1.05)) / 0.9, (pos + 0.5) / 0.5)) : 1; const op = !lyIn ? 0 : edge * (tm ? 1 : .9) * (k < 0 ? Math.max(0, 1 - (-k) * .9) : (ak < 1 ? 1 - ak * .15 : ak < 2 ? .85 - (ak - 1) * .3 : Math.max(0, .55 - (ak - 2) * .4)));
-      return { text, ta: (this.state.vw || window.innerWidth) < 1024 ? 'center' : 'left', fs: fs.toFixed(3), y: (((lyIn ? Math.max(-2.5, Math.min(3, k)) : 0) * 1.04 + lyBase + (1 - fs) * 0.52) / fs).toFixed(3), op: op.toFixed(3), color: Math.abs(k) < .5 ? '#f28a72' : '#efe4d2' };
-    });
+    this._lyAll = all;
+    const vwL = this.state.vw || window.innerWidth;
+    const lyrics = all.map((text, i) => ({ text, ta: vwL < 1024 ? 'center' : 'left', ...this.lyLine(i, text, cur, lyIn, vwL) }));
     const mo = !!this.state.menuOpen, pg = this.state.page || null;
     const mob = (this.state.vw || window.innerWidth) < 1024;
     return {
@@ -463,7 +484,9 @@ But on this solid rock I stand`
       albSwOp: this.state.albOut ? 0 : 1, albSwScale: this.state.albOut ? .96 : 1, albSwBlur: this.state.albOut ? '6px' : '0px', albSwY: this.state.albOut ? '6px' : '0px', albSwLyY: this.state.albOut ? '-10px' : '0px',
       goHome: e => { e.preventDefault(); this.setState({ menuOpen: false, page: null }); },
       lyMask: mob ? 'none' : 'linear-gradient(180deg,transparent 0%,rgba(0,0,0,.35) 12%,#000 26%,#000 55%,rgba(0,0,0,.35) 80%,transparent 100%)',
-      burgerY: mob ? '21px' : '0px', burgerOp: mob && !mo ? .7 : 1,
+      burgerY: mob ? '24px' : '0px', burgerOp: mob && !mo ? .7 : 1,
+      lyBoxRef: this.lyBoxRef,
+      lyLabelMT: mob ? '25px' : '40px',
       isMobile: mob, isDesk: !mob, lyGrid: mob || (this.state.vw || window.innerWidth) < 1100 ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,1fr))',
       rootH: mob ? 'auto' : '100vh', rootMinH: mob ? '100svh' : '760px',
       rootPad: mob ? '20px 20px 32px' : '36px clamp(72px,12vw,220px) 32px',
@@ -481,7 +504,7 @@ But on this solid rock I stand`
       pageBack: () => this.setState({ page: null }),
       menuOp: mo ? 1 : 0, menuPE: mo ? 'auto' : 'none', menuX: mo ? '0' : '-40px',
       menuLabel: mo ? 'Close' : 'Menu',
-      barTop: mo ? 6 : (mob ? 0 : 2), barBot: mo ? 6 : (mob ? 12 : 10), barMidOp: mob && !mo ? 1 : 0, barRot1: mo ? 45 : 0, barRot2: mo ? -45 : 0, barW: mo || mob ? '100%' : '65%',
+      barTop: mob ? 0 : 2, barBot: mob ? 12 : 10, barH: mob ? '2px' : '1.5px', barMidOp: mob && !mo ? 1 : 0, barMidS: mo ? .2 : 1, barT1: mo ? 'translate3d(0,' + (6 - (mob ? 0 : 2)) + 'px,0) rotate(45deg)' : 'translate3d(0,0,0) rotate(0deg)', barT2: mo ? 'translate3d(0,' + (6 - (mob ? 12 : 10)) + 'px,0) rotate(-45deg)' : 'translate3d(0,0,0) rotate(0deg)', burgerColor: this.state.burgerH ? (mob ? '#efe4d2' : '#f28a72') : (mob ? '#f28a72' : '#efe4d2'), burgerT: this.state.burgerH && !mob ? 'translateX(3px)' : 'translateX(0)', burgerOn: e => { if (e.pointerType === 'mouse') this.setState({ burgerH: true }); }, burgerOff: () => this.setState({ burgerH: false }), barW: mo || mob ? '100%' : '65%',
       menuToggle: () => this.setState(s => s.menuOpen ? { menuOpen: false, page: null } : { menuOpen: true }),
       menuClose: () => this.setState({ menuOpen: false, page: null }),
       menuItems: [['Music', 'music'], ['Lyrics', 'lyrics'], ['Story', 'story'], ['Dawn of Ages', 'ages'], ['Contact', 'contact']].map((m, i) => ({ label: m[0], href: '#' + m[1], num: String(i + 1).padStart(2, '0'), color: pg === m[1] ? '#f28a72' : '#efe4d2', go: e => { e.preventDefault(); this.setState({ page: m[1], menuOpen: true }); } })),
@@ -496,14 +519,14 @@ But on this solid rock I stand`
       lyrics, lyRef: this.lyRef,
       lyEnter: e => { if (e.pointerType === 'mouse') this._hover = true; },
       lyLeave: () => { this._hover = false; },
-      lyWheel: e => { const n = this.lyCount || 1; this.lyP = Math.max(0, Math.min(n - 1, this.lyP + e.deltaY / 160)); this.setState({ lyP: this.lyP }); },
+      lyWheel: e => { this._glide = false; const n = this.lyCount || 1; this.lyP = Math.max(0, Math.min(n - 1, this.lyP + e.deltaY / 160)); this.lyV = 0; this.paintLyrics(); },
       isCard: ps === 'Glass card', isVinyl: ps === 'Vinyl sleeve', isStrip: ps === 'Track strips',
       vinylOut: '20%',
       vinylSpin: 0,
       line1: hl[0], line2: hl[1],
       showLabels: this.props.showLabels ?? true,
       showFilmBar: this.props.showFilmBar ?? false,
-      shade: 0.2,
+      shade: 0.25,
       albCover: T[at].cover, albTitle: T[at].title,
       albTracks: T.map((t, i) => ({ num: String(i + 1).padStart(2, '0'), title: t.title, len: mmss(t.dur), bg: i === at ? 'rgba(255,255,255,.14)' : 'transparent', numColor: i === at ? '#f28a72' : '#c9c1b2', select: () => this.switchAlb(i),
         cover: t.cover,
@@ -521,8 +544,8 @@ But on this solid rock I stand`
       albBars: bars(at * 2.1 + 1, Math.max(.02, as / T[at].dur), true, 32),
       albPct: Math.round(as / T[at].dur * 100), albNow: mmss(as), albLen: mmss(T[at].dur),
       albIcon: ap ? '❚❚' : '▶', albPlaying: ap, albPaused: !ap,
-      albToggle: () => this.setState(s => ({ albP: !s.albP, played: true })),
-      covClick: () => this.setState(s => ({ albP: !s.albP, played: true })),
+      albToggle: () => { this.notePlay(); this.setState(s => ({ albP: !s.albP, played: true })); },
+      covClick: () => { this.notePlay(); this.setState(s => ({ albP: !s.albP, played: true })); },
       covOn: () => this.setState({ covH: true }), covOff: () => this.setState({ covH: false }), covOp: this.state.covH ? 1 : 0, covScale: this.state.covH ? 1 : .85,
       covHint: this.state.played || this.state.albP || this.state.covH ? null : React.createElement('span', { key: 'hint', style: { position: 'absolute', left: 0, right: 0, top: 'calc(17% - 10px)', textAlign: 'center', fontFamily: "'Lato',sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: '.24em', textTransform: 'uppercase', color: '#efe4d2', textShadow: '0 2px 14px rgba(0,0,0,.7)', animation: 'lwBreath 5s ease-in-out infinite' } }, 'Click to listen'),
       albPrev: () => this.setState(s => ({ albT: ((s.albT || 0) + T.length - 1) % T.length, albS: 0 })),
