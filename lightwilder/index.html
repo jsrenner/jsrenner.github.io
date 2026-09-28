@@ -424,7 +424,7 @@ But on this solid rock I stand`
         if (playing) { if (a.currentTime !== this._at || a.paused) { this._at = a.currentTime; this._atWall = now; } t = this._at + (a.paused ? 0 : Math.min(.35, (now - this._atWall) / 1000)); }
         const win = (this.state.albT || 0) === 0 ? 16.5 : 14;
         if (playing && t >= win) {
-          const stretch = (this.state.albT || 0) === 1 ? 1.06 : .94, target = (t - win) / Math.max(1, a.duration * stretch - win) * n, w = 3.2;
+          const stretch = (this.state.albT || 0) === 1 ? 1.06 : .97, target = (t - win) / Math.max(1, a.duration * stretch - win) * n, w = 3.2;
           this.lyV += ((target - this.lyP) * w * w - this.lyV * 2 * w) * dt;
           this.lyP += this.lyV * dt;
         } else if (this._glide) {
